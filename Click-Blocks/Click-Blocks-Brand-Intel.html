@@ -1,0 +1,513 @@
+<title>Click Blocks — Brand Intelligence</title>
+<style>
+:root{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 24px 100px}
+
+/* ---- HEADER ---- */
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 40px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:700px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:640px;line-height:1.6}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:28px}
+.snap{background:var(--surface);padding:18px 16px}
+.snap-val{font:800 1.65rem/1 -apple-system,system-ui,sans-serif;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.snap-val.teal{color:var(--teal)}
+.snap-lbl{font-size:.82rem;color:var(--muted);margin-top:4px;line-height:1.35}
+
+/* ---- SECTIONS ---- */
+section{margin-top:56px}
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+section>h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+section>h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+p{margin:.55em 0;max-width:68ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+
+/* ---- CALLOUTS ---- */
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+
+/* ---- TAKEAWAY BAND ---- */
+.band{background:var(--deep);color:#EDEDEC;padding:24px 26px;border-radius:10px;margin:28px 0}
+.band h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+.band ul{padding-left:1.1em}.band li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+
+/* ---- TABLES ---- */
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+/* ---- TAGS ---- */
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+.pill-purple{background:#EDE9FE;color:#5B21B6}
+:root[data-theme="dark"] .pill-green,:root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber,:root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red,:root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue,:root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+:root[data-theme="dark"] .pill-purple,:root:not([data-theme="light"]) .pill-purple{background:#3B0764;color:#C4B5FD}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+  :root:not([data-theme="light"]) .pill-purple{background:#3B0764;color:#C4B5FD}
+}
+
+/* ---- QUOTES ---- */
+.voice-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:10px 0;font-size:.91rem;font-style:italic;position:relative}
+.voice-card::before{content:"\201C";position:absolute;top:8px;left:12px;font-size:2rem;color:var(--accent);opacity:.35;line-height:1;font-style:normal}
+.voice-card p{padding-left:18px;margin:0}
+.voice-card cite{display:block;font-size:.78rem;color:var(--muted);font-style:normal;margin-top:6px;padding-left:18px}
+
+/* ---- GRID CARDS ---- */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.cg{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.cg strong{display:block;margin-bottom:4px}
+
+/* ---- MISC ---- */
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.fine{font-size:.8rem;color:var(--muted);margin-top:48px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  main{padding:0 14px 60px}
+  .masthead{padding:32px 14px 28px;margin:0 -14px 28px}
+  section{margin-top:40px}
+  .snapshot{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr}
+}
+</style>
+
+<main>
+<!-- ======== HEADER ======== -->
+<header class="masthead">
+  <div class="mast-label">Brand Intelligence Report</div>
+  <h1>Click Blocks</h1>
+  <p>Build-A-World Magnets. Research on the brand, product mechanism, offer architecture, competitive landscape, customer voice, and market positioning.</p>
+  <div class="snapshot">
+    <div class="snap"><div class="snap-val">$23.96</div><div class="snap-lbl">Entry price (Pro 35pc)</div></div>
+    <div class="snap"><div class="snap-val teal">101K+</div><div class="snap-lbl">Units purchased</div></div>
+    <div class="snap"><div class="snap-val">4.9/5</div><div class="snap-lbl">Site rating &middot; 50K+ reviews</div></div>
+    <div class="snap"><div class="snap-val teal">82%</div><div class="snap-lbl">Report less screen time</div></div>
+    <div class="snap"><div class="snap-val">$1.2B</div><div class="snap-lbl">Market size (2025)</div></div>
+  </div>
+</header>
+
+<!-- ======== EXEC SUMMARY ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Executive Summary</h2>
+  <p>Click Blocks is a UK-based DTC brand selling magnetic building blocks through Shopify, with heavy Meta and TikTok ad spend. The entire positioning is built around one ownable mechanism: <strong>"The Dopamine Click"</strong> &mdash; a satisfying magnetic snap sound that gives children micro-dopamine rewards, weaponising the same psychology screens use to hold attention.</p>
+  <p>The product targets mums aged 28&ndash;45 with children aged 3&ndash;12, entering through universal screen time guilt. Competitors (Magna-Tiles, PicassoTiles) sit at higher price points with feature-led messaging and zero DR sophistication. Click Blocks' moat is mechanism naming + aggressive pricing + subscription model &mdash; not the magnetic tile format itself.</p>
+  <p>The market is <strong>Problem-Aware</strong> (parents know screens are bad) and at <strong>Sophistication Stage 2&ndash;3</strong> (the category isn't saturated with mechanism-led DR advertising). This means introducing the Dopamine Click mechanism is the winning creative move.</p>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The "Dopamine Click" mechanism turns a commodity product into a proprietary solution. It's the brand's most defensible creative asset.</li>
+      <li>Screen time guilt is the #1 entry point &mdash; universal, emotionally charged, and the product has genuine customer proof to address it.</li>
+      <li>Newer DTC brand with lower trust signals &mdash; some scam-checkers flag low trust scores. Guarantee and social proof carry the sale.</li>
+      <li>The subscription model (monthly new designs, 20% off) is a significant LTV advantage no direct competitor offers.</li>
+      <li>At $23.96&ndash;$51.96 vs Magna-Tiles at $50&ndash;$120+, the price positioning removes the biggest barrier for impulse buyers on social.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== BRAND OVERVIEW ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Brand Overview</h2>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Element</th><th>Observed position</th></tr>
+    <tr><td>Category</td><td>Magnetic building blocks for children &mdash; DTC e-commerce, UK-based, global shipping via Shopify.</td></tr>
+    <tr><td>Core promise</td><td>"Stop screen-time battles and let their imagination run wild." A toy that replaces screens, not just competes.</td></tr>
+    <tr><td>Primary audience</td><td>Mums 28&ndash;45 with children 3&ndash;12. Secondary: grandparents, dads, teachers.</td></tr>
+    <tr><td>Voice</td><td>Parent-to-parent. Empathetic but confident. Uses guilt language without shaming.</td></tr>
+    <tr><td>Funnel</td><td>Meta/TikTok ad &rarr; Product page &rarr; Purchase. No advertorial or warming layer.</td></tr>
+    <tr><td>Tagline</td><td>"The best rated toy of 2026 is on sale."</td></tr>
+    <tr><td>Revenue model</td><td>Single purchase + optional monthly subscription (new designs, skip/pause/cancel, 20% off).</td></tr>
+    <tr><td>Trust signals</td><td>"Best rated toy of 2026," Trustpilot widget, 100K+ customers, school/teacher mentions, 30-day guarantee.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>No warming layer between ad and product page. A UGC-style story or landing page could significantly improve cold traffic conversion.</li>
+      <li>Subscription is undermarketed &mdash; monthly new designs prevent the "toys collecting dust" objection. Should be a headline feature in ads.</li>
+      <li>Teacher/school endorsements are claimed but unsubstantiated &mdash; named authority would strengthen the SAFE signal.</li>
+      <li>"Best rated toy of 2026" lacks a cited source. Compliance risk if challenged.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== PRODUCT / MECHANISM ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Product &amp; Mechanism</h2>
+
+  <div class="callout callout-accent">
+    <strong>The Dopamine Click</strong>
+    Every time two magnetic blocks snap together, they produce a satisfying clicking sound that triggers a small dopamine reward &mdash; the same neurochemical response tech companies use to keep children glued to screens. The brand explicitly states: "the same psychology used by big tech companies to hold their attention to the devices." This is a Stage 3 sophistication play: a new mechanism that makes an old promise work.
+  </div>
+
+  <h3>Supporting Differentiators</h3>
+  <div class="card-grid">
+    <div class="cg"><strong>Open-Ended Play</strong>Cannot be "completed" &mdash; no finish line means no dust-collecting. There's never a moment when the toy is "done."</div>
+    <div class="cg"><strong>Imagination-First</strong>No rules, no instructions. Kids decide what to build. Forces creative thinking rather than template-following.</div>
+    <div class="cg"><strong>Characters Included</strong>Sparks storytelling, not just construction. Turns building into narrative play &mdash; worlds, not structures.</div>
+    <div class="cg"><strong>Teacher Endorsed</strong>Recommended by teachers and schools. Authority signal for parents who need permission to believe.</div>
+  </div>
+
+  <h3>Product Tiers</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Tier</th><th>Pieces</th><th>Sale</th><th>RRP</th><th>Discount</th></tr>
+    <tr><td>Pro</td><td>35</td><td>$23.96</td><td>$60</td><td>60%</td></tr>
+    <tr><td>Elite</td><td>70</td><td>$39.96</td><td>~$100</td><td>~60%</td></tr>
+    <tr><td>Legendary</td><td>150</td><td>$51.96</td><td>~$190</td><td>~73%</td></tr>
+    <tr><td>LED Glow Blocks</td><td>Add-on</td><td>$5.99</td><td>&mdash;</td><td>&mdash;</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>"Dopamine Click" is named and uncontested. No competitor has claimed this mechanism. Protect the naming in all creative.</li>
+      <li>The mechanism bridges Problem-Aware to Solution-Aware: parents know screens are bad but don't know a toy can fight back using the screen's own weapon.</li>
+      <li>Open-ended play addresses "toys collecting dust" without leading with it. It's structural, not a claim.</li>
+      <li>Legendary at $51.96 for 150 pieces is the best value story and highest revenue per order &mdash; make it the hero SKU.</li>
+      <li>Characters are underused. Magna-Tiles sells shapes. Click Blocks sells worlds. A storytelling ad line could run independently.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== OFFER ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Offer Architecture</h2>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Component</th><th>Detail</th><th>Buyer meaning</th></tr>
+    <tr><td>Price</td><td>$23.96&ndash;$51.96 sale</td><td>Impulse-buy territory. Less than a month of Disney+. "Twenty-four bucks" in ad voice.</td></tr>
+    <tr><td>Discount</td><td>Up to 73% off RRP</td><td>Heavy anchor. Urgency + value. Risk of "always on sale" if never seen at full price.</td></tr>
+    <tr><td>Guarantee</td><td>30-day money-back</td><td>"If your kid doesn't love them, you get your money back." Clean risk reversal.</td></tr>
+    <tr><td>Shipping</td><td>Ships in 1 biz day, 4&ndash;8 days delivery</td><td>Fast dispatch = legitimate operation. Standard DTC window.</td></tr>
+    <tr><td>Subscription</td><td>Monthly new designs, skip/pause/cancel, 20% off</td><td>Kills "dust" objection. Drives LTV. Should be the lead feature, not buried.</td></tr>
+    <tr><td>Age range</td><td>6+ (some pages say 3+)</td><td>Inconsistency creates confusion for parents of younger children.</td></tr>
+    <tr><td>Upsell</td><td>LED Glow Blocks $5.99</td><td>Low-friction add-on. Easy checkout yes.</td></tr>
+  </table></div>
+
+  <div class="callout callout-teal">
+    <strong>Gaps identified</strong>
+    No bundle pricing (sibling pack, gift bundle). Subscription buried on-site, not in ads. No Klarna/Afterpay messaging. Age range inconsistency (3+ vs 6+) unresolved.
+  </div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>$23.96 entry is a weapon &mdash; most magnetic tile sets start at $40+. Lead with price in CTA.</li>
+      <li>Subscription is the single biggest LTV lever and the strongest answer to "toys collecting dust." Ads should name it.</li>
+      <li>Legendary 150pc at $51.96 should be the hero SKU &mdash; best value ratio, highest revenue per order.</li>
+      <li>30-day guarantee is sufficient at this price point &mdash; the financial risk is already low enough for impulse buys.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== MARKET CONTEXT ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Market Context</h2>
+
+  <div class="card-grid">
+    <div class="cg"><strong>Market Size</strong>Global magnetic building blocks market valued at $1.2B in 2025. Projected $2.5B by 2034 at 8.9% CAGR.</div>
+    <div class="cg"><strong>STEM Toy Growth</strong>Magnetic blocks are the consistent best-seller within the booming STEM toy category across multiple markets.</div>
+    <div class="cg"><strong>Screen Time Crisis</strong>Kids 8&ndash;12 average 4h 44m daily screen time. 71% of parents are concerned. 98% of two-year-olds watch screens daily.</div>
+    <div class="cg"><strong>Parent Behaviour</strong>49% of parents rely on screen time daily to manage parenting. Only 58% actively limit teenager screen time.</div>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>What this means for creative</strong>
+    The screen time anxiety is real, measurable, and growing. Parents feel it daily but most haven't found a solution that works. Click Blocks sits at the intersection of two massive trends: STEM toy growth and the screen-time backlash. The market is big enough, the pain is universal enough, and the category is unsophisticated enough for mechanism-led creative to dominate.
+  </div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>$1.2B market growing at 8.9% &mdash; not a niche. There's budget to scale into without saturation.</li>
+      <li>71% of parents concerned about screen time = 71% of the target audience pre-qualified by the pain point.</li>
+      <li>49% rely on screens daily to manage parenting &mdash; the guilt is baked into the routine. Confession-style ads will resonate.</li>
+      <li>Competitors focus on STEM features. Nobody is running emotional, parent-guilt-driven creative at scale.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== COMPETITORS ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Competitor Landscape</h2>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Competitor</th><th>Price</th><th>Pieces</th><th>Differentiator</th><th>Weakness vs Click Blocks</th></tr>
+    <tr><td>Magna-Tiles</td><td>$50&ndash;$120+</td><td>32&ndash;100</td><td>Category creator (1997). Strongest magnets. Double-sealed rivets. Premium trust.</td><td>2&times; the price. No DR ads. No mechanism. Feature-led retail positioning.</td></tr>
+    <tr><td>PicassoTiles</td><td>$25&ndash;$80</td><td>60&ndash;121</td><td>Budget alternative. Amazon-dominant. First to beat Magna on price.</td><td>No mechanism. No brand story. No subscription. Commodity.</td></tr>
+    <tr><td>Connetix</td><td>$60&ndash;$180+</td><td>62&ndash;202</td><td>Premium tier. Strongest magnets, beveled edges, highest clarity tiles.</td><td>Most expensive. Retail/boutique only. No emotional DR creative.</td></tr>
+    <tr><td>Superspace</td><td>$80&ndash;$200+</td><td>Varies</td><td>Life-sized structures. Unique scale. Older kids and adults.</td><td>Different category (scale play). Not a direct magnetic tile competitor.</td></tr>
+    <tr><td>Playmags</td><td>$30&ndash;$70</td><td>100+</td><td>Amazon/retail. Durability focus. Expandable.</td><td>Feature-led. No emotional angle. No social ad sophistication.</td></tr>
+    <tr><td>Magformers</td><td>$30&ndash;$100+</td><td>30&ndash;144</td><td>Geometric shapes. Wheels and accessories. NOT compatible with others.</td><td>Proprietary system limits expansion. No DR creative. Retail only.</td></tr>
+    <tr><td>LEGO</td><td>$15&ndash;$200+</td><td>Varies</td><td>Category giant. Decades of trust. Licensed IP.</td><td>Instructions = can be "completed." Sharp pieces. Higher price per volume.</td></tr>
+  </table></div>
+
+  <div class="callout callout-accent">
+    <strong>Compatibility Note</strong>
+    Magna-Tiles, PicassoTiles, Connetix, and Playmags are all cross-compatible. Magformers are NOT compatible with any other brand. Click Blocks operates outside the tile ecosystem entirely &mdash; different form factor (cube/block vs flat tile), which is both a positioning advantage (not a commodity tile) and a risk (can't expand with Magna-Tiles pieces parents already own).
+  </div>
+
+  <h3>Indirect Alternatives (The Real Competition)</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Alternative</th><th>Cost</th><th>Why parents consider it</th></tr>
+    <tr><td>iPad / tablet</td><td>$0 (owned)</td><td>It works. It's free. It buys peace. Guilt is the only cost.</td></tr>
+    <tr><td>LEGO sets</td><td>$15&ndash;$200+</td><td>Trusted. Structured. But: gets "completed" and shelved.</td></tr>
+    <tr><td>Arts &amp; crafts</td><td>$10&ndash;$50</td><td>Creative. But: supervision, mess, finite supplies.</td></tr>
+    <tr><td>Outdoor play</td><td>$0</td><td>The ideal. But: weather, supervision, not always possible.</td></tr>
+    <tr><td>Do nothing</td><td>$0</td><td>Accept screens. Live with the guilt. Path of least resistance.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The real competitor is the iPad, not Magna-Tiles. Every ad should position against screens, not against other toys.</li>
+      <li>Click Blocks' moat is mechanism + price + subscription + DR sophistication. The product itself is commodity.</li>
+      <li>No competitor runs emotional, mechanism-led social ads. First-mover advantage in DR creative for this category.</li>
+      <li>Magna-Tiles has brand trust Click Blocks lacks. Guarantee and Trustpilot must compensate.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== CUSTOMER VOICE ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Customer Voice</h2>
+
+  <h3>On Screen Time</h3>
+  <div class="voice-card"><p>"He doesn't even think about any electrical device."</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"Kept him amused all afternoon after school, he didn't even mention his tablet!"</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"Between these and lego it keeps him entertained for hours."</p><cite>Verified buyer</cite></div>
+
+  <h3>On Engagement</h3>
+  <div class="voice-card"><p>"They often carry their creations to the car in the morning and continue building on the school run."</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"He built a football stadium with them the other week!"</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"They keep him engaged and distracted enough that he'll actually eat without fussing."</p><cite>Verified buyer</cite></div>
+
+  <h3>On ADHD / Neurodivergent Children</h3>
+  <div class="voice-card"><p>"My autistic and ADHD son loves his. He likes to make letters and numbers."</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"Both my ADHD and non ADHD child love them."</p><cite>Verified buyer</cite></div>
+
+  <h3>On First Impressions / Quality</h3>
+  <div class="voice-card"><p>"The quality is way better than I expected, and our kids (6 and 7) have been playing with it nonstop."</p><cite>Monica T. &mdash; Screen Time page</cite></div>
+  <div class="voice-card"><p>"My 6 year old is obsessed with these. Most mornings he will wake up and play with the Click Blocks."</p><cite>Chelsea L. &mdash; Screen Time page</cite></div>
+  <div class="voice-card"><p>"My 2 boys are obsessed with these blocks. They are working together building all of these different buildings."</p><cite>Claire H. &mdash; Screen Time page</cite></div>
+
+  <h3>On Recommending</h3>
+  <div class="voice-card"><p>"At this price, it's an absolute steal. Bought extras for birthday gifts!"</p><cite>Verified buyer</cite></div>
+  <div class="voice-card"><p>"I've been recommending Click Blocks to literally everyone I know."</p><cite>Verified buyer</cite></div>
+
+  <h3>Language Patterns</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Theme</th><th>Strength</th><th>Phrases</th></tr>
+    <tr><td>Screen replacement</td><td><span class="pill pill-green">Dominant</span></td><td>"didn't even mention his tablet," "doesn't think about any device"</td></tr>
+    <tr><td>Extended engagement</td><td><span class="pill pill-green">Dominant</span></td><td>"all afternoon," "for hours," "two hours"</td></tr>
+    <tr><td>Creativity / worlds</td><td><span class="pill pill-amber">Strong</span></td><td>"football stadium," "carry creations to the car"</td></tr>
+    <tr><td>Gifting</td><td><span class="pill pill-amber">Strong</span></td><td>"bought extras for gifts," "recommending to everyone"</td></tr>
+    <tr><td>ADHD / special needs</td><td><span class="pill pill-blue">Niche</span></td><td>"my ADHD son loves his," "letters and numbers"</td></tr>
+    <tr><td>Price value</td><td><span class="pill pill-blue">Niche</span></td><td>"absolute steal," "at this price"</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>"Didn't even mention his tablet" is the single most powerful proof phrase. It's the SHOW DON'T TELL of screen time reduction. Use verbatim.</li>
+      <li>"Carries them to the car" demonstrates engagement through behaviour, not a claim. Real parents wrote this. Use it.</li>
+      <li>ADHD angle has real evidence but is too niche for cold traffic. Reserve for a dedicated segment.</li>
+      <li>Gifting language ("bought extras for birthday gifts") signals a seasonal campaign opportunity.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== RISK SIGNALS ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Risk Signals &amp; Trust Issues</h2>
+
+  <p>Fresh research (August 2026) surfaced recurring complaints across Trustpilot and scam-checker sites. These don't change the ad strategy but MUST be accounted for in creative and customer experience.</p>
+
+  <h3>Subscription Complaints (Builders Club)</h3>
+  <div class="voice-card"><p>"I was very secretly signed up for a subscription when I thought I was making a one-off purchase."</p><cite>Trustpilot reviewer</cite></div>
+  <div class="voice-card"><p>"Charged another $50 for a subscription they wouldn't cancel. Told I'd have to pay for return to China, which would cost more than the product."</p><cite>Trustpilot reviewer</cite></div>
+  <div class="voice-card"><p>"No contact number and no way of cancelling the subscription on the website."</p><cite>Trustpilot reviewer</cite></div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Issue</th><th>Frequency</th><th>Severity</th><th>Creative implication</th></tr>
+    <tr><td>Unwanted subscription sign-up</td><td><span class="pill pill-red">Recurring</span></td><td><span class="pill pill-red">High</span></td><td>Ads mentioning subscription must make opt-in nature crystal clear.</td></tr>
+    <tr><td>Cancellation difficulty</td><td><span class="pill pill-amber">Moderate</span></td><td><span class="pill pill-red">High</span></td><td>FTC "Click to Cancel" rules apply. Compliance risk.</td></tr>
+    <tr><td>Blocks smaller than expected</td><td><span class="pill pill-amber">Moderate</span></td><td><span class="pill pill-amber">Medium</span></td><td>Show blocks with a size reference (hand, coin) in creative.</td></tr>
+    <tr><td>Shipping delays</td><td><span class="pill pill-blue">Occasional</span></td><td><span class="pill pill-amber">Medium</span></td><td>Don't over-promise delivery speed in ads.</td></tr>
+    <tr><td>Missing items in orders</td><td><span class="pill pill-blue">Occasional</span></td><td><span class="pill pill-amber">Medium</span></td><td>30-day guarantee handles this at the CTA level.</td></tr>
+  </table></div>
+
+  <h3>External Trust Scores</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Platform</th><th>Score</th><th>Note</th></tr>
+    <tr><td>Trustpilot</td><td>Mixed (4.1 reported, varies by region)</td><td>Genuine positive reviews alongside subscription complaints.</td></tr>
+    <tr><td>Scam Detector</td><td><span class="pill pill-red">36/100</span></td><td>Low trust score. Common for newer DTC Shopify brands but worth noting.</td></tr>
+    <tr><td>Site self-reported</td><td>4.9/5 &middot; 50K+ reviews</td><td>Likely aggregated from on-site reviews, not third-party verified.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>Subscription complaints are the #1 trust risk. 70% of customers reportedly join the subscription &mdash; if even 10% feel tricked, that's thousands of negative signals.</li>
+      <li>Low external trust scores mean ads must over-index on guarantee, real customer proof, and transparent pricing.</li>
+      <li>The 4.9 self-reported rating vs lower third-party scores creates a credibility gap. Ads should cite "100K+ happy customers" (volume) rather than a star rating.</li>
+      <li>Block size expectations: always show the product in context (child's hand, next to a familiar object) to prevent "smaller than expected" returns.</li>
+      <li>These issues are business-side, not creative-side. But creative that acknowledges risk reversal ("30-day guarantee, cancel anytime") will outperform creative that ignores it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== AWARENESS ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Awareness &amp; Sophistication</h2>
+
+  <div class="callout callout-accent">
+    <strong>Market Awareness: Problem-Aware</strong>
+    Parents know screen time is a problem. They feel it daily. What they don't know is that a toy exists that uses the screen's own dopamine psychology against it. Ads must walk them from Problem-Aware &rarr; Solution-Aware &rarr; Product-Aware in a single viewing.
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>Sophistication: Stage 2&ndash;3</strong>
+    The magnetic toy category exists but isn't saturated with DR advertising. Competitors use feature-based messaging ("50 pieces, bright colours, STEM"). Click Blocks can still make a mechanism-led claim and be believed. Introducing the Dopamine Click is the winning move.
+  </div>
+
+  <h3>Sophistication Strategy</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stage</th><th>What it means</th><th>Click Blocks response</th></tr>
+    <tr><td>Stage 1 &mdash; Be first</td><td>First to claim</td><td>Past this. Magnetic tiles exist. "Screen-free toy" has been said.</td></tr>
+    <tr><td>Stage 2 &mdash; Bigger claims</td><td>Enlarge the promise</td><td>Where competitors live: "best tiles," "100+ pieces," "STEM." Feature-war territory.</td></tr>
+    <tr><td><strong>Stage 3 &mdash; New mechanism</strong></td><td>Explain WHY it works</td><td><strong>Click Blocks wins here.</strong> "Dopamine Click" is a new mechanism. "Here's WHY these work when nothing else did."</td></tr>
+    <tr><td>Stage 4 &mdash; Amplify</td><td>Deepen the proof</td><td>Future state. When competitors copy the angle, deepen with clinical language and school studies.</td></tr>
+    <tr><td>Stage 5 &mdash; Identity</td><td>Sell the buyer</td><td>Far future. "You're the kind of parent who..." Reserved for warm audiences.</td></tr>
+  </table></div>
+
+  <p><strong>Script flow (per Evolve):</strong> Problem &rarr; Solution &rarr; Product &rarr; Offer. Open in the parent's world. Reveal the mechanism. Show the product delivering. Close with price and guarantee.</p>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>Stage 3 is the primary conversion zone. Every cold traffic ad must introduce the Dopamine Click &mdash; it's what separates Click Blocks from "another toy."</li>
+      <li>Problem &rarr; Solution &rarr; Product &rarr; Offer is non-negotiable for cold traffic. Do not open with the product.</li>
+      <li>The mechanism is currently uncontested. No competitor has named their engagement dynamic. Build association now.</li>
+      <li>Feature-led ads (piece counts, colours, STEM) will underperform mechanism-led ads at this stage. Do not regress.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== ANGLES ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Angles Assessed</h2>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Angle</th><th>Scale</th><th>Emotion</th><th>Mechanism fit</th><th>Verdict</th></tr>
+    <tr><td>Screen time guilt &amp; daily battles</td><td><span class="pill pill-green">Universal</span></td><td><span class="pill pill-green">High</span></td><td><span class="pill pill-green">Direct</span></td><td><span class="pill pill-green">LEAD</span></td></tr>
+    <tr><td>Toys that collect dust</td><td><span class="pill pill-amber">Broad</span></td><td><span class="pill pill-amber">Medium</span></td><td><span class="pill pill-amber">Indirect</span></td><td><span class="pill pill-blue">BRIDGE</span></td></tr>
+    <tr><td>Loss of imagination</td><td><span class="pill pill-amber">Broad</span></td><td><span class="pill pill-amber">Medium</span></td><td><span class="pill pill-amber">Indirect</span></td><td><span class="pill pill-blue">SUPPORT</span></td></tr>
+    <tr><td>ADHD / neurodivergent</td><td><span class="pill pill-red">Niche</span></td><td><span class="pill pill-green">High</span></td><td><span class="pill pill-green">Direct</span></td><td><span class="pill pill-purple">SEGMENT</span></td></tr>
+    <tr><td>Sibling conflict</td><td><span class="pill pill-amber">Broad</span></td><td><span class="pill pill-amber">Medium</span></td><td><span class="pill pill-red">Weak</span></td><td><span class="pill pill-red">SKIP</span></td></tr>
+  </table></div>
+
+  <p><strong>Lead with screen time guilt</strong> as the hook. <strong>Bridge through "toys collecting dust"</strong> as the objection handler. <strong>Show imagination/creativity</strong> as the demonstrated benefit. <strong>Reserve ADHD</strong> for a dedicated audience. <strong>Skip sibling conflict</strong> &mdash; doesn't connect to the mechanism.</p>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>Screen time guilt is the only angle that hits all three criteria: universal scale, high emotional charge, direct mechanism fit.</li>
+      <li>"Toys collecting dust" is an objection handler, not a scroll-stopper. Use it to bridge from problem to solution.</li>
+      <li>Creativity is the benefit you SHOW, not SAY. Let the script demonstrate imaginative play rather than claiming it.</li>
+      <li>ADHD has real proof &mdash; but it's a dedicated campaign, not the cold traffic lead.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== USABLE STATS ======== -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Usable Stats &amp; Compliance Flags</h2>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Stat</th><th>Source</th><th>Status</th></tr>
+    <tr><td>87% say it's their child's favourite toy</td><td>Product page</td><td><span class="pill pill-amber">Brand claim &mdash; needs survey qualifier</span></td></tr>
+    <tr><td>82% report less screen time</td><td>Product page</td><td><span class="pill pill-amber">Brand claim &mdash; powerful if substantiated</span></td></tr>
+    <tr><td>89% would recommend</td><td>Product page</td><td><span class="pill pill-amber">Brand claim</span></td></tr>
+    <tr><td>78% still building after 3 months</td><td>Product page</td><td><span class="pill pill-amber">Brand claim &mdash; kills "dust" objection</span></td></tr>
+    <tr><td>100K+ customers</td><td>Product page</td><td><span class="pill pill-green">Usable &mdash; volume proof</span></td></tr>
+    <tr><td>4.9/5 average rating</td><td>On-site reviews</td><td><span class="pill pill-amber">Self-reported &mdash; not third-party verified</span></td></tr>
+    <tr><td>Trustpilot mixed (varies by region)</td><td>Trustpilot</td><td><span class="pill pill-amber">Mix of 5-star and 1-star &mdash; subscription complaints drag average</span></td></tr>
+    <tr><td>$1.2B market size (2025)</td><td>Verified Market Reports</td><td><span class="pill pill-green">Usable &mdash; industry context</span></td></tr>
+    <tr><td>71% parents concerned about screen time</td><td>Lurie Children's Hospital 2025</td><td><span class="pill pill-green">Usable &mdash; authoritative source</span></td></tr>
+    <tr><td>Kids 8-12 avg 4h 44m daily screen time</td><td>Multiple 2025-2026 studies</td><td><span class="pill pill-green">Usable &mdash; powerful in ad copy</span></td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>Trustpilot 4.1/5 is the safest stat &mdash; third-party verified, independently auditable.</li>
+      <li>Homepage 4.5 vs Trustpilot 4.1 discrepancy must be resolved before ads cite ratings.</li>
+      <li>"82% report less screen time" is the most powerful stat for the lead angle but needs a methodology qualifier.</li>
+      <li>"78% still building after 3 months" directly kills the dust objection &mdash; use in the bridge section.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== SOURCES ======== -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Sources</h2>
+  <ul>
+    <li>Click Blocks &mdash; Product page (Build-A-World Magnets) &middot; click-blocks.com</li>
+    <li>Click Blocks &mdash; Homepage &middot; click-blocks.com</li>
+    <li>Click Blocks &mdash; Screen Time landing page &middot; click-blocks.com/pages/screen-time</li>
+    <li>Trustpilot &mdash; Click Blocks reviews (multiple regional pages) &middot; trustpilot.com</li>
+    <li>Product page customer reviews (verbatim language captured from on-site reviews)</li>
+    <li>Magna-Tiles, PicassoTiles, Connetix, Playmags, Magformers, Superspace &mdash; product and pricing research</li>
+    <li>STEMGeek &mdash; "14 Best Magnetic Tiles For Kids" (2026 review) &middot; stemgeek.com</li>
+    <li>Verified Market Reports &mdash; Global Magnetic Building Blocks Market Size &amp; Growth (2026-2034)</li>
+    <li>Lurie Children's Hospital &mdash; Screen Time Statistics 2025 &middot; luriechildrens.org</li>
+    <li>Backlinko &mdash; Screen Time Statistics 2026 &middot; backlinko.com</li>
+    <li>Scam Detector &mdash; click-blocks.com trust score &middot; scam-detector.com</li>
+    <li>TikTok &mdash; Click Blocks review content &middot; tiktok.com</li>
+    <li>Brand social media (Facebook, Instagram, TikTok ad presence)</li>
+  </ul>
+</section>
+
+<p class="fine">Prepared from public web, product page, Trustpilot, TikTok, market reports, and competitive research. Updated August 2026. Product pages and pricing may change. All self-reported brand stats should be verified before use in creative.</p>
+</main>

@@ -1,0 +1,1600 @@
+<title>Click Blocks — Angle Exploration & Creative Concepts</title>
+<style>
+:root{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:960px;margin:0 auto;padding:0 24px 100px}
+
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 32px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:760px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:680px;line-height:1.6}
+.masthead .lock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:16px 18px;border-radius:8px;margin-top:22px;font-size:.9rem;line-height:1.55;color:#ccc}
+.masthead .lock strong{color:var(--accent)}
+
+nav{background:var(--surface);border:1px solid var(--border);padding:14px 18px;border-radius:8px;margin-bottom:40px;position:sticky;top:12px;z-index:20;display:flex;flex-wrap:wrap;gap:5px 14px;box-shadow:0 4px 16px rgba(0,0,0,.05)}
+nav a{font-size:.79rem;color:var(--muted);text-decoration:none;font-weight:600;white-space:nowrap}
+nav a:hover{color:var(--accent)}
+
+section{margin-top:56px}
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+.part-label{font:800 .68rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:6px}
+.part-label.teal{color:var(--teal)}
+section>h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+p{margin:.55em 0;max-width:70ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+
+.band{background:var(--deep);color:#EDEDEC;padding:24px 26px;border-radius:10px;margin:28px 0}
+.band h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+.band ul{padding-left:1.1em}.band li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.86rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:8px 10px;border-bottom:2px solid var(--border)}
+td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.matrix-tbl td,.matrix-tbl th{text-align:center}
+.matrix-tbl td:first-child,.matrix-tbl th:first-child{text-align:left}
+
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+.pill-teal{background:var(--teal-soft);color:var(--teal)}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+}
+:root[data-theme="dark"] .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue{background:#1E3A5F;color:#93C5FD}
+
+.score-cell{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;font-weight:700;font-size:.78rem}
+.sc-high{background:#FEE2E2;color:#991B1B}.sc-med{background:#FEF3C7;color:#92400E}.sc-low{background:#DCFCE7;color:#166534}
+:root[data-theme="dark"] .sc-high, @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .sc-high{background:#7F1D1D;color:#FCA5A5}}
+:root[data-theme="dark"] .sc-high{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .sc-med{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .sc-low{background:#14532D;color:#86EFAC}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .sc-med{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .sc-low{background:#14532D;color:#86EFAC}
+}
+
+blockquote{border-left:3px solid var(--accent);margin:14px 0;padding:10px 18px;background:var(--raised);border-radius:0 8px 8px 0;font-size:.93rem;font-style:italic}
+
+.cluster-intro{color:var(--muted);margin-bottom:22px;max-width:74ch}
+.cluster-count{display:inline-block;margin-left:8px;font-size:.72rem;font-weight:700;color:var(--teal);background:var(--teal-soft);padding:2px 9px;border-radius:20px;vertical-align:middle}
+
+/* ---- ANGLE CARD ---- */
+.angle-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:16px 0;overflow:hidden}
+.angle-head{display:flex;gap:14px;align-items:flex-start;padding:18px 20px 14px;border-bottom:1px solid var(--border);background:var(--raised)}
+.angle-num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font:800 .82rem/1 -apple-system,system-ui,sans-serif}
+.angle-head h4{font:700 1.05rem/1.3 -apple-system,system-ui,sans-serif;letter-spacing:-.01em;margin-bottom:6px}
+.angle-tags{display:flex;flex-wrap:wrap;gap:5px}
+.angle-body{padding:16px 20px 20px}
+.angle-body blockquote{margin:8px 0 14px}
+.angle-body p{font-size:.92rem}
+.hook-block{margin:14px 0}
+.hook-label{font:700 .68rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:8px}
+.hook-block ol{padding-left:1.2em}
+.hook-block li{font-size:.92rem;line-height:1.55;margin:.4em 0}
+.mech-tie{background:var(--accent-soft);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:.88rem;line-height:1.55}
+.mech-tie strong{color:var(--accent);display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.prod-item strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px}
+.prod-item span{font-size:.85rem;line-height:1.4;display:block}
+
+/* ---- VOC ---- */
+.voice-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:10px 0}
+.voice-card q{font-size:.95rem;font-style:italic;line-height:1.55;display:block}
+.voice-card .voc-tag{margin-top:8px;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.voc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:16px 0}
+
+.fine{font-size:.8rem;color:var(--muted);margin-top:48px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  main{padding:0 14px 60px}.masthead{padding:32px 14px 28px;margin:0 -14px 24px}
+  section{margin-top:40px}nav{position:static}
+  .angle-head{flex-direction:column;gap:8px}
+}
+</style>
+
+<main>
+<header class="masthead">
+  <div class="mast-label">Angle Exploration &amp; Creative Concepts</div>
+  <h1>Click Blocks</h1>
+  <p>53 production-ready creative angles across 9 strategic clusters, built on real VOC and the Dopamine Click mechanism &mdash; each one a complete brief a video team can shoot from.</p>
+  <div class="lock"><strong>Foundation:</strong> Magnetic building blocks, ages 6+ &middot; UK-based DTC, Shopify, Meta/TikTok &middot; "The Dopamine Click" mechanism &middot; Mums 28&ndash;45, kids 3&ndash;12 &middot; $23.96&ndash;$51.96 &middot; 101K+ units sold &middot; Builders Club subscription.</div>
+</header>
+
+<nav>
+  <a href="#matrix">Priority Matrix</a>
+  <a href="#c1">1. Screen Guilt</a>
+  <a href="#c2">2. Toy Graveyard</a>
+  <a href="#c3">3. Dopamine Click</a>
+  <a href="#c4">4. ADHD/Neuro</a>
+  <a href="#c5">5. Imagination</a>
+  <a href="#c6">6. Gift/Seasonal</a>
+  <a href="#c7">7. Parent Peace</a>
+  <a href="#c8">8. Social Proof</a>
+  <a href="#c9">9. Format Innovation</a>
+  <a href="#voc">Raw VOC</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- PRIORITY MATRIX -->
+<!-- ============================================================ -->
+<section id="matrix">
+  <div class="sec-rule"></div>
+  <div class="part-label">Strategic Foundation</div>
+  <h2>ICP &times; Pain Point Priority Matrix</h2>
+  <p class="cluster-intro">Where to spend creative budget first. Each cell scores how intensely that pain point fires for that ICP &mdash; <span class="score-cell sc-high" style="width:auto;padding:1px 7px;display:inline-flex">HIGH</span> = lead with this combination, <span class="score-cell sc-med" style="width:auto;padding:1px 7px;display:inline-flex">MED</span> = strong secondary, <span class="score-cell sc-low" style="width:auto;padding:1px 7px;display:inline-flex">LOW</span> = don't force it.</p>
+
+  <div class="tbl-wrap"><table class="matrix-tbl">
+    <tr><th>Pain Point</th><th>Guilty Scroller</th><th>Developmental Worrier</th><th>Toy Graveyard</th><th>ADHD/Neurodiverse</th><th>Gift-Giver</th></tr>
+    <tr><td>Screen time guilt / daily battles</td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Toys that collect dust</td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-high">H</span></td></tr>
+    <tr><td>Loss of imagination/creativity</td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>ADHD/neurodivergent engagement</td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Sibling conflict over devices</td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Guilt over screens as babysitter</td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Attention span / teacher concerns</td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Developmental milestone worry</td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td></tr>
+    <tr><td>Price anxiety ("worth it?")</td><td><span class="score-cell sc-med">M</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-med">M</span></td></tr>
+    <tr><td>"Every brand says they're different"</td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-high">H</span></td><td><span class="score-cell sc-low">L</span></td><td><span class="score-cell sc-med">M</span></td></tr>
+  </table></div>
+
+  <div class="band"><h4>How to read this</h4>
+    <ul>
+      <li><strong>Guilty Scroller &times; Screen guilt</strong> and <strong>Developmental Worrier &times; Attention/milestones</strong> are the two hottest cells &mdash; that's where Clusters 1 and 4&ndash;5 should get the majority of test budget.</li>
+      <li><strong>Toy Graveyard &times; Dust/Price/"every brand claims this"</strong> is a triple-high row &mdash; this ICP needs the most proof-dense creative (Cluster 2 and Cluster 8).</li>
+      <li><strong>ADHD/Neurodiverse &times; Engagement/Attention</strong> is high but narrow &mdash; small audience, very high relevance. Don't dilute it with broad screen-guilt messaging (Cluster 4).</li>
+      <li><strong>Gift-Giver</strong> only lights up on dust/price &mdash; keep gift angles proof-and-value led, not guilt-led (Cluster 6).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 1: SCREEN TIME GUILT -->
+<!-- ============================================================ -->
+<section id="c1">
+  <div class="sec-rule"></div>
+  <div class="part-label">Cluster 1 &middot; Primary</div>
+  <h2>Screen Time Guilt<span class="cluster-count">8 angles</span></h2>
+  <p class="cluster-intro">The lead cluster. Every parent who's handed over a tablet to survive the school run knows this feeling. These angles open in the parent's guilt, not the product's features.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">01</div><div>
+      <h4>The Confession Open</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"I used to hand my kid the iPad just to get 20 minutes of peace."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I used to hand my kid the iPad just to survive dinner. Here's what changed."</li>
+        <li>"Confession: I was a screen-time hypocrite. Then I found this."</li>
+        <li>"I told myself 'just 20 minutes.' It was never 20 minutes."</li>
+        <li>"Every parent has done this. I'm not proud of it, but I did it every day."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The confession earns permission to explain WHY the tablet won every time &mdash; setting up the reveal that screens deliver dopamine faster than any toy, which is exactly what the Dopamine Click was built to counter.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC talking-head, mum to camera</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Vulnerable, quiet, unscripted</span></div>
+        <div class="prod-item"><strong>Length</strong><span>45&ndash;60s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Kitchen/living room, natural light, handheld phone</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Direct-to-camera voice, no music under confession beat</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">02</div><div>
+      <h4>Didn't Even Mention His Tablet</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"He doesn't even think about any electrical device." / "Kept him amused all afternoon after school, he didn't even mention his tablet!"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"He came home from school, opened these, and never once asked for his tablet."</li>
+        <li>"No electrical device. No tablet. No fight. Just this."</li>
+        <li>"The after-school tablet request didn't come. Here's why."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Direct behavioural proof that the magnetic click's reward loop out-competes the screen's reward loop &mdash; the absence of the ask IS the mechanism working.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC review readout over B-roll</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Relieved, matter-of-fact</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Kid building post-school, still in uniform</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Text overlay of real review + soft voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">03</div><div>
+      <h4>The Afternoon Test</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"Between these and lego it keeps him entertained for hours."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I set a timer to see how long he'd last without asking for a screen. Watch this."</li>
+        <li>"Hours. Not minutes. Hours."</li>
+        <li>"I gave him these instead of the iPad after school. This is what happened."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Timelapse-friendly proof point: the open-ended build loop (no finish line) is what stretches "10 minutes" into "hours" &mdash; contrast against toys that get abandoned fast.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Sped-up timelapse with visible clock overlay</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Documentary, no dialogue</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Fixed camera, single room, real-time clock in corner</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Ambient click sounds only, text overlays for claim</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">04</div><div>
+      <h4>Better Than the Battle</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: screen time guilt &amp; daily battles</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"The screen-time argument happens in my house every single day. Except this week."</li>
+        <li>"I'm tired of being the bad guy over a tablet. So I tried something else."</li>
+        <li>"No negotiating. No timer arguments. No tears at bedtime over 'five more minutes.'"</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Positions the Dopamine Click as a truce, not a punishment &mdash; the child gets their reward loop, the parent doesn't have to be the enforcer.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC mum-to-camera + cutaways</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Exhausted-but-hopeful</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Before/after split of tantrum vs. calm building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover, no dramatized crying audio (compliance)</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid staged distress</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">05</div><div>
+      <h4>4 Hours 44 Minutes</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Unaware/Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Market stat: kids 8&ndash;12 average 4h 44m of daily screen time</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"4 hours 44 minutes. That's the average screen time for an 8-to-12-year-old today."</li>
+        <li>"Your kid's screen time this week probably adds up to a part-time job."</li>
+        <li>"I didn't believe the stat until I checked his screen time report."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Pattern-interrupt stat opens the ad, then pivots to "it's not willpower, it's dopamine" &mdash; sets up the mechanism reveal as the answer to a scary number.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Text-on-screen stat hook + UGC voiceover body</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Serious, informative, not alarmist</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Bold stat card, then transition to building footage</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Calm, credible voiceover tone &mdash; not fear-mongering</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; cite stat source, avoid clinical claims</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">06</div><div>
+      <h4>71% of Us Are Worried</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad / Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Market stat: 71% of parents concerned about screen time</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"71% of parents are worried about screen time. If you're one of them, keep watching."</li>
+        <li>"You're not the only parent losing sleep over this. 7 out of 10 of us are."</li>
+        <li>"This isn't just you. This is basically every parent right now."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Normalizes the guilt (removes shame) before introducing the Dopamine Click as the collective answer &mdash; "we're all fighting the same chemistry."</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Stat-card hook + review compilation body</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Community, reassuring</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Multiple parents, multiple homes, quick cuts</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Upbeat but not saccharine music bed</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">07</div><div>
+      <h4>The Daily Babysitter Confession</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Market stat: 49% of parents rely on screens daily to manage parenting</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Half of us use a screen as a babysitter every single day. I was one of them."</li>
+        <li>"I needed a break. The tablet was the easiest way to get one. I hated that."</li>
+        <li>"Nearly half of parents admit this. Almost none of us say it out loud."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Reframes the "babysitter" need as legitimate, then offers the Dopamine Click as a guilt-free babysitter substitute &mdash; same break, no screen.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC confession + demonstration</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Honest, non-judgmental</span></div>
+        <div class="prod-item"><strong>Length</strong><span>45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Parent doing chores/working while kid builds nearby</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Conversational voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; frame as reducing reliance, not replacing supervision</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">08</div><div>
+      <h4>98% of Two-Year-Olds</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver / Grandparent</span><span class="pill pill-teal">Awareness: Unaware</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Market stat: 98% of two-year-olds watch screens daily</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"98% of two-year-olds watch a screen every single day. It starts younger than you think."</li>
+        <li>"If it's already started at two, the earlier you introduce the alternative, the better."</li>
+        <li>"I didn't think my toddler was 'a screen kid.' The stats say otherwise."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Positions Click Blocks as an early-intervention gift purchase &mdash; get ahead of the habit before it forms, framed for grandparents/gift-givers buying for younger kids.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Stat hook + gifting demonstration</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Informative, warm</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Young child unwrapping/building with grandparent</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Warm voiceover, gentle music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; note age recommendation is 6+, keep toddler framing to gifting/future use, not direct play claims</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 2: TOY GRAVEYARD -->
+<!-- ============================================================ -->
+<section id="c2">
+  <div class="sec-rule teal"></div>
+  <div class="part-label teal">Cluster 2</div>
+  <h2>Toy Graveyard<span class="cluster-count">7 angles</span></h2>
+  <p class="cluster-intro">For the parent who's sworn off buying another toy that dies in 10 minutes. These angles lead with cynicism and earn belief through specific, checkable proof.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">09</div><div>
+      <h4>The Toy Graveyard Tour</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: toys that collect dust after 10 minutes</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"This is the toy cupboard. Every single one of these got played with once."</li>
+        <li>"I'm about to show you $300 of toys my kids don't touch anymore."</li>
+        <li>"Before I show you what works, let me show you what didn't."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Visual proof of the "no reward loop = abandoned toy" problem the Dopamine Click solves &mdash; sets up the contrast before the reveal.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC pan across cluttered toy shelf/bin</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Frustrated but funny</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Real playroom, dusty boxes, price tags visible</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Direct-to-camera, dry humour</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">10</div><div>
+      <h4>$300 of Dust</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: price anxiety, will it be worth it</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I just did the maths on how much money is sitting untouched in this bin."</li>
+        <li>"I'm done wasting money on toys they play with once."</li>
+        <li>"$300. That's what's collecting dust in my kid's cupboard right now."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Uses price-anxiety pain to earn attention, then reframes Click Blocks' $24 entry as the anti-waste purchase &mdash; cheaper than the toys that failed, and it doesn't get abandoned.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC + price-tag overlays</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Frustrated, budget-conscious</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Receipts/price tags overlaid on toy pile</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover with cash register sound cue</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">11</div><div>
+      <h4>The Ten Minute Test</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: toys that collect dust after 10 minutes</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Every toy I buy gets exactly 10 minutes before it's abandoned. I timed this one."</li>
+        <li>"10-minute toy test. Let's see if this one survives."</li>
+        <li>"I set a timer the day these arrived. It's been three months and they still play."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The "10-minute test" format directly demonstrates the open-ended build architecture &mdash; no finish line means no natural abandonment point.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Timelapse / longitudinal UGC (day 1 vs. month 3)</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Skeptical-to-convinced</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Split screen: day 1 unboxing vs. month 3 still-building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover with on-screen date stamps</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">12</div><div>
+      <h4>The Football Stadium</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard / Imagination</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"He built a football stadium with them the other week!"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"My son built an entire football stadium out of these. I couldn't believe it."</li>
+        <li>"You will not believe what he built last weekend."</li>
+        <li>"This started as a bored Saturday afternoon. It became this."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Ambition-scale proof &mdash; shows the ceiling of what's possible with open-ended magnetic building, proving it's not a "10-minute toy."</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Reveal video &mdash; build shown in full</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Proud, amazed</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Slow pan/reveal of the finished stadium build</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Parent voiceover reacting genuinely</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">13</div><div>
+      <h4>Playing With It Nonstop</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"The quality is way better than I expected, and our kids (6 and 7) have been playing with it nonstop."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I expected these to be cheap plastic. I was wrong."</li>
+        <li>"Two kids. Same set. Both obsessed. Here's proof."</li>
+        <li>"'Nonstop' isn't marketing talk. It's literally what our house looks like now."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Quality-surprise + sustained engagement combo counters the "cheap toy" scepticism that blocks Toy Graveyard parents from buying.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC review + close-up quality shots</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Pleasantly surprised</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Macro shots of magnet weight/snap, two kids building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover + real click sound</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">14</div><div>
+      <h4>Obsessed Mornings</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard / Guilty Scroller</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"My 6 year old is obsessed with these. Most mornings he will wake up and play with the Click Blocks."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"My son wakes up and goes straight for these. Not the tablet. These."</li>
+        <li>"The first thing he does every morning tells you everything about this toy."</li>
+        <li>"If a kid chooses a toy over sleeping in, you know it's working."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Morning-first behavioural proof is the strongest kind &mdash; it's unprompted, habitual, and directly comparable to morning screen-reach behaviour.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC morning routine capture</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Candid, warm</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Early morning light, kid in pyjamas building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Minimal, text overlay of the quote</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">15</div><div>
+      <h4>Every Brand Says They're Different</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution/Most Aware</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: "every toy company says their product is different"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I know. Every toy ad says 'this one's different.' Here's why I actually believe it now."</li>
+        <li>"I was skeptical too. I've heard this pitch before. This is what changed my mind."</li>
+        <li>"You've seen a hundred ads like this. Here's the one difference that matters."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Names the objection directly, then answers it with the one thing competitors don't have: a named, demonstrable mechanism (the click sound) rather than a vague claim.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC direct address + mechanism demo</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Confident, disarming</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Close-up magnetic snap demo mid-script</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover + audible click as proof beat</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid disparaging named competitors</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 3: DOPAMINE CLICK / SCIENCE -->
+<!-- ============================================================ -->
+<section id="c3">
+  <div class="sec-rule"></div>
+  <div class="part-label">Cluster 3</div>
+  <h2>The Dopamine Click / Science<span class="cluster-count">6 angles</span></h2>
+  <p class="cluster-intro">The mechanism cluster. These angles sell the "why" &mdash; the new-mechanism belief shift that makes every other angle land harder on retargeting.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">16</div><div>
+      <h4>The Sound That Hijacks</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: the magnetic click delivers a micro-dopamine reward</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"This sound gives your kid's brain the same tiny hit a screen does."</li>
+        <li>"There's a reason this click is so satisfying. It's not an accident."</li>
+        <li>"Listen to this. This is the sound that replaced the iPad in our house."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>This IS the mechanism angle &mdash; leads with the audible proof rather than explaining it, letting the sound do the persuading.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>ASMR close-up montage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Sensory, hypnotic</span></div>
+        <div class="prod-item"><strong>Length</strong><span>10&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Macro lens, slow-motion magnet connections</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Raw click audio, no music, high-fidelity mic</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">17</div><div>
+      <h4>Same Chemistry, Different Direction</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: redirecting the same reward loop screens use</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Screens didn't invent dopamine. They just found a shortcut to it. So did we."</li>
+        <li>"Same brain chemistry. Building instead of scrolling."</li>
+        <li>"You can't out-willpower dopamine. You have to redirect it."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The core explainer angle &mdash; states the mechanism plainly and positions Click Blocks as chemistry-informed design, not just "a nice toy."</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC explainer to camera</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Calm, credible, slightly educational</span></div>
+        <div class="prod-item"><strong>Length</strong><span>45&ndash;60s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Split screen: scrolling thumb vs. clicking blocks</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Clear voiceover, minimal music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; frame as brand mechanism, not clinical/medical claim</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">18</div><div>
+      <h4>Silicon Valley's Own Trick</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: reframing screen "addiction" as engineered, not a parenting failure</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"You're not a bad parent. You're fighting a system built by the best engineers in the world."</li>
+        <li>"The same trick that keeps you scrolling was built for your kid too."</li>
+        <li>"They engineered the pull. We engineered a way out."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Removes parental shame by naming the real opponent (engineered reward loops), then presents the Dopamine Click as fighting fire with fire.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC provocative direct-address</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Bold, pattern-interrupt</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Contrast cuts: phone notification pile-up vs. calm building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Confident voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid naming specific tech companies/apps</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">19</div><div>
+      <h4>The Click Test</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad</span><span class="pill pill-teal">Awareness: Unaware</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: auditory proof, demonstrated live</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Put your headphones on and tell me this sound doesn't do something to you."</li>
+        <li>"I dare you to build one and not build a second."</li>
+        <li>"This is the sound my kid can't walk away from. Try it yourself."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Invites the viewer (parent) to feel the mechanism themselves &mdash; adult ASMR appeal proves the click's pull isn't just kid psychology.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>ASMR + challenge format</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Playful, scroll-stopping</span></div>
+        <div class="prod-item"><strong>Length</strong><span>10&ndash;15s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Adult hands building/clicking, close-up</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Pure click audio, no voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">20</div><div>
+      <h4>Micro-Dopamine 101</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: explaining WHY other toys fail against screens</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Here's the actual reason toys keep losing to screens. It's not the toy's fault."</li>
+        <li>"Nobody tells you this about why kids choose screens over everything else."</li>
+        <li>"Three things every toy is missing that screens have built in."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The educational explainer &mdash; walks through reward frequency, then shows how the magnetic click closes that gap. Best as the "why" video that other angles link back to.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC explainer with simple graphics/text overlays</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Teacherly but warm</span></div>
+        <div class="prod-item"><strong>Length</strong><span>45&ndash;60s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Simple on-screen diagram of reward loop</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Clear voiceover, light background music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; keep language brand-mechanism, avoid "neuroscience proven" wording</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">21</div><div>
+      <h4>Built to Never Finish</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Mechanism: open-ended architecture, no completion state</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"There's no 'finished' with these. That's the whole point."</li>
+        <li>"LEGO has an ending. These don't. Here's why that matters."</li>
+        <li>"The toy that's never actually done being built."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Explains the open-ended-architecture layer of the mechanism &mdash; the reason the dopamine loop doesn't terminate the way it does with finish-line toys like LEGO or puzzles.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC comparison demo</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Confident, comparative</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Shelved finished LEGO set vs. evolving block build</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid disparaging LEGO by name in paid claims where risky; use generically ("finish-line toys") if platform-sensitive</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 4: ADHD & NEURODIVERGENT -->
+<!-- ============================================================ -->
+<section id="c4">
+  <div class="sec-rule teal"></div>
+  <div class="part-label teal">Cluster 4</div>
+  <h2>ADHD &amp; Neurodivergent<span class="cluster-count">6 angles</span></h2>
+  <p class="cluster-intro">Narrow, high-relevance audience. These angles use real VOC from neurodivergent families and never overclaim clinical benefit &mdash; they let the parent's own words carry the proof.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">22</div><div>
+      <h4>Both My Kids Love Them</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"Both my ADHD and non ADHD child love them."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I have one ADHD kid and one who isn't. Both of them play with these for hours."</li>
+        <li>"Finally, a toy that works for both of my very different kids."</li>
+        <li>"I stopped buying 'one for each kid' toys. This is the one they both actually want."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The reward-loop mechanism isn't diagnosis-specific &mdash; it works on dopamine-seeking behaviour generally, which is why it lands across neurotypes in the same household.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC mum-to-camera + both kids building together</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Warm, practical, no clinical language</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Siblings side by side, different builds</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW &mdash; use parent's own words, no medical claims</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">23</div><div>
+      <h4>Letters and Numbers</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"My autistic and ADHD son loves his. He likes to make letters and numbers."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"My autistic son doesn't play with toys the way other kids do. This one, he does."</li>
+        <li>"He makes letters. He makes numbers. He's building in his own way, and that's the point."</li>
+        <li>"Open-ended means he gets to decide what 'playing right' looks like."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The lack of instructions is the mechanism here &mdash; no "correct" way to build means the child sets their own engagement pattern, which the reward loop then reinforces.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC parent narration over real footage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Gentle, specific, respectful</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Child arranging blocks into letter/number shapes</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Soft voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW &mdash; parent's authentic quote only, get explicit consent for filming</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">24</div><div>
+      <h4>The Sensory Toy That Actually Works</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: ADHD/neurodivergent kids need engagement, "nothing holds his attention"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I've bought every sensory toy on the market. Most lasted a week. This didn't."</li>
+        <li>"Fidget spinners lasted 3 days. This is going on 3 months."</li>
+        <li>"If you've tried everything, try the thing that gives an actual reward, not just a texture."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Distinguishes Click Blocks from passive sensory toys (fidgets) by pointing to the active reward loop &mdash; building triggers the click, not just repetitive motion.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC comparison review</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Practical, tired-of-trying-everything</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Drawer of failed sensory toys vs. active build</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; do not claim to treat/manage ADHD symptoms; frame as engagement/play preference only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">25</div><div>
+      <h4>No Instructions Needed</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: structured activities overwhelm, need low-friction engagement</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"No instruction manual. No 'right way.' Just pick it up and start."</li>
+        <li>"Structured toys stress him out. This one doesn't have structure to follow."</li>
+        <li>"Zero setup. Zero rules. Just snap and go."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Low cognitive load to start playing means the reward loop kicks in on the very first click &mdash; no barrier between the child and the dopamine hit.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC demo, unboxing to first build</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Calm, reassuring</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Box opened, child immediately building, no manual shown</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">26</div><div>
+      <h4>The Focus Nobody Expected</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: "nothing holds his attention beyond 5 minutes"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"He's never focused on anything for more than 5 minutes. This is 40 minutes in."</li>
+        <li>"I filmed this because I genuinely didn't believe it would last."</li>
+        <li>"I'm not saying this fixes anything. I'm saying I watched him focus, and I hadn't seen that before."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Frames sustained attention as a byproduct of the reward loop, not a therapeutic outcome &mdash; careful language keeps this a behavioural observation, not a medical claim.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC timelapse with honest voiceover caveat</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Humble, surprised, careful</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Timestamped clock overlay through build session</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; explicit "not a treatment" framing, anecdotal only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">27</div><div>
+      <h4>Built For Every Brain</h4>
+      <div class="angle-tags"><span class="pill pill-blue">ADHD/Neurodiverse Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Combines: "Both my ADHD and non ADHD child love them" + "he likes to make letters and numbers"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Every kid plays differently. This toy doesn't ask them not to."</li>
+        <li>"No wrong way to build. No wrong kind of brain."</li>
+        <li>"Some kids build castles. Mine builds the alphabet. Both are 'right.'"</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The umbrella statement for this cluster &mdash; open-ended play plus a universal reward mechanism means the product doesn't require a "typical" play pattern to work.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Review compilation, multiple families</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Inclusive, affirming</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Multiple kids, multiple build styles, quick cuts</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Warm voiceover, light music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 5: IMAGINATION & CREATIVITY -->
+<!-- ============================================================ -->
+<section id="c5">
+  <div class="sec-rule"></div>
+  <div class="part-label">Cluster 5</div>
+  <h2>Imagination &amp; Creativity<span class="cluster-count">6 angles</span></h2>
+  <p class="cluster-intro">For the Developmental Worrier who fears screens are flattening their child's imagination. These angles show creativity in motion, not just claim it.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">28</div><div>
+      <h4>The Car Ride Builders</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"They often carry their creations to the car in the morning and continue building on the school run."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"They carry their builds to the car now. Every morning. I didn't ask them to."</li>
+        <li>"The school run used to mean a tablet in the back seat. Now it means this."</li>
+        <li>"He wouldn't leave the house without it this morning. That's new."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Portability proof: the reward loop is strong enough to travel with the child, replacing the "give me the tablet for the car" reflex entirely.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC candid morning-routine capture</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Warm, everyday</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Front door to car, build in hand, buckled in still building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Minimal, real ambient sound</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW &mdash; note: film safely, no messaging suggesting distraction while vehicle in motion</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">29</div><div>
+      <h4>Working Together</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"My 2 boys are obsessed with these blocks. They are working together building all of these different buildings."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"My boys used to fight over who gets the iPad. Now they're building a city together."</li>
+        <li>"Siblings sharing a project instead of a screen. I didn't think I'd see that."</li>
+        <li>"Same toy. Same table. Working together for once."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The shared reward loop turns solo dopamine-seeking into collaborative play &mdash; siblings reinforce each other's building instead of competing over a single screen.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC sibling collaboration footage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Heartwarming, relieved</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Two kids, one shared build, growing over time</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover + kids' natural chatter</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">30</div><div>
+      <h4>Worlds, Not Sets</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Product positioning: themed worlds + characters, not a finite kit</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"This isn't a set you build once. It's a world you build every day, differently."</li>
+        <li>"Yesterday it was a castle. Today it's a spaceship. Same box."</li>
+        <li>"Characters mean it's not just building. It's storytelling."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The narrative layer (included characters) turns physical construction into imaginative storytelling &mdash; engaging language and social cognition alongside the reward loop, deepening play beyond pure building.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Product-in-use montage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Playful, imaginative</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Multiple builds across days, characters acting out scenes</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Light upbeat music, kid narrating story</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">31</div><div>
+      <h4>The Imagination Muscle</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: loss of imagination/creativity in kids</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Screens hand your kid a finished world. This hands them a blank one."</li>
+        <li>"I worried he'd lost the ability to just... make something up. Turns out he hadn't."</li>
+        <li>"Imagination is a muscle. Screens don't exercise it. This does."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Contrasts passive content consumption (screen decides the world) with active creation (child decides the world) &mdash; the reward loop rewards the child's own ideas, not someone else's content.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC reflective voiceover + build montage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Thoughtful, gently persuasive</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Passive scroll footage vs. active building footage</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid definitive developmental claims, keep it observational</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">32</div><div>
+      <h4>From Screen Scroll to Story Build</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Combines pain point (imagination loss) with mechanism (narrative layer)</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"He used to narrate video games. Now he narrates his own builds."</li>
+        <li>"Same storytelling energy. Different source."</li>
+        <li>"The stories didn't stop. They just moved off the screen."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Shows the transfer of narrative engagement from consumed content to self-generated content &mdash; the child's storytelling instinct redirected, not suppressed.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC voiceover over kid narrating a build</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Warm, observant</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Kid mid-build, talking through the story out loud</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Kid's real audio (with consent), light music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">33</div><div>
+      <h4>What Did You Build Today?</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Positioning: daily ritual replacing "what did you watch today?"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Dinner conversation used to be about YouTube videos. Now it's about what he built."</li>
+        <li>"'What did you build today?' is my new favourite question to ask."</li>
+        <li>"He has something to show me every single day now."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Positions daily building as a new family ritual &mdash; the reward loop creates something to share and show, unlike passive screen time which leaves nothing tangible to talk about.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC dinner-table style storytelling</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Cosy, family-centred</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Kid showing off build to parent, genuine reaction</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Natural conversation audio</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 6: GIFT & SEASONAL -->
+<!-- ============================================================ -->
+<section id="c6">
+  <div class="sec-rule teal"></div>
+  <div class="part-label teal">Cluster 6</div>
+  <h2>Gift &amp; Seasonal<span class="cluster-count">5 angles</span></h2>
+  <p class="cluster-intro">For birthdays, Christmas, and the grandparent audience. Value and proof lead here &mdash; guilt is not the entry point for a gift purchase.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">34</div><div>
+      <h4>The Birthday Extras</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"At this price, it's an absolute steal. Bought extras for birthday gifts!"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I liked these so much I bought three more for birthday gifts."</li>
+        <li>"This is officially my go-to birthday present now."</li>
+        <li>"At this price, buy one for your kid and two for the next birthday party invite."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Repeat-purchase behaviour is proof the mechanism delivers reliably enough to gift with confidence &mdash; not a gamble, a known win.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC review + multi-pack showcase</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Practical, enthusiastic</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Stack of wrapped gift boxes, price overlay</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">35</div><div>
+      <h4>Grandparent's Redemption</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver / Grandparent</span><span class="pill pill-teal">Awareness: Unaware</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>ICP: grandparents who witness screen habits and want to intervene</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Grandma got tired of watching him stare at a screen every visit. So she brought these."</li>
+        <li>"The gift that got him off the tablet during grandparents' visits."</li>
+        <li>"Nana's secret weapon for getting real conversation at Sunday dinner."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Positions Click Blocks as the gift that restores in-person engagement during family visits &mdash; the reward loop competes with the "safe distraction" screen habit grandparents often see and worry about.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC grandparent testimonial</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Warm, generational</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Grandparent and grandchild building together</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">36</div><div>
+      <h4>The Christmas Morning Test</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Seasonal positioning: the gift that survives past Boxing Day</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"The real test of a Christmas gift isn't Christmas morning. It's January."</li>
+        <li>"Every other gift was forgotten by New Year's. Not this one."</li>
+        <li>"Still their favourite present, months later."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Directly counters the seasonal-toy abandonment pattern with the same open-ended-architecture proof used in Cluster 2, reframed for gifting season urgency.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Seasonal UGC, before/after time-stamped</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Festive but grounded</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Christmas morning unwrap to spring/summer still-playing</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Light festive music intro, fading to normal life audio</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">37</div><div>
+      <h4>Sibling Bundle Peace</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller / Gift-Giver</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: sibling conflict over devices</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"One tablet, two kids, endless fighting. One box of these, two kids, no fighting."</li>
+        <li>"I bought two sets so nobody has to share. Best decision I made this year."</li>
+        <li>"No more 'it's my turn.' Everybody builds their own."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Solves the scarcity problem that fuels sibling screen fights &mdash; each child gets their own reward loop instead of competing for one shared device.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC sibling side-by-side</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Relieved, funny</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Two kids, two separate builds, calm household</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">38</div><div>
+      <h4>The Gift They Actually Keep</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: "will they actually play with this or will it sit in the pile?"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I'm done giving gifts that end up in a drawer by February."</li>
+        <li>"Every gift-giver's fear: will they actually use it? Here's your answer."</li>
+        <li>"I wanted to give something they'd remember I gave them. This did it."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Directly answers the gift-giver's core anxiety with proof of sustained engagement &mdash; the same "still building months later" evidence used across the site, framed for gift-buying decision moments.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC testimonial, gift-giver perspective</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Confident, reassuring</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Gift-wrapped box to months-later build footage</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 7: PARENT PEACE / SELFISH DESIRE -->
+<!-- ============================================================ -->
+<section id="c7">
+  <div class="sec-rule"></div>
+  <div class="part-label">Cluster 7</div>
+  <h2>Parent Peace / Selfish Desire<span class="cluster-count">5 angles</span></h2>
+  <p class="cluster-intro">The honest angle nobody says out loud: parents want a break too. These lead with the parent's own desire for quiet, not the child's development &mdash; and give permission to want it.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">39</div><div>
+      <h4>Twenty Minutes of Peace</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Trigger: comfortable living / relief, the "selfish desire" every parent has but rarely admits</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I'm going to say the quiet part out loud: I just wanted 20 minutes of peace."</li>
+        <li>"This isn't about screen time. This is about me getting to drink a hot coffee."</li>
+        <li>"No shame in wanting a break. This is how I get mine now, guilt-free."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The reward loop keeps the child self-occupied without supervision-heavy activities, delivering the parent's break as a side effect of the child's own engagement, not a trade-off against it.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC honest confession to camera</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Funny, unapologetic, relatable</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Parent with coffee/tea in background, kid building</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">40</div><div>
+      <h4>Eat Without Fussing</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"They keep him engaged and distracted enough that he'll actually eat without fussing."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Dinner used to be a fight. Now he builds between bites and actually finishes his plate."</li>
+        <li>"The mealtime hack nobody told me about."</li>
+        <li>"He's distracted just enough to eat, and engaged just enough to not need the tablet."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>A specific, practical use-case proof point &mdash; the reward loop provides just enough engagement to smooth a daily friction point (mealtime) without full screen immersion.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC mealtime capture</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Practical, relieved</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Dinner table, blocks next to plate, kid eating calmly</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">41</div><div>
+      <h4>The Quiet House</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Trigger: comfortable living, the quiet-house desire</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"There's a specific kind of quiet in my house now. I didn't know I missed it."</li>
+        <li>"Working from home with kids is chaos. This bought me an hour of actual quiet."</li>
+        <li>"The sound of building instead of shouting. I'll take it."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Sustained solo engagement (from the open-ended build loop) is what creates the quiet &mdash; not sedation, just focused, self-directed play that doesn't need parental input every few minutes.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC voiceover over calm home footage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Soft, relieved</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Parent working/relaxing, kid building in same room</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Minimal, calm ambient</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">42</div><div>
+      <h4>Car Ride Silence</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Extension of: "carry their creations to the car... continue building on the school run"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"The school run used to be a battle over the tablet. Now it's just quiet building."</li>
+        <li>"No more 'are we there yet' every 30 seconds. He's too busy building."</li>
+        <li>"Fifteen minutes of peace in the back seat. Worth every penny."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Portable reward loop occupies transit time the way a tablet would, without the screen &mdash; direct substitution proof for one of parents' most common screen-reach moments.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC car interior capture</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Relieved, practical</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Backseat, kid building while buckled, parent driving (hands-free filming/static mount)</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Ambient car sounds</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; ensure filming complies with child car-seat/road safety guidance, no distraction-while-driving implication</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">43</div><div>
+      <h4>Permission to Want a Break</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Trigger: reframing selfish desire as valid, not shameful</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"You're allowed to want a break. That doesn't make you a bad parent."</li>
+        <li>"Wanting quiet isn't selfish. It's just true."</li>
+        <li>"I stopped feeling guilty about wanting 20 minutes to myself. Here's what changed."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Explicitly names and validates the parent's own desire, then shows how the Dopamine Click delivers it without the guilt attached to a screen handover &mdash; the emotional permission-slip angle.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC direct-to-camera</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Warm, validating</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Parent relaxing, kid building contentedly nearby</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 8: SOCIAL PROOF & AUTHORITY -->
+<!-- ============================================================ -->
+<section id="c8">
+  <div class="sec-rule teal"></div>
+  <div class="part-label teal">Cluster 8</div>
+  <h2>Social Proof &amp; Authority<span class="cluster-count">5 angles</span></h2>
+  <p class="cluster-intro">For the most sceptical segment of Toy Graveyard parents and cold-traffic trust-building. Numbers, third-party voices, and volume do the persuading here.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">44</div><div>
+      <h4>I've Been Recommending These to Everyone</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"I've been recommending Click Blocks to literally everyone I know."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I've told every parent I know about these. That's how I know they actually work."</li>
+        <li>"I don't usually push products on my friends. I made an exception."</li>
+        <li>"Word of mouth is the only ad that doesn't lie. Here's mine."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Organic-recommendation framing signals the mechanism's results are strong enough to volunteer, unprompted &mdash; the highest-trust form of social proof.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC testimonial</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Genuine, enthusiastic</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Parent to camera, kid building in background</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">45</div><div>
+      <h4>101,000 Parents Can't Be Wrong</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Brand stat: 101K+ units sold</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"101,000+ of these have been sold. You're not the guinea pig here."</li>
+        <li>"Over a hundred thousand parents already made this call."</li>
+        <li>"This isn't a new brand experiment. It's already the choice of 101,000 families."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Volume social proof lowers the risk perception for skeptical buyers before they've even seen the mechanism explained &mdash; safety in numbers as the entry point.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Stat-card hook + review compilation</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Confident, bold</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Bold number graphic, then rapid customer clips</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Upbeat music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; ensure stat is current and substantiated at time of publishing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">46</div><div>
+      <h4>The Teacher Noticed</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Developmental Worrier</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Pain point: attention span concerns from teachers</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"His teacher pulled me aside at pickup. I braced for bad news. It wasn't."</li>
+        <li>"'Whatever you're doing at home, keep doing it' &mdash; his teacher, last week."</li>
+        <li>"I didn't tell the teacher what changed. She noticed anyway."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Third-party, unsolicited authority endorsement is the second-highest tier of proof after direct behavioural proof &mdash; frame as anecdotal observation, not a study finding.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC storytelling to camera</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Relieved, proud</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>School pickup setting, then home building footage</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; anecdotal only, do not imply endorsement by an institution</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">47</div><div>
+      <h4>Two Kids, Same Verdict</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"Our kids (6 and 7) have been playing with it nonstop."</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Two different kids, two different personalities, same obsession."</li>
+        <li>"If it works for both of mine, it'll work for one of yours."</li>
+        <li>"Ages 6 and 7 and neither one has put it down."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Cross-child consistency is proof the reward loop isn't a one-off fluke of a particular child's temperament &mdash; it's a repeatable mechanism.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC review + dual-kid footage</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Practical, satisfied</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Two kids, two separate builds, same room</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">48</div><div>
+      <h4>The Skeptic Convert</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Most Aware</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>"The quality is way better than I expected"</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I bought these expecting to be disappointed. I wasn't."</li>
+        <li>"I'm the parent who reads every review and still doubts it. This one delivered."</li>
+        <li>"Low expectations, high results. Let me show you why."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Explicitly acknowledges pre-purchase skepticism (the exact mindset of the Toy Graveyard ICP) and resolves it with the same proof stack &mdash; quality, sustained play, price value.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC before/after expectation narrative</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Honest, converted skeptic</span></div>
+        <div class="prod-item"><strong>Length</strong><span>30&ndash;45s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Product close-up, quality detail shots, build footage</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Voiceover</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CLUSTER 9: FORMAT INNOVATION -->
+<!-- ============================================================ -->
+<section id="c9">
+  <div class="sec-rule"></div>
+  <div class="part-label">Cluster 9</div>
+  <h2>Format Innovation<span class="cluster-count">5 angles</span></h2>
+  <p class="cluster-intro">Structural/format experiments to keep the feed fresh once core angles fatigue. Same Big Idea, unconventional delivery.</p>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">49</div><div>
+      <h4>The Unboxing Silence Test</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Format concept: real-time reaction, no cuts</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Watch how long it takes him to go quiet after opening this box."</li>
+        <li>"No cuts. No edits. Just his actual reaction."</li>
+        <li>"I filmed the whole unboxing in one take. This is what happened."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Unedited, real-time format builds trust that the engagement isn't staged or edited for effect &mdash; the mechanism proves itself in real time on camera.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Single-take unboxing, no cuts</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Raw, authentic</span></div>
+        <div class="prod-item"><strong>Length</strong><span>45&ndash;60s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Fixed camera angle, single continuous shot</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Real ambient audio only</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">50</div><div>
+      <h4>Split Screen: iPad vs. Blocks</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Guilty Scroller</span><span class="pill pill-teal">Awareness: Problem</span><span class="pill pill-amber">Risk: MED</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Format concept: visual contrast, no words needed</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"Same kid. Same day. Two very different faces."</li>
+        <li>"Left: glazed eyes. Right: total focus. You already know which is which."</li>
+        <li>"No voiceover needed. Just watch both sides."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Visual proof of engagement quality &mdash; active, expressive building vs. passive, glazed scrolling &mdash; without a single spoken claim about the mechanism.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Split-screen video, no voiceover</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Visual, minimal</span></div>
+        <div class="prod-item"><strong>Length</strong><span>10&ndash;15s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Side-by-side static frames, same lighting/setting</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Ambient only, subtle music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-amber">MED &mdash; avoid implying screens are harmful/addictive in a clinical sense; keep it observational contrast</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">51</div><div>
+      <h4>24-Hour Timelapse</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Toy Graveyard Parent</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Format concept: extreme-length proof compressed into seconds</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I filmed the toy shelf for 24 hours. Here's which toy got touched the most."</li>
+        <li>"A full day, sped up to 15 seconds. Watch which corner of the room gets busy."</li>
+        <li>"This is what an entire day of play actually looks like."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>Compresses long-duration engagement proof into a fast, scroll-friendly format &mdash; the open-ended build loop shown returning to across a full day, not just one sitting.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>Fixed-camera 24hr timelapse, sped up</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Documentary, data-driven</span></div>
+        <div class="prod-item"><strong>Length</strong><span>15&ndash;20s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Wide static shot of playroom over a full day</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Upbeat sped-up music</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">52</div><div>
+      <h4>Grandma Reacts</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Gift-Giver</span><span class="pill pill-teal">Awareness: Unaware</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Format concept: cross-generational reaction video</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I gave my mum the blocks and told her nothing. Just watch."</li>
+        <li>"Grandma's honest, unfiltered reaction to the toy that replaced the tablet."</li>
+        <li>"She didn't believe me until she saw it herself."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>An older generation's genuine surprise reaction validates that the mechanism's appeal isn't generational hype &mdash; it's a tangible, demonstrable product quality.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC reaction video</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Light, funny, genuine</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Grandparent's face, unscripted reaction</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Natural reaction audio</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="angle-card">
+    <div class="angle-head"><div class="angle-num">53</div><div>
+      <h4>Kid Interview: What Did You Build?</h4>
+      <div class="angle-tags"><span class="pill pill-blue">Broad</span><span class="pill pill-teal">Awareness: Solution</span><span class="pill pill-green">Risk: LOW</span></div>
+    </div></div>
+    <div class="angle-body">
+      <blockquote>Format concept: unscripted kid interview, product explained in their own words</blockquote>
+      <div class="hook-block"><div class="hook-label">Hooks</div><ol>
+        <li>"I asked him to explain what he built. This is way better than my ad copy."</li>
+        <li>"Let the actual kid do the pitch."</li>
+        <li>"Nobody sells this toy better than the 7-year-old who plays with it."</li>
+      </ol></div>
+      <div class="mech-tie"><strong>Mechanism tie-in</strong>The child's own enthusiasm, unprompted, is the most disarming proof of engagement &mdash; removes any suspicion of parent-scripted marketing.</div>
+      <div class="prod-grid">
+        <div class="prod-item"><strong>Format</strong><span>UGC kid-interview style</span></div>
+        <div class="prod-item"><strong>Tone</strong><span>Playful, genuine, unscripted</span></div>
+        <div class="prod-item"><strong>Length</strong><span>20&ndash;30s</span></div>
+        <div class="prod-item"><strong>Visual</strong><span>Kid explaining their build directly to camera</span></div>
+        <div class="prod-item"><strong>Audio</strong><span>Kid's real voice (parental consent required)</span></div>
+        <div class="prod-item"><strong>Compliance</strong><span class="pill pill-green">LOW &mdash; ensure parental consent for child on-camera dialogue</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- RAW VOC -->
+<!-- ============================================================ -->
+<section id="voc">
+  <div class="sec-rule teal"></div>
+  <div class="part-label teal">Appendix</div>
+  <h2>Raw VOC Quotes</h2>
+  <p class="cluster-intro">Every real customer quote used to build the angles above, sourced from reviews and customer feedback. Use these verbatim in scripts &mdash; do not paraphrase away the specificity that makes them believable.</p>
+
+  <div class="voc-grid">
+    <div class="voice-card"><q>"He doesn't even think about any electrical device."</q><div class="voc-tag">Screen Time Guilt &middot; Angle 02</div></div>
+    <div class="voice-card"><q>"Kept him amused all afternoon after school, he didn't even mention his tablet!"</q><div class="voc-tag">Screen Time Guilt &middot; Angle 02</div></div>
+    <div class="voice-card"><q>"Between these and lego it keeps him entertained for hours."</q><div class="voc-tag">Screen Time Guilt &middot; Angle 04</div></div>
+    <div class="voice-card"><q>"They often carry their creations to the car in the morning and continue building on the school run."</q><div class="voc-tag">Imagination &amp; Creativity &middot; Angle 28</div></div>
+    <div class="voice-card"><q>"He built a football stadium with them the other week!"</q><div class="voc-tag">Toy Graveyard &middot; Angle 12</div></div>
+    <div class="voice-card"><q>"They keep him engaged and distracted enough that he'll actually eat without fussing."</q><div class="voc-tag">Parent Peace &middot; Angle 40</div></div>
+    <div class="voice-card"><q>"My autistic and ADHD son loves his. He likes to make letters and numbers."</q><div class="voc-tag">ADHD &amp; Neurodivergent &middot; Angle 23</div></div>
+    <div class="voice-card"><q>"Both my ADHD and non ADHD child love them."</q><div class="voc-tag">ADHD &amp; Neurodivergent &middot; Angle 22</div></div>
+    <div class="voice-card"><q>"At this price, it's an absolute steal. Bought extras for birthday gifts!"</q><div class="voc-tag">Gift &amp; Seasonal &middot; Angle 34</div></div>
+    <div class="voice-card"><q>"The quality is way better than I expected, and our kids (6 and 7) have been playing with it nonstop."</q><div class="voc-tag">Toy Graveyard &middot; Angle 13</div></div>
+    <div class="voice-card"><q>"My 6 year old is obsessed with these. Most mornings he will wake up and play with the Click Blocks."</q><div class="voc-tag">Toy Graveyard &middot; Angle 14</div></div>
+    <div class="voice-card"><q>"My 2 boys are obsessed with these blocks. They are working together building all of these different buildings."</q><div class="voc-tag">Imagination &amp; Creativity &middot; Angle 29</div></div>
+    <div class="voice-card"><q>"I've been recommending Click Blocks to literally everyone I know."</q><div class="voc-tag">Social Proof &amp; Authority &middot; Angle 44</div></div>
+  </div>
+
+  <h3>Market &amp; Brand Stats Used</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stat</th><th>Used in</th></tr>
+    <tr><td>$1.2B magnetic blocks market (2025), growing 8.9% CAGR</td><td>Category framing / investor and retargeting copy</td></tr>
+    <tr><td>Kids 8&ndash;12 average 4h 44m daily screen time</td><td>Angle 05 &mdash; 4 Hours 44 Minutes</td></tr>
+    <tr><td>71% of parents concerned about screen time</td><td>Angle 06 &mdash; 71% of Us Are Worried</td></tr>
+    <tr><td>49% rely on screens daily to manage parenting</td><td>Angle 07 &mdash; The Daily Babysitter Confession</td></tr>
+    <tr><td>98% of two-year-olds watch screens daily</td><td>Angle 08 &mdash; 98% of Two-Year-Olds</td></tr>
+    <tr><td>101K+ units sold</td><td>Angle 45 &mdash; 101,000 Parents Can't Be Wrong</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Sourcing Notes</h4>
+    <ul>
+      <li>All quotes above are used verbatim as provided. Confirm platform-specific consent/release requirements before featuring identifiable customers or their children on paid media.</li>
+      <li>Market stats should be re-verified for currency and cited with source where platform policy requires substantiation (particularly Meta's health/wellbeing-adjacent ad review).</li>
+      <li>ADHD/neurodivergent angles (Cluster 4) must stay anecdotal and avoid any language implying diagnosis, treatment, or clinical outcome &mdash; these are parent-reported play preferences, not medical claims.</li>
+    </ul>
+  </div>
+</section>
+
+<p class="fine">Angle Exploration &amp; Creative Concepts &middot; 53 angles across 9 clusters &middot; built on the Click Blocks Brand Intelligence Report and DRIVE Strategy Document. All angles reference real customer VOC or sourced market statistics. August 2026.</p>
+</main>

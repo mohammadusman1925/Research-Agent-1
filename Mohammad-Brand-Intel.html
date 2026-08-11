@@ -1,0 +1,872 @@
+<title>Mohammad (DELL) — Brand Intelligence Report</title>
+<style>
+:root{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 24px 100px}
+
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 40px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:700px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:640px;line-height:1.6}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:28px}
+.snap{background:var(--surface);padding:18px 16px}
+.snap-val{font:800 1.65rem/1 -apple-system,system-ui,sans-serif;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.snap-val.teal{color:var(--teal)}
+.snap-lbl{font-size:.82rem;color:var(--muted);margin-top:4px;line-height:1.35}
+
+section{margin-top:56px}
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+section>h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+section>h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+p{margin:.55em 0;max-width:68ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+
+.band{background:var(--deep);color:#EDEDEC;padding:24px 26px;border-radius:10px;margin:28px 0}
+.band h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+.band ul{padding-left:1.1em}.band li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+.pill-purple{background:#EDE9FE;color:#5B21B6}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+  :root:not([data-theme="light"]) .pill-purple{background:#3B0764;color:#C4B5FD}
+}
+:root[data-theme="dark"] .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue{background:#1E3A5F;color:#93C5FD}
+:root[data-theme="dark"] .pill-purple{background:#3B0764;color:#C4B5FD}
+
+.voice-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:10px 0;font-size:.91rem;font-style:italic;position:relative}
+.voice-card::before{content:"\201C";position:absolute;top:8px;left:12px;font-size:2rem;color:var(--accent);opacity:.35;line-height:1;font-style:normal}
+.voice-card p{padding-left:18px;margin:0}
+.voice-card cite{display:block;font-size:.78rem;color:var(--muted);font-style:normal;margin-top:6px;padding-left:18px}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.cg{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.cg strong{display:block;margin-bottom:4px}
+
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.fine{font-size:.8rem;color:var(--muted);margin-top:48px;padding-top:20px;border-top:1px solid var(--border)}
+details{margin:12px 0}summary{cursor:pointer;font-weight:600;font-size:.95rem;padding:8px 0}
+details[open] summary{margin-bottom:8px}
+@media(max-width:600px){
+  main{padding:0 14px 60px}
+  .masthead{padding:32px 14px 28px;margin:0 -14px 28px}
+  section{margin-top:40px}
+  .snapshot{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr}
+}
+nav.toc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:40px}
+nav.toc h3{font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
+nav.toc ol{padding-left:1.3em}nav.toc li{margin:.4em 0;font-size:.92rem}
+nav.toc a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+</style>
+
+<main>
+<header class="masthead">
+  <div class="mast-label">Brand Intelligence Report</div>
+  <h1>Mohammad (DELL)</h1>
+  <p>Creative Strategist &amp; Performance Marketing Specialist. Research on the service positioning, competitive landscape, target audience intelligence, pricing architecture, and market opportunity.</p>
+  <div class="snapshot">
+    <div class="snap"><div class="snap-val">$3,500</div><div class="snap-lbl">Monthly retainer</div></div>
+    <div class="snap"><div class="snap-val teal">11</div><div class="snap-lbl">DTC brands scaled</div></div>
+    <div class="snap"><div class="snap-val">5&rarr;7 fig</div><div class="snap-lbl">Metabolae.com growth</div></div>
+    <div class="snap"><div class="snap-val teal">8/11</div><div class="snap-lbl">Health &amp; wellness vertical</div></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#exec">Executive Summary</a></li>
+    <li><a href="#brand">Brand Overview</a></li>
+    <li><a href="#service">Service &amp; Offer Architecture</a></li>
+    <li><a href="#mechanism">Core Mechanism Analysis</a></li>
+    <li><a href="#competitors">Competitive Landscape</a></li>
+    <li><a href="#pricing">Pricing Intelligence</a></li>
+    <li><a href="#audience">Target Audience Intelligence</a></li>
+    <li><a href="#ai">AI Positioning Landscape</a></li>
+    <li><a href="#portfolio">Portfolio Proof Points</a></li>
+    <li><a href="#gaps">Strategic Gaps &amp; Opportunities</a></li>
+    <li><a href="#sources">Research Sources</a></li>
+  </ol>
+</nav>
+
+<!-- ======== 1. EXECUTIVE SUMMARY ======== -->
+<section id="exec">
+  <div class="sec-rule"></div>
+  <h2>1. Executive Summary</h2>
+
+  <div class="callout callout-accent">
+    <strong>Simple Explanation</strong>
+    This section is the 60-second overview. It tells you where Mohammad sits in the market, what his biggest advantages are, and what the single most important strategic move is.
+  </div>
+
+  <p>Mohammad (DELL) is a media buyer turned creative strategist offering a $3,500/month retainer to DTC e-commerce brands in the $10&ndash;50K/month revenue range. His positioning &mdash; &ldquo;I build creative from performance data, not guesswork&rdquo; &mdash; is strong but currently sits in the same language cluster as most competitors in the space. What makes him genuinely different is invisible to prospects: a proprietary AI research pipeline that produces brand intelligence, strategy frameworks, and 50+ ad angles automatically.</p>
+
+  <p>The market for freelance creative strategists is at <strong>Sophistication Stage 3&ndash;4</strong>. Everyone claims &ldquo;data-driven creative.&rdquo; The winning move is to introduce a <strong>new mechanism</strong> &mdash; not just claim better results, but show a fundamentally different process. Mohammad has that mechanism already built (the Research-David pipeline). The strategy is to name it, show it, and make it the centerpiece of positioning.</p>
+
+  <p>His $3,500/month rate sits in a strategic gap: above cheap freelancers ($500&ndash;2,000/mo) and Upwork talent, but below agencies ($5,000&ndash;15,000+/mo) and senior US-based freelancers ($8,000&ndash;12,000/mo). This is the exact sweet spot for his target market &mdash; brands that have outgrown cheap help but can't justify agency retainers.</p>
+
+  <p>His portfolio of 11 brands &mdash; 8 of which are health/wellness DTC &mdash; gives him defensible vertical authority. The Metabolae scaling story (5 to 7 figures) and SleepPods systems build (from nothing to AI-driven) are his two strongest proof points.</p>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Positioning gap:</strong> The AI research pipeline is the real differentiator, but it&rsquo;s currently invisible. Name it. Show it. Lead with the mechanism, not the claim.</li>
+      <li><strong>Price position is strong:</strong> $3,500/mo sits perfectly between Upwork ($500&ndash;2K) and agencies ($5&ndash;15K+). Don&rsquo;t lower it &mdash; frame it against the alternatives.</li>
+      <li><strong>Vertical authority is underused:</strong> 8/11 brands in health/wellness is a positioning weapon. The market rewards specialists over generalists.</li>
+      <li><strong>The free audit lead magnet is the right play</strong> &mdash; it lets prospects experience the mechanism before paying. Most competitors offer courses or templates, not live audits.</li>
+      <li><strong>Market sophistication is Stage 3&ndash;4:</strong> Direct claims won&rsquo;t cut it. You need a named mechanism and proof architecture, not just &ldquo;I&rsquo;ll improve your ROAS.&rdquo;</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 2. BRAND OVERVIEW ======== -->
+<section id="brand">
+  <div class="sec-rule teal"></div>
+  <h2>2. Brand Overview</h2>
+
+  <div class="callout callout-teal">
+    <strong>Simple Explanation</strong>
+    This section documents exactly what Mohammad&rsquo;s service business looks like today &mdash; who he is, what he sells, and how he presents himself. Before we can reposition, we need to see the current state clearly.
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Element</th><th>Current Position</th></tr>
+    <tr><td>Category</td><td>Services / Agency &mdash; Freelance creative strategist for DTC e-commerce brands.</td></tr>
+    <tr><td>Core Promise</td><td>&ldquo;I build creative from performance data, not guesswork. Media buyer turned creative strategist.&rdquo;</td></tr>
+    <tr><td>Title</td><td>Creative Strategist &amp; Performance Marketing Specialist</td></tr>
+    <tr><td>Target</td><td>E-commerce brand owners ~8 months old, $10&ndash;50K/month revenue. Have a website but need creative strategy.</td></tr>
+    <tr><td>Rate</td><td>$3,500/month retainer</td></tr>
+    <tr><td>Lead Magnet</td><td>Free audit + concept testing &mdash; no strings attached</td></tr>
+    <tr><td>Specialties</td><td>Meta Ads, creative strategy, AI-driven research, data analysis (Triple Whale, Meta Ads Manager)</td></tr>
+    <tr><td>Verticals</td><td>Health/wellness (dominant), home/garden, beauty/care, pet products, sleep tech</td></tr>
+    <tr><td>Markets</td><td>US, Nordic (Sweden), Australia &mdash; international experience</td></tr>
+    <tr><td>Voice</td><td>Direct, data-focused, confident but not flashy. Operator energy, not guru energy.</td></tr>
+    <tr><td>Bonus Value</td><td>Operations &amp; system optimization. AI training for teams. KPI setup for creative/marketing teams.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The core promise is strong but generic &mdash; &ldquo;data, not guesswork&rdquo; is what every serious strategist claims. The mechanism underneath it is where the real differentiation lives.</li>
+      <li>The &ldquo;media buyer turned creative strategist&rdquo; identity is a genuine trust signal &mdash; it means he understands both sides of the equation. This should be featured, not buried.</li>
+      <li>The bonus value (AI training, systems optimization, KPI setup) is actually a second offer that many competitors don&rsquo;t provide. Consider making this more visible.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 3. SERVICE & OFFER ======== -->
+<section id="service">
+  <div class="sec-rule"></div>
+  <h2>3. Service &amp; Offer Architecture</h2>
+
+  <div class="callout callout-accent">
+    <strong>Simple Explanation</strong>
+    This is the breakdown of what a client actually gets for $3,500/month. A clear, structured process is a trust signal &mdash; it shows prospects exactly what they&rsquo;re paying for, week by week.
+  </div>
+
+  <h3>The 4-Week Cycle</h3>
+
+  <div class="card-grid">
+    <div class="cg">
+      <strong>Week 1: Deep Audit</strong>
+      <span class="pill pill-blue">DATA</span>
+      <p style="font-size:.9rem;margin-top:8px">Check Meta Ads data, Triple Whale analytics, funnel analysis, brand intelligence report. Understand where the brand is and where the leaks are.</p>
+    </div>
+    <div class="cg">
+      <strong>Week 2: Strategy Delivery</strong>
+      <span class="pill pill-purple">STRATEGY</span>
+      <p style="font-size:.9rem;margin-top:8px">Present research findings + creative briefs. Discuss concepts and angles to test within the month. Build a creative testing calendar.</p>
+    </div>
+    <div class="cg">
+      <strong>Week 3: Feedback Loop</strong>
+      <span class="pill pill-green">OPTIMIZE</span>
+      <p style="font-size:.9rem;margin-top:8px">Check what&rsquo;s working, what&rsquo;s not &mdash; from the data. Iterate on winners, cut losers, adjust angles. Real-time performance analysis.</p>
+    </div>
+    <div class="cg">
+      <strong>Week 4: Recap &amp; Scale</strong>
+      <span class="pill pill-amber">SCALE</span>
+      <p style="font-size:.9rem;margin-top:8px">Month recap. Discuss the 3-month scaling plan. Team training on AI tools and creative process. Strategy prioritization.</p>
+    </div>
+  </div>
+
+  <h3>Ongoing Cadence</h3>
+  <ul>
+    <li><strong>Weekly:</strong> Analyze data &rarr; Research &rarr; Briefs &rarr; Execute</li>
+    <li><strong>Bi-weekly:</strong> Feedback loop + AI training + KPI setup for marketing/creative teams</li>
+    <li><strong>Monthly:</strong> Full performance recap + next month strategy</li>
+    <li><strong>Quarterly:</strong> 3-month scaling roadmap review</li>
+  </ul>
+
+  <h3>Offer Architecture</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Element</th><th>Details</th></tr>
+    <tr><td>Core Offer</td><td>$3,500/month &mdash; full creative strategy, research, briefs, data analysis, team training</td></tr>
+    <tr><td>Risk Reversal</td><td>Free audit + concept testing before commitment (UMP)</td></tr>
+    <tr><td>Bonus</td><td>Operations &amp; system optimization, AI training for teams, KPI dashboard setup</td></tr>
+    <tr><td>Entry Point</td><td>Free audit (no credit card, no commitment &mdash; just data and actionable recommendations)</td></tr>
+    <tr><td>Upsell Path</td><td>Not currently formalized. Opportunity: tiered pricing or performance bonuses.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The 4-week cycle is a strong selling point &mdash; it&rsquo;s specific, structured, and easy to understand. Most freelancers describe services vaguely; this is a named process.</li>
+      <li>The free audit as lead magnet is the right entry point for the target market &mdash; early-stage brand owners want proof before paying $3,500/mo.</li>
+      <li>Missing: a formal upsell path. Once a client scales past $50K/mo, there&rsquo;s room for a higher tier with expanded deliverables or performance-based pricing.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 4. MECHANISM ======== -->
+<section id="mechanism">
+  <div class="sec-rule teal"></div>
+  <h2>4. Core Mechanism Analysis</h2>
+
+  <div class="callout callout-teal">
+    <strong>Simple Explanation</strong>
+    The &ldquo;mechanism&rdquo; is the answer to &ldquo;why does this work?&rdquo; It&rsquo;s not what Mohammad does (creative strategy) &mdash; it&rsquo;s HOW he does it differently. This is the most important section for positioning.
+  </div>
+
+  <h3>The Three-Layer Mechanism</h3>
+
+  <p><strong>Layer 1: AI-Powered Research Pipeline</strong><br>
+  Mohammad has built a proprietary AI research agent (&ldquo;Research-David&rdquo;) that automates what takes most strategists 2&ndash;3 weeks of manual work: brand intelligence gathering, competitive analysis, customer voice mining, and angle development. This pipeline produces three deliverables automatically &mdash; a Brand Intelligence Report, a DRIVE Strategy Framework, and 50+ production-ready ad angles &mdash; all sourced and data-backed.</p>
+
+  <p><strong>Layer 2: Data-First Creative Process</strong><br>
+  Every creative decision starts with existing performance data (Meta Ads Manager, Triple Whale) &mdash; not a mood board or creative brief pulled from thin air. The process leverages what&rsquo;s already working, then tests new concepts based on research. This is &ldquo;media buyer turned strategist&rdquo; in action: the analytical rigor of a media buyer applied to creative development.</p>
+
+  <p><strong>Layer 3: System Transfer</strong><br>
+  Unlike most freelancers who create dependency, Mohammad builds systems that the client&rsquo;s team can eventually operate. AI training, KPI dashboards, and repeatable creative testing frameworks transfer to the team &mdash; the client gets smarter, not just more ads.</p>
+
+  <h3>Mechanism Naming</h3>
+  <p>The mechanism currently has no proprietary name. This is a critical gap. In a Stage 3&ndash;4 market, the mechanism IS the positioning. Recommended names to test:</p>
+  <ul>
+    <li><strong>&ldquo;The Research-First System&rdquo;</strong> &mdash; direct, credible, positions against &ldquo;gut-feel&rdquo; competitors</li>
+    <li><strong>&ldquo;The Intelligence-Driven Creative Method&rdquo;</strong> &mdash; emphasizes AI + data without sounding like buzzwords</li>
+    <li><strong>&ldquo;The Performance Research Engine&rdquo;</strong> &mdash; implies automation and repeatability</li>
+  </ul>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The AI research pipeline is Mohammad&rsquo;s most defensible asset. No solo creative strategist in this space has an equivalent &mdash; most rely on manual research or generic AI tools like ChatGPT.</li>
+      <li>The three layers (AI research + data-first process + system transfer) form a complete mechanism story. All three need to be visible in positioning.</li>
+      <li>The system transfer angle (training teams, building KPI dashboards) is a hidden objection-killer: it addresses &ldquo;what happens when I stop paying you?&rdquo;</li>
+      <li><strong>Critical action:</strong> Name the mechanism. Without a name, prospects can&rsquo;t refer to it, remember it, or explain it to their business partners.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 5. COMPETITORS ======== -->
+<section id="competitors">
+  <div class="sec-rule"></div>
+  <h2>5. Competitive Landscape</h2>
+
+  <div class="callout callout-accent">
+    <strong>Simple Explanation</strong>
+    This maps every type of competitor Mohammad faces &mdash; from solo strategists with huge audiences to agencies charging $10K+/month. Understanding who says what, at what price, to whom, reveals where the gaps are.
+  </div>
+
+  <h3>5a. Solo Creative Strategists</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Name</th><th>Positioning</th><th>Target</th><th>Price Signal</th><th>Channels</th><th>Differentiator</th></tr>
+    <tr>
+      <td><strong>Dara Denney</strong></td>
+      <td>Performance Creative Expert. &ldquo;Helping 7&ndash;8 figure DTC brands increase revenue through creative strategy.&rdquo;</td>
+      <td>7&ndash;8 figure DTC brands</td>
+      <td>$899 course; consulting rates undisclosed (MentorPass)</td>
+      <td>YouTube (100K+ subs), LinkedIn, Motion partnership</td>
+      <td>Largest personal audience in the space. $100M+ ad spend managed at Thesis. Course-first model.</td>
+    </tr>
+    <tr>
+      <td><strong>Barry Hott</strong></td>
+      <td>&ldquo;The Ugly Ads Guy.&rdquo; World-class social ad execution and creative strategy.</td>
+      <td>Brands spending $50K+/mo on Meta</td>
+      <td>&ldquo;Building Ads with Barry&rdquo; course; consulting via MentorPass</td>
+      <td>Twitter/X, LinkedIn, podcast appearances</td>
+      <td>$600M+ in social ads managed. Emphasizes creative diversity over hit rate. Anti-polish positioning.</td>
+    </tr>
+    <tr>
+      <td><strong>Nick Theriot</strong></td>
+      <td>Theriot Solutions. &ldquo;5 Stages Framework&rdquo; for scaling with Facebook ads.</td>
+      <td>Ecom brands seeking $1M+/mo scale</td>
+      <td>Ads Fundamentals Blueprint course; Inner Circle mentorship</td>
+      <td>Twitter/X, LinkedIn, course platform</td>
+      <td>$100M+ managed spend. 4,900+ students. Framework-heavy (5 Stages, Hook Matrix, Brief System). $840K in 21 days case study.</td>
+    </tr>
+    <tr>
+      <td><strong>Ash Melwani</strong></td>
+      <td>Co-founder &amp; CMO of Obvi. DTC operator sharing playbooks.</td>
+      <td>DTC brand operators (peer-to-peer)</td>
+      <td>MentorPass; not a services business</td>
+      <td>Twitter/X, LinkedIn, podcast circuit</td>
+      <td>Operator credibility (8-figure brand, 250K+ customers, $40M in 40 months). Shares real playbooks from running Obvi. 40 new creatives/week velocity.</td>
+    </tr>
+  </table></div>
+
+  <h3>5b. Performance Creative Agencies</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Agency</th><th>Specialty</th><th>Min Spend</th><th>Price Signal</th><th>Differentiator</th></tr>
+    <tr>
+      <td><strong>Y&rsquo;all</strong></td>
+      <td>In-house performance creative + optional media buying</td>
+      <td>$100K+/mo brands</td>
+      <td>Undisclosed (est. $15K+/mo)</td>
+      <td>Structurally different ad variants, not just hook swaps</td>
+    </tr>
+    <tr>
+      <td><strong>Fraggell</strong></td>
+      <td>UGC + ad creative production for DTC</td>
+      <td>Flexible</td>
+      <td>Undisclosed</td>
+      <td>UGC-first model. 40%+ CPA reduction case studies.</td>
+    </tr>
+    <tr>
+      <td><strong>Darkroom</strong></td>
+      <td>Creative + media buying + retention</td>
+      <td>$200K+/mo</td>
+      <td>Undisclosed (premium)</td>
+      <td>Full-funnel: acquisition + retention integrated</td>
+    </tr>
+    <tr>
+      <td><strong>Pilot House</strong></td>
+      <td>Paid social, search, creative, email, marketplace</td>
+      <td>$30&ndash;250K/mo</td>
+      <td>Undisclosed</td>
+      <td>Cross-platform coverage including Amazon</td>
+    </tr>
+    <tr>
+      <td><strong>Common Thread Collective</strong></td>
+      <td>DTC growth with financial discipline</td>
+      <td>$50K+/mo</td>
+      <td>Undisclosed</td>
+      <td>Financial-discipline-led reporting (contribution margin, not ROAS)</td>
+    </tr>
+    <tr>
+      <td><strong>Forge</strong></td>
+      <td>Performance creative + media buying</td>
+      <td>$5&ndash;25K/mo</td>
+      <td>Est. $3&ndash;8K/mo</td>
+      <td>Explicitly built for sub-$25K/month brands. Closest to Mohammad&rsquo;s target market.</td>
+    </tr>
+    <tr>
+      <td><strong>Structured</strong></td>
+      <td>Senior-led performance creative</td>
+      <td>$30K+/mo</td>
+      <td>Premium</td>
+      <td>Senior staffing model, no pyramid structure</td>
+    </tr>
+  </table></div>
+
+  <h3>5c. Marketplace Competitors (Upwork, Fiverr, MarketerHire)</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Platform</th><th>Typical Rate</th><th>Positioning</th><th>Quality Signal</th></tr>
+    <tr><td>Upwork (entry)</td><td>$15&ndash;40/hr</td><td>Generic &ldquo;Facebook Ads specialist&rdquo;</td><td>Low &mdash; race to bottom</td></tr>
+    <tr><td>Upwork (expert)</td><td>$50&ndash;100+/hr</td><td>&ldquo;Creative strategist&rdquo; with portfolio</td><td>Medium &mdash; credible but commoditized</td></tr>
+    <tr><td>Fiverr Pro</td><td>$500+ per project</td><td>&ldquo;Creative strategy for your ecom brand&rdquo;</td><td>Low-medium &mdash; project-based, no ongoing relationship</td></tr>
+    <tr><td>MarketerHire</td><td>$5&ndash;8K/mo (vetted)</td><td>Pre-vetted fractional marketers</td><td>High &mdash; curated talent, but premium pricing</td></tr>
+    <tr><td>Remote talent (EverestX, etc.)</td><td>$1,700&ndash;2,100/mo FT</td><td>Offshore creative strategists</td><td>Variable &mdash; cost-driven positioning</td></tr>
+  </table></div>
+
+  <h3>5d. What Everyone Says (Commodity Language)</h3>
+  <ul>
+    <li>&ldquo;Data-driven creative&rdquo;</li>
+    <li>&ldquo;Creative that converts&rdquo;</li>
+    <li>&ldquo;Performance creative&rdquo;</li>
+    <li>&ldquo;We test everything&rdquo;</li>
+    <li>&ldquo;Scale your DTC brand&rdquo;</li>
+    <li>&ldquo;Lower your CPA&rdquo;</li>
+  </ul>
+
+  <h3>5e. What Nobody Says (Positioning Gaps)</h3>
+  <ul>
+    <li>Nobody shows their actual research process &mdash; it&rsquo;s a black box</li>
+    <li>Nobody leads with AI as a research tool (only as a creative generation tool)</li>
+    <li>Nobody offers system transfer (training teams to be independent)</li>
+    <li>Nobody targets the $10&ndash;50K/month brand specifically (too small for agencies, too big for Fiverr)</li>
+    <li>Nobody combines creative strategy + operations optimization as one offer</li>
+    <li>Nobody speaks to the &ldquo;8-month-old brand&rdquo; journey stage explicitly</li>
+  </ul>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The big names (Dara, Barry, Nick) are educators/course creators first, consultants second. They target larger brands and charge more. Mohammad is not competing with them &mdash; he&rsquo;s serving the brands they don&rsquo;t talk to.</li>
+      <li>Forge is the closest competitor in terms of target market (sub-$25K/month brands), but they&rsquo;re an agency, not a solo strategist. Different value proposition.</li>
+      <li>The marketplace ($500&ndash;2K) to agency ($5&ndash;15K+) gap is where Mohammad sits. This gap is real and underserved.</li>
+      <li>Nobody is showing their research process. Making the AI pipeline visible is the single biggest differentiation opportunity.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 6. PRICING ======== -->
+<section id="pricing">
+  <div class="sec-rule teal"></div>
+  <h2>6. Pricing Intelligence</h2>
+
+  <div class="callout callout-teal">
+    <strong>Simple Explanation</strong>
+    This section maps the full pricing landscape so Mohammad can frame his $3,500/month against every alternative a prospect might consider.
+  </div>
+
+  <h3>Market Rate Comparison</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Alternative</th><th>Monthly Cost</th><th>What You Get</th></tr>
+    <tr><td>Upwork freelancer (entry)</td><td>$500&ndash;2,000</td><td>Basic ad management, template-based creative, limited strategy</td></tr>
+    <tr><td>Fiverr creative strategy</td><td>$500&ndash;1,500 per project</td><td>One-off deliverable, no ongoing relationship or iteration</td></tr>
+    <tr><td>Remote full-time hire (EverestX)</td><td>$1,700&ndash;2,100</td><td>Full-time but junior, variable quality, needs management</td></tr>
+    <tr><td style="background:var(--accent-soft);font-weight:700">Mohammad (DELL)</td><td style="background:var(--accent-soft);font-weight:700">$3,500</td><td style="background:var(--accent-soft)">Full strategy + research + briefs + data analysis + team training + systems. AI-powered research pipeline.</td></tr>
+    <tr><td>US freelancer (mid-level)</td><td>$5,000&ndash;8,000</td><td>Strategy + briefs, possibly production management</td></tr>
+    <tr><td>US freelancer (senior)</td><td>$8,000&ndash;12,000</td><td>Full strategic ownership, deep experience</td></tr>
+    <tr><td>MarketerHire (vetted)</td><td>$5,000&ndash;8,000</td><td>Pre-vetted fractional strategist, curated match</td></tr>
+    <tr><td>Boutique agency</td><td>$5,000&ndash;15,000</td><td>Creative production + strategy, dedicated team</td></tr>
+    <tr><td>Mid-market agency</td><td>$10,000&ndash;25,000</td><td>Full creative + media buying, account team</td></tr>
+    <tr><td>In-house hire (US)</td><td>$8,000&ndash;13,000 (fully loaded)</td><td>Full-time, but recruitment, benefits, management overhead. $80&ndash;130K/yr total cost.</td></tr>
+  </table></div>
+
+  <h3>Value Framing Recommendations</h3>
+  <div class="card-grid">
+    <div class="cg">
+      <strong>vs. Cheap Freelancers</strong>
+      <p style="font-size:.9rem">&ldquo;A $500 freelancer manages your ads. I build the system that tells you what ads to make, why, and when to kill them.&rdquo;</p>
+    </div>
+    <div class="cg">
+      <strong>vs. Agencies</strong>
+      <p style="font-size:.9rem">&ldquo;An agency charges $10K+ and you talk to a junior account manager. For $3,500 you get me directly &mdash; the strategist, not a middleman.&rdquo;</p>
+    </div>
+    <div class="cg">
+      <strong>vs. In-House Hire</strong>
+      <p style="font-size:.9rem">&ldquo;A full-time creative strategist costs $100K+/year. I deliver the same output at a fraction of the cost, plus I bring an AI research pipeline no individual hire has.&rdquo;</p>
+    </div>
+    <div class="cg">
+      <strong>vs. Doing Nothing</strong>
+      <p style="font-size:.9rem">&ldquo;If your CPA climbs $5 on $30K/month ad spend, that&rsquo;s $5,000/month in wasted budget. The strategy pays for itself if it saves one bad creative cycle.&rdquo;</p>
+    </div>
+  </div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>$3,500/month is competitively positioned. It&rsquo;s 2&ndash;3x cheaper than equivalent US freelancers and 3&ndash;5x cheaper than agencies, while delivering more than marketplace talent.</li>
+      <li>The strongest value frame is &ldquo;cost of inaction&rdquo; &mdash; a brand spending $30K/month on ads that wastes 15% on bad creative is burning $4,500/month already.</li>
+      <li>Don&rsquo;t compete on price with Upwork. Compete on mechanism and outcomes. The $3,500 should feel like a bargain relative to what it replaces, not expensive relative to what it costs.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 7. AUDIENCE ======== -->
+<section id="audience">
+  <div class="sec-rule"></div>
+  <h2>7. Target Audience Intelligence</h2>
+
+  <div class="callout callout-accent">
+    <strong>Simple Explanation</strong>
+    This section profiles the ideal client &mdash; not demographics, but their mental state, their struggles, their language, and their objections. This is the raw material for all messaging and hooks.
+  </div>
+
+  <h3>7a. Ideal Client Profile</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Dimension</th><th>Profile</th></tr>
+    <tr><td>Business stage</td><td>6&ndash;12 months old. Past launch excitement. Running ads but results are inconsistent.</td></tr>
+    <tr><td>Revenue</td><td>$10&ndash;50K/month. Enough to invest in growth, not enough for an agency.</td></tr>
+    <tr><td>Ad spend</td><td>$5&ndash;30K/month on Meta. Possibly some TikTok or Google.</td></tr>
+    <tr><td>Current setup</td><td>Running their own ads OR have a freelancer/media buyer doing it. No dedicated creative strategist.</td></tr>
+    <tr><td>Vertical</td><td>DTC e-commerce. Health/wellness, beauty, home goods, supplements, consumer products.</td></tr>
+    <tr><td>Team size</td><td>1&ndash;5 people. Founder-led. Possibly a VA or part-time media buyer.</td></tr>
+    <tr><td>Knowledge level</td><td>Knows Meta Ads basics. Understands ROAS and CPA. But doesn&rsquo;t know creative strategy as a discipline.</td></tr>
+  </table></div>
+
+  <h3>7b. Pain Points (from community research)</h3>
+
+  <div class="card-grid">
+    <div class="cg">
+      <strong>Creative Fatigue</strong>
+      <span class="pill pill-red">HIGH PAIN</span>
+      <p style="font-size:.88rem;margin-top:6px">CTR and CVR slowly decline over 3&ndash;5 days before they notice. Ads that worked last month stopped working. They&rsquo;re cycling through the same 3&ndash;5 ads. Industry data shows brands testing 20+ new ads/month outperform those testing fewer than 10.</p>
+    </div>
+    <div class="cg">
+      <strong>No Creative System</strong>
+      <span class="pill pill-red">HIGH PAIN</span>
+      <p style="font-size:.88rem;margin-top:6px">Everything is ad-hoc. They brief creative based on gut feeling or what competitors are doing. No structured testing framework. No process to go from data &rarr; insight &rarr; brief &rarr; test &rarr; iterate.</p>
+    </div>
+    <div class="cg">
+      <strong>Rising CPAs</strong>
+      <span class="pill pill-amber">MEDIUM-HIGH</span>
+      <p style="font-size:.88rem;margin-top:6px">CPA climbs but they can&rsquo;t tell if it&rsquo;s a creative problem, a targeting problem, or a market problem. They keep tweaking audiences when the real issue is creative exhaustion.</p>
+    </div>
+    <div class="cg">
+      <strong>The &ldquo;Gap&rdquo; Problem</strong>
+      <span class="pill pill-amber">MEDIUM-HIGH</span>
+      <p style="font-size:.88rem;margin-top:6px">Too big for Fiverr ($500 freelancers deliver mediocre work). Too small for agencies ($10K+/month retainers). Stuck in the middle with no good options.</p>
+    </div>
+    <div class="cg">
+      <strong>Dependency on One Winner</strong>
+      <span class="pill pill-amber">MEDIUM</span>
+      <p style="font-size:.88rem;margin-top:6px">Their entire ad account depends on 1&ndash;2 winning creatives. When those fatigue, revenue drops immediately. No pipeline of tested angles to replace them.</p>
+    </div>
+    <div class="cg">
+      <strong>UGC Disappointment</strong>
+      <span class="pill pill-blue">COMMON</span>
+      <p style="font-size:.88rem;margin-top:6px">Tried hiring UGC creators from Fiverr/TikTok. Got generic content that didn&rsquo;t convert. Classic UGC &ldquo;talking to camera&rdquo; has been &ldquo;rinsed to death&rdquo; &mdash; text-wall ads and infographics are outperforming in 2025&ndash;2026.</p>
+    </div>
+  </div>
+
+  <h3>7c. Objections to Hiring at $3,500/month</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Objection</th><th>What They&rsquo;re Really Thinking</th><th>The Reframe</th></tr>
+    <tr><td>&ldquo;I can learn this myself&rdquo;</td><td>YouTube/courses exist. Why pay someone?</td><td>You can learn surgery too &mdash; but do you want to operate on yourself while running a business? The cost isn&rsquo;t the fee, it&rsquo;s the 6 months of trial-and-error you skip.</td></tr>
+    <tr><td>&ldquo;My media buyer should do this&rdquo;</td><td>Isn&rsquo;t creative strategy part of their job?</td><td>Your media buyer decides WHERE to spend. A creative strategist decides WHAT to say. They&rsquo;re different skills. Most brands hire both once spend crosses $30K/month.</td></tr>
+    <tr><td>&ldquo;$3,500 is my entire creative budget&rdquo;</td><td>Fear of overcommitting limited cash</td><td>If you&rsquo;re spending $15K/month on ads with 20% waste from bad creative, that&rsquo;s $3,000/month already lost. The strategy pays for itself.</td></tr>
+    <tr><td>&ldquo;I need someone who produces creative too&rdquo;</td><td>Want strategy AND execution in one person</td><td>I build the briefs and system. Your UGC creators and designers execute. The bottleneck isn&rsquo;t production &mdash; it&rsquo;s knowing what to produce.</td></tr>
+    <tr><td>&ldquo;How do I know this works for MY brand?&rdquo;</td><td>Skepticism about relevance</td><td>That&rsquo;s what the free audit is for. I&rsquo;ll analyze your data and give you 3 actionable recommendations before you pay anything.</td></tr>
+  </table></div>
+
+  <h3>7d. Where They Hang Out</h3>
+  <ul>
+    <li><strong>Reddit:</strong> r/ecommerce, r/FacebookAds, r/PPC, r/Entrepreneur, r/DTC</li>
+    <li><strong>Twitter/X:</strong> Ecom Twitter (follow Ash Melwani, Nick Theriot, etc.)</li>
+    <li><strong>YouTube:</strong> Watching ad breakdowns, creative strategy tutorials, DTC case studies</li>
+    <li><strong>Facebook Groups:</strong> Ecom-specific groups, DTC founder communities</li>
+    <li><strong>Slack:</strong> eCommerceFuel, DTC Twitter Slack</li>
+    <li><strong>Podcasts:</strong> DTC Podcast, Perpetual Traffic, eCommerce Fuel</li>
+    <li><strong>LinkedIn:</strong> Following DTC thought leaders, agencies</li>
+  </ul>
+
+  <h3>7e. Trigger Events (When They Start Searching)</h3>
+  <ul>
+    <li>A bad month: revenue drops 20&ndash;30% with no obvious cause</li>
+    <li>Creative wall: they&rsquo;ve run out of ad ideas and nothing new is working</li>
+    <li>CPA spike: costs jump 30&ndash;50% and they can&rsquo;t fix it by adjusting audiences</li>
+    <li>Competitor anxiety: seeing competitors with better ads and wondering &ldquo;how are they doing that?&rdquo;</li>
+    <li>Scaling plateau: stuck at $30&ndash;50K/month and can&rsquo;t break through</li>
+    <li>Agency disappointment: paid an agency $8&ndash;15K/month and got mediocre results</li>
+  </ul>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The #1 pain point is not &ldquo;bad ads&rdquo; &mdash; it&rsquo;s &ldquo;no system for making good ads consistently.&rdquo; Position the offer as a system, not a service.</li>
+      <li>The &ldquo;gap problem&rdquo; (too big for Fiverr, too small for agencies) is the most specific pain point to address in messaging. Nobody else speaks to it directly.</li>
+      <li>The free audit directly addresses the strongest objection (&ldquo;how do I know it works for me?&rdquo;). Lead with it.</li>
+      <li>Trigger events suggest content marketing should focus on diagnosing problems (CPA spikes, creative fatigue) rather than selling solutions.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 8. AI LANDSCAPE ======== -->
+<section id="ai">
+  <div class="sec-rule teal"></div>
+  <h2>8. AI Positioning Landscape</h2>
+
+  <div class="callout callout-teal">
+    <strong>Simple Explanation</strong>
+    Everyone says &ldquo;AI&rdquo; now. This section maps exactly how others use AI in creative strategy &mdash; and reveals that Mohammad&rsquo;s approach is fundamentally different from all of them.
+  </div>
+
+  <h3>How Competitors Use &ldquo;AI&rdquo;</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Tool/Service</th><th>Type</th><th>What Their AI Does</th><th>What It Doesn&rsquo;t Do</th></tr>
+    <tr>
+      <td><strong>AdCreative.ai</strong></td>
+      <td><span class="pill pill-blue">SaaS TOOL</span></td>
+      <td>Generates static ad images in bulk. Performance scoring against historical data. Hundreds of size variations from one brief.</td>
+      <td>No strategic thinking. No research. No competitive analysis. No angle development. Output is generic unless you feed it a great brief.</td>
+    </tr>
+    <tr>
+      <td><strong>Pencil</strong></td>
+      <td><span class="pill pill-blue">SaaS TOOL</span></td>
+      <td>Transforms existing assets into video ads. Predictive performance scoring. Brand guideline enforcement.</td>
+      <td>No strategy. No customer voice mining. No competitive intelligence. It&rsquo;s a production accelerator, not a strategy tool.</td>
+    </tr>
+    <tr>
+      <td><strong>Motion</strong></td>
+      <td><span class="pill pill-purple">ANALYTICS</span></td>
+      <td>Creative analytics platform. AI tagging of ad elements. Performance correlation analysis. Competitor creative research.</td>
+      <td>Tells you WHAT worked, not WHY it worked or WHAT to make next. Analysis, not strategy.</td>
+    </tr>
+    <tr>
+      <td><strong>Generic &ldquo;AI strategists&rdquo;</strong></td>
+      <td><span class="pill pill-amber">SERVICE</span></td>
+      <td>Use ChatGPT/Claude to brainstorm ad copy and angles.</td>
+      <td>No proprietary pipeline. No structured output. Prompt-and-pray approach. Anyone can do this.</td>
+    </tr>
+    <tr>
+      <td><strong>Mohammad&rsquo;s Research-David</strong></td>
+      <td><span class="pill pill-green">PROPRIETARY SYSTEM</span></td>
+      <td>Full research pipeline: brand intelligence, competitive analysis, customer voice mining, DRIVE strategy framework, 50+ production-ready ad angles. All sourced and data-backed.</td>
+      <td>Doesn&rsquo;t generate the actual ad images/videos. It builds the strategic foundation that tells you what to create and why.</td>
+    </tr>
+  </table></div>
+
+  <h3>The Critical Distinction</h3>
+  <p>Every AI tool in the market focuses on <strong>creative generation</strong> (making ads faster) or <strong>creative analytics</strong> (measuring what worked). Nobody has built AI for <strong>creative strategy</strong> (deciding what to make and why). That&rsquo;s Mohammad&rsquo;s lane.</p>
+
+  <p>This is not &ldquo;I use ChatGPT.&rdquo; This is a structured, multi-phase research pipeline that produces deliverables no human could create in the same timeframe. The AI does the research equivalent of 2&ndash;3 weeks of manual work in hours.</p>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li>The AI landscape is crowded with generation tools (make ads) and analytics tools (measure ads). Nobody occupies the strategy layer (decide what ads to make).</li>
+      <li>Mohammad&rsquo;s positioning should be: &ldquo;AI-powered strategy, not AI-generated ads.&rdquo; This is a clear, defensible distinction.</li>
+      <li>The risk of the &ldquo;AI&rdquo; label: it can sound like buzzword if not backed by a visible process. Show the actual deliverables (Brand Intel, DRIVE Strategy, Angle Exploration) to make it tangible.</li>
+      <li>The tools (AdCreative.ai, Pencil) are not competitors &mdash; they&rsquo;re complementary. Mohammad&rsquo;s strategy tells you what to feed into those tools.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 9. PORTFOLIO ======== -->
+<section id="portfolio">
+  <div class="sec-rule"></div>
+  <h2>9. Portfolio Proof Points</h2>
+
+  <div class="callout callout-accent">
+    <strong>Simple Explanation</strong>
+    Proof is the most powerful element in any sales conversation. This section organizes Mohammad&rsquo;s 11-brand portfolio into proof points that can be deployed against specific objections and ICP segments.
+  </div>
+
+  <h3>Headline Results</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Brand</th><th>Category</th><th>Market</th><th>Key Result</th><th>What Mohammad Did</th></tr>
+    <tr>
+      <td><strong>Metabolae.com</strong></td>
+      <td><span class="pill pill-green">Health/Supplements</span></td>
+      <td>US</td>
+      <td>Scaled from 5 to 7 figures</td>
+      <td>Was there from early stage through scaling. 15K+ reviews, 100K+ customers. Single-SKU (Ceylon Cinnamon) with layered trust architecture.</td>
+    </tr>
+    <tr>
+      <td><strong>SleepPods.se</strong></td>
+      <td><span class="pill pill-blue">Sleep Tech</span></td>
+      <td>Sweden</td>
+      <td>Built systems from nothing to AI-driven</td>
+      <td>Senior Creative Strategist. Optimized entire system. Scaled creative output. 25K+ customers in Sweden.</td>
+    </tr>
+    <tr>
+      <td><strong>Myrestelle.com</strong></td>
+      <td><span class="pill pill-green">Wellness Patches</span></td>
+      <td>EU</td>
+      <td>100K+ customers</td>
+      <td>Creative strategy for transdermal wellness patches across 5 product lines.</td>
+    </tr>
+    <tr>
+      <td><strong>ProHeal-Innovations.com</strong></td>
+      <td><span class="pill pill-green">Neuropathy Relief</span></td>
+      <td>US</td>
+      <td>150K+ lives transformed</td>
+      <td>Multi-product line (creams, supplements, devices, patches) creative strategy.</td>
+    </tr>
+    <tr>
+      <td><strong>Neuro-bella.com</strong></td>
+      <td><span class="pill pill-green">Eye Health</span></td>
+      <td>US</td>
+      <td>17K+ reviews</td>
+      <td>Single premium SKU strategy. Heavy scarcity/urgency model. #1 Ophthalmologist Recommended positioning.</td>
+    </tr>
+    <tr>
+      <td><strong>Norillo.se</strong></td>
+      <td><span class="pill pill-purple">Home/Lifestyle</span></td>
+      <td>Sweden</td>
+      <td>75K+ customers</td>
+      <td>Multi-category store. 4.82 Trustpilot rating. Swedish market positioning.</td>
+    </tr>
+    <tr>
+      <td><strong>Garden-trend.store</strong></td>
+      <td><span class="pill pill-purple">Home/Garden</span></td>
+      <td>US/Global</td>
+      <td>6-figure brand</td>
+      <td>Value-focused positioning with urgency-driven creative.</td>
+    </tr>
+    <tr>
+      <td><strong>Nordkliv.se</strong></td>
+      <td><span class="pill pill-amber">Pet Products</span></td>
+      <td>Sweden</td>
+      <td>655+ reviews, media coverage</td>
+      <td>Single-product hero strategy. 365-day guarantee. Influencer partnerships.</td>
+    </tr>
+    <tr>
+      <td><strong>Kobeesco.com</strong></td>
+      <td><span class="pill pill-blue">Personal Care</span></td>
+      <td>US</td>
+      <td>Sustainability mission positioning</td>
+      <td>Natural lip care with environmental cause marketing.</td>
+    </tr>
+    <tr>
+      <td><strong>Heykeratin.com</strong></td>
+      <td><span class="pill pill-blue">Hair Care</span></td>
+      <td>Australia</td>
+      <td>&ldquo;Australia&rsquo;s #1 Hair Mask Treatment&rdquo;</td>
+      <td>Flash sale optimization. Competitor comparison strategy. Visual result timelines.</td>
+    </tr>
+    <tr>
+      <td><strong>HeartHealthCo.com.au</strong></td>
+      <td><span class="pill pill-green">Health Devices</span></td>
+      <td>Australia</td>
+      <td>Hospital-grade accuracy positioning</td>
+      <td>Doctor endorsement strategy. &ldquo;Australian owned &amp; operated&rdquo; trust play.</td>
+    </tr>
+  </table></div>
+
+  <h3>Portfolio Patterns (Proof of Methodology)</h3>
+  <div class="card-grid">
+    <div class="cg"><strong>Trust Architecture</strong><p style="font-size:.88rem">Reviews, guarantees (30&ndash;365 days), doctor/expert endorsements, customer counts. Applied across every brand.</p></div>
+    <div class="cg"><strong>Single-SKU / Hero Product Focus</strong><p style="font-size:.88rem">Metabolae, SleepPods, Neuro-bella, Nordkliv, Heart Health Co &mdash; all built around one hero product for focused ad spend.</p></div>
+    <div class="cg"><strong>Urgency &amp; Scarcity</strong><p style="font-size:.88rem">Flash sales, countdown timers, limited stock messaging, seasonal promotions &mdash; consistently deployed across brands.</p></div>
+    <div class="cg"><strong>Education-Driven Conversion</strong><p style="font-size:.88rem">Competitor comparison tables, ingredient education, visual result timelines &mdash; selling through information, not just claims.</p></div>
+    <div class="cg"><strong>Bundle &amp; Subscription</strong><p style="font-size:.88rem">Used across Metabolae, Restelle, HeyKeratin, Kobee&rsquo;s to increase AOV and LTV.</p></div>
+    <div class="cg"><strong>International Market Adaptation</strong><p style="font-size:.88rem">Swedish (Norillo, Nordkliv, SleepPods), Australian (HeyKeratin, Heart Health), and US markets &mdash; each with localized trust signals.</p></div>
+  </div>
+
+  <div class="band"><h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Metabolae</strong> (5&rarr;7 figures) and <strong>SleepPods</strong> (systems built from zero) are the two strongest proof points. Lead with these in all positioning.</li>
+      <li>The portfolio patterns show a repeatable methodology, not random client wins. This is the difference between &ldquo;I got lucky&rdquo; and &ldquo;I have a system.&rdquo;</li>
+      <li>Health/wellness dominance (8/11 brands) is a vertical specialization signal. Use it &mdash; &ldquo;specializing in health &amp; wellness DTC&rdquo; is more credible than &ldquo;I work with everyone.&rdquo;</li>
+      <li>International experience (US + Nordic + Australia) differentiates from US-only competitors who don&rsquo;t understand multi-market dynamics.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 10. GAPS & OPPORTUNITIES ======== -->
+<section id="gaps">
+  <div class="sec-rule teal"></div>
+  <h2>10. Strategic Gaps &amp; Opportunities</h2>
+
+  <div class="callout callout-teal">
+    <strong>Simple Explanation</strong>
+    This section synthesizes everything above into actionable strategic recommendations. These are the moves that matter most, in order of priority.
+  </div>
+
+  <h3>Opportunity 1: Name and Show the Mechanism</h3>
+  <p><span class="pill pill-red">CRITICAL</span> The AI research pipeline is the single biggest competitive advantage, and it&rsquo;s currently invisible. Name it. Show the actual deliverables (Brand Intel, DRIVE Strategy, 50+ Angles) in marketing materials. Let prospects see a sample output. This shifts the conversation from &ldquo;trust me, I&rsquo;m good&rdquo; to &ldquo;look at what my system produces.&rdquo;</p>
+
+  <h3>Opportunity 2: Own the &ldquo;Gap&rdquo; Positioning</h3>
+  <p><span class="pill pill-red">CRITICAL</span> The $10&ndash;50K/month brand is explicitly underserved. Too small for agencies, too big for Fiverr. Nobody targets this segment by name. Be the first to say: &ldquo;I work with brands doing $10&ndash;50K/month who&rsquo;ve outgrown freelancers but aren&rsquo;t ready for a $10K agency.&rdquo;</p>
+
+  <h3>Opportunity 3: Lead with Health/Wellness Vertical Authority</h3>
+  <p><span class="pill pill-amber">HIGH VALUE</span> 8/11 brands in health/wellness is a specialization signal. The top agencies (Y&rsquo;all, MuteSix, Forge) publish specific &ldquo;health &amp; wellness DTC&rdquo; pages. Mohammad can claim this niche with genuine proof. Vertical specialists command higher rates and get shorter sales cycles.</p>
+
+  <h3>Opportunity 4: Make the Free Audit a Showcase</h3>
+  <p><span class="pill pill-amber">HIGH VALUE</span> The free audit should use the AI pipeline to produce a mini Brand Intel report. When a prospect sees automated, sourced research about their own brand delivered in hours, it proves the mechanism better than any testimonial. The audit becomes a demonstration, not just a deliverable.</p>
+
+  <h3>Opportunity 5: Build Content Around Diagnosis, Not Solution</h3>
+  <p><span class="pill pill-green">GROWTH</span> The target audience searches for problems (&ldquo;why is my CPA rising,&rdquo; &ldquo;creative fatigue meta ads&rdquo;), not solutions (&ldquo;hire creative strategist&rdquo;). Content should diagnose problems first, then introduce the mechanism as the fix. Platform priority: LinkedIn (277% higher lead gen vs. other platforms, 24-hour content half-life vs. Twitter&rsquo;s 18 minutes).</p>
+
+  <h3>Opportunity 6: Formalize the Upsell Path</h3>
+  <p><span class="pill pill-blue">FUTURE</span> Once clients scale past $50K/month, introduce a higher tier ($5,000&ndash;7,000/mo) with expanded deliverables, performance-based bonuses, or team embedding. This captures value as clients grow, instead of losing them to agencies.</p>
+
+  <div class="band"><h4>Priority Actions</h4>
+    <ul>
+      <li><strong>Immediate:</strong> Name the AI mechanism. Create a sample deliverable (anonymized Brand Intel) to show prospects.</li>
+      <li><strong>Week 1&ndash;2:</strong> Write positioning copy that explicitly calls out the &ldquo;$10&ndash;50K/month gap&rdquo; and health/wellness specialization.</li>
+      <li><strong>Week 3&ndash;4:</strong> Build 3&ndash;5 LinkedIn posts diagnosing common creative problems (fatigue, rising CPA, no system). Each post ends with a soft CTA to the free audit.</li>
+      <li><strong>Month 2:</strong> Publish 1&ndash;2 case studies (Metabolae, SleepPods) showing the process and results.</li>
+      <li><strong>Month 3:</strong> Formalize the upsell tier. Test pricing at $5,500/mo for brands past $50K/mo revenue.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======== 11. SOURCES ======== -->
+<section id="sources">
+  <div class="sec-rule"></div>
+  <h2>11. Research Sources</h2>
+
+  <div class="fine">
+    <p><strong>Competitor Intelligence</strong></p>
+    <ul>
+      <li>Dara Denney &mdash; MentorPass profile, LinkedIn, YouTube channel, Motion partnership pages</li>
+      <li>Barry Hott &mdash; HottGrowth.com, Building Ads with Barry, MentorPass profile, Ad World Prime speaker page</li>
+      <li>Nick Theriot &mdash; NickTheriot.org, Theriot Solutions LinkedIn, Disrupt Magazine feature, course platforms</li>
+      <li>Ash Melwani &mdash; Obvi, LinkedIn, MentorPass, Foreplay.co author page, SplitBase podcast</li>
+      <li>Y&rsquo;all Agency &mdash; yall.co, &ldquo;Top DTC Performance Creative Agencies 2026&rdquo; (July 2026)</li>
+      <li>Apex Brands &mdash; &ldquo;Best Creative Agencies for DTC Performance Marketing 2026&rdquo;</li>
+    </ul>
+
+    <p><strong>Pricing Intelligence</strong></p>
+    <ul>
+      <li>EverestX &mdash; &ldquo;How Much Does a Creative Strategist Cost? (2026)&rdquo;</li>
+      <li>ClicksGeek &mdash; &ldquo;Digital Marketing Monthly Retainer Cost: 2026 Guide&rdquo;</li>
+      <li>Darkroom Agency &mdash; &ldquo;Marketing Agency Cost 2026: Real Pricing by Service&rdquo;</li>
+      <li>LimeLight Marketing &mdash; &ldquo;eCommerce Agency Cost (2026)&rdquo;</li>
+      <li>ConstantHire &mdash; &ldquo;What Does a Creative Strategist Do in Ecommerce?&rdquo; and &ldquo;Freelance vs. In-House Creative Strategist&rdquo;</li>
+      <li>ZipRecruiter &mdash; E-Commerce Creative Strategist salary data (June 2026)</li>
+      <li>Upwork &mdash; Freelance creative strategist listings and rate data</li>
+      <li>Remotely Talents &mdash; &ldquo;eCommerce Marketing Agency Hires a Creative Strategist for $2,700/Month&rdquo;</li>
+    </ul>
+
+    <p><strong>Market Intelligence</strong></p>
+    <ul>
+      <li>Meta SMB Advertiser Summit 2025 &mdash; Q4 ad creative blueprint recap via Bread Loaf CEO</li>
+      <li>Motion blog &mdash; &ldquo;How to Build a High-Volume Ad Production System for Meta and TikTok in 2026&rdquo;</li>
+      <li>Selzee &mdash; &ldquo;Meta Ads Best Practices for DTC (2026)&rdquo;</li>
+      <li>Growth Waves Substack &mdash; &ldquo;Meta Ads in 2025&rdquo;</li>
+      <li>Cometly &mdash; &ldquo;9 Best AI Ecommerce Ad Generators: Complete 2026 Guide&rdquo;</li>
+      <li>AI Systems Commerce &mdash; &ldquo;AdCreative.ai vs Pencil 2026 Comparison&rdquo;</li>
+      <li>Admetrics &mdash; &ldquo;Creative Strategy: The Growth Engine for Modern DTC Brands&rdquo;</li>
+    </ul>
+
+    <p><strong>Target Audience</strong></p>
+    <ul>
+      <li>She Said Consulting &mdash; &ldquo;Media Buyer vs. Creative Strategist&rdquo;</li>
+      <li>MHI Growth Engine &mdash; &ldquo;DTC Creative Strategist: The Role That Bridges Ads and Results&rdquo;</li>
+      <li>Ad Library &mdash; &ldquo;Creative Strategist vs Creative Director vs Media Buyer&rdquo;</li>
+      <li>Darkroom Agency &mdash; &ldquo;The Modern Media Buyer in 2026&rdquo;</li>
+      <li>CommerceBlitz &mdash; &ldquo;The Cost of Not Scaling Ecommerce Operations&rdquo; (March 2026)</li>
+    </ul>
+
+    <p><strong>Brand Portfolio</strong></p>
+    <ul>
+      <li>Direct website research via WebFetch: metabolae.com, garden-trend.store, sleeppods.se, myrestelle.com, proheal-innovations.com, kobeesco.com, heykeratin.com, neuro-bella.com, norillo.se, nordkliv.se, hearthealthco.com.au</li>
+    </ul>
+
+    <p style="margin-top:20px;font-size:.75rem;color:var(--muted)">Report generated August 2026. All data sourced from public websites, industry publications, and marketplace listings. No fabricated statistics or quotes.</p>
+  </div>
+</section>
+
+</main>

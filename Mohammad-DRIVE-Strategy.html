@@ -1,0 +1,803 @@
+<title>Mohammad (DELL) — DRIVE Strategy</title>
+<style>
+:root{
+  --ground:#FBFBF9;--surface:#fff;--raised:#F5F5F0;--text:#2C2C2A;--muted:#8A8A82;
+  --sage:#4A7C67;--sage-soft:#EFF5F1;--gold:#B8935A;--gold-soft:#FBF6EE;
+  --border:#E8E8E2;--deep:#1E1E1C;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111210;--surface:#1A1C1A;--raised:#242624;--text:#E4E5E2;--muted:#8A8C88;
+  --sage:#7BC4A0;--sage-soft:#162018;--gold:#D4AD72;--gold-soft:#1E1A14;
+  --border:#2E302E;--deep:#0A0B0A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111210;--surface:#1A1C1A;--raised:#242624;--text:#E4E5E2;--muted:#8A8C88;
+  --sage:#7BC4A0;--sage-soft:#162018;--gold:#D4AD72;--gold-soft:#1E1A14;
+  --border:#2E302E;--deep:#0A0B0A;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FBFBF9;--surface:#fff;--raised:#F5F5F0;--text:#2C2C2A;--muted:#8A8A82;
+  --sage:#4A7C67;--sage-soft:#EFF5F1;--gold:#B8935A;--gold-soft:#FBF6EE;
+  --border:#E8E8E2;--deep:#1E1E1C;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 "Segoe UI",-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+main{max-width:840px;margin:0 auto;padding:0 24px 100px}
+.masthead{padding:56px 0 40px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.mast-eyebrow{font:500 .72rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--sage);margin-bottom:16px}
+.masthead h1{font:700 clamp(1.9rem,5vw,2.6rem)/1.12 system-ui,sans-serif;letter-spacing:-.03em;max-width:700px}
+.masthead>p{font-size:1rem;color:var(--muted);margin-top:14px;max-width:600px;line-height:1.65}
+.masthead .foundation{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:28px}
+.fnd{background:var(--surface);padding:16px 14px}
+.fnd-val{font:700 1.3rem/1 system-ui,sans-serif;color:var(--sage);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fnd-lbl{font-size:.76rem;color:var(--muted);margin-top:3px;line-height:1.35}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:48px}
+nav.toc a{font-size:.82rem;color:var(--muted);text-decoration:none;font-weight:500;padding:4px 0;border-bottom:1.5px solid transparent;transition:all .15s}
+nav.toc a:hover{color:var(--sage);border-color:var(--sage)}
+section{margin-top:60px}
+.part-label{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--sage);margin-bottom:6px}
+.part-label.gold{color:var(--gold)}
+section>h2{font:700 1.5rem/1.15 system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+h3{font:600 1.08rem/1.25 system-ui,sans-serif;margin-top:32px;margin-bottom:8px}
+h4{font:600 .92rem/1.25 system-ui,sans-serif;margin-top:20px;margin-bottom:6px}
+p{margin:.5em 0;max-width:65ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+a{color:var(--sage);text-decoration:none}a:hover{text-decoration:underline}
+blockquote{border-left:2px solid var(--sage);margin:18px 0;padding:10px 18px;background:var(--sage-soft);border-radius:0 8px 8px 0;font-size:.93rem;font-style:italic}
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.9rem;line-height:1.6}
+.callout-sage{background:var(--sage-soft);border-left:3px solid var(--sage)}
+.callout-gold{background:var(--gold-soft);border-left:3px solid var(--gold)}
+.callout .label{display:block;font:600 .7rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:6px}
+.callout-gold .label{color:var(--gold)}
+.decision{background:var(--raised);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;font-size:.88rem;line-height:1.6}
+.decision .d-label{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:8px}
+.web-ready{background:var(--deep);color:#E4E5E2;padding:28px 28px;border-radius:10px;margin:24px 0}
+.web-ready .wr-label{font:700 .68rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.web-ready h4{color:var(--gold);margin-top:16px;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+.web-ready h4:first-of-type{margin-top:0}
+.web-ready ul{padding-left:0;list-style:none}.web-ready li{margin:.5em 0;padding-left:18px;position:relative;font-size:.9rem;line-height:1.55}
+.web-ready li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--sage)}
+.web-ready p{font-size:.9rem;line-height:1.55;max-width:60ch}
+.web-ready .headline{font:700 1.15rem/1.25 system-ui,sans-serif;color:#fff;margin:8px 0 4px;max-width:55ch}
+.web-ready .sub{font-size:.82rem;color:#A0A09C;margin:2px 0 12px}
+.nesb{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0;font-size:.72rem;text-align:center}
+.nesb span{padding:4px 6px;border-radius:4px;font-weight:600;letter-spacing:.04em}
+.nesb .hit{background:var(--sage-soft);color:var(--sage)}
+.nesb .miss{background:var(--gold-soft);color:var(--gold);opacity:.5}
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.86rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.68rem;font-weight:600;letter-spacing:.03em}
+.pill-sage{background:var(--sage-soft);color:var(--sage)}
+.pill-gold{background:var(--gold-soft);color:var(--gold)}
+.pill-high{background:#E8F5E9;color:#2E7D32}
+.pill-med{background:#FFF8E1;color:#F57F17}
+.pill-low{background:#FBE9E7;color:#BF360C}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-high{background:#1B3D20;color:#81C784}
+  :root:not([data-theme="light"]) .pill-med{background:#3E2D0A;color:#FFD54F}
+  :root:not([data-theme="light"]) .pill-low{background:#3E1210;color:#EF9A9A}
+}
+:root[data-theme="dark"] .pill-high{background:#1B3D20;color:#81C784}
+:root[data-theme="dark"] .pill-med{background:#3E2D0A;color:#FFD54F}
+:root[data-theme="dark"] .pill-low{background:#3E1210;color:#EF9A9A}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.cg{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.cg strong{display:block;margin-bottom:4px}
+.angle{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:16px 0;overflow:hidden}
+.angle-head{padding:12px 18px;background:var(--raised);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.angle-head strong{font-size:.92rem}
+.angle-body{padding:14px 18px;font-size:.88rem}
+.angle-body .hook{font:600 .95rem/1.35 system-ui,sans-serif;color:var(--text);margin:6px 0;padding:8px 14px;background:var(--raised);border-radius:6px}
+.angle-body .hook-note{font-size:.78rem;color:var(--muted);margin:-2px 0 10px 14px}
+.proof-bar{display:flex;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin:16px 0}
+.pb{flex:1;background:var(--surface);padding:14px 12px;text-align:center;min-width:90px}
+.pb-num{font:700 1.3rem/1 system-ui,sans-serif;color:var(--sage)}
+.pb-lbl{font-size:.72rem;color:var(--muted);margin-top:3px}
+.skeptic{background:var(--raised);border-radius:10px;padding:18px 20px;margin:14px 0}
+.skeptic .voice{font-style:italic;color:var(--muted);margin-bottom:8px;font-size:.88rem}
+.skeptic .answer{font-size:.9rem;line-height:1.6}
+.skeptic .answer strong{color:var(--sage)}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.vs{padding:18px 20px;border-radius:10px;font-size:.88rem}
+.vs-bad{background:var(--gold-soft);border:1px solid rgba(184,147,90,.2)}
+.vs-good{background:var(--sage-soft);border:1px solid rgba(74,124,103,.2)}
+.vs strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.vs-bad strong{color:var(--gold)}
+.vs-good strong{color:var(--sage)}
+.vs ul{padding-left:1.1em;margin:0}.vs li{margin:.3em 0;font-size:.86rem;line-height:1.5}
+.scene{background:var(--raised);border-radius:10px;padding:20px 22px;margin:18px 0;font-size:.9rem;line-height:1.65}
+.scene .scene-label{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:10px}
+.sep{width:40px;height:2px;background:var(--sage);border-radius:1px;margin-bottom:12px;opacity:.5}
+.sep.gold{background:var(--gold)}
+.fine{font-size:.78rem;color:var(--muted);margin-top:48px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  main{padding:0 16px 60px}.masthead{padding:36px 0 28px}
+  section{margin-top:44px}.card-grid{grid-template-columns:1fr}
+  .proof-bar{flex-wrap:wrap}.foundation{grid-template-columns:1fr 1fr!important}
+  .vs-grid{grid-template-columns:1fr}.nesb{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+
+<main>
+<header class="masthead">
+  <div class="mast-eyebrow">DRIVE Strategy</div>
+  <h1>The Gap Between Your Creative Person and Your Media Buyer Is a $4,200-a-Month Leak Nobody Plugs</h1>
+  <p>A strategic blueprint that uses the copywriting decision-making system &mdash; awareness stages, lead types, NESB frames, Show Don&rsquo;t Tell, the Seven Techniques &mdash; to build positioning, website copy, and content angles for a unified creative + media operation. Every creative decision below has a reason rooted in the framework.</p>
+  <div class="foundation">
+    <div class="fnd"><div class="fnd-val">$3,500</div><div class="fnd-lbl">Monthly retainer</div></div>
+    <div class="fnd"><div class="fnd-val">11</div><div class="fnd-lbl">Brands managed</div></div>
+    <div class="fnd"><div class="fnd-val">0</div><div class="fnd-lbl">Account bans</div></div>
+    <div class="fnd"><div class="fnd-val">6</div><div class="fnd-lbl">Pillars, one loop</div></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#discover">Discover</a>
+  <a href="#reframe">Reframe</a>
+  <a href="#ignite">Ignite</a>
+  <a href="#variate">Variate</a>
+  <a href="#evolve">Evolve</a>
+</nav>
+
+<!-- ============================== DISCOVER ============================== -->
+<section id="discover">
+  <div class="sep"></div>
+  <div class="part-label">Part 1</div>
+  <h2>Discover</h2>
+  <p style="color:var(--muted)">Before writing a single word: answer the Three Questions. Everything flows from here.</p>
+
+  <h3>Question 1: What Is the Mass Desire?</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Identifying the Desire</div>
+    <p>The desire is NOT &ldquo;better creative.&rdquo; It&rsquo;s NOT &ldquo;better media buying.&rdquo; Listen to what the market actually says:</p>
+  </div>
+
+  <blockquote>&ldquo;I constantly had to tell them what to test or change. Their designers were good at following instructions, but there was very little actual strategy or creative direction coming from them.&rdquo; &mdash; r/ecommerce, June 2026</blockquote>
+
+  <blockquote>&ldquo;I genuinely cannot tell whether the issue is: creative angles, offer positioning, ASC/broad structure, Meta traffic quality, account quality/data, landing page mismatch, or just creative fatigue.&rdquo; &mdash; r/ecommerce, June 2026</blockquote>
+
+  <blockquote>&ldquo;I&rsquo;ve paid two consultants. Both took a retainer and did basically nothing. So I&rsquo;m done with flat retainers.&rdquo; &mdash; r/FacebookAds, July 2026</blockquote>
+
+  <p>The desire underneath all three: <strong>&ldquo;I want to stop being the translator, the coordinator, the middleman between people I&rsquo;m paying to solve this for me.&rdquo;</strong></p>
+
+  <p>That&rsquo;s the desire you channel. Not &ldquo;lower CPA.&rdquo; Not &ldquo;more creatives.&rdquo; The desire is <em>relief from being the glue that holds a broken system together.</em></p>
+
+  <h3>Question 2: What Is Their Awareness Stage?</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Awareness Assessment</div>
+    <p><strong>Stage 3 &mdash; Solution Aware.</strong> These founders know they need help with creative and ads. They&rsquo;ve already searched. They know solutions exist (agencies, freelancers, tools). They do NOT know that the real problem is the gap between creative and media &mdash; or that a unified system exists. <strong>Implication (per Rule):</strong> Lead with the promise of the result. Name the desire in the headline. Then connect it to your product. Do NOT lead with your name, your bio, or &ldquo;what I do.&rdquo;</p>
+  </div>
+
+  <h3>Question 3: What Is the Market Sophistication?</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Sophistication Assessment</div>
+    <p><strong>Stage 3 &mdash; The Market Has Heard All The Claims.</strong> &ldquo;Data-driven creative,&rdquo; &ldquo;performance creative that converts,&rdquo; &ldquo;we test everything&rdquo; &mdash; every freelancer and agency says these. The claims are exhausted. <strong>Implication (per Schwartz):</strong> Introduce a NEW MECHANISM &mdash; a new way of making the old promise work. Feature the mechanism in the headline. The emphasis shifts from WHAT the product does to HOW it works.</p>
+    <p>Your mechanism: <strong>the closed feedback loop between creative and media.</strong> Not &ldquo;I do both.&rdquo; The mechanism is that every result feeds back into the next decision. Learning compounds instead of leaking. That&rsquo;s the HOW nobody else has named.</p>
+  </div>
+
+  <h3>The Scene Nobody Photographs (Show Don&rsquo;t Tell &mdash; Applied)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Strategy #4</div>
+    <p>Strategy #4 says: SHOW the transformation through story, imagery, and behavioral change. Showing triggers the emotional brain (belief). Telling triggers the logical brain (skepticism). So instead of saying &ldquo;brands have a coordination problem,&rdquo; we paint the scene of what that coordination problem looks like at 11pm on a Tuesday.</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Tuesday, 11:47 PM &mdash; Austin, TX</div>
+    <p>A founder sits in front of Ads Manager. She spent $4,200 this week. Three creatives from her content person launched Monday &mdash; good-looking, on-brand, checked all the boxes. The media buyer shifted budgets on Wednesday &mdash; moved money into broad, killed the audience that was too small, tested a new lookalike. Neither person looked at the other&rsquo;s work.</p>
+    <p>The content person doesn&rsquo;t know which audiences the media buyer is targeting. The media buyer doesn&rsquo;t know why those three creatives were chosen over other angles. The founder &mdash; who has a product with 15,000 five-star reviews and a 68% repeat purchase rate &mdash; is now A/B testing background colors because she&rsquo;s run out of ideas. ROAS is at 1.4. It was 2.8 in March.</p>
+    <p>She opens Google and types: <em>&ldquo;best creative strategist for DTC.&rdquo;</em></p>
+    <p>She doesn&rsquo;t need a creative strategist. She needs the space between her two hires to stop hemorrhaging her margin.</p>
+  </div>
+
+  <h3>The Six Buyers &mdash; Mapped to Awareness + Lead Type</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Lead Type Matching</div>
+    <p>Per Part 3 of the system: match the lead type to the buyer&rsquo;s awareness stage. More aware = more direct. More skeptical = more indirect. Each buyer gets their own lead type.</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Buyer</th><th>Awareness</th><th>Lead Type</th><th>Why This Lead</th><th>The Opening Line</th></tr>
+    <tr>
+      <td><strong>The Duplicator</strong><br><span style="font-size:.78rem;color:var(--muted)">Paying two contractors</span></td>
+      <td>Stage 3</td>
+      <td><span class="pill pill-sage">Problem-Solution</span></td>
+      <td>They feel the pain but think the answer is &ldquo;better people.&rdquo; Open with the fire &mdash; name the coordination tax they&rsquo;re paying.</td>
+      <td>&ldquo;You&rsquo;re paying $4K/month for two people who&rsquo;ve never opened the same dashboard.&rdquo;</td>
+    </tr>
+    <tr>
+      <td><strong>The Drowning Builder</strong><br><span style="font-size:.78rem;color:var(--muted)">Running everything alone</span></td>
+      <td>Stage 4</td>
+      <td><span class="pill pill-gold">Story</span></td>
+      <td>Deeply problem-aware but skeptical of all solutions. Story lead sneaks past defenses. Show someone who was them and escaped.</td>
+      <td>&ldquo;A year ago, the SleepPods founder hadn&rsquo;t taken a Saturday off since February. No systems, no team, no SOPs.&rdquo;</td>
+    </tr>
+    <tr>
+      <td><strong>The Compliant Paranoid</strong><br><span style="font-size:.78rem;color:var(--muted)">Health/beauty founder</span></td>
+      <td>Stage 3</td>
+      <td><span class="pill pill-sage">Promise</span></td>
+      <td>They know what they want (aggressive growth + compliance). A specific, audacious promise with proof closes them.</td>
+      <td>&ldquo;8 health and wellness brands. The number that matters: zero account bans.&rdquo;</td>
+    </tr>
+    <tr>
+      <td><strong>The Scorched</strong><br><span style="font-size:.78rem;color:var(--muted)">Burned by an agency</span></td>
+      <td>Stage 3&ndash;4</td>
+      <td><span class="pill pill-gold">Secret</span></td>
+      <td>Maximum skepticism. Secret lead teases something they haven&rsquo;t seen. The audit IS the secret &mdash; reveal the quality gradually.</td>
+      <td>&ldquo;I&rsquo;m going to show you the research your last agency should have done before they took your first check.&rdquo;</td>
+    </tr>
+    <tr>
+      <td><strong>The Plateaued</strong><br><span style="font-size:.78rem;color:var(--muted)">Stuck at $30K/month</span></td>
+      <td>Stage 3</td>
+      <td><span class="pill pill-sage">Proclamation</span></td>
+      <td>Startling assertion that reframes their plateau as a system problem, not a spending problem. Bold, factual, newspaper-style.</td>
+      <td>&ldquo;Your ad account doesn&rsquo;t have a budget ceiling. It has a memory problem. Every new creative starts from zero.&rdquo;</td>
+    </tr>
+    <tr>
+      <td><strong>The Leaky Funnel</strong><br><span style="font-size:.78rem;color:var(--muted)">Clicks but no sales</span></td>
+      <td>Stage 4</td>
+      <td><span class="pill pill-sage">Problem-Solution</span></td>
+      <td>They know something is broken but can&rsquo;t find it. Name the leak they&rsquo;re not checking &mdash; the handoff between ad and page.</td>
+      <td>&ldquo;Your ads are getting clicks. Something between the click and the checkout is swallowing them.&rdquo;</td>
+    </tr>
+  </table></div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; &ldquo;This Sound Familiar?&rdquo; Section</div>
+
+    <div class="decision" style="background:rgba(255,255,255,.06);border-color:var(--gold)">
+      <div class="d-label">Show Don&rsquo;t Tell Applied</div>
+      <p style="color:#A0A09C">Each bullet below shows a BEHAVIOR, not a symptom. Strategy #4: &ldquo;Imagine waking up without hitting snooze&rdquo; > &ldquo;you&rsquo;ll have more energy.&rdquo; Same logic &mdash; show the founder&rsquo;s Tuesday, not their &ldquo;pain point.&rdquo;</p>
+    </div>
+
+    <ul>
+      <li>Your content person sent three new creatives Monday. Your media buyer shifted budgets Wednesday. Neither one opened the other&rsquo;s Slack channel.</li>
+      <li>You asked your media buyer why they tested that audience. They said &ldquo;it looked promising.&rdquo; You asked your creative person why they chose that hook. They said &ldquo;it felt right.&rdquo;</li>
+      <li>Last month&rsquo;s &ldquo;strategy call&rdquo; was a slideshow of metrics you could have pulled from Ads Manager yourself. You nodded for 30 minutes and hung up angry.</li>
+      <li>You changed the thumbnail four times this week. Each time, you felt busy. Each time, Meta&rsquo;s algorithm treated it as the same ad.</li>
+      <li>Your product has 15,000 five-star reviews. Revenue still swings $8K one month, $28K the next &mdash; and the people you&rsquo;re paying can&rsquo;t explain why.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== REFRAME ============================== -->
+<section id="reframe">
+  <div class="sep gold"></div>
+  <div class="part-label gold">Part 2</div>
+  <h2>Reframe</h2>
+  <p style="color:var(--muted)">Sophistication Stage 3 demands a new mechanism. Here&rsquo;s how to build one that&rsquo;s uncopyable.</p>
+
+  <h3>Strategy #3 Applied &mdash; Don&rsquo;t Categorize Yourself</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Category Creation</div>
+    <p>Strategy #3: &ldquo;The moment you compare yourself to an existing category, you lose NEW/ONLY positioning.&rdquo; Saying &ldquo;like an agency but cheaper&rdquo; makes you an agency alternative. Saying &ldquo;better than other creative strategists&rdquo; makes you creative strategist #847. <strong>Instead: position as the FIRST thing that does X.</strong> Your X: the first unified creative + media feedback loop for DTC brands. Not a freelancer. Not an agency. A new category.</p>
+  </div>
+
+  <div class="vs-grid">
+    <div class="vs vs-bad">
+      <strong>Category Traps (What NOT to Say)</strong>
+      <ul>
+        <li>&ldquo;I&rsquo;m a creative strategist&rdquo; &mdash; categorized</li>
+        <li>&ldquo;Like an agency but more hands-on&rdquo; &mdash; alternative</li>
+        <li>&ldquo;Data-driven creative&rdquo; &mdash; Stage 1 claim in a Stage 3 market</li>
+        <li>&ldquo;Performance creative that converts&rdquo; &mdash; every LinkedIn bio</li>
+        <li>&ldquo;Full-service DTC growth partner&rdquo; &mdash; meaningless</li>
+      </ul>
+    </div>
+    <div class="vs vs-good">
+      <strong>New Category Language</strong>
+      <ul>
+        <li>&ldquo;The first closed-loop growth system for DTC&rdquo; &mdash; NEW</li>
+        <li>&ldquo;One operator, one feedback loop, zero handoff&rdquo;</li>
+        <li>&ldquo;Where every ad result becomes the next ad&rsquo;s brief&rdquo;</li>
+        <li>&ldquo;The system that makes your ad account learn&rdquo;</li>
+        <li>&ldquo;Revenue operations, not ad management&rdquo;</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The Mechanism &mdash; Built With Technique #5 (Mechanization)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Technique #5 Applied</div>
+    <p>Mechanization says: (1) NAME the mechanism, (2) DESCRIBE how it works in simple terms, (3) FEATURE it as the star. People believe in processes they can visualize. So we don&rsquo;t just say &ldquo;I do creative and media.&rdquo; We name the loop, describe each node, and show why removing any node breaks the circuit.</p>
+  </div>
+
+  <h4>The Mechanism Name: The Compounding Loop</h4>
+
+  <p>Every other approach in this market is a straight line: research &rarr; create &rarr; launch &rarr; hope. The results die at the end. Nothing feeds back. Your mechanism is a circle:</p>
+
+  <div class="card-grid">
+    <div class="cg">
+      <strong>1. Intelligence</strong>
+      <span class="pill pill-sage">FEEDS &rarr; BRIEFING</span>
+      <p style="font-size:.84rem;margin-top:6px">Before a brief gets written: Meta Ad Library, MagicBriefs, TryAtria, Kalodata, AdSpy. 200+ customer reviews mined for exact language. Every angle that&rsquo;s won, fatigued, or untested in the competitive set &mdash; mapped. AI pipeline produces 50+ angles. This takes 6 hours. The last agency spent 6 minutes.</p>
+    </div>
+    <div class="cg">
+      <strong>2. Briefing &amp; Scripting</strong>
+      <span class="pill pill-sage">FEEDS &rarr; PRODUCTION</span>
+      <p style="font-size:.84rem;margin-top:6px">Every brief answers one question: &ldquo;Why this angle, for this audience, at this awareness stage?&rdquo; VSL and UGC scripts built on hook discipline (the 3 Golden Rules), NESB frames, story structure. No script ships without a thesis attached to it.</p>
+    </div>
+    <div class="cg">
+      <strong>3. Production</strong>
+      <span class="pill pill-gold">FEEDS &rarr; MEDIA</span>
+      <p style="font-size:.84rem;margin-top:6px">Higgsfield, Hedra, Adobe Firefly, Freepik + Claude/ChatGPT/Manus workflows. The speed isn&rsquo;t about cutting corners &mdash; it&rsquo;s about testing 12 angles in the time the competition tests 3. Velocity creates data. Data feeds the loop.</p>
+    </div>
+    <div class="cg">
+      <strong>4. Media</strong>
+      <span class="pill pill-sage">FEEDS &rarr; INTELLIGENCE</span>
+      <p style="font-size:.84rem;margin-top:6px">Budget pacing, creative rotation, audience strategy across Shopify accounts. TripleWhale attribution tied to real profit, not dashboard ROAS. <strong>Here&rsquo;s the part nobody else does:</strong> every result goes BACK into the intelligence layer. What won tells you what to test next. The loop closes. The ad account learns.</p>
+    </div>
+    <div class="cg">
+      <strong>5. Funnel Diagnostics</strong>
+      <span class="pill pill-gold">CATCHES WHAT ADS CAN&rsquo;T</span>
+      <p style="font-size:.84rem;margin-top:6px">The ad might be perfect. The landing page kills it. Or the offer is wrong. Or the post-purchase email never sends. Most operators stop at the ad. Full-funnel means auditing every joint in the plumbing &mdash; landing page, offer mechanics, lifecycle email. Ads are one pipe.</p>
+    </div>
+    <div class="cg">
+      <strong>6. Ops &amp; Team</strong>
+      <span class="pill pill-sage">MAKES IT OUTLAST YOU</span>
+      <p style="font-size:.84rem;margin-top:6px">Strategists, editors, VAs running on documented SOPs in ClickUp and Notion. The system doesn&rsquo;t depend on one person&rsquo;s memory. It runs on documentation. When the engagement ends, the machine stays.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-sage">
+    <span class="label">Why This Mechanism Is Uncopyable (Technique #6 &mdash; Concentration)</span>
+    Technique #6 says: point out weaknesses in the competition, then prove your product eliminates them. Competitors can say &ldquo;we do creative and media.&rdquo; But they can&rsquo;t demonstrate a <em>loop.</em> Their portfolio shows ads. Yours shows the research that chose the angle, the data that validated it, the next test it generated, and the revenue impact across the funnel. The loop IS the proof. Nobody else has it because nobody else runs both sides with one brain.
+  </div>
+
+  <h3>Technique #4 Applied &mdash; Redefinition (Removing the Price Objection)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Redefinition: Price Reduction</div>
+    <p>Technique #4 says: when the product seems too expensive, redefine the value comparison. Don&rsquo;t defend $3,500. Redefine what $3,500 is being compared TO. Right now they compare it to &ldquo;one freelancer.&rdquo; Redefine it as &ldquo;the cost of two separate hires who don&rsquo;t talk.&rdquo;</p>
+  </div>
+
+  <div class="skeptic">
+    <div class="voice">&ldquo;$3,500/month for a freelancer? That&rsquo;s a lot.&rdquo;</div>
+    <div class="answer">Add up what you&rsquo;re spending now. A media buyer runs $1,500&ndash;2,500. A content person runs $1,000&ndash;2,000. Add the 6 hours a week you spend translating between them, forwarding briefs, sitting on calls that produce nothing, and you&rsquo;re over $4K for a system where <strong>every dollar forgets what the last dollar learned.</strong> Same budget. But now the money remembers.</div>
+  </div>
+
+  <h3>Technique #3 Applied &mdash; Gradualization (Building Belief for the Skeptical)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Gradualization</div>
+    <p>Technique #3: &ldquo;Start with a statement that will be immediately and entirely accepted. Then build a chain of acceptances.&rdquo; The Scorched buyer won&rsquo;t accept &ldquo;I&rsquo;m different from your last agency&rdquo; &mdash; every agency says that. Start with something undeniable, then build.</p>
+  </div>
+
+  <div class="skeptic">
+    <div class="voice">&ldquo;I&rsquo;ve been burned before. Agencies promised strategy, delivered nothing.&rdquo;</div>
+    <div class="answer">
+      <strong>Step 1 (undeniable):</strong> The last agency gave you a slideshow. You know what a slideshow looks like.<br>
+      <strong>Step 2 (accepted):</strong> What you didn&rsquo;t get was someone who pulled competitive intelligence from 5 tools, mined 200 reviews for exact customer language, and mapped every winning angle in your category before writing a single brief.<br>
+      <strong>Step 3 (new conclusion):</strong> I&rsquo;ll do that research for free. Right now. Before you pay anything. If the research doesn&rsquo;t make you angry at what your last agency charged for, it wasn&rsquo;t good enough. Walk away with the insights either way.
+    </div>
+  </div>
+
+  <div class="skeptic">
+    <div class="voice">&ldquo;Can one person really run both creative and media?&rdquo;</div>
+    <div class="answer">
+      <strong>Step 1:</strong> One person can&rsquo;t. You&rsquo;re right.<br>
+      <strong>Step 2:</strong> That&rsquo;s why there&rsquo;s a team &mdash; strategists, editors, VAs &mdash; all running on the same SOPs, the same dashboards, the same playbook.<br>
+      <strong>Step 3:</strong> The difference isn&rsquo;t that one person does everything. It&rsquo;s that one person <strong>owns the feedback loop.</strong> No handoff. No translation layer. No &ldquo;let me check with the creative team.&rdquo; One brain connects what the data says to what the next ad should be.
+    </div>
+  </div>
+
+  <div class="skeptic">
+    <div class="voice">&ldquo;What about compliance? Health/beauty is a minefield.&rdquo;</div>
+    <div class="answer">8 health and wellness brands &mdash; Metabolae, ProHeal, Neuro-bella, Myrestelle, Heykeratin. Every claim reviewed against Meta&rsquo;s policies before the script ships. Not after. Not &ldquo;we&rsquo;ll fix it if it gets flagged.&rdquo; Before. <strong>Zero account bans across all eight.</strong></div>
+  </div>
+
+  <div class="skeptic">
+    <div class="voice">&ldquo;What happens when I stop paying?&rdquo;</div>
+    <div class="answer">You keep the machine. SOPs documented in ClickUp and Notion. KPI dashboards set up. AI workflows configured. Creative testing frameworks built. The research methodology. The team you trained can run it. I build the system to outlast the engagement.</div>
+  </div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; The Mechanism Section</div>
+
+    <div class="decision" style="background:rgba(255,255,255,.06);border-color:var(--gold)">
+      <div class="d-label">NESB Frame Test on This Section</div>
+      <div class="nesb" style="max-width:300px">
+        <span class="hit">NEW &#10003;</span>
+        <span class="hit">EASY &#10003;</span>
+        <span class="hit">SAFE &#10003;</span>
+        <span class="hit">BIG &#10003;</span>
+      </div>
+      <p style="color:#A0A09C;font-size:.82rem;margin-top:6px">NEW: &ldquo;first closed-loop system.&rdquo; EASY: &ldquo;hand off the whole thing.&rdquo; SAFE: &ldquo;free audit, zero bans, system outlasts me.&rdquo; BIG: &ldquo;11 brands, 7 figures, every dollar learns.&rdquo;</p>
+    </div>
+
+    <p class="headline">Your media buyer and your creative person share a Slack workspace. Not a strategy.</p>
+    <p class="sub">That&rsquo;s why nothing compounds.</p>
+    <h4>How the loop works (landing page version)</h4>
+    <ul>
+      <li><strong>Intelligence first.</strong> Before a brief gets written, AI-powered research maps every winning angle, every fatigued hook, and every untested opportunity in your category. 50+ angles. Zero guesswork.</li>
+      <li><strong>Briefs with a thesis.</strong> Every script answers: &ldquo;why this angle, for this audience, at this awareness stage?&rdquo; Not &ldquo;make something cool.&rdquo;</li>
+      <li><strong>Results feed the next brief.</strong> What the data proves goes back into the next cycle. The loop closes. The ad account starts to learn, not just spend.</li>
+      <li><strong>Beyond the ad.</strong> If the landing page leaks, if the offer is off, if the email never sends &mdash; it shows up in the diagnostic. Ads are one pipe. I check every joint.</li>
+      <li><strong>A team, not a freelancer.</strong> Strategists, editors, VAs on documented SOPs. The system scales and it survives without you managing it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== IGNITE ============================== -->
+<section id="ignite">
+  <div class="sep"></div>
+  <div class="part-label">Part 3</div>
+  <h2>Ignite</h2>
+  <p style="color:var(--muted)">Headlines built with the 38 Strengtheners. CTAs built with Rule 7.5. Page architecture built as a Slippery Slide (Rule #5). Every decision sourced.</p>
+
+  <h3>Hero Headlines &mdash; Built With The 38 Strengtheners</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Headline Construction</div>
+    <p>Market = Stage 3 sophistication. Schwartz says: feature the mechanism in the headline, then restate the full claim beneath it. Each headline below uses specific strengtheners from Part 11.</p>
+  </div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; Hero Headlines</div>
+
+    <p class="headline">A. &ldquo;The gap between your creative person and your media buyer is a $4,200-a-month leak nobody plugs.&rdquo;</p>
+    <p class="sub">Strengtheners: #17 (specific number), #11 (specify the problem), #4 (metaphor &mdash; leak), #1 (measure the claim). NESB: hits NEW (nobody names this problem), BIG ($4,200).</p>
+    <div class="nesb" style="max-width:240px"><span class="hit">NEW &#10003;</span><span class="miss">EASY</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+
+    <p class="headline" style="margin-top:20px">B. &ldquo;11 DTC brands use a system where every ad result becomes the next ad&rsquo;s brief. Your competitors test in the dark.&rdquo;</p>
+    <p class="sub">Strengtheners: #17 (specific number), #3 (compare), #21 (name the mechanism), #8 (put reader in headline). NESB: hits NEW (the system), BIG (11 brands), EASY (implied).</p>
+    <div class="nesb" style="max-width:240px"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+
+    <p class="headline" style="margin-top:20px">C. &ldquo;Stop paying two people to produce one result neither of them can measure.&rdquo;</p>
+    <p class="sub">Strengtheners: #11 (specify the problem), #6 (dramatize), #31 (address the problem). Short. Punchy. The math is implicit.</p>
+    <div class="nesb" style="max-width:240px"><span class="miss">NEW</span><span class="hit">EASY &#10003;</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+
+    <p class="headline" style="margin-top:20px">D. &ldquo;Your ad account doesn&rsquo;t have a budget ceiling. It has a memory problem. Here&rsquo;s the fix.&rdquo;</p>
+    <p class="sub">Strengtheners: #37 (challenge limiting belief), #4 (metaphor &mdash; memory), #21 (mechanism tease). Targets the Plateaued buyer specifically.</p>
+    <div class="nesb" style="max-width:240px"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+
+    <h4>Sub-headline (below hero, any variant)</h4>
+    <ul>
+      <li>&ldquo;I run creative and Meta ads as one compounding system for Health, Beauty, and Ecommerce DTC brands. Research-backed. Full-funnel. $3,500/month. The first audit is free.&rdquo;</li>
+    </ul>
+    <p class="sub">SAFE added: free audit, specific price, no ambiguity. Now all four NESB frames are covered between headline + sub.</p>
+  </div>
+
+  <h3>Page Architecture &mdash; The Slippery Slide (Rule #5)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Rule #5 Applied</div>
+    <p>&ldquo;Once they start reading, they cannot stop until the end. Never give them a natural place to stop until the CTA.&rdquo; Each section must earn the next scroll. The page is a descending slide &mdash; each section creates an open loop that the next section closes.</p>
+  </div>
+
+  <ol>
+    <li><strong>Hero (Proclamation):</strong> The headline names a problem they feel but can&rsquo;t articulate. Open loop: &ldquo;what leak? What gap?&rdquo;</li>
+    <li><strong>&ldquo;This Sound Familiar?&rdquo; (Identification):</strong> Closes the loop &mdash; shows them the leak in their own life. Opens new loop: &ldquo;wait, is that actually what&rsquo;s wrong?&rdquo;</li>
+    <li><strong>&ldquo;Here&rsquo;s Why&rdquo; (Mechanization):</strong> Closes the loop &mdash; explains why their current setup breaks. Opens new loop: &ldquo;so what&rsquo;s the alternative?&rdquo;</li>
+    <li><strong>&ldquo;The Loop&rdquo; (Mechanism Feature):</strong> Closes the loop &mdash; shows the unified system. Opens new loop: &ldquo;does this actually work?&rdquo;</li>
+    <li><strong>Case Study (Proof):</strong> Closes the loop &mdash; Metabolae or SleepPods, before/after story arc. Opens new loop: &ldquo;what would working with this person actually feel like?&rdquo;</li>
+    <li><strong>&ldquo;How I Work&rdquo; (Values):</strong> Closes the loop &mdash; shows the experience. Opens new loop: &ldquo;but what about [objection]?&rdquo;</li>
+    <li><strong>Objections (Redefinition):</strong> Closes every remaining loop. The only open loop left: &ldquo;how do I start?&rdquo;</li>
+    <li><strong>CTA (Offer):</strong> Closes the final loop. Free audit. Benefit-specific.</li>
+  </ol>
+
+  <div class="proof-bar">
+    <div class="pb"><div class="pb-num">11</div><div class="pb-lbl">Brands managed</div></div>
+    <div class="pb"><div class="pb-num">8</div><div class="pb-lbl">Health &amp; wellness</div></div>
+    <div class="pb"><div class="pb-num">0</div><div class="pb-lbl">Account bans</div></div>
+    <div class="pb"><div class="pb-num">3</div><div class="pb-lbl">Markets</div></div>
+    <div class="pb"><div class="pb-num">Free</div><div class="pb-lbl">Audit, no contract</div></div>
+  </div>
+
+  <h3>&ldquo;How I Work&rdquo; &mdash; Show Don&rsquo;t Tell (Strategy #4) Applied to Values</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Strategy #4 on Values</div>
+    <p>Most landing pages say &ldquo;we&rsquo;re transparent and data-driven.&rdquo; That&rsquo;s TELLING. Strategy #4: show the BEHAVIOR. &ldquo;Imagine waking up without hitting snooze&rdquo; > &ldquo;you&rsquo;ll have more energy.&rdquo; Same principle applied to work values: show what the founder&rsquo;s week looks like, not what the freelancer claims to be.</p>
+  </div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; &ldquo;How I Work&rdquo;</div>
+    <ul>
+      <li><strong>Monday morning, you open a Loom.</strong> Not a slideshow of last month&rsquo;s metrics. A breakdown: here&rsquo;s what we tested, here&rsquo;s what the data said, here&rsquo;s what we&rsquo;re changing this week and why. You watch it in 8 minutes. You know exactly where your money went.</li>
+      <li><strong>Thursday, an ad underperforms.</strong> By Friday, it&rsquo;s paused. Not &ldquo;let&rsquo;s give it one more week.&rdquo; Not &ldquo;the creative was expensive to produce.&rdquo; Dead ads don&rsquo;t get funerals. Budget moves to the winner.</li>
+      <li><strong>End of month, you check your bank account.</strong> Not your ROAS dashboard. Your actual bank account. TripleWhale attribution tied to profit, not vanity metrics. If the number didn&rsquo;t go up, something is wrong and we find it.</li>
+      <li><strong>Three months in, you take a weekend off.</strong> The system runs. The SOPs exist. The team knows the playbook. You open your laptop Monday and the dashboards moved without you.</li>
+    </ul>
+  </div>
+
+  <h3>CTA Copy &mdash; Rule 7.5 Applied</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; Rule 7.5</div>
+    <p>&ldquo;Never use a generic CTA. Always tie the CTA to a benefit or urgency.&rdquo; BAD: &ldquo;Click to learn more.&rdquo; GOOD: &ldquo;Click below to get smooth, hair-free skin.&rdquo; The CTA must name what they GET, not what they DO.</p>
+  </div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; CTAs</div>
+    <ul>
+      <li>&ldquo;See where your revenue actually leaks. Free full-funnel audit &mdash; no contract, no pitch.&rdquo;</li>
+      <li>&ldquo;Get the research your last agency should have done before they took your first check. Free.&rdquo;</li>
+      <li>&ldquo;I&rsquo;ll map every winning angle in your category and show you the three nobody&rsquo;s tested. Free audit.&rdquo;</li>
+      <li>&ldquo;Book the audit. Hate it? Keep the research and walk.&rdquo;</li>
+    </ul>
+    <h4>What&rsquo;s Wrong With Generic CTAs (Rule 7.5 Violations)</h4>
+    <ul>
+      <li style="color:#A0A09C;text-decoration:line-through">&ldquo;Get started&rdquo; &mdash; started with what? No benefit named.</li>
+      <li style="color:#A0A09C;text-decoration:line-through">&ldquo;Learn more&rdquo; &mdash; nobody wants to &ldquo;learn more.&rdquo; They want a result.</li>
+      <li style="color:#A0A09C;text-decoration:line-through">&ldquo;Schedule a call&rdquo; &mdash; a call is a cost, not a benefit. Name what they get ON the call.</li>
+      <li style="color:#A0A09C;text-decoration:line-through">&ldquo;Let&rsquo;s chat&rdquo; &mdash; no benefit, no urgency, no specificity. Dead on arrival.</li>
+    </ul>
+  </div>
+
+  <h3>Emotional Map &mdash; Dark Side / Bright Side (Part 7.8)</h3>
+
+  <div class="decision">
+    <div class="d-label">Copywriting Decision &mdash; 7.8 Applied</div>
+    <p>Dark Side shows the painful present without the product (creates urgency). Bright Side shows the positive future WITH the product (creates desire). The bridge line moves them from dark to bright. Each buyer gets both &mdash; alternate in the content.</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Buyer</th><th>Dark Side (Their 2 AM Thought)</th><th>Bright Side (The Future They Buy)</th><th>Bridge Line</th></tr>
+    <tr>
+      <td>Duplicator</td>
+      <td>You forwarded the same Slack message to two contractors today. Neither one replied to the other.</td>
+      <td>One thread. One dashboard. One person who knows why the last ad worked and what the next one should say.</td>
+      <td>&ldquo;Same $3,500. But now every dollar teaches the next one where to go.&rdquo;</td>
+    </tr>
+    <tr>
+      <td>Drowning</td>
+      <td>You tweaked a thumbnail at 11pm. You couldn&rsquo;t remember why. Tomorrow you&rsquo;ll do it again.</td>
+      <td>You open the laptop Monday. Dashboards moved without you. You spent Saturday with your family.</td>
+      <td>&ldquo;You built the product. The product deserves a machine that sells it while you sleep.&rdquo;</td>
+    </tr>
+    <tr>
+      <td>Compliant</td>
+      <td>Your competitor is running claims that would get flagged in a week. When they get banned, Meta&rsquo;s algorithm won&rsquo;t care that you&rsquo;re different.</td>
+      <td>Aggressive copy that outsells them &mdash; and an ad account that&rsquo;s still running in 6 months.</td>
+      <td>&ldquo;Compliance isn&rsquo;t the ceiling. It&rsquo;s the moat. The brands that stay standing are the ones that sell hard within the rails.&rdquo;</td>
+    </tr>
+    <tr>
+      <td>Scorched</td>
+      <td>You paid for &ldquo;strategy&rdquo; and got a Canva template with your logo on it. You can&rsquo;t tell if the next hire will be the same.</td>
+      <td>A research deliverable so deep you get angry at what the last agency charged for.</td>
+      <td>&ldquo;The audit is the product. If it doesn&rsquo;t earn the retainer, it wasn&rsquo;t good enough.&rdquo;</td>
+    </tr>
+    <tr>
+      <td>Plateaued</td>
+      <td>You increased spend by 40%. CPA went up 38%. Net gain: a bigger credit card bill.</td>
+      <td>The ad account starts compounding &mdash; each month is informed by the last, not resetting from zero.</td>
+      <td>&ldquo;Your ad account has amnesia. Every new creative starts from scratch because nobody feeds results back into the briefs.&rdquo;</td>
+    </tr>
+    <tr>
+      <td>Leaky</td>
+      <td>CTR hit 3.2%. You celebrated. Revenue didn&rsquo;t move. The clicks are landing somewhere and dying.</td>
+      <td>A full-funnel map: exactly where the money enters and exactly where it leaks out.</td>
+      <td>&ldquo;The ad did its job. Something between the click and the checkout is swallowing the sale.&rdquo;</td>
+    </tr>
+  </table></div>
+</section>
+
+<!-- ============================== VARIATE ============================== -->
+<section id="variate">
+  <div class="sep gold"></div>
+  <div class="part-label gold">Part 4</div>
+  <h2>Variate</h2>
+  <p style="color:var(--muted)">12 content angles. Each one mapped to a buyer, a lead type, a Schwartz technique, and a NESB score. No angle ships without a reason.</p>
+
+  <h3>Platform Strategy</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Platform</th><th>Role</th><th>Content Type</th><th>Cadence</th></tr>
+    <tr><td><strong>LinkedIn</strong></td><td><span class="pill pill-sage">PRIMARY</span></td><td>System breakdowns, diagnostic posts, mechanism reveals, case studies</td><td>3&ndash;5x/week</td></tr>
+    <tr><td><strong>Twitter/X</strong></td><td><span class="pill pill-med">AMPLIFIER</span></td><td>Hot takes, ad teardowns, ecom engagement. Short, opinionated.</td><td>Daily replies + 2&ndash;3/week</td></tr>
+    <tr><td><strong>DM</strong></td><td><span class="pill pill-gold">CLOSER</span></td><td>Personalized: &ldquo;I looked at your ad library. Here&rsquo;s what I noticed.&rdquo; Not &ldquo;hey I do ads.&rdquo;</td><td>5&ndash;10/week</td></tr>
+    <tr><td><strong>YouTube</strong></td><td><span class="pill pill-high">Q2 BUILD</span></td><td>Full system walkthroughs, pipeline demos, before/after breakdowns</td><td>1x/week when ready</td></tr>
+  </table></div>
+
+  <h3>The 12 Angles &mdash; Fully Sourced</h3>
+
+  <div class="angle">
+    <div class="angle-head"><strong>1. &ldquo;The Two-Invoice Problem&rdquo;</strong><span class="pill pill-low">DIAGNOSE</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Duplicator &middot; <strong>Lead:</strong> Problem-Solution &middot; <strong>Technique:</strong> #1 Intensification (picture the black side) &middot; <strong>Awareness:</strong> Stage 3</p>
+      <div class="hook">&ldquo;Count the invoices in your ad operation. If there are two, you have a coordination problem dressed up as a team. The most expensive line item in your ad budget isn&rsquo;t on any invoice. It&rsquo;s the decisions that never get made because two people share a budget but not a brain.&rdquo;</div>
+      <div class="nesb"><span class="hit">NEW &#10003;</span><span class="miss">EASY</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+      <div class="hook-note">Category-creating angle. Repeat weekly in different formats. It never exhausts because the market keeps hiring in silos.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>2. &ldquo;Your Ad Account Has Amnesia&rdquo;</strong><span class="pill pill-low">DIAGNOSE</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Plateaued &middot; <strong>Lead:</strong> Proclamation &middot; <strong>Technique:</strong> #4 Redefinition (escalate from minor to major) &middot; <strong>Awareness:</strong> Stage 3</p>
+      <div class="hook">&ldquo;Your ad account doesn&rsquo;t have a budget ceiling. It has a memory problem. Every new creative starts from zero because nobody fed last month&rsquo;s results into this month&rsquo;s briefs. You&rsquo;re not plateaued. You&rsquo;re resetting.&rdquo;</div>
+      <div class="nesb"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="miss">SAFE</span><span class="hit">BIG &#10003;</span></div>
+      <div class="hook-note">Redefines &ldquo;plateau&rdquo; as &ldquo;amnesia.&rdquo; New frame that makes the mechanism (the compounding loop) the obvious fix.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>3. &ldquo;The Background Color Test&rdquo;</strong><span class="pill pill-low">DIAGNOSE</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Drowning &middot; <strong>Lead:</strong> Problem-Solution &middot; <strong>Technique:</strong> #1 Intensification (put reader in the action) &middot; <strong>Awareness:</strong> Stage 3&ndash;4</p>
+      <div class="hook">&ldquo;You changed the background from blue to green. Meta&rsquo;s algorithm saw the same ad. You updated the CTA button color. Same ad. You swapped the first frame. Still the same ad. You spent the week testing air. Here&rsquo;s what an actual test looks like.&rdquo;</div>
+      <div class="nesb"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="miss">SAFE</span><span class="miss">BIG</span></div>
+      <div class="hook-note">Intensification #3: put the reader in the middle of the action. They visualize their own week. It stings because it&rsquo;s true.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>4. &ldquo;6 Hours Before The Brief&rdquo;</strong><span class="pill pill-sage">SYSTEM</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Scorched &middot; <strong>Lead:</strong> Secret &middot; <strong>Technique:</strong> #5 Mechanization (name, describe, feature) &middot; <strong>Awareness:</strong> Stage 3&ndash;4</p>
+      <div class="hook">&ldquo;Before I write a single creative brief, I spend 6 hours in 5 competitive intelligence tools mining your category. I map every angle that&rsquo;s winning, every hook that&rsquo;s fatigued, every gap nobody&rsquo;s testing. 50+ angles. Zero guesswork. This is what happens before the brief. Your last agency skipped this part entirely.&rdquo;</div>
+      <div class="nesb"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="hit">SAFE &#10003;</span><span class="hit">BIG &#10003;</span></div>
+      <div class="hook-note">All four NESB frames. NEW: the research process. EASY: I do it, not you. SAFE: data, not guessing. BIG: 50+ angles, 5 tools, 6 hours. This is the anchor angle &mdash; it shows the mechanism in action.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>5. &ldquo;The Arrow Nobody Draws&rdquo;</strong><span class="pill pill-sage">SYSTEM</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> All &middot; <strong>Lead:</strong> Proclamation &middot; <strong>Technique:</strong> #5 Mechanization (feature the mechanism) &middot; <strong>Awareness:</strong> Stage 3</p>
+      <div class="hook">&ldquo;Research &rarr; Brief &rarr; Production &rarr; Media &rarr; Results. That&rsquo;s what everyone draws. But there&rsquo;s a 6th arrow: Results &rarr; Research. That arrow is the difference between an ad account that spends and one that learns. Nobody draws it because nobody closes the loop.&rdquo;</div>
+      <div class="hook-note">Visual content. Draw the loop. The missing arrow IS the pitch. Carousel or diagram post.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>6. &ldquo;AI Decides What to Make, Not What It Looks Like&rdquo;</strong><span class="pill pill-sage">SYSTEM</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> All &middot; <strong>Lead:</strong> Proclamation &middot; <strong>Technique:</strong> #4 Redefinition &middot; <strong>Awareness:</strong> Stage 3&ndash;4</p>
+      <div class="hook">&ldquo;Everyone is using AI to make ads faster. Speed without direction is just faster failure. The right use of AI isn&rsquo;t generating the creative. It&rsquo;s deciding which creative is worth making in the first place.&rdquo;</div>
+      <div class="hook-note">Redefines AI from &ldquo;production tool&rdquo; to &ldquo;decision engine.&rdquo; Separates you from every &ldquo;AI-powered creative&rdquo; claim.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>7. &ldquo;Metabolae: One SKU, Seven Figures&rdquo;</strong><span class="pill pill-high">PROOF</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Compliant &middot; <strong>Lead:</strong> Story &middot; <strong>Technique:</strong> #1 Intensification (#14 tell a condensed story) &middot; <strong>Awareness:</strong> Stage 2</p>
+      <div class="hook">&ldquo;One supplement. One SKU. No viral moment. No influencer deal. Just a system: research picked the angles, briefs carried a thesis, media fed results back into creative. 15,000+ reviews. 100,000+ customers. Scaled from 5 to 7 figures on the same mechanism you&rsquo;d get.&rdquo;</div>
+      <div class="hook-note">Lead with the constraint (single SKU). The constraint makes the result more believable, not less. Story Lead &mdash; let the reader reverse-engineer the quality.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>8. &ldquo;Zero Bans&rdquo;</strong><span class="pill pill-high">PROOF</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Compliant &middot; <strong>Lead:</strong> Promise &middot; <strong>Technique:</strong> #6 Concentration (destroy the alternative) &middot; <strong>Awareness:</strong> Stage 3&ndash;4</p>
+      <div class="hook">&ldquo;Open your competitors&rsquo; Meta Ad Library. Count the ones making health claims without disclaimers. Now ask yourself how many of them will still have a functioning ad account in six months. I&rsquo;ve scaled 8 health and wellness brands. The number I&rsquo;d tattoo on my forehead: zero bans.&rdquo;</div>
+      <div class="hook-note">Technique #6: point out competitor weaknesses (they get banned), then prove you eliminate them (zero bans). Attack + solution in the same breath.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>9. &ldquo;SleepPods: From Prayer to Playbook&rdquo;</strong><span class="pill pill-high">PROOF</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Drowning + Plateaued &middot; <strong>Lead:</strong> Story &middot; <strong>Technique:</strong> #1 Intensification (#5 stretch benefits over time) &middot; <strong>Awareness:</strong> Stage 2&ndash;3</p>
+      <div class="hook">&ldquo;A Swedish sleep tech brand. No systems. No SOPs. No attribution. No team. The founder hadn&rsquo;t taken a Saturday off since February. We built the entire growth operation from scratch &mdash; research pipeline, creative SOPs, media playbook, team training. 25,000 customers later, the system runs without anyone calling me.&rdquo;</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>10. &ldquo;The Click That Died on the Landing Page&rdquo;</strong><span class="pill pill-gold">BEYOND ADS</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Leaky &middot; <strong>Lead:</strong> Problem-Solution &middot; <strong>Technique:</strong> #1 Intensification (#9 picture the black side) &middot; <strong>Awareness:</strong> Stage 3</p>
+      <div class="hook">&ldquo;You optimized the ad until CTR hit 3.2%. Celebrated. Then watched revenue flatline. The ad did its job. It sent a motivated buyer to a page that asked them to read 900 words before showing a buy button. The click arrived alive. The landing page killed it.&rdquo;</div>
+      <div class="hook-note">Positions you beyond ads. Nobody in the solo strategist space talks full-funnel. NEW frame &mdash; and a story lead that shows the problem cinematically.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>11. &ldquo;The Email You Never Sent&rdquo;</strong><span class="pill pill-gold">BEYOND ADS</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> All &middot; <strong>Lead:</strong> Secret &middot; <strong>Technique:</strong> #1 Intensification (#9 picture the black side) &middot; <strong>Awareness:</strong> Stage 3&ndash;4</p>
+      <div class="hook">&ldquo;Top DTC brands generate 30&ndash;40% of revenue from email and SMS. You&rsquo;re spending $4K/month acquiring customers through Meta and then&hellip; silence. No welcome sequence. No abandon cart. No post-purchase. You&rsquo;re filling a bathtub with the drain open and blaming the faucet.&rdquo;</div>
+      <div class="hook-note">The bathtub/drain metaphor does three things: makes the abstract concrete (Intensification #11), shows the black side (#9), and positions full-funnel as essential, not optional.</div>
+    </div>
+  </div>
+
+  <div class="angle">
+    <div class="angle-head"><strong>12. &ldquo;The $3,500 Math&rdquo;</strong><span class="pill pill-low">DIAGNOSE</span></div>
+    <div class="angle-body">
+      <p><strong>Buyer:</strong> Duplicator &middot; <strong>Lead:</strong> Offer &middot; <strong>Technique:</strong> #4 Redefinition (price reduction) &middot; <strong>Awareness:</strong> Stage 2&ndash;3</p>
+      <div class="hook">&ldquo;Media buyer: $2,000. Content person: $1,500. Hours you spend coordinating them: 6 per week at $75/hour implicit cost = $1,800/month. Total: $5,300 for a system where every dollar forgets what the last dollar learned. Or: $3,500 for a system where every dollar teaches the next one where to go. Same budget. Different architecture.&rdquo;</div>
+      <div class="nesb"><span class="hit">NEW &#10003;</span><span class="hit">EASY &#10003;</span><span class="hit">SAFE &#10003;</span><span class="hit">BIG &#10003;</span></div>
+      <div class="hook-note">Technique #4 in action: the product seemed expensive at $3,500. After redefinition, it&rsquo;s cheaper than what they&rsquo;re already doing. All four NESB frames hit.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== EVOLVE ============================== -->
+<section id="evolve">
+  <div class="sep"></div>
+  <div class="part-label">Part 5</div>
+  <h2>Evolve</h2>
+  <p style="color:var(--muted)">90 days. The goal is not &ldquo;build a following.&rdquo; The goal: 4&ndash;6 audits/month &times; 40% close = $10,500&ndash;17,500 MRR by day 90.</p>
+
+  <h3>Phase 1: Plant the Flag (Weeks 1&ndash;4)</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Week</th><th>Action</th><th>What It Produces</th></tr>
+    <tr><td>1</td><td>Lock the positioning in one paragraph. Test it: can someone who heard it once repeat it back? If not, simplify. Use it verbatim on LinkedIn, website, DMs, intro calls.</td><td>Positioning that travels by word-of-mouth without losing meaning.</td></tr>
+    <tr><td>1</td><td>Create one anonymized sample audit &mdash; Brand Intel excerpt + competitive landscape + angle map. This is the Secret Lead in physical form: the prospect sees quality before they pay.</td><td>A deliverable the Scorched buyer can evaluate without risk.</td></tr>
+    <tr><td>2</td><td>Update LinkedIn: headline is the positioning, About section is the mechanism, Featured section holds the sample audit.</td><td>Profile that functions as a silent sales page. The profile IS the ad.</td></tr>
+    <tr><td>2&ndash;3</td><td>Publish 5 posts: Angles 1, 3, 4, 10, 12. These are the highest-tension angles &mdash; they name problems and show mechanisms. Track DMs, not likes. Likes are vanity. DMs are pipeline.</td><td>5 posts live. Measure: which angle produces inbound conversations?</td></tr>
+    <tr><td>3&ndash;4</td><td>Identify 20 brands on Shopify doing $10&ndash;50K/month with visible Meta activity AND evidence of separate creative/media contractors. DM each with a specific observation from their ad library + audit offer.</td><td>20 outreach messages. Each one personalized: &ldquo;I looked at your ad library. Here&rsquo;s what I noticed.&rdquo;</td></tr>
+    <tr><td>4</td><td>Deliver 2&ndash;3 free audits. Full AI pipeline + funnel diagnostic. Over-deliver aggressively. The audit should make them angry at what the last agency charged.</td><td>2&ndash;3 audits that convert or generate referrals.</td></tr>
+  </table></div>
+
+  <h3>Phase 2: Build Proof (Weeks 5&ndash;8)</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Week</th><th>Action</th><th>What It Produces</th></tr>
+    <tr><td>5&ndash;6</td><td>Publish Metabolae and SleepPods case studies (Angles 7, 9). Full story arc: before state &rarr; intervention &rarr; system &rarr; result. Use Story Lead structure &mdash; relatable protagonist, conflict, resolution, golden thread back to the mechanism.</td><td>2 bottom-funnel assets that produce conversions for months.</td></tr>
+    <tr><td>5&ndash;6</td><td>Scale DM outreach to 10/week. Focus health/beauty DTC (strongest proof is there). Each DM starts with a specific observation, not a pitch.</td><td>20+ targeted conversations.</td></tr>
+    <tr><td>7</td><td>Publish &ldquo;Zero Bans&rdquo; compliance content (Angle 8). This is Technique #6 (Concentration): destroy the alternative by showing competitors getting banned, then prove you eliminate the risk.</td><td>Vertical authority piece that pulls every compliance-paranoid founder in health/beauty DTC.</td></tr>
+    <tr><td>7&ndash;8</td><td>Engage in r/ecommerce, r/FacebookAds, ecom Twitter. Value replies &mdash; diagnose their problem using the framework (identify awareness stage, name the real issue). No pitching. Helpful replies produce warm DMs.</td><td>5+ replies/week. Warm inbound from community.</td></tr>
+    <tr><td>8</td><td>Month 2 review. Which angles produced DMs? Which buyers responded? Kill underperformers (Rule #2: remove your emotion). Double the winners.</td><td>Data-driven content calendar for Month 3.</td></tr>
+  </table></div>
+
+  <h3>Phase 3: Compound (Weeks 9&ndash;12)</h3>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Week</th><th>Action</th><th>What It Produces</th></tr>
+    <tr><td>9&ndash;10</td><td>Launch &ldquo;System Reveal&rdquo; series (Angle 5). Show the actual compounding loop in action &mdash; the research, the brief, the result, the next brief it generated. This is Mechanization #3: feature the mechanism as the star.</td><td>Content nobody can copy because it shows YOUR system, not generic advice.</td></tr>
+    <tr><td>9&ndash;10</td><td>Evaluate YouTube. Data decides, not aspiration. If LinkedIn produces 4+ audit calls/month, YouTube can wait. If not, first video: Angle 5 as a full walkthrough.</td><td>Platform decision based on pipeline data.</td></tr>
+    <tr><td>11</td><td>Formalize premium tier ($5,500&ndash;7K/mo) for brands past $50K/month. More aggressive testing cadence, weekly strategy calls, dedicated creative pipeline. The premium tier also serves as a price anchor &mdash; makes $3,500 feel reasonable by comparison.</td><td>Upsell path + price anchor for new prospects.</td></tr>
+    <tr><td>12</td><td>Quarter review: pipeline volume, audit &rarr; paid conversion rate, client retention, total MRR, referral sources. Identify: which buyer type converts best? Which angle produces highest-quality leads? Build Q2 around the data.</td><td>Q1 reality check + Q2 strategy.</td></tr>
+  </table></div>
+
+  <h3>The Scoreboard</h3>
+
+  <div class="cg" style="border-color:var(--sage);margin:16px 0">
+    <strong>Primary Metric: Audit &rarr; Paid Conversion Rate</strong>
+    <p style="font-size:.88rem;margin-top:4px">
+      <strong>Above 40%:</strong> The audit sells itself. The mechanism is validated. Scale outreach.<br>
+      <strong>30&ndash;40%:</strong> Healthy. Optimize the audit-to-proposal transition &mdash; likely a handoff problem of your own (ironic, fix it).<br>
+      <strong>Below 20%:</strong> Either the audit isn&rsquo;t deep enough or you&rsquo;re attracting the wrong buyers. Diagnose before scaling.
+    </p>
+    <p style="font-size:.88rem;margin-top:8px"><strong>Day 90 target:</strong> 4&ndash;6 audits/month &times; 40% = 2 new clients/month. With retention: 3&ndash;5 active = <strong>$10,500&ndash;$17,500 MRR.</strong></p>
+  </div>
+
+  <div class="web-ready">
+    <div class="wr-label">Website-Ready &mdash; What Belongs on the Page vs. What Doesn&rsquo;t</div>
+    <h4>Belongs</h4>
+    <ul>
+      <li>Hero headline that names the mechanism (Sophistication Stage 3 requirement)</li>
+      <li>&ldquo;This Sound Familiar?&rdquo; section using Show Don&rsquo;t Tell behaviors (Strategy #4)</li>
+      <li>The compounding loop as a visual diagram (Mechanization &mdash; Technique #5)</li>
+      <li>One case study with story arc (Story Lead &mdash; protagonist, conflict, resolution)</li>
+      <li>&ldquo;How I Work&rdquo; in behavioral Show Don&rsquo;t Tell (not &ldquo;I&rsquo;m transparent&rdquo; &mdash; show what Monday looks like)</li>
+      <li>Objections in prospect voice, answered with Gradualization (Technique #3)</li>
+      <li>CTAs tied to benefits (Rule 7.5), top and bottom</li>
+      <li>Proof bar: numbers that matter (11 brands, 0 bans, free audit)</li>
+    </ul>
+    <h4>Doesn&rsquo;t Belong</h4>
+    <ul>
+      <li style="color:#A0A09C">&ldquo;Data-driven creative&rdquo; &mdash; Stage 1 claim in a Stage 3 market. Exhausted.</li>
+      <li style="color:#A0A09C">Numbered service lists (&ldquo;1. Strategy 2. Creative 3. Media&rdquo;) &mdash; it&rsquo;s a loop, not a menu</li>
+      <li style="color:#A0A09C">Bio-first layout &mdash; Rule #1: nobody cares about you. They care about their problem.</li>
+      <li style="color:#A0A09C">Generic CTAs &mdash; Rule 7.5 violation</li>
+      <li style="color:#A0A09C">Clever wordplay &mdash; &ldquo;Clever copy might boost your ego, but simple copy will boost your bank account.&rdquo;</li>
+      <li style="color:#A0A09C">&ldquo;I&rsquo;ve been in marketing for X years&rdquo; &mdash; tells, doesn&rsquo;t show. Nobody cares about your timeline.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="fine">
+  <p><strong>Decision architecture:</strong> Every creative choice in this document is sourced from the copywriting system &mdash; Breakthrough Advertising (Schwartz) for the Three Questions, awareness stages, sophistication stages, and the Seven Techniques; Great Leads (Masterson) for lead type selection; Evolve Copywriting 101 for the Seven Rules, NESB frames, Show Don&rsquo;t Tell, and CTA rules. Applied to Reddit/community intelligence, Meta Ad Library competitive data, and 11-brand portfolio signals. August 2026.</p>
+</div>
+
+</main>

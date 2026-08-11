@@ -1,0 +1,899 @@
+<title>DRIVE Research — The DTC Ecommerce Business Owner</title>
+<style>
+:root{
+  --ground:#FBFBF9;--surface:#fff;--raised:#F5F5F0;--text:#2C2C2A;--muted:#8A8A82;
+  --sage:#4A7C67;--sage-soft:#EFF5F1;--gold:#B8935A;--gold-soft:#FBF6EE;
+  --border:#E8E8E2;--deep:#1E1E1C;--red:#C45B4A;--red-soft:#FDF0ED;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111210;--surface:#1A1C1A;--raised:#242624;--text:#E4E5E2;--muted:#8A8C88;
+  --sage:#7BC4A0;--sage-soft:#162018;--gold:#D4AD72;--gold-soft:#1E1A14;
+  --border:#2E302E;--deep:#0A0B0A;--red:#E8796A;--red-soft:#1E1412;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111210;--surface:#1A1C1A;--raised:#242624;--text:#E4E5E2;--muted:#8A8C88;
+  --sage:#7BC4A0;--sage-soft:#162018;--gold:#D4AD72;--gold-soft:#1E1A14;
+  --border:#2E302E;--deep:#0A0B0A;--red:#E8796A;--red-soft:#1E1412;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FBFBF9;--surface:#fff;--raised:#F5F5F0;--text:#2C2C2A;--muted:#8A8A82;
+  --sage:#4A7C67;--sage-soft:#EFF5F1;--gold:#B8935A;--gold-soft:#FBF6EE;
+  --border:#E8E8E2;--deep:#1E1E1C;--red:#C45B4A;--red-soft:#FDF0ED;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 "Segoe UI",-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+main{max-width:840px;margin:0 auto;padding:0 24px 100px}
+
+/* Masthead */
+.masthead{padding:56px 0 40px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.mast-eyebrow{font:500 .72rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--sage);margin-bottom:16px}
+.masthead h1{font:700 clamp(1.9rem,5vw,2.6rem)/1.12 system-ui,sans-serif;letter-spacing:-.03em;max-width:720px}
+.masthead>p{font-size:1rem;color:var(--muted);margin-top:14px;max-width:620px;line-height:1.65}
+.masthead .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:28px}
+.stat{background:var(--surface);padding:16px 14px}
+.stat-val{font:700 1.3rem/1 system-ui,sans-serif;color:var(--sage);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat-lbl{font-size:.76rem;color:var(--muted);margin-top:3px;line-height:1.35}
+
+/* Navigation */
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:48px}
+nav.toc a{font-size:.82rem;color:var(--muted);text-decoration:none;font-weight:500;padding:4px 0;border-bottom:1.5px solid transparent;transition:all .15s}
+nav.toc a:hover{color:var(--sage);border-color:var(--sage)}
+
+/* Sections */
+section{margin-top:60px}
+.part-label{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--sage);margin-bottom:6px}
+.part-label.gold{color:var(--gold)}
+.part-label.red{color:var(--red)}
+section>h2{font:700 1.5rem/1.15 system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+h3{font:600 1.08rem/1.25 system-ui,sans-serif;margin-top:32px;margin-bottom:8px}
+h4{font:600 .92rem/1.25 system-ui,sans-serif;margin-top:20px;margin-bottom:6px}
+p{margin:.5em 0;max-width:65ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+a{color:var(--sage);text-decoration:none}a:hover{text-decoration:underline}
+strong{font-weight:600}
+blockquote{border-left:3px solid var(--sage);padding:8px 16px;margin:16px 0;background:var(--sage-soft);border-radius:0 8px 8px 0;font-style:italic;max-width:65ch}
+blockquote cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:4px}
+
+/* Decision boxes */
+.decision{background:var(--gold-soft);border:1.5px solid var(--gold);border-radius:10px;padding:16px 18px;margin:20px 0;max-width:65ch}
+.decision-tag{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin-bottom:6px}
+.decision p{margin:.3em 0;font-size:.92rem}
+
+/* Danger/red flag boxes */
+.danger{background:var(--red-soft);border:1.5px solid var(--red);border-radius:10px;padding:16px 18px;margin:20px 0;max-width:65ch}
+.danger-tag{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:var(--red);margin-bottom:6px}
+.danger p{margin:.3em 0;font-size:.92rem}
+
+/* Data cards */
+.data-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0}
+.data-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px}
+.data-card h4{margin:0 0 6px;font-size:.88rem}
+.data-card p{font-size:.85rem;color:var(--muted);margin:0}
+.data-card .num{font:700 1.4rem/1 system-ui,sans-serif;color:var(--sage);margin-bottom:4px;font-variant-numeric:tabular-nums}
+
+/* Persona card */
+.persona{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 0}
+.persona-header{display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.persona-avatar{width:56px;height:56px;border-radius:50%;background:var(--sage-soft);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.persona-name{font:700 1.15rem/1.2 system-ui,sans-serif}
+.persona-title{font-size:.85rem;color:var(--muted)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:28px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--sage);border:2px solid var(--ground)}
+.tl-time{font:600 .78rem/1 system-ui,sans-serif;color:var(--sage);margin-bottom:2px}
+.tl-desc{font-size:.9rem;max-width:55ch}
+
+/* Comparison table */
+.comp-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem;overflow-x:auto;display:block}
+.comp-table th,.comp-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.comp-table th{font-weight:600;background:var(--raised);position:sticky;top:0}
+.comp-table tr:last-child td{border-bottom:none}
+
+/* Competitor cards */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:20px 0}
+.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;transition:border-color .15s}
+.comp-card:hover{border-color:var(--sage)}
+.comp-card h4{margin:0 0 4px;font-size:.92rem}
+.comp-card .comp-type{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:8px}
+.comp-card p{font-size:.84rem;color:var(--muted);margin:0 0 4px}
+.comp-card .comp-price{font:600 .88rem/1.3 system-ui,sans-serif;color:var(--sage);margin-top:8px}
+
+/* NESB scoring */
+.nesb{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin:16px 0;max-width:400px}
+.nesb-cell{background:var(--surface);padding:8px 10px;text-align:center}
+.nesb-cell.hit{background:var(--sage-soft)}
+.nesb-label{font:700 .65rem/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.nesb-score{font:700 1rem/1 system-ui,sans-serif;margin-top:4px}
+.nesb-cell.hit .nesb-label,.nesb-cell.hit .nesb-score{color:var(--sage)}
+
+/* Voice quotes */
+.voice{background:var(--raised);border-radius:10px;padding:16px 18px;margin:14px 0;max-width:65ch;position:relative}
+.voice::before{content:'\201C';font:700 2.4rem/1 Georgia,serif;color:var(--sage);opacity:.3;position:absolute;top:6px;left:10px}
+.voice p{padding-left:20px;font-size:.92rem;font-style:italic}
+.voice .voice-src{font-style:normal;font-size:.78rem;color:var(--muted);margin-top:4px;padding-left:20px}
+
+/* Scar tissue cards */
+.scar-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:20px 0}
+.scar{background:var(--surface);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:14px 18px}
+.scar h4{font-size:.88rem;margin:0 0 4px;color:var(--red)}
+.scar p{font-size:.85rem;color:var(--muted);margin:0}
+
+/* Source pills */
+.sources{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.src{font-size:.72rem;background:var(--raised);color:var(--muted);padding:3px 10px;border-radius:20px;text-decoration:none;transition:background .15s}
+.src:hover{background:var(--sage-soft);color:var(--sage);text-decoration:none}
+
+@media(max-width:600px){
+  main{padding:0 16px 60px}
+  .masthead{padding:40px 0 32px}
+  .data-grid,.comp-grid{grid-template-columns:1fr}
+  .nesb{max-width:100%}
+}
+</style>
+
+<main>
+
+<!-- ═══════════════════════════ MASTHEAD ═══════════════════════════ -->
+<header class="masthead">
+  <div class="mast-eyebrow">DRIVE Research Document</div>
+  <h1>Inside the Mind of the DTC Ecommerce Business Owner</h1>
+  <p>Deep psychographic research on the $10K-$100K/month DTC founder — their daily reality, financial psychology, buying behavior, agency scar tissue, and why they're ready for an agency alternative. Every insight filtered through the copywriting decision-making system.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val">$74</div><div class="stat-lbl">Median AOV (Shopify DTC)</div></div>
+    <div class="stat"><div class="stat-val">3-10%</div><div class="stat-lbl">Net Profit Margin</div></div>
+    <div class="stat"><div class="stat-val">15 days</div><div class="stat-lbl">Median Cash Buffer</div></div>
+    <div class="stat"><div class="stat-val">79%</div><div class="stat-lbl">Use External Agency</div></div>
+    <div class="stat"><div class="stat-val">18%</div><div class="stat-lbl">Annual Agency Churn</div></div>
+    <div class="stat"><div class="stat-val">$60-120K</div><div class="stat-lbl">Founder Take-Home</div></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════ TOC ═══════════════════════════ -->
+<nav class="toc">
+  <a href="#three-questions">Three Questions</a>
+  <a href="#discover">Discover</a>
+  <a href="#reframe">Reframe</a>
+  <a href="#ignite">Ignite</a>
+  <a href="#variate">Variate</a>
+  <a href="#evolve">Evolve</a>
+</nav>
+
+<!-- ═══════════════════════════ THREE QUESTIONS ═══════════════════════════ -->
+<section id="three-questions">
+  <div class="part-label gold">Before We Write a Single Word</div>
+  <h2>The Three Questions — Applied to Our Prospect</h2>
+  <p>The copywriting mastery system demands these three questions be answered before any messaging decision. Here, the "product" is Mohammad's creative strategy service. The "prospect" is the DTC ecommerce founder at $10K-$100K/month revenue.</p>
+
+  <h3>Question 1: What is the mass desire?</h3>
+
+  <div class="decision">
+    <div class="decision-tag">Copywriting Decision</div>
+    <p>The desire is <strong>not</strong> "better ads" or "higher ROAS." Those are symptoms. The mass desire is: <strong>"I want my revenue to grow without me being the bottleneck."</strong> Every founder at this stage built the machine, and now the machine only runs when they're pushing it. They want predictable growth that doesn't require them to be the expert in every channel.</p>
+  </div>
+
+  <p>Evidence for this desire from the research:</p>
+  <ul>
+    <li>79% of founders self-fund growth from profits — personal pay competes directly with reinvestment</li>
+    <li>The most common hiring trigger is "capacity bottleneck" — ads are profitable but the founder has no time to test new creatives or expand</li>
+    <li>Founders at $10K-$50K/month are mostly solo or founder + 1-2 contractors</li>
+    <li>Morning routine: check Stripe/Shopify, PayPal, GA, email for anomalies — a "10-minute scan before 9 AM" that reveals how much of the operation lives in one person's head</li>
+  </ul>
+
+  <h3>Question 2: How aware is this market? (Awareness Stage)</h3>
+
+  <div class="decision">
+    <div class="decision-tag">Awareness Assessment → Two Layers, Two Stages</div>
+    <p>This market's awareness is <strong>split across two layers — and the split IS the strategy.</strong></p>
+    <p><strong>Layer 1 — The symptom (Meta ads pain): Stage 4, Problem Aware.</strong> They feel it daily: CPAs climbing, ROAS collapsing, "Meta feels like a lottery." They describe the pain in platform language because Ads Manager is where the number turns red.</p>
+    <p><strong>Layer 2 — The cause (creative decisions): Stage 5, Unaware.</strong> They do not know that the decisions behind the creative — who it targets, what awareness stage it speaks to, which angle it runs — are what actually broke. Nobody on Reddit says "I need better creative strategy." They say "maybe it's my website? maybe my creative? maybe my audience?" — they can't diagnose which.</p>
+    <p><strong>Rule applied:</strong> a headline that works for one stage will not work for another. So the hook must open at Layer 1 (their Meta-ads language, Problem lead) and the body must walk them to Layer 2 (the decision layer they didn't know existed). Never open with "creative strategy" — that answers a question they're not asking.</p>
+  </div>
+
+  <p>Evidence for the split:</p>
+  <ul>
+    <li>Real founder voice: "Maybe it is my website? Maybe my creative is fatigued? Maybe my audience is saturated?" (u/cybe2028, r/FacebookAds) — diagnostic blindness, verbatim</li>
+    <li>When they do name creative, it's a <em>volume</em> complaint ("creatives just die after a couple weeks and I'm not a designer"), never a <em>decision</em> complaint — they think the fix is more creative, faster</li>
+    <li>They've likely already tried at least one agency or freelancer (79% use external help) — so they know execution vendors exist; they don't know a decision layer exists</li>
+  </ul>
+
+  <h3>Question 3: How sophisticated is this market? (Sophistication Stage)</h3>
+
+  <div class="decision">
+    <div class="decision-tag">Sophistication Assessment → Stage 3-4: Mechanism Required</div>
+    <p>This market has heard every claim. "We'll scale your brand." "Data-driven creative." "Performance marketing that converts." They've been promised 4x ROAS by agencies that couldn't deliver. They've seen the case studies. <strong>Simply claiming better results won't work. They need a NEW MECHANISM</strong> — a different process that makes the old promise believable again. The emphasis must shift from WHAT Mohammad delivers to HOW his system works differently.</p>
+  </div>
+
+  <p>Sophistication evidence:</p>
+  <ul>
+    <li>Founders now flag "guaranteed ROAS promises" as the #1 red flag — the claim itself has been exhausted</li>
+    <li>"Two-thirds of brand founders reported they overpaid for shallow knowledge from their last agency" (Y'all Agency)</li>
+    <li>Every competitor claims "data-driven" — Dara Denney, Nick Theriot, Barry Hott, Fraggell, Pilothouse all use this language</li>
+    <li>The market actively discusses red flags — they've developed antibodies against standard pitches</li>
+  </ul>
+
+  <div class="decision">
+    <div class="decision-tag">Three Questions → The Mechanism &amp; Lead Type Decision</div>
+    <p><strong>The NEW MECHANISM this market has never heard: Creative + Data + AI + System — an installed creative engine, not a rented service.</strong> Four stacked assets no competitor combines:</p>
+    <p><strong>1. Media buyer's eyes without media buyer's hands</strong> — reads CPM, hook rate, hold rate, CPA and makes the strategic call: the next move is a graphic, a video, or a native ad. Data decides; the founder's team executes.</p>
+    <p><strong>2. AI as institutional memory</strong> — every decision, every winning ad's DNA, every failed angle stored and recalled. Nothing is forgotten. Nothing gets re-tested twice. DNA is reusable when new concepts launch.</p>
+    <p><strong>3. AI production capability</strong> — video editors trained on Higgsfield and Kling generate realistic UGC and raw footage at a fraction of agency production cost.</p>
+    <p><strong>4. The team stays trained</strong> — the founder's OWN scriptwriter, editor, and designer are trained into a working system. The capability stays with the brand forever — the structural opposite of agency dependency.</p>
+    <p><strong>Lead type: Secret Lead.</strong> The mechanism is genuinely novel — Dara, Barry, and Nick sell knowledge; Fraggell, Savannah, and Pilothouse sell execution. Nobody sells an installed system with permanent memory. That's the secret the headline promises to reveal.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ DISCOVER ═══════════════════════════ -->
+<section id="discover">
+  <div class="part-label">Phase 1</div>
+  <h2>Discover — Who Is This Person, Really?</h2>
+  <p>Not the LinkedIn profile version. The 6:47 AM version — sitting in bed with a phone, checking if yesterday's ad spend was worth it.</p>
+
+  <h3>The Composite Founder</h3>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar">&#128104;&#8205;&#128187;</div>
+      <div>
+        <div class="persona-name">The $30K-$50K/month DTC Founder</div>
+        <div class="persona-title">Solo operator or founder + 1-2 contractors. Health, beauty, supplements, or apparel. Shopify store. 8-18 months in.</div>
+      </div>
+    </div>
+    <p>They built a product that sells. They figured out Facebook ads well enough to get here. Now they're stuck — revenue plateaued, CPAs creeping up, and every hour spent on ads is an hour not spent on product, supply chain, or the 47 other things only they can do.</p>
+  </div>
+
+  <h3>A Day in Their Life</h3>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">6:30 - 7:00 AM</div>
+      <div class="tl-desc">Still in bed. Open Shopify app — check overnight sales. Open Stripe — check for chargebacks. Open PayPal — check for disputes. Open GA4 — check if traffic held. This is the "10-minute scan" that actually takes 25 minutes because something always looks off.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:00 - 10:00 AM</div>
+      <div class="tl-desc">Customer service emails. Supplier messages. A 3PL issue about inventory counts. They promised themselves they'd hire a VA for this last month.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00 AM - 12:00 PM</div>
+      <div class="tl-desc">Finally open Ads Manager. Yesterday's CPA is $8 higher than last week. They toggle between campaigns, trying to figure out which creative died. They make 2-3 changes they're not sure about.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00 - 4:00 PM</div>
+      <div class="tl-desc">The "real work" they keep pushing off — product development, vendor negotiations, content shoots. Interrupted by Klaviyo alerts and a Slack message from their one contractor asking which hero image to use.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:00 - 10:00 PM</div>
+      <div class="tl-desc">Watching YouTube. Nick Theriot's video on scaling Meta Ads. Dara Denney's creative breakdown. Limited Supply podcast. They're learning — but learning doesn't equal doing. They fall asleep thinking about tomorrow's CPA.</div>
+    </div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Technique #4 — Show Don't Tell</div>
+    <p>The timeline above IS the sell. You don't tell them "you're overwhelmed." You show them their own morning. When they see "I open Shopify, then Stripe, then PayPal, then GA before coffee" — they feel understood without being told they have a problem. <strong>This is how you build identification before you pitch.</strong></p>
+  </div>
+
+  <h3>Their Financial Reality</h3>
+
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="num">50-70%</div>
+      <h4>Gross Margin</h4>
+      <p>Beauty 65-85%, apparel 50-65%, supplements 65-78%. Looks healthy until you subtract everything else.</p>
+    </div>
+    <div class="data-card">
+      <div class="num">~35%</div>
+      <h4>Goes to COGS</h4>
+      <p>Product cost, packaging, manufacturing. The number they knew going in.</p>
+    </div>
+    <div class="data-card">
+      <div class="num">~25%</div>
+      <h4>Goes to Ads</h4>
+      <p>Sub-$1M brands spend 25-35% of revenue on acquisition. This is the number that keeps them up at night.</p>
+    </div>
+    <div class="data-card">
+      <div class="num">~17%</div>
+      <h4>Shipping + Returns</h4>
+      <p>The hidden margin killer. Returns alone can eat 3-8% depending on category.</p>
+    </div>
+    <div class="data-card">
+      <div class="num">3-10%</div>
+      <h4>What's Actually Left</h4>
+      <p>Net profit margin across DTC. At $50K/month, that's $1,500-$5,000 in actual profit. Before paying themselves.</p>
+    </div>
+    <div class="data-card">
+      <div class="num">15 days</div>
+      <h4>Cash Buffer</h4>
+      <p>Median small business cash runway. Down from 27 days in 2016. One bad inventory bet can threaten the business.</p>
+    </div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Financial Psychology → Pricing Implication</div>
+    <p>At $50K/month revenue with 10% net margin ($5K profit), a $3,500 agency fee feels like <strong>"almost all my profit."</strong> The objection is never "too expensive" in absolute terms — it's "what percentage of my margin does this eat, and can I survive 60-90 days of learning curve before results show?" This means the pitch cannot be about cost. It must be about <strong>the cost of NOT hiring</strong> — quantified in hours lost, CPAs climbing, and revenue left on the table.</p>
+  </div>
+
+  <h3>Their Tech Stack</h3>
+  <p>What they actually use daily, ranked by adoption:</p>
+  <ul>
+    <li><strong>Shop Pay</strong> (62.7%) — checkout is Shopify-native</li>
+    <li><strong>PayPal Express</strong> (60.2%) — they added it because customers asked</li>
+    <li><strong>Klaviyo</strong> (50.3%) — email/SMS, usually half-set-up with 2-3 flows</li>
+    <li><strong>Triple Whale</strong> (11.4%) — if they've reached the point of needing attribution beyond platform reporting</li>
+    <li><strong>Meta Ads Manager</strong> — daily, with frustration</li>
+    <li><strong>Google Analytics 4</strong> — opened, squinted at, closed</li>
+    <li><strong>Canva or CapCut</strong> — how they make creative when they can't afford a designer</li>
+  </ul>
+
+  <h3>Their Emotional Landscape</h3>
+
+  <div class="voice">
+    <p>Meta was a primary driver of traffic for one of my brands. Over the last few months, sales have tanked. Ad performance has been in the toilet. You start to doubt your own thoughts. Maybe it is my website? Maybe my creative is fatigued? Maybe my audience is saturated?</p>
+    <div class="voice-src">u/cybe2028 — r/FacebookAds</div>
+  </div>
+
+  <div class="voice">
+    <p>The founder vanished. The 'VP of Strategy' stopped replying to emails. My ad account was immediately handed off to a 22-year-old junior media buyer who, I later found out, was juggling 14 other clients at the exact same time. &hellip; I realized I wasn't paying for elite marketing performance. I was just funding their sales machine.</p>
+    <div class="voice-src">u/ArtisticLemon2644 — r/Entrepreneur, on a $5,000/month agency retainer</div>
+  </div>
+
+  <div class="voice">
+    <p>They were not very proactive. I constantly had to tell them what to test or change. Their designers were good at following instructions, but there was very little actual strategy or creative direction coming from them.</p>
+    <div class="voice-src">u/bondtradercu — r/FacebookAds, on their agency experience</div>
+  </div>
+
+  <div class="voice">
+    <p>Been running Meta ads for my ecommerce store for about a year, maybe 8k spent so far. My problem is the creatives just die after a couple weeks and I'm not a designer so making fresh ones is slow and expensive.</p>
+    <div class="voice-src">u/Jealous-Solid3165 — r/FacebookAds</div>
+  </div>
+
+  <div class="voice">
+    <p>I'm pregnant, and the uncertainty is killing me. I don't know if Meta is ever going to recover or if this is the beginning of the end. Every morning I wake up feeling like my business is just a lottery.</p>
+    <div class="voice-src">u/bralyba — r/FacebookAds, 6-year business owner</div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">The Core Insight — Diagnostic Blindness</div>
+    <p>Read those five voices again. Not one of them says "I need better creative strategy." They say: <strong>sales tanked and I don't know why. I had to tell my agency what to test. My creatives die and I can't make more. My business feels like a lottery.</strong> The shared pain underneath is the same: <strong>they cannot diagnose their own problem, and everyone they hire executes without diagnosing either.</strong> The market is oversupplied with executors and starving for direction. That gap — the decision layer between "something is broken" and "here is what to build" — is the business.</p>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Question 1 Refined — The True Desire</div>
+    <p>The desire is layered. On the surface: better ROAS. One level deeper: someone who can finally tell me <em>which</em> thing is broken. At the core: <strong>"I want to stop guessing. I want my next move to be informed, not another lottery ticket."</strong> That core desire is what the copy must touch. NESB frames: the promise must feel <strong>SAFE</strong> (I won't get burned again — and this person doesn't even need my ad account) and <strong>NEW</strong> (a decision layer, not another pair of hands).</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ REFRAME ═══════════════════════════ -->
+<section id="reframe">
+  <div class="part-label">Phase 2</div>
+  <h2>Reframe — The Scar Tissue Market</h2>
+  <p>This prospect doesn't arrive blank. They arrive bruised. Before you can sell them anything, you have to understand the scars they're carrying — because those scars determine which messages they'll reject on sight.</p>
+
+  <h3>The Seven Scars</h3>
+
+  <div class="scar-grid">
+    <div class="scar">
+      <h4>1. The Vanishing Senior</h4>
+      <p>"A senior strategist pitched me. A junior ran my account." Agencies pitch with their A-team, then hand off to overloaded juniors managing 15-20 accounts each. The person who sold them is never the person doing the work.</p>
+    </div>
+    <div class="scar">
+      <h4>2. The Data Hostage</h4>
+      <p>Agencies that own the ad accounts, pixels, and even the website. One HVAC contractor paid $28,000 and lost 8 months of revenue to recover assets after leaving. Founders now ask "who owns the accounts?" before anything else.</p>
+    </div>
+    <div class="scar">
+      <h4>3. The ROAS Mirage</h4>
+      <p>"We guarantee 4x ROAS" — then they count micro-conversions, warm traffic, and attribution tricks to hit the number. One audit found 40% of counted conversions were worthless micro-events. Real CPA was $180, reported CPA was $45.</p>
+    </div>
+    <div class="scar">
+      <h4>4. The Strategy Copy-Paste</h4>
+      <p>Same audiences, same ad types, same "proven system" applied to every client. One agency used identical blog posts across 15+ competitor websites. These founders can smell a template pitch from the first deck slide.</p>
+    </div>
+    <div class="scar">
+      <h4>5. The Contract Trap</h4>
+      <p>"More than half got locked into contracts that made it hard to leave when things weren't working." 12-month lock-ins with kill fees, no performance clauses, no exit ramp. Retainer agencies still churn at 18%/year — project-based at 42%.</p>
+    </div>
+    <div class="scar">
+      <h4>6. The Buzzword Fog</h4>
+      <p>"Synergy, AI, machine learning, holistic approach" — more jargon than actionable insight. When pressed for specifics, the agency defaults to "brand awareness" and "engagement metrics" instead of revenue.</p>
+    </div>
+    <div class="scar">
+      <h4>7. The Ghost</h4>
+      <p>Freelancers who are responsive during the pitch, then disappear. "If they're 'too busy' during the sales phase, expect delays to become the norm." Single point of failure — one sick week and campaigns drift.</p>
+    </div>
+  </div>
+
+  <h3>Every Scar Is an Agency Structural Failure — and the Engine Can't Commit Any of Them</h3>
+  <p>This is the positioning weapon. The scars aren't bad luck or bad people — they're built into how agencies are structured. An installed creative engine is structurally incapable of the same failures:</p>
+
+  <table class="comp-table">
+    <tr><th>The Scar</th><th>Why Agencies Can't Avoid It</th><th>The Engine's Structural Answer</th></tr>
+    <tr><td>The Vanishing Senior</td><td>Margins require juniors running 15-20 accounts</td><td>There is no junior. The person you hire is the person who works — and he trains YOUR team, so capability multiplies instead of diluting.</td></tr>
+    <tr><td>The Data Hostage</td><td>Lock-in is the retention strategy</td><td>The system is installed in YOUR business. Accounts, DNA library, trained team — yours from day one.</td></tr>
+    <tr><td>The ROAS Mirage</td><td>Opaque reporting hides underperformance</td><td>Every decision is documented in the AI memory. You can audit the reasoning behind every ad, forever.</td></tr>
+    <tr><td>The Strategy Copy-Paste</td><td>Templates are how agencies scale margins</td><td>70% of the work is research on YOUR customer. The DNA bank is built from YOUR winners, not a template library.</td></tr>
+    <tr><td>The Contract Trap</td><td>Lock-ins protect revenue from churn</td><td>When the engagement ends, you keep the engine: trained team, memory, DNA, frameworks. Leaving costs you nothing.</td></tr>
+    <tr><td>The Buzzword Fog</td><td>Jargon fills the gap where results should be</td><td>The weekly creative loop reports in plain language: what worked, what died, what we decided, and why.</td></tr>
+    <tr><td>The Ghost</td><td>One overloaded human is the single point of failure</td><td>The system doesn't ghost. The memory is persistent, the frameworks are documented, the team is trained.</td></tr>
+  </table>
+
+  <div class="voice">
+    <p>When I was paying that $5,000 retainer, here is what I was actually funding: About $2,000 (40%) went straight to agency overhead and the founder's profit margin. Another $1,500 (30%) paid the commission of the sales rep who closed me. Around $1,000 (20%) paid the Account Manager whose only real job was making PDF reports to keep me from churning. Which left maybe $500 (10%) to pay the actual junior media buyer who was pushing the buttons inside my ad accounts.</p>
+    <div class="voice-src">u/ArtisticLemon2644 — r/Entrepreneur. "I realized I wasn't paying for elite marketing performance. I was just funding their sales machine."</div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">The 10% Problem → The Core Comparison</div>
+    <p>That Reddit breakdown is the single most powerful proof asset in this research: <strong>at a typical agency, roughly 10% of the fee reaches the actual work.</strong> The rest funds overhead, sales commissions, and churn-prevention theater. A single-operator engine inverts the ratio — 100% of the fee reaches the person doing the research, making the decisions, and training the team. This isn't a claim; it's arithmetic, sourced from a founder who lived it.</p>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Technique #7 — Camouflage</div>
+    <p>These scars create a prospect with <strong>active immune defenses against marketing claims.</strong> Standard agency language triggers rejection. The copy must acknowledge the scar tissue without saying "I know you've been burned." Instead, <strong>use Camouflage to make the sell look like education.</strong> An audit that genuinely teaches them something about their own creative builds trust precisely because it doesn't look like a pitch. The mechanism itself — the research pipeline, the DNA bank, the documented decisions — is the camouflage. It says "I'm showing you how I think" instead of "trust me."</p>
+  </div>
+
+  <h3>The Competitive Landscape They're Swimming In</h3>
+  <p>When this founder starts looking for help, here's who they find:</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-type">Solo Strategist</div>
+      <h4>Dara Denney</h4>
+      <p>Research-first creative strategy. Chief Evangelist at Motion. 130K YouTube subs. "The person brands call when their Meta Ads need a makeover."</p>
+      <div class="comp-price">$899 course / Agency rates undisclosed</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-type">Solo Strategist</div>
+      <h4>Barry Hott</h4>
+      <p>"Make Ugly Ads." $600M+ in managed spend. Counterintuitive positioning — lo-fi beats polished. Fortune 500 to DTC bridge credibility.</p>
+      <div class="comp-price">~$500/call / Course pricing undisclosed</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-type">Solo Strategist</div>
+      <h4>Nick Theriot</h4>
+      <p>Psychology-driven creative. Profit-share pricing model. 125-seat Inner Circle. "Most ad accounts aren't broken because of bad creatives — the creative strategy is wrong."</p>
+      <div class="comp-price">$1,500/mo Inner Circle / $600/mo Lite</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-type">DTC Agency</div>
+      <h4>Fraggell (Fraser Cottrell)</h4>
+      <p>"Most ads flop. We find the ones that win." Performance creative for DTC. 700+ ads/month. Requires $70K+/month ad spend to apply.</p>
+      <div class="comp-price">Undisclosed / High minimum</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-type">DTC Agency</div>
+      <h4>The Social Savannah</h4>
+      <p>Savannah Sanchez. Meta + TikTok partner badges. 50+ clients, 100+ winning ads/week. Claims "boutique 5-10 clients" publicly while running 50+.</p>
+      <div class="comp-price">Undisclosed / Application-gated</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-type">Full-Service Agency</div>
+      <h4>Pilothouse</h4>
+      <p>"Performance Has Never Looked This Good." Full-funnel DTC. $750M+ revenue driven. 150+ brands. Victoria, BC-based, 12+ years.</p>
+      <div class="comp-price">$8K-25K+/mo retainer range</div>
+    </div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Sophistication Stage 3 → What the Mechanism Must Beat</div>
+    <p>Every competitor above claims "data-driven creative." The claims are exhausted. But look at what each one actually SELLS: <strong>Dara, Barry, and Nick sell knowledge</strong> (courses, calls, communities — you still have to build the system yourself). <strong>Fraggell, Savannah, and Pilothouse sell execution</strong> (they make the ads; the capability leaves when they do — and Fraggell won't even talk to you below $70K/month spend). <strong>Nobody sells an installed engine</strong> — research + decisions + AI memory + a trained in-house team that keeps working after the engagement. That's the open category.</p>
+  </div>
+
+  <h3>The Real Comparison Set</h3>
+  <p>When this founder decides how to solve creative, they're actually choosing between four options:</p>
+
+  <table class="comp-table">
+    <tr><th>Option</th><th>Real Cost</th><th>What They Get</th><th>What Goes Wrong</th></tr>
+    <tr><td>DIY (status quo)</td><td>Their own nights and weekends</td><td>Full control, zero cash cost</td><td>Diagnostic blindness, creative dies faster than they can replace it, burnout</td></tr>
+    <tr><td>DTC Agency</td><td>$8-25K/mo + % of spend</td><td>A team — but ~10% of the fee reaches the actual work</td><td>All seven scars. 18-42% annual churn rate speaks for itself</td></tr>
+    <tr><td>In-house team</td><td>$20-30K/mo loaded (strategist + editor + designer)</td><td>Dedicated focus, knowledge stays</td><td>Unaffordable below ~$8M revenue; one resignation resets everything to zero</td></tr>
+    <tr><td><strong>The installed engine</strong></td><td>Single-operator retainer</td><td>Agency-level capability, in-house-level knowledge retention, AI-level memory</td><td>Capacity-limited by design — which is also why the seller is the doer</td></tr>
+  </table>
+
+  <h3>Where This Founder Learns and Decides</h3>
+
+  <div class="data-grid">
+    <div class="data-card">
+      <h4>Podcasts</h4>
+      <p>Limited Supply (Nik Sharma), EcommerceFuel (Andrew Youderian), Shopify Masters, DTC Deep Dive (Fraggell), Purchase Optimized (Dara + Savannah)</p>
+    </div>
+    <div class="data-card">
+      <h4>Newsletters</h4>
+      <p>Nik Sharma's weekly (100K+ subs), Chase Dimond (email marketing), Disrupter Dispatch, Dara Denney's Ad of the Week</p>
+    </div>
+    <div class="data-card">
+      <h4>Communities</h4>
+      <p>EcommerceFuel (7-figure+ gate), DTC FAM Slack, Startup CPG Slack, r/ecommerce, r/shopify, r/FacebookAds</p>
+    </div>
+    <div class="data-card">
+      <h4>YouTube</h4>
+      <p>Dara Denney (130K), Nick Theriot, Fraser Cottrell, Barry Hott. Long-form strategy breakdowns consumed at night after the workday.</p>
+    </div>
+    <div class="data-card">
+      <h4>Conferences</h4>
+      <p>SubSummit, Shoptalk, Affiliate World, Ad World Prime. Aspirational attendance — most at this revenue stage can't justify the cost yet.</p>
+    </div>
+    <div class="data-card">
+      <h4>Hiring Platforms</h4>
+      <p>Upwork, MarketerHire (under 1% acceptance), ConstantHire, Hiry, The Starters. Referrals from Slack/Twitter remain #1 actual channel.</p>
+    </div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Discovery Channel Insight</div>
+    <p>There's a documented gap in the research: founders have abundant content about <strong>how to evaluate</strong> agencies (red flags, green flags, interview questions) but almost no guidance on <strong>where to find</strong> the right person. The actual discovery channel is overwhelmingly informal — referrals, DTC Slack/Discord, Twitter/X networks. <strong>Being visible and trusted in the spaces where founders already talk is what opens the door. The case studies and the $200 diagnosis close it.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ IGNITE ═══════════════════════════ -->
+<section id="ignite">
+  <div class="part-label gold">Phase 3</div>
+  <h2>Ignite — The Buying Journey, Mapped</h2>
+  <p>When does this founder decide to hire? What triggers the search? What closes the deal? And what kills it?</p>
+
+  <h3>The Five Trigger Moments</h3>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Trigger 1: The Revenue Plateau</div>
+      <div class="tl-desc">Revenue hits a ceiling they can't break through internally. The most common trigger at $10K-$100K/month. They've tried more spend, more creatives, new audiences. Nothing moves the needle.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Trigger 2: The Capacity Wall</div>
+      <div class="tl-desc">Ads are profitable but the founder has no time to test new creatives, expand audiences, or optimize properly. They're leaving money on the table because they can't do it all.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Trigger 3: Channel Expansion</div>
+      <div class="tl-desc">Moving from Meta-only into TikTok, Google Shopping, or email/SMS is too heavy a lift for a solo operator. They need someone who already knows these platforms.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Trigger 4: Post-Agency PTSD</div>
+      <div class="tl-desc">Previous agency drained budget, broke continuity, or left the store worse off. They're back to square one but now they know what they DON'T want. This founder is the most skeptical — and the most valuable if you earn trust.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Trigger 5: Attribution Panic</div>
+      <div class="tl-desc">Post-iOS 14, the numbers stopped making sense. Meta projected $10B in lost ad revenue from ATT alone. Founders stuck on outdated tactics look for partners with first-party data strategies.</div>
+    </div>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Lead Type Matching to Trigger</div>
+    <p><strong>Trigger 4 (Post-Agency PTSD) is the highest-value prospect.</strong> They've already committed budget before and got burned. They have scar tissue that makes them skeptical — but also makes them serious. For this trigger, the <strong>Problem-Solution Lead</strong> works: name the specific agency failure pattern they experienced, then introduce the mechanism that prevents it. For Triggers 1-2 (Plateau/Capacity), the <strong>Secret Lead</strong> is better: "The reason your ROAS plateaued has nothing to do with your ad creative" — then introduce the research-first mechanism as the thing they haven't tried.</p>
+  </div>
+
+  <h3>How They Evaluate (The Trust Hierarchy)</h3>
+
+  <p>Research reveals a clear hierarchy of trust signals, ranked by weight:</p>
+
+  <ol>
+    <li><strong>Referral from a founder they trust</strong> — nothing else comes close. The discovery channel is 90% informal referral.</li>
+    <li><strong>Stage-relevant case studies</strong> — not "we helped a brand scale" but "we took a $30K/month supplements brand from 1.8x to 3.4x ROAS in 90 days." 73% of B2B buyers cite case studies as most influential content.</li>
+    <li><strong>A diagnosis that teaches something real</strong> — the prospect should learn something about their own creative they didn't know, early and cheap. (The research shows free audits build trust; a $200 diagnosis keeps that effect while filtering tire-kickers and pricing the thinking as valuable.)</li>
+    <li><strong>Transparent reporting expectations</strong> — "you will have full admin access to every platform" is now a green flag, not a differentiator. Its absence is disqualifying.</li>
+    <li><strong>Month-to-month terms</strong> — 30-60 day termination without penalty. Long lock-ins are the #5 most-cited red flag across all sources.</li>
+  </ol>
+
+  <div class="decision">
+    <div class="decision-tag">Technique #3 — Gradualization</div>
+    <p>The trust hierarchy reveals a <strong>graduated commitment</strong> structure. The prospect will NOT jump from "never heard of you" to "$3,500/month retainer." They need stepping stones: <strong>Free content → $200 consultation → Full audit → Monthly engine installation.</strong> Each step earns the right to the next. Gradualization is the technique: "reduce the psychological distance between where the prospect is and where you need them to be." The $200 consultation is the critical bridge — a small paid commitment that lets them experience the engine's diagnosis on their own brand, filters the tire-kickers, and makes the next step feel natural instead of risky.</p>
+  </div>
+
+  <h3>The $3,500 Objection — Mapped to Revenue Stage</h3>
+
+  <table class="comp-table">
+    <tr><th>Monthly Revenue</th><th>$3,500 as % of Revenue</th><th>$3,500 as % of Net Profit</th><th>Emotional Response</th></tr>
+    <tr><td>$10K/month</td><td>35%</td><td>~350% (profit: ~$1K)</td><td>Terrifying. Unsustainable. "I can't afford to take this risk."</td></tr>
+    <tr><td>$25K/month</td><td>14%</td><td>~140% (profit: ~$2.5K)</td><td>Scary. Possible only if results come fast. "I need ROI in 30 days."</td></tr>
+    <tr><td>$50K/month</td><td>7%</td><td>~70% (profit: ~$5K)</td><td>Significant but manageable. "If you can move the needle, it pays for itself."</td></tr>
+    <tr><td>$100K/month</td><td>3.5%</td><td>~35% (profit: ~$10K)</td><td>Reasonable. "This is less than a junior hire." Easy decision if trust exists.</td></tr>
+  </table>
+
+  <div class="decision">
+    <div class="decision-tag">NESB Frame → Pricing Position</div>
+    <p>The NESB scoring for the $3,500 price point reveals which frames to lead with at each stage:</p>
+  </div>
+
+  <div class="nesb">
+    <div class="nesb-cell hit"><div class="nesb-label">New</div><div class="nesb-score">9/10</div></div>
+    <div class="nesb-cell"><div class="nesb-label">Easy</div><div class="nesb-score">6/10</div></div>
+    <div class="nesb-cell hit"><div class="nesb-label">Safe</div><div class="nesb-score">10/10</div></div>
+    <div class="nesb-cell hit"><div class="nesb-label">Big</div><div class="nesb-score">8/10</div></div>
+  </div>
+
+  <p><strong>SAFE dominates.</strong> For the $25-50K/month founder, the biggest blocker isn't price — it's risk. They need: month-to-month contracts (no lock-in), full account ownership (their pixels, their data), and a 30/60/90-day milestone framework that proves value before the 90-day mark. <strong>NEW is secondary</strong> — the mechanism must be genuinely different from what agencies have promised before. <strong>BIG supports</strong> — frame the cost against the alternative (a junior in-house hire at $60-90K/year).</p>
+
+  <h3>The Dream Hire — What They Actually Want</h3>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar">&#11088;</div>
+      <div>
+        <div class="persona-name">The Ideal Marketing Partner</div>
+        <div class="persona-title">Synthesized from Common Thread Co, Pilothouse, The Remote Reps, and DTC community feedback</div>
+      </div>
+    </div>
+
+    <h4>Skills they want:</h4>
+    <ul>
+      <li>Deep Meta Ads expertise (primary) with working knowledge of Google/TikTok</li>
+      <li>Creative strategy capability — can brief designers AND produce concepts</li>
+      <li>Modern attribution literacy — doesn't rely solely on in-platform reporting</li>
+      <li>Financial thinking — contribution margin and LTV, not just ROAS</li>
+    </ul>
+
+    <h4>Behaviors they want:</h4>
+    <ul>
+      <li>Proactive weekly updates — not waiting to be asked</li>
+      <li>Honest about what's working and what isn't — no sugarcoating</li>
+      <li>Explains strategy in plain language, not jargon</li>
+      <li>Treats the brand as a partnership, not "another account on the roster"</li>
+      <li>Leads with an audit and diagnostic phase before proposing strategy</li>
+      <li>Brings ideas proactively — doesn't wait for direction</li>
+    </ul>
+
+    <h4>What they explicitly do NOT want:</h4>
+    <ul>
+      <li>Someone who "manages" an ad account by checking it once a week</li>
+      <li>Agencies where the seller isn't the doer</li>
+      <li>ROAS guarantees (signals dishonesty)</li>
+      <li>Being locked into contracts before trust is established</li>
+      <li>Having to chase their marketing partner for updates</li>
+      <li>Losing access to their own accounts and data</li>
+    </ul>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Technique #5 — Mechanization → The Positioning Opportunity</div>
+    <p>The "dream hire" profile above reveals something the competitors miss: <strong>the dream hire is a system, not a person.</strong> Two data points prove the market is starving for it. A media buyer's own confession: <em>"only 10% of the job is actual campaign management"</em> — the rest is therapy, data entry, and troubleshooting. And the founders' #1 complaint about agencies: <em>"I constantly had to tell them what to test or change... very little actual strategy or creative direction coming from them."</em> <strong>The market is oversupplied with executors and starving for direction.</strong> Mohammad's mechanism opportunity: sell the installed engine — research pipeline, decision memory, trained team — not another set of hands. That's new. That's mechanized. That's what nobody else is naming.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ VARIATE ═══════════════════════════ -->
+<section id="variate">
+  <div class="part-label">Phase 4</div>
+  <h2>Variate — Angles, Objections, and Entry Points</h2>
+  <p>Multiple entry points for the same prospect, depending on which trigger brought them to the door.</p>
+
+  <h3>Angle Map by Trigger</h3>
+
+  <table class="comp-table">
+    <tr><th>Trigger</th><th>Lead Type</th><th>Opening Angle</th><th>NESB Lead</th></tr>
+    <tr>
+      <td>Post-Agency PTSD<br><em>(primary target)</em></td>
+      <td>Story Lead</td>
+      <td>"You weren't paying for marketing. You were funding their sales machine." → the $5,000 breakdown → the installed-engine alternative</td>
+      <td>SAFE + NEW</td>
+    </tr>
+    <tr>
+      <td>Revenue Plateau</td>
+      <td>Secret Lead</td>
+      <td>"Your ads plateaued because your creative engine has no memory. Every test you ran and forgot is money you'll spend again."</td>
+      <td>NEW + BIG</td>
+    </tr>
+    <tr>
+      <td>Capacity Wall</td>
+      <td>Promise Lead</td>
+      <td>"You don't need more hands. You need a system your existing hands can run."</td>
+      <td>EASY + SAFE</td>
+    </tr>
+    <tr>
+      <td>Channel Expansion</td>
+      <td>Problem-Solution</td>
+      <td>"New channel, same DNA. The winners you already have tell us exactly what to build for TikTok — if anyone recorded why they won."</td>
+      <td>SAFE + NEW</td>
+    </tr>
+    <tr>
+      <td>Attribution Panic</td>
+      <td>Problem-Solution</td>
+      <td>"When the pixel lies, CPM still tells the truth. Reading the data right is the difference between your next ad being a graphic, a video, or a native — most people guess."</td>
+      <td>NEW + BIG</td>
+    </tr>
+  </table>
+
+  <div class="decision">
+    <div class="decision-tag">Rule #5 — Slippery Slide</div>
+    <p>Each angle above works as a <strong>hook that opens a loop.</strong> "Your creative engine has no memory" creates a gap — what does a creative engine with memory even look like? The answer is the mechanism: the DNA bank, the documented decisions, the AI recall. That answer opens another loop: "What's in MY DNA bank?" Nothing — because nobody ever recorded it. Now they're sliding toward the consultation, where you show them what their engine would look like. <strong>Every sentence's only job is to get them to read the next sentence.</strong></p>
+  </div>
+
+  <h3>Objection → Response Map</h3>
+
+  <div class="scar-grid">
+    <div class="scar" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">"I can't afford $3,500/month"</h4>
+      <p><strong>OCPB Response:</strong> Objection acknowledged → "Compare it to what it replaces, not to zero. An agency runs $8-25K/month — and by one founder's own breakdown, only ~10% of that fee reached the person doing the work. An in-house creative team runs $20-30K/month loaded. Here, 100% of the fee reaches the person doing the research, making the decisions, and training your team — and every dollar of ad spend you'd waste re-testing forgotten failures stays in your pocket, because the system remembers." Claim → Proof (the Reddit fee breakdown; the in-house salary math) → Benefit (agency capability at a fraction, and the asset compounds).</p>
+    </div>
+    <div class="scar" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">"My last agency promised results too"</h4>
+      <p><strong>OCPB Response:</strong> Objection acknowledged → "They probably did. Here's what they never showed you: the reasoning. Every ad in my system has a documented decision behind it — the research, the awareness stage, the DNA it was built from. You can audit every choice, forever. And when we part ways, the whole engine stays with you: the trained team, the memory, the frameworks. Your agency took its knowledge with it. That's the difference." Claim → Proof (the documented decision trail IS the proof) → Benefit (you're never dependent, never in the dark).</p>
+    </div>
+    <div class="scar" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">"Why not just hire a cheaper freelancer?"</h4>
+      <p><strong>OCPB Response:</strong> Objection acknowledged → "A freelancer is a pair of hands — they execute what you tell them, and when they leave, everything resets. This is an engine: research that decides what to build, AI memory that never forgets a test, and YOUR team trained to run it. A freelancer adds labor. The engine adds capability that stays." Claim → Proof (deliverables: research docs, DNA bank, trained team, monthly content plan) → Benefit (you're building an asset, not renting labor).</p>
+    </div>
+    <div class="scar" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">"How fast will I see results?"</h4>
+      <p><strong>OCPB Response:</strong> Objection acknowledged → "The decisions come fast: research document in week 1, concept map and creative briefs in week 2, your team producing against them by week 3, and a weekly creative loop from then on — what worked, what died, what we decided. Performance follows how fast your team executes the decisions, and I train them to execute fast. You're never waiting on a black box, because you can see every decision the week it's made." Claim → Proof (the weekly loop deliverable) → Benefit (visibility from day one, no 90-day faith required).</p>
+    </div>
+  </div>
+
+  <h3>The Positioning Gap: Engine vs. Hands vs. Machine</h3>
+
+  <p>The market offers hands (freelancers) or a machine that mostly feeds itself (agencies). The engine is a third thing:</p>
+
+  <table class="comp-table">
+    <tr><th></th><th>Freelancer<br>($1.5-3K/mo)</th><th>The Creative Engine<br>(single operator)</th><th>DTC Agency<br>($8-25K/mo)</th></tr>
+    <tr><td>What You're Buying</td><td>Labor — hands that execute</td><td>An installed system — research, decisions, memory, trained team</td><td>Output volume — with 40%+ overhead baked into the fee</td></tr>
+    <tr><td>Creative Strategy</td><td>No — executes what you tell them</td><td>70% research → concepts → briefs → training. Schwartz-driven decisions, documented</td><td>Yes — but generic templates across clients</td></tr>
+    <tr><td>Who Does the Work</td><td>The person you hired</td><td>The person you hired + YOUR team, trained</td><td>A junior you never met, juggling 14+ accounts</td></tr>
+    <tr><td>What's Remembered</td><td>Whatever's in their head</td><td>Everything — AI memory stores every decision, every winner's DNA, every dead angle</td><td>Whatever survives staff turnover</td></tr>
+    <tr><td>Who Keeps the Knowledge When It Ends</td><td>They do — you reset to zero</td><td><strong>You do</strong> — trained team, DNA bank, frameworks all stay</td><td>They do — and sometimes your accounts too</td></tr>
+    <tr><td>Needs Your Ad Account</td><td>Yes — full access</td><td>Read access to data only — decisions, not buttons</td><td>Yes — and 1 in 7 sources report agencies claiming ownership</td></tr>
+    <tr><td>Production</td><td>You supply creative</td><td>AI-trained pipeline — realistic UGC via Higgsfield/Kling through your trained editor</td><td>In-house studio (this is where the fee goes)</td></tr>
+    <tr><td>Contract Terms</td><td>Project / month-to-month</td><td>Month-to-month, 30-day out — leaving costs you nothing because you keep the engine</td><td>3-12 month minimums</td></tr>
+  </table>
+
+  <div class="decision">
+    <div class="decision-tag">Strategy #3 — Don't Categorize Yourself</div>
+    <p>Mohammad should <strong>never call himself a "freelancer" or an "agency."</strong> Both categories carry baggage. Freelancer = cheap hands. Agency = expensive machine that funds itself first. <strong>The category is the engine: everything an agency does, installed in your business by one person, with a memory that never forgets.</strong> The one-line position: <strong>"Instead of hiring an agency, you get the whole system in a single person — and when we're done, the system is yours."</strong> Strategy #3 says: when you can't win within the existing category, create the one you own by definition.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ EVOLVE ═══════════════════════════ -->
+<section id="evolve">
+  <div class="part-label gold">Phase 5</div>
+  <h2>Evolve — What This Research Means for the Offer</h2>
+  <p>The research doesn't just describe the prospect — it prescribes how every touchpoint should be built.</p>
+
+  <h3>The Mechanism That Wins</h3>
+
+  <div class="decision">
+    <div class="decision-tag">Sophistication Stage 3 → The Named Mechanism</div>
+    <p>At Stage 3, the headline must feature the mechanism, not the promise. Every competitor promises "better ads" and "higher ROAS." Mohammad's mechanism is <strong>the installed creative engine: Creative + Data + AI + System.</strong> Research decides what to build. Data (CPM, hook, hold, CPA) decides what to build NEXT. AI remembers every decision and every winner's DNA so nothing is ever re-learned. The founder's own team is trained to run it all. <strong>Name candidates</strong> (Mohammad picks): "The Creative Engine" (simple, ownable), "The Creative Memory System" (leads with the AI-memory novelty), "The Creative Empire Method" (his own phrase — training whole teams). The Level 1-6 scaling ladder needs its own name too: <strong>"The DNA Ladder"</strong> (keeps DNA language), <strong>"The Desire Ladder"</strong> (Schwartz-flavored — from hook iteration to new-desire creation), or <strong>"Creative Altitude"</strong> (levels = altitude gained while keeping the DNA).</p>
+  </div>
+
+  <h3>The A-Z Framework (What the Engine Actually Runs)</h3>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Ideation</div>
+      <div class="tl-desc">70% research: customer voice, awareness stage, sophistication level, competitor DNA. Schwartz's Three Questions answered before anything is made.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Scripting &amp; Briefs</div>
+      <div class="tl-desc">Research becomes concepts, concepts become NESB-scored briefs — for the copywriter, the video editor, AND the graphic designer. Not just handed over: taught. Each role learns why the brief says what it says.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Execution</div>
+      <div class="tl-desc">The trained team produces — including realistic AI UGC and raw footage via Higgsfield/Kling. Volume without agency production costs.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Analysis</div>
+      <div class="tl-desc">Media buyer's eyes on the data: CPM, hook rate, hold rate, CPA. The numbers dictate the next move — graphic, video, or native. Weekly creative loop reports it in plain language.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Scale</div>
+      <div class="tl-desc">The Level 1-6 ladder: from hook iterations on proven winners up to new-desire creation — while the DNA (sounds, hooks, visuals, text) that made winners win is preserved at every level.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Repeat — With Memory</div>
+      <div class="tl-desc">Every decision, winner, and dead angle goes into the AI memory. Next cycle starts smarter than the last. Nothing is forgotten; no test is ever paid for twice.</div>
+    </div>
+  </div>
+
+  <h3>The Funnel Structure (Gradualization Applied)</h3>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Step 1: Visibility</div>
+      <div class="tl-desc"><strong>Be where they already are.</strong> DTC Slack channels, r/ecommerce, Twitter/X DTC circles. Not pitching — answering questions, sharing frameworks, being useful. This is how referrals start. The research shows discovery is 90% informal.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Step 2: Content That Teaches</div>
+      <div class="tl-desc"><strong>Show the engine working on real examples.</strong> "Here's what this brand's ad DNA looks like, and here's the level they're stuck at" — applied to a public brand, not a client. This is Camouflage: the content IS the proof. LinkedIn posts, short-form video breakdowns.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Step 3: The $200 Consultation</div>
+      <div class="tl-desc"><strong>Low-friction paid entry.</strong> Not free — $200 filters tire-kickers and prices the diagnosis as worth something (Barry Hott charges ~$500 for the same format; $200 undercuts while staying credible). Deliverable: a mini creative diagnosis — where their engine is broken, which level of the ladder they're on, what their data says to build next. Worth 10x the fee on its own; Gradualization's first commitment step.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Step 4: The Funnel &amp; Creative Audit</div>
+      <div class="tl-desc"><strong>The full diagnostic.</strong> Funnel audit + creative DNA analysis + research document on THEIR customer. They see the entire mechanism applied to their own brand before committing to the engagement. The audit IS the pitch.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Step 5: The Engine Installation (Monthly)</div>
+      <div class="tl-desc"><strong>The retainer, month-to-month, 30-day out.</strong> Week 1 research doc. Week 2 monthly content plan + briefs. Week 3+ team training and production. Weekly creative loop from then on. And the exit is safe by design: whenever it ends, they keep the trained team, the DNA bank, and the frameworks.</div>
+    </div>
+  </div>
+
+  <h3>Messaging Principles (From the Framework)</h3>
+
+  <div class="data-grid">
+    <div class="data-card">
+      <h4>Lead with SAFE</h4>
+      <p>Month-to-month. You own everything. 30/60/90 milestones. This prospect's #1 emotion is fear of getting burned again.</p>
+    </div>
+    <div class="data-card">
+      <h4>Prove with NEW</h4>
+      <p>The mechanism — research-first creative intelligence — is what separates from the field. Name it. Show it working.</p>
+    </div>
+    <div class="data-card">
+      <h4>Show Don't Tell</h4>
+      <p>The $200 diagnosis shows the engine. The research document shows the thinking. Don't claim "I'm different" — be different in public.</p>
+    </div>
+    <div class="data-card">
+      <h4>Camouflage the Sell</h4>
+      <p>Education IS the pitch. Every LinkedIn post, every audit, every framework shared — it's all proof of the mechanism before asking for commitment.</p>
+    </div>
+    <div class="data-card">
+      <h4>Name the Scars</h4>
+      <p>Acknowledge what agencies did wrong without saying "I'm not like other agencies." The scar-aware copy builds trust through recognition, not claims.</p>
+    </div>
+    <div class="data-card">
+      <h4>Quantify the Alternative</h4>
+      <p>$3,500 vs. a junior in-house hire at $7-10K/month loaded. $3,500 vs. the $50-100K a bad agency partnership burns. Frame against real alternatives.</p>
+    </div>
+  </div>
+
+  <h3>The Ideal Client Profile (Refined)</h3>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar">&#127919;</div>
+      <div>
+        <div class="persona-name">Primary ICP: The $30-75K/Month DTC Founder</div>
+        <div class="persona-title">Health, beauty, supplements, or wellness. Shopify. 8-18 months in. Solo or founder + 1-2 contractors.</div>
+      </div>
+    </div>
+    <ul>
+      <li><strong>Revenue:</strong> $30K-$75K/month ($360K-$900K annual). Below $25K, the fee is too large a percentage. Above $100K, they can afford agencies or in-house hires.</li>
+      <li><strong>Ad spend:</strong> $8K-$25K/month on Meta. Enough data to work with, not so much that they need a 5-person team.</li>
+      <li><strong>Current state:</strong> Managed ads themselves or had one bad agency experience. Plateaued or growing slowly. Knows they need help but skeptical.</li>
+      <li><strong>Decision speed:</strong> 2-4 weeks from first contact to commitment — if the audit impresses them.</li>
+      <li><strong>Where they'll find you:</strong> DTC Slack, Twitter/X, a referral from another founder, LinkedIn content that shows the mechanism working.</li>
+    </ul>
+  </div>
+
+  <div class="decision">
+    <div class="decision-tag">Final Framework Decision — The Complete Position</div>
+    <p><strong>Awareness: two layers</strong> → hooks open in Layer 1 language (Meta pain, agency scars: "funding their sales machine," "ads feel like a lottery") and the body walks them to Layer 2 (the decision-and-memory layer they didn't know existed). <strong>Sophistication Stage 3</strong> → the installed engine (Creative + Data + AI + System) is the mechanism in every headline. <strong>Lead Type: Secret</strong> for cold, <strong>Story</strong> for the post-agency wounded. <strong>NESB: SAFE first</strong> (the engine stays with you; no account hostage; month-to-month), <strong>NEW second</strong> (AI memory — no competitor has it), BIG third (agency capability at single-operator price), EASY last. <strong>Technique stack: Camouflage + Gradualization + Show Don't Tell + Mechanization.</strong> The one-line position: <strong>"Instead of hiring an agency, you get the whole system in a single person — and when we're done, the system is yours."</strong></p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════ SOURCES ═══════════════════════════ -->
+<section style="margin-top:80px;padding-top:40px;border-top:1px solid var(--border)">
+  <h3>Sources</h3>
+  <div class="sources">
+    <a class="src" href="https://topgrowthmarketing.com/when-to-hire-an-ecommerce-marketing-agency/">Top Growth Marketing</a>
+    <a class="src" href="https://www.bigcommerce.com/blog/ecommerce-agencies/">BigCommerce</a>
+    <a class="src" href="https://eightx.co/research/dtc-profitability">Eightx DTC Profitability</a>
+    <a class="src" href="https://eightx.co/blog/average-ecommerce-profit-margins">Eightx Margins</a>
+    <a class="src" href="https://www.finaloop.com/blog/6-reasons-dtc-financial-inefficiency-what-it-costs-you">Finaloop</a>
+    <a class="src" href="https://www.portless.com/blogs/why-dtc-brands-fail-cash-flow-trap">Portless Cash Flow</a>
+    <a class="src" href="https://rozeedigital.com/blog/dtc/d2c-marketing-agency-case-studies/">Rozee Digital</a>
+    <a class="src" href="https://www.darkroomagency.com/observatory/best-dtc-marketing-agency-2026">Darkroom 2026</a>
+    <a class="src" href="https://www.conversionengine.com/post/ecommerce-marketing-agency-red-flags">Conversion Engine</a>
+    <a class="src" href="https://www.relentless-digital.com/5-red-flags-that-prove-your-marketing-agency-doesnt-actually-work-for-you">Relentless Digital</a>
+    <a class="src" href="https://www.yall.co/post/how-to-choose-a-dtc-performance-marketing-agency-without-getting-burned">Y'all Agency</a>
+    <a class="src" href="https://markchino360.medium.com/confessions-of-a-media-buyer-78751c457dea">Confessions of a Media Buyer</a>
+    <a class="src" href="https://www.constanthire.com/posts/8-mistakes-dtc-brands-make-when-hiring-a-creative-strategist">ConstantHire</a>
+    <a class="src" href="https://theremotereps.com/remote-media-buyer-for-dtc-brand-how-to-find-and-hire-the-right-paid-ads-expert-in-2026/">Remote Reps</a>
+    <a class="src" href="https://mhigrowthengine.com/blog/freelance-media-buyer-vs-agency-dtc/">MHI Growth Engine</a>
+    <a class="src" href="https://commonthreadco.com/blogs/dtc-hotline/traits-of-great-media-buyer">Common Thread Co</a>
+    <a class="src" href="https://www.foxwelldigital.com/blog/what-paid-social-agencies-charge-a-guide">Foxwell Digital</a>
+    <a class="src" href="https://www.growthwaves.io/p/is-hiring-a-growth-agency-a-mistake">Growth Waves</a>
+    <a class="src" href="https://almcorp.com/blog/ppc-management-pricing-models-flat-fee-vs-percentage/">ALM Corp</a>
+    <a class="src" href="https://nailitandscaleit.substack.com/p/6-red-flags-when-hiring-an-ad-agency">Nail It Scale It</a>
+    <a class="src" href="https://prosperdigital.com.au/blogs/the-prosper-blog/how-to-decide-whether-to-work-with-an-ecommerce-agency-vs-a-freelancer">Prosper Digital</a>
+    <a class="src" href="https://www.andava.com/learn/digital-marketing-scams/">Andava Scams</a>
+    <a class="src" href="https://www.adnomics.co.uk/blog-post/ecommerce-digital-marketing-agency-red-flags">Adnomics</a>
+    <a class="src" href="https://marketerhire.com/">MarketerHire</a>
+    <a class="src" href="https://beanninjas.com/blog/ecommerce-business-owner-salary-benchmarks/">Bean Ninjas</a>
+  </div>
+</section>
+
+</main>

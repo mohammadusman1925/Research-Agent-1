@@ -1,0 +1,745 @@
+<title>RSTM ECOM — DRIVE Creative Strategy</title>
+<style>
+:root{--bg:#F4F5F9;--surface:#fff;--call:#E8EAF2;--text:#1A1A2E;--muted:#5A5F7A;--accent:#1032CF;--accent2:#2A4EEF;--accent3:#4A9ADD;--deep:#0A1233;--tag:#2A4EEF;--blue:#4A9ADD;--yellow:#B89B2D;--red:#C44D3B;--purple:#7B5EA7;--green:#1A6B3A}
+:root[data-theme="dark"]{--bg:#0E0F1A;--surface:#1A1B2E;--call:#232440;--text:#E8E9F0;--muted:#9A9DB8;--deep:#060818}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0F1A;--surface:#1A1B2E;--call:#232440;--text:#E8E9F0;--muted:#9A9DB8;--deep:#060818}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}main{max-width:960px;margin:auto;padding:42px 24px 80px}h1,h2,h3,h4{font-family:'Epilogue',Georgia,serif;line-height:1.15}h1{font-size:clamp(2.2rem,5.5vw,4.2rem);margin:.15em 0;background:linear-gradient(135deg,#1032CF,#4A9ADD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}h2{font-size:2rem;margin-top:2.2em;padding-top:.3em;border-top:2px solid var(--accent);color:var(--accent)}h3{font-size:1.35rem}h4{font-size:1.1rem;margin-top:1.4em}.eyebrow{color:var(--accent3);text-transform:uppercase;letter-spacing:.13em;font-weight:750;font-size:.85rem}.hero{padding:48px 0}.hero p{font-size:1.15rem;max-width:760px;color:var(--muted)}.lock{background:var(--deep);color:#CDD1E8;padding:22px;border-radius:14px;border-left:5px solid var(--accent)}.lock strong{color:#fff}nav{background:var(--surface);border:1px solid #d0d4e4;padding:18px 22px;border-radius:12px;margin:24px 0;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}nav a{color:var(--accent);margin-right:15px;font-size:.88rem;text-decoration:none;font-weight:600}nav a:hover{text-decoration:underline}.simple{background:#E8F0FF;border-left:5px solid var(--accent3);color:#1A2A5E;padding:14px 17px;margin:16px 0;font-style:italic;border-radius:0 8px 8px 0}.kta{background:var(--deep);color:#CDD1E8;padding:20px 24px;border-radius:12px;margin:22px 0}.kta h3{color:var(--accent3);margin-top:0}.kta li{margin:.5em 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:var(--surface);border:1px solid #d0d4e4;border-radius:12px;padding:18px;transition:transform .15s}.card:hover{transform:translateY(-2px)}.stat{font:700 2rem 'Epilogue',Georgia,serif;color:var(--accent);margin-bottom:4px}table{width:100%;border-collapse:collapse;background:var(--surface);font-size:.93rem;margin:18px 0;border-radius:10px;overflow:hidden}th{background:var(--accent);color:#fff;text-align:left;font-weight:600}th,td{padding:11px 14px;border:1px solid #d0d4e4;vertical-align:top}.tag{display:inline-block;color:#fff;background:var(--tag);border-radius:999px;padding:3px 10px;font-size:.75rem;margin:2px;font-weight:600}.tag.blue{background:var(--blue)}.tag.yellow{background:var(--yellow)}.tag.red{background:var(--red)}.tag.purple{background:var(--purple)}.tag.green{background:var(--green)}blockquote{border-left:5px solid var(--accent);margin:18px 0;padding:12px 20px;background:var(--surface);border-radius:0 10px 10px 0;font-style:italic}blockquote cite{display:block;font-style:normal;color:var(--muted);font-size:.85rem;margin-top:6px}details{background:var(--surface);padding:12px 16px;border:1px solid #d0d4e4;border-radius:10px;margin:9px 0}summary{font-weight:700;cursor:pointer;color:var(--accent)}a{color:var(--accent)}.small{font-size:.86rem;color:var(--muted)}.score{display:inline-block;background:var(--accent);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;font-size:.85rem}.divider{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3),transparent);margin:32px 0;border:none;border-radius:2px}.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:700px){.duo{grid-template-columns:1fr}}@media(max-width:650px){main{padding:22px 14px}table{display:block;overflow-x:auto}h2{font-size:1.6rem}.grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.grid{grid-template-columns:1fr}}.phase-badge{display:inline-block;background:var(--accent);color:#fff;padding:4px 14px;border-radius:999px;font-weight:700;font-size:.9rem;letter-spacing:.05em;margin-bottom:8px}.icp-card{background:var(--surface);border:2px solid var(--accent3);border-radius:14px;padding:20px;margin:14px 0}.icp-card h4{margin-top:0;color:var(--accent)}.icp-card .icp-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.score-bar{height:10px;border-radius:5px;background:#d0d4e4;overflow:hidden;margin:4px 0}.score-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--accent),var(--accent3))}.reframe-chain{background:var(--call);border-radius:12px;padding:18px;margin:14px 0;border-left:4px solid var(--accent2)}.reframe-chain h4{color:var(--accent);margin-top:0}
+</style>
+
+<main>
+<header class="hero">
+<div class="eyebrow">DRIVE Creative Strategy &middot; RSTM ECOM &middot; Mohammad Usman &middot; August 2026</div>
+<h1>DRIVE Creative Strategy &mdash; Applied to RSTM Portfolio</h1>
+<p>A complete creative strategy framework applied to RSTM's three DTC brands. Each phase builds on real market data, verified VOC, and evidence-backed creative principles. Primary demonstration: MamaWillow. Secondary: HappyHund &amp; ShareSwiss.</p>
+<div class="lock"><strong>DRIVE:</strong> <span style="color:var(--accent3)">D</span>iscover the mass desire &rarr; <span style="color:var(--accent3)">R</span>eframe the problem &rarr; <span style="color:var(--accent3)">I</span>gnite emotional response &rarr; <span style="color:var(--accent3)">V</span>ariate through testing &rarr; <span style="color:var(--accent3)">E</span>volve via documented learning. This framework turns consumer insight into a repeatable creative engine &mdash; not one good ad, but a system that produces them.</div>
+</header>
+
+<nav>
+<a href="#discover">Discover</a>
+<a href="#reframe">Reframe</a>
+<a href="#ignite">Ignite</a>
+<a href="#variate">Variate</a>
+<a href="#evolve">Evolve</a>
+<a href="#bigidea">Big Ideas</a>
+<a href="#appendix-headlines">Headlines</a>
+<a href="#appendix-compliance">Compliance</a>
+<a href="#appendix-metrics">Metrics</a>
+</nav>
+
+<!-- =============================== -->
+<!-- PHASE 1: DISCOVER               -->
+<!-- =============================== -->
+<section id="discover">
+<span class="phase-badge">D &mdash; DISCOVER</span>
+<h2>Phase 1: Discover the Mass Desire</h2>
+<div class="simple">Discover maps what people already want before we say a single word. We don't create desire &mdash; we channel existing desire toward the product. This phase identifies the mass desire, maps market sophistication, and profiles the humans who feel it most intensely.</div>
+
+<!-- MASS DESIRE ANALYSIS -->
+<h3>1.1 Mass Desire Analysis</h3>
+<p>Every brand in RSTM's portfolio taps into a deeper desire than the product itself. People don't buy laundry sheets, dog supplements, or fermented plums. They buy what those products represent.</p>
+
+<table>
+<tr><th>Brand</th><th>Product</th><th>Surface want</th><th>Mass desire (the real purchase)</th></tr>
+<tr><td><strong>MamaWillow</strong></td><td>Eco laundry sheets</td><td>"Clean clothes without chemicals"</td><td><strong>To be a good parent who protects their family AND the planet without sacrificing convenience.</strong> The identity desire: "I'm the kind of person who makes better choices."</td></tr>
+<tr><td><strong>HappyHund</strong></td><td>Dog health chews</td><td>"Help my dog's joints"</td><td><strong>To not fail the creature that depends on me completely.</strong> The guilt desire: "I'd do anything for my dog &mdash; I just need to know what 'anything' actually is."</td></tr>
+<tr><td><strong>ShareSwiss</strong></td><td>Fermented wellness plums</td><td>"Improve gut health"</td><td><strong>To finally find the thing that actually works after everything else failed.</strong> The hope desire: "Maybe this one is different."</td></tr>
+</table>
+
+<blockquote>"The power in your advertising will always come from channeling an existing desire, not from creating a new one."<cite>&mdash; Eugene Schwartz, Breakthrough Advertising</cite></blockquote>
+
+<!-- SCHWARTZ SOPHISTICATION MAP -->
+<h3>1.2 Schwartz Sophistication Map</h3>
+<div class="simple">Sophistication levels tell us how many competing products the prospect has already seen and tried. The higher the level, the more specific our mechanism must be &mdash; and the more creatively we must present it.</div>
+
+<table>
+<tr><th>Stage</th><th>Definition</th><th>MamaWillow</th><th>HappyHund</th><th>ShareSwiss</th></tr>
+<tr><td><span class="score">1</span></td><td>First in market. Just state the claim.</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td><span class="score">2</span></td><td>Second in market. Enlarge the claim.</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td><span class="score" style="background:var(--yellow)">3</span></td><td>Market has heard claims before. Introduce a unique mechanism.</td><td>&mdash;</td><td>&mdash;</td><td><span class="tag green">HERE</span> Probiotics and gut health are everywhere. ShareSwiss needs the "Japanese fermentation" mechanism to explain why this is different.</td></tr>
+<tr><td><span class="score" style="background:var(--red)">4</span></td><td>Market is skeptical. Mechanism itself needs proof and a new angle.</td><td><span class="tag green">HERE</span> Eco-cleaning is saturated. 52% believe brands greenwash. MamaWillow must PROVE its eco claims, not just state them.</td><td><span class="tag green">HERE</span> Dog supplements are everywhere (mammaly, TRATEZ, Amazon generics). "Vet recommended" needs specifics &mdash; which vets, what studies.</td><td>&mdash;</td></tr>
+<tr><td><span class="score" style="background:#333">5</span></td><td>Market doesn't believe anything. Connect to identity, not product.</td><td>Approaching this for repeat purchasers. Identity play: "MamaWillow households."</td><td>&mdash;</td><td>&mdash;</td></tr>
+</table>
+
+<div class="kta"><h3>Creative Implication</h3>
+<ul>
+<li><strong>MamaWillow (Stage 4):</strong> Cannot lead with "eco-friendly" alone. Must lead with proof (certifications, dissolution demo, ingredient transparency) or identity ("Join 5,000+ households that switched"). Greenwashing skepticism is the wall to breach.</li>
+<li><strong>HappyHund (Stage 4):</strong> Cannot lead with "glucosamine for joints." Every competitor says that. Must lead with a unique mechanism (bioavailability, specific formulation) or authority proof (named veterinarian, clinical reference).</li>
+<li><strong>ShareSwiss (Stage 3):</strong> Can still lead with mechanism &mdash; "Japanese fermentation" is novel enough in DACH markets to differentiate. But must escalate quickly. The window for mechanism-first copy closes as competitors copy the language.</li>
+</ul>
+</div>
+
+<!-- LF8 PURCHASE TRIGGERS -->
+<h3>1.3 Purchase Trigger Map (Life Force 8)</h3>
+<div class="simple">The LF8 are the eight biological drives that power all human purchasing. They're not invented &mdash; they're inherited. Every product hooks into at least two. The Creative Strategist's job: identify which triggers are dominant for each brand and build creative around them.</div>
+
+<table>
+<tr><th>LF8 Trigger</th><th>MamaWillow</th><th>HappyHund</th><th>ShareSwiss</th></tr>
+<tr><td><strong>1. Survival / life extension</strong></td><td><span class="tag yellow">Secondary</span> Chemical-free = protecting family health</td><td><span class="tag blue">Secondary</span> Extending dog's active life</td><td><span class="tag green">Primary</span> Gut health = long-term wellness</td></tr>
+<tr><td><strong>2. Food / drink enjoyment</strong></td><td>&mdash;</td><td><span class="tag yellow">Secondary</span> Dogs love the taste (chew format)</td><td><span class="tag green">Primary</span> Fermented plum is a food product</td></tr>
+<tr><td><strong>3. Freedom from fear/pain</strong></td><td><span class="tag yellow">Secondary</span> Fear of chemicals on children's skin</td><td><span class="tag green">Primary</span> Watching your dog struggle with mobility</td><td><span class="tag yellow">Secondary</span> Digestive discomfort</td></tr>
+<tr><td><strong>4. Sexual companionship</strong></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td><strong>5. Comfortable living</strong></td><td><span class="tag green">Primary</span> Convenience: dissolves in wash, no heavy bottles</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td><strong>6. Superiority / winning</strong></td><td><span class="tag green">Primary</span> "I make smarter choices than people who still use Persil"</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td><strong>7. Care of loved ones</strong></td><td><span class="tag green">Primary</span> Protecting children from chemicals</td><td><span class="tag green">Primary</span> Your dog can't choose. You choose for them.</td><td><span class="tag yellow">Secondary</span> Taking care of yourself = taking care of family</td></tr>
+<tr><td><strong>8. Social approval</strong></td><td><span class="tag green">Primary</span> "Eco-conscious" identity</td><td><span class="tag yellow">Secondary</span> "Responsible pet owner"</td><td><span class="tag yellow">Secondary</span> Wellness-conscious identity</td></tr>
+</table>
+
+<div class="lock">
+<strong>Dominant triggers by brand:</strong><br>
+<strong>MamaWillow:</strong> LF5 (comfort), LF6 (superiority), LF7 (care of loved ones), LF8 (social approval) &mdash; 4 active triggers. Richest emotional landscape.<br>
+<strong>HappyHund:</strong> LF3 (freedom from pain), LF7 (care of loved ones) &mdash; 2 dominant triggers. Deep and narrow. High emotional intensity.<br>
+<strong>ShareSwiss:</strong> LF1 (survival), LF2 (food enjoyment) &mdash; 2 dominant triggers. Rational first, emotional second.
+</div>
+
+<!-- ICP PROFILES -->
+<h3>1.4 ICP Profiles</h3>
+<div class="simple">Each ICP is a specific human at a specific moment. Not demographics &mdash; psychographics. What triggered them to search? What's blocking them from buying? What emotion opens the door?</div>
+
+<h4>MamaWillow ICPs</h4>
+
+<div class="icp-card">
+<h4>ICP 1: The Guilty Switcher &mdash; "Katharina"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Problem-Aware</span>
+<span class="tag" style="background:var(--red)">Sophistication: Stage 4</span>
+<span class="tag purple">Dominant LF8: Care of loved ones</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Read an article about endocrine disruptors in conventional detergent. Looked at her toddler's clothes drying on the rack and felt sick.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Guilt mixed with overwhelm. Wants to switch everything but doesn't know where to start. Analysis paralysis.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"Eco products don't clean as well. I'll end up re-washing everything."</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>Show her she doesn't have to choose between clean AND safe. The switch is simple (one sheet, done) and the proof is visible (demo video).</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"I threw out every bottle under my sink after learning this one thing about my toddler's clothes."</td></tr>
+</table>
+</div>
+
+<div class="icp-card">
+<h4>ICP 2: The Eco-Identity Buyer &mdash; "Sophie"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Solution-Aware</span>
+<span class="tag" style="background:var(--yellow)">Sophistication: Stage 4-5</span>
+<span class="tag purple">Dominant LF8: Social approval + Superiority</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Already uses eco products. Saw MamaWillow on Instagram. Comparing it to Tru Earth, Smol, and the brand she currently uses.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Confident in her values. Skeptical of new brands making the same claims. Needs differentiation, not education.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"This is probably the same as what I already use, just different packaging."</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>Community &mdash; "5,000+ households switched." Product comparison that's honest, not salesy. Founder story authenticity.</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"I've tried 4 eco laundry brands. Here's why I stopped switching after this one."</td></tr>
+</table>
+</div>
+
+<div class="icp-card">
+<h4>ICP 3: The Convenience Optimizer &mdash; "Anna"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Unaware/Problem-Aware</span>
+<span class="tag" style="background:var(--yellow)">Sophistication: Stage 2-3</span>
+<span class="tag purple">Dominant LF8: Comfortable living</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Carrying heavy detergent bottles up three flights of stairs. Again. Or running out and having to make a special trip.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Not environmentally motivated &mdash; convenience-driven. Doesn't think about what's "in" detergent. Just wants laundry to be easier.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"A sheet can't clean as well as liquid. This seems gimmicky."</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>The demonstration: show the sheet dissolving, show clean results. No eco guilt trip &mdash; pure "your life gets simpler."</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"I haven't carried a detergent bottle in 6 months. This is what I use instead."</td></tr>
+</table>
+</div>
+
+<h4>HappyHund ICPs</h4>
+
+<div class="icp-card">
+<h4>ICP 4: The Aging Dog Owner &mdash; "Thomas"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Problem-Aware</span>
+<span class="tag" style="background:var(--red)">Sophistication: Stage 4</span>
+<span class="tag purple">Dominant LF8: Freedom from pain / Care of loved ones</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Watched his 8-year-old Labrador struggle to get up from lying down. For the first time, the dog didn't come to greet him at the door.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Heartbreak and urgency. Googling "dog joint supplements" at midnight. Willing to pay anything that works.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"I've seen supplements before. How do I know this one actually works and isn't just expensive treats?"</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>The before/after: a dog that struggled to walk, now running in the park. Not the supplement &mdash; the result. "He greeted me at the door again."</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"My vet said the words I wasn't ready to hear about my 9-year-old Lab. Then she recommended this."</td></tr>
+</table>
+</div>
+
+<div class="icp-card">
+<h4>ICP 5: The Proactive Puppy Parent &mdash; "Maria"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Solution-Aware</span>
+<span class="tag" style="background:var(--yellow)">Sophistication: Stage 3</span>
+<span class="tag purple">Dominant LF8: Care of loved ones</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Breeder or vet mentioned that large-breed puppies need joint support from an early age. Read online that prevention is cheaper than treatment.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Research mode. Comparing 4-5 products. Price-sensitive but willing to pay for "the right one." Wants ingredient lists and expert validation.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"My puppy seems fine. Do I really need this now?"</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>Prevention framing: "By the time you see symptoms, the damage is already done." Pair with vet authority.</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"The one thing your vet won't tell you about large-breed puppies until it's too late."</td></tr>
+</table>
+</div>
+
+<h4>ShareSwiss ICPs</h4>
+
+<div class="icp-card">
+<h4>ICP 6: The Supplement Fatigued Seeker &mdash; "Claudia"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Most-Aware (of alternatives)</span>
+<span class="tag" style="background:var(--yellow)">Sophistication: Stage 3-4</span>
+<span class="tag purple">Dominant LF8: Survival / Life extension</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Has tried probiotics, kombucha, apple cider vinegar, and 3 different gut health supplements. Some helped temporarily. None stuck. Still dealing with bloating.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Exhausted hope. "Maybe nothing works for me." But still searching &mdash; which means the desire is alive.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"I've tried everything. Why would this be different?"</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>The mechanism: Japanese fermentation tradition. This isn't a supplement &mdash; it's a 1000-year-old food. The body processes it differently because it IS different.</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"I've spent &euro;2,000 on gut health supplements that didn't work. A &euro;25 fermented plum changed everything."</td></tr>
+</table>
+</div>
+
+<div class="icp-card">
+<h4>ICP 7: The Wellness Curious Professional &mdash; "Markus"</h4>
+<div class="icp-meta">
+<span class="tag green">Awareness: Unaware</span>
+<span class="tag" style="background:var(--yellow)">Sophistication: Stage 2</span>
+<span class="tag purple">Dominant LF8: Survival + Comfortable living</span>
+</div>
+<table>
+<tr><td><strong>Trigger event</strong></td><td>Persistent low energy, occasional digestive issues. Colleague mentioned "fermented foods" at lunch. Curious but not yet searching.</td></tr>
+<tr><td><strong>Mental state</strong></td><td>Open but passive. Won't seek solutions but will stop scrolling if something resonates. Needs interruption-style creative.</td></tr>
+<tr><td><strong>Belief blocking sale</strong></td><td>"Wellness products are for people who are sick. I'm fine &mdash; just a bit tired sometimes."</td></tr>
+<tr><td><strong>Emotional doorway</strong></td><td>Normalization: "70% of Europeans have suboptimal gut health and don't know it." The insight must come before the product.</td></tr>
+<tr><td><strong>Hook direction</strong></td><td>"The Japanese eat something every morning that 95% of Europeans have never heard of. Here's why it matters."</td></tr>
+</table>
+</div>
+</section>
+
+<!-- =============================== -->
+<!-- PHASE 2: REFRAME                -->
+<!-- =============================== -->
+<section id="reframe">
+<span class="phase-badge">R &mdash; REFRAME</span>
+<h2>Phase 2: Reframe the Problem</h2>
+<div class="simple">Reframe shifts how the prospect sees their problem. We don't compete on the same battlefield as everyone else &mdash; we change the battlefield. The prospect walks in thinking one thing is wrong. They leave understanding a different thing is wrong &mdash; one that only our product solves.</div>
+
+<h3>2.1 Problem Mechanism &mdash; MamaWillow (Primary)</h3>
+<p>The conventional framing of eco-cleaning: <strong>"Chemicals are bad for the planet."</strong></p>
+<p>The problem with this framing: everyone says it. It's Stage 4 saturated. 52% of consumers assume it's greenwashing.</p>
+
+<div class="lock">
+<strong>The Reframe:</strong> The problem isn't chemicals in your detergent. The problem is <strong>the bottle itself.</strong><br><br>
+Conventional detergent is 80-90% water. You're paying to ship water across Europe in a plastic bottle that takes 450 years to decompose. Eco brands that put "natural" detergent in the same plastic bottles haven't solved anything &mdash; they've just made you feel better about buying the same problem.<br><br>
+MamaWillow eliminated the bottle entirely. Not because it's trendy. Because the bottle was the problem all along.
+</div>
+
+<h4>"Why Other Approaches Fail" Table</h4>
+<table>
+<tr><th>Approach</th><th>What they claim</th><th>Why it fails</th><th>MamaWillow advantage</th></tr>
+<tr><td>Eco-liquid detergent (Ecover, Frosch)</td><td>"Plant-based, biodegradable"</td><td>Still ships 80% water in plastic. Same logistics footprint. Premium price for marginal improvement.</td><td>No bottle. No water shipped. 94% less packaging weight.</td></tr>
+<tr><td>Refill stations</td><td>"Bring your own container"</td><td>Requires physical store visit. Inconvenient for most. Less than 2% adoption.</td><td>Delivered to your door. Sheets dissolve in the wash. Zero friction.</td></tr>
+<tr><td>Conventional + guilt</td><td>"At least I'm recycling the bottle"</td><td>Only 14% of plastic is recycled globally. Most "recycled" plastic is downcycled or exported.</td><td>Nothing to recycle because there's nothing to throw away.</td></tr>
+<tr><td>Other laundry sheets (Tru Earth, Smol)</td><td>Same format claim</td><td>Ingredient transparency varies. Some use PVA (polyvinyl alcohol) with unclear biodegradability.</td><td>Ingredient list on site. 6,396 Ecologi trees funded. Founder-led story, not corporate brand.</td></tr>
+</table>
+
+<h3>2.2 Problem Mechanism &mdash; HappyHund</h3>
+<div class="lock">
+<strong>The Reframe:</strong> The problem isn't that your dog needs supplements. The problem is that <strong>modern dog food strips out the nutrients dogs evolved to get from raw food.</strong><br><br>
+Wild canids eat raw bone, cartilage, and organ meat &mdash; natural sources of glucosamine, MSM, and collagen. Kibble processes these nutrients out. Your dog isn't deficient because of age. Your dog is deficient because of diet. HappyHund puts back what modern food took away.
+</div>
+
+<h3>2.3 Problem Mechanism &mdash; ShareSwiss</h3>
+<div class="lock">
+<strong>The Reframe:</strong> The problem isn't that probiotics don't work. The problem is that <strong>supplements bypass the digestion process that makes nutrients absorbable.</strong><br><br>
+Capsules deliver bacteria to your gut. Fermented foods deliver bacteria that have already broken down nutrients into bioavailable form &mdash; because that's what fermentation IS. The Japanese have known this for a thousand years. We just put it in a pill-sized plum.
+</div>
+
+<h3>2.4 Category Gap Analysis</h3>
+<table>
+<tr><th>Brand</th><th>Category norm</th><th>The gap</th><th>How RSTM fills it</th></tr>
+<tr><td>MamaWillow</td><td>Eco brands lead with "natural ingredients"</td><td>Nobody talks about the FORMAT as the innovation</td><td>Sheet format = no water, no bottle, no waste. The format IS the sustainability.</td></tr>
+<tr><td>HappyHund</td><td>Pet supplement brands list ingredients</td><td>Nobody explains WHY the dog needs these ingredients</td><td>The "modern diet gap" reframe: dogs aren't sick &mdash; they're undernourished by design.</td></tr>
+<tr><td>ShareSwiss</td><td>Gut health brands sell capsules</td><td>Nobody positions food as the mechanism</td><td>"This isn't a supplement. It's a food." Fermentation as the delivery system, not the marketing angle.</td></tr>
+</table>
+
+<h3>2.5 Solution Mechanism (3-Layer) &mdash; MamaWillow</h3>
+<table>
+<tr><th>Layer</th><th>What it is</th><th>How to communicate</th></tr>
+<tr><td><strong>Layer 1: Surface mechanism</strong></td><td>Laundry sheets dissolve in water and clean clothes</td><td>Demonstration video. Sheet in water. Dissolves. Clothes come out clean. 15 seconds.</td></tr>
+<tr><td><strong>Layer 2: Unique mechanism</strong></td><td>Concentrated cleaning agents in sheet form eliminate the need for water, plastic, and shipping weight</td><td>"94% less packaging. Zero plastic. Same clean." Comparison ad: MamaWillow sheet vs. 2kg Persil bottle.</td></tr>
+<tr><td><strong>Layer 3: Hidden mechanism</strong></td><td>The subscription model turns a one-time purchase into an identity: "I'm a MamaWillow household"</td><td>Community proof: "Join 5,000+ households." Monthly box unboxing content. Lifestyle identity creative.</td></tr>
+</table>
+
+<h3>2.6 Four-Line Reframe Chains</h3>
+<div class="simple">A Reframe Chain walks the prospect from their current belief to a new one in exactly four lines. Line 1: Acknowledge their current belief. Line 2: Introduce the crack. Line 3: Reframe. Line 4: Bridge to the product.</div>
+
+<h4>MamaWillow &mdash; 3 Variations</h4>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 1: "The Bottle Problem"</h4>
+<p><strong>Line 1:</strong> You switched to eco-friendly detergent. Good choice. <em>(Validate)</em><br>
+<strong>Line 2:</strong> But your "eco" detergent is still 80% water in a plastic bottle that takes 450 years to break down. <em>(Crack)</em><br>
+<strong>Line 3:</strong> The problem was never the detergent. It was the bottle. <em>(Reframe)</em><br>
+<strong>Line 4:</strong> MamaWillow eliminated the bottle entirely. One sheet. Same clean. Nothing to throw away. <em>(Bridge)</em></p>
+</div>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 2: "The Weight Revelation"</h4>
+<p><strong>Line 1:</strong> You're paying &euro;8 for 2kg of laundry detergent. <em>(Validate)</em><br>
+<strong>Line 2:</strong> 1.8kg of that is water. You're paying &euro;7.20 to ship water to your house. <em>(Crack)</em><br>
+<strong>Line 3:</strong> What if you could get just the cleaning power &mdash; without paying for someone else's water? <em>(Reframe)</em><br>
+<strong>Line 4:</strong> MamaWillow packs a full load of cleaning into a sheet thinner than a credit card. &euro;0.66 per wash. <em>(Bridge)</em></p>
+</div>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 3: "The Skin Question"</h4>
+<p><strong>Line 1:</strong> You read every ingredient on your food labels. <em>(Validate)</em><br>
+<strong>Line 2:</strong> But do you know what's in the detergent that touches your children's skin 24 hours a day? <em>(Crack)</em><br>
+<strong>Line 3:</strong> Your skin absorbs what it touches. Your children's skin absorbs it faster. <em>(Reframe)</em><br>
+<strong>Line 4:</strong> MamaWillow: every ingredient listed, nothing hidden, nothing synthetic. Founded by a mom who asked the same question. <em>(Bridge)</em></p>
+</div>
+
+<h4>HappyHund &mdash; 3 Variations</h4>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 1: "The Missing Nutrients"</h4>
+<p><strong>Line 1:</strong> You feed your dog premium kibble. You think they're getting everything they need. <em>(Validate)</em><br>
+<strong>Line 2:</strong> But processing removes the glucosamine, collagen, and MSM that dogs once got from raw bone and cartilage. <em>(Crack)</em><br>
+<strong>Line 3:</strong> Your dog isn't aging badly. Your dog's food is missing what nature used to provide. <em>(Reframe)</em><br>
+<strong>Line 4:</strong> HappyHund puts back what kibble takes out. Grain-free chews your dog thinks are treats. <em>(Bridge)</em></p>
+</div>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 2: "The Silent Damage"</h4>
+<p><strong>Line 1:</strong> Your dog seems fine. Plays, eats, wags their tail. <em>(Validate)</em><br>
+<strong>Line 2:</strong> But joint cartilage doesn't have nerve endings. By the time your dog shows pain, 60% of the joint surface is already damaged. <em>(Crack)</em><br>
+<strong>Line 3:</strong> You're not waiting for the right time to start. You're waiting past it. <em>(Reframe)</em><br>
+<strong>Line 4:</strong> HappyHund. Vet-recommended prevention your dog will beg for. <em>(Bridge)</em></p>
+</div>
+
+<div class="reframe-chain">
+<h4>Reframe Chain 3: "The Cost Reframe"</h4>
+<p><strong>Line 1:</strong> Dog joint supplements cost &euro;25-45 a month. That feels like a lot. <em>(Validate)</em><br>
+<strong>Line 2:</strong> A single vet visit for joint problems costs &euro;200-800. Surgery: &euro;2,000-5,000. <em>(Crack)</em><br>
+<strong>Line 3:</strong> The question isn't "Can I afford supplements?" It's "Can I afford not to?" <em>(Reframe)</em><br>
+<strong>Line 4:</strong> HappyHund. Less than &euro;1.50 a day. Prevention your dog loves. <em>(Bridge)</em></p>
+</div>
+
+<h3>2.7 Skepticism Pre-emption</h3>
+<table>
+<tr><th>Objection</th><th>Brand</th><th>Pre-emption strategy</th></tr>
+<tr><td>"Sheets can't clean as well as liquid"</td><td>MamaWillow</td><td>Demo video: side-by-side wash comparison. Same stain, sheet vs liquid. Show results.</td></tr>
+<tr><td>"This is just greenwashing"</td><td>MamaWillow</td><td>Ecologi profile (6,396 trees), ingredient transparency, founder story, 500+ verified reviews.</td></tr>
+<tr><td>"Supplements are a scam for dogs"</td><td>HappyHund</td><td>"Vet recommended" with specifics. UGC testimonials showing before/after mobility. Money-back guarantee if applicable.</td></tr>
+<tr><td>"I've tried gut health products before"</td><td>ShareSwiss</td><td>"This isn't a supplement" reframe. Fermented food vs capsule mechanism. Historical proof: Japanese tradition.</td></tr>
+<tr><td>"Too expensive"</td><td>All</td><td>Per-use cost breakdown (&euro;0.66/wash for MamaWillow, &euro;1.50/day for HappyHund). Compare to alternatives and consequences of inaction.</td></tr>
+</table>
+</section>
+
+<!-- =============================== -->
+<!-- PHASE 3: IGNITE                 -->
+<!-- =============================== -->
+<section id="ignite">
+<span class="phase-badge">I &mdash; IGNITE</span>
+<h2>Phase 3: Ignite Emotional Response</h2>
+<div class="simple">Ignite converts intellectual understanding into emotional action. The prospect knows the problem (Discover) and sees it differently (Reframe). Now they need to FEEL the urgency to act. This phase maps emotional drivers, builds proof architecture, and designs conversion amplifiers.</div>
+
+<h3>3.1 Emotional Driver Matrix</h3>
+<table>
+<tr><th>ICP</th><th>Primary emotion</th><th>Secondary emotion</th><th>Emotional peak moment</th><th>Creative format that ignites it</th></tr>
+<tr><td>Katharina (Guilty Switcher)</td><td>Guilt</td><td>Overwhelm</td><td>"What is my toddler absorbing through their skin right now?"</td><td>POV video: mom reading detergent ingredients, camera zooms on child's clothes</td></tr>
+<tr><td>Sophie (Eco-Identity)</td><td>Validation</td><td>Belonging</td><td>"I'm part of a community that actually does this"</td><td>Community montage: 5,000+ households, unboxing ritual, "welcome to MamaWillow"</td></tr>
+<tr><td>Anna (Convenience)</td><td>Relief</td><td>Surprise</td><td>"Wait &mdash; that tiny sheet actually works?"</td><td>Demo: sheet dissolving, stain comparison, "that's it. That's the whole thing."</td></tr>
+<tr><td>Thomas (Aging Dog)</td><td>Heartbreak</td><td>Hope</td><td>"He got up on his own this morning"</td><td>Before/after UGC: dog struggling &rarr; dog running. Owner voiceover: "I got my dog back."</td></tr>
+<tr><td>Maria (Proactive Puppy)</td><td>Responsibility</td><td>Prevention anxiety</td><td>"By the time you see it, it's already too late"</td><td>Vet-style explainer with x-ray visual: healthy joint vs damaged joint</td></tr>
+<tr><td>Claudia (Supplement Fatigued)</td><td>Exhausted hope</td><td>Curiosity</td><td>"What if this is the one thing I haven't tried?"</td><td>Storytelling: "I spent &euro;2,000 on gut health. This &euro;25 plum changed everything."</td></tr>
+<tr><td>Markus (Wellness Curious)</td><td>Curiosity</td><td>FOMO</td><td>"70% of Europeans have this and don't know it"</td><td>Educational hook: "The Japanese morning routine that changes your gut in 7 days"</td></tr>
+</table>
+
+<h3>3.2 Proof Architecture</h3>
+<div class="simple">Proof converts emotion into conviction. Each proof type builds on the last &mdash; from social proof (others trust it) to authority proof (experts validate it) to demonstration proof (you can see it yourself).</div>
+
+<table>
+<tr><th>Proof type</th><th>MamaWillow</th><th>HappyHund</th><th>ShareSwiss</th></tr>
+<tr><td><strong>Social proof</strong></td><td>4.6 stars, 500+ reviews, 5,000+ households. <span class="tag green">Strong</span></td><td>"Germany's #1 for dog health chews." <span class="tag yellow">Needs specifics</span></td><td>Loyalty program, Ecologi profile (6,396 trees). <span class="tag blue">Moderate</span></td></tr>
+<tr><td><strong>Authority proof</strong></td><td>Founded by "Lena" (real mom). Ingredient transparency. <span class="tag blue">Moderate</span></td><td>"Veterinarian recommended." <span class="tag yellow">Needs named vet or study</span></td><td>1000-year Japanese tradition. <span class="tag blue">Moderate</span></td></tr>
+<tr><td><strong>Demonstration proof</strong></td><td>Sheet dissolving in water. Before/after stain comparison. <span class="tag green">High potential</span></td><td>Dog mobility before/after. Dog eagerly eating the chew. <span class="tag green">High potential</span></td><td>Taste test reaction. Gut health timeline. <span class="tag blue">Moderate</span></td></tr>
+<tr><td><strong>Statistical proof</strong></td><td>94% less packaging, 6,396 trees, &euro;0.66/wash. <span class="tag green">Strong</span></td><td>Ingredient dosages (if published). <span class="tag yellow">Needs development</span></td><td>Bundle pricing comparison to competitors. <span class="tag yellow">Needs development</span></td></tr>
+<tr><td><strong>Risk reversal</strong></td><td>Subscription cancel anytime. <span class="tag blue">Standard</span></td><td>Money-back guarantee (if offered). <span class="tag yellow">Check</span></td><td>Starter bundle (&euro;89) as low-risk trial. <span class="tag blue">Standard</span></td></tr>
+</table>
+
+<h3>3.3 Conversion Amplifiers</h3>
+
+<h4>Urgency Frames (Ethical, Not Fabricated)</h4>
+<table>
+<tr><th>Brand</th><th>Urgency frame</th><th>Why it's honest</th></tr>
+<tr><td>MamaWillow</td><td>"Every wash with conventional detergent is another dose of chemicals on your family's skin"</td><td>Factual: conventional detergents contain skin-contact chemicals</td></tr>
+<tr><td>MamaWillow</td><td>"The EU Green Claims Directive takes effect Sept 2026 &mdash; brands that can't prove their claims disappear"</td><td>Regulatory fact: positions MamaWillow as ahead of compliance</td></tr>
+<tr><td>HappyHund</td><td>"Joint cartilage doesn't regenerate. What you prevent today can't be repaired tomorrow"</td><td>Veterinary fact: cartilage degradation is largely irreversible</td></tr>
+<tr><td>ShareSwiss</td><td>"Your gut microbiome changes measurably within 72 hours of dietary change"</td><td>Biological fact: microbiome shifts are rapid and measurable</td></tr>
+</table>
+
+<h4>Risk Removal Stack</h4>
+<div class="grid">
+<div class="card"><strong>MamaWillow</strong><br>Cancel subscription anytime &bull; Free shipping on bundles &bull; 500+ verified reviews &bull; "Founded by a mom &mdash; would I put this on my own kids' clothes if I wasn't sure?"</div>
+<div class="card"><strong>HappyHund</strong><br>Grain-free, no artificial colorants &bull; Vet recommended &bull; Dogs love the taste (chew format = built-in acceptance) &bull; Per-day cost framing (&euro;1.50/day)</div>
+<div class="card"><strong>ShareSwiss</strong><br>Weekly cure at &euro;24.95 (low trial price) &bull; Not a pill &mdash; a food (lower perceived risk) &bull; 1000-year tradition (time-tested, not experimental) &bull; Loyalty points for repeat purchases</div>
+</div>
+</section>
+
+<!-- =============================== -->
+<!-- PHASE 4: VARIATE                -->
+<!-- =============================== -->
+<section id="variate">
+<span class="phase-badge">V &mdash; VARIATE</span>
+<h2>Phase 4: Variate Through Systematic Testing</h2>
+<div class="simple">Variate is not "make more ads." It's a structured testing architecture that isolates variables, documents results, and compounds learning across all three brands. One concept becomes 30 variations. 50 variations find 6-9 winners. Those winners inform the next 50.</div>
+
+<h3>4.1 Testing Architecture &mdash; The 6-Level Ladder</h3>
+<p>Each level tests one variable at a time. Move to the next level only when the current level has a winner. Never test two variables simultaneously &mdash; you won't know which one caused the result.</p>
+
+<table>
+<tr><th>Level</th><th>Variable</th><th>What you test</th><th>Minimum variants</th><th>Success metric</th></tr>
+<tr><td><span class="score">1</span></td><td>Hook</td><td>First 3 seconds of video / first line of copy. Same body, different openings.</td><td>5 per concept</td><td>Hook rate (3-sec view rate)</td></tr>
+<tr><td><span class="score">2</span></td><td>Visual</td><td>Same hook, different visual treatment (live action, B-roll, text overlay, animation)</td><td>3 per winning hook</td><td>Hold rate (avg watch time)</td></tr>
+<tr><td><span class="score" style="background:var(--accent3)">3</span></td><td>Sound</td><td>Same visual, different audio (voiceover, music, silence, ASMR, trending sound)</td><td>3 per winning visual</td><td>Engagement rate</td></tr>
+<tr><td><span class="score" style="background:var(--yellow)">4</span></td><td>Format</td><td>Same concept, different format (video, carousel, static, text-wall, comparison)</td><td>4 per winning concept</td><td>CTR</td></tr>
+<tr><td><span class="score" style="background:var(--purple)">5</span></td><td>Angle</td><td>Same product, different entry point (pain, aspiration, comparison, education, story)</td><td>5 per product</td><td>CPA</td></tr>
+<tr><td><span class="score" style="background:var(--red)">6</span></td><td>Desire</td><td>Same product, different LF8 trigger (care vs. guilt vs. superiority vs. convenience)</td><td>3 per product</td><td>ROAS</td></tr>
+</table>
+
+<h3>4.2 Variation Matrix &mdash; One Concept, 30 Ads</h3>
+<div class="simple">This is how one creative concept becomes a testing pool of 30 variants without producing 30 pieces of creative from scratch.</div>
+
+<div class="lock">
+<strong>Example: MamaWillow "The Bottle Problem" concept</strong><br><br>
+<strong>1 concept</strong> &times; <strong>5 hooks</strong> = 5 variants<br>
+&times; <strong>3 visual treatments</strong> (demo, founder story, text overlay) = 15 variants<br>
+&times; <strong>2 sound options</strong> (voiceover, music only) = 30 variants<br><br>
+Alexander (video) shoots ONE session. The Creative Strategist multiplies it through systematic variation. 30 ads from one production day.
+</div>
+
+<h4>Hook Variations for "The Bottle Problem"</h4>
+<table>
+<tr><th>#</th><th>Hook (first 3 seconds)</th><th>Type</th><th>Target ICP</th></tr>
+<tr><td>1</td><td>"80% of your detergent is just water. You're paying to ship water."</td><td>Stat shock</td><td>Anna (Convenience)</td></tr>
+<tr><td>2</td><td>"I threw out every plastic bottle under my sink. Here's what replaced them."</td><td>Personal story</td><td>Sophie (Eco-Identity)</td></tr>
+<tr><td>3</td><td>"My daughter's eczema cleared up 3 weeks after I switched to these."</td><td>Result first</td><td>Katharina (Guilty Switcher)</td></tr>
+<tr><td>4</td><td>[Visual: 2kg bottle vs single sheet side by side] "Same clean. Guess which one I use."</td><td>Visual comparison</td><td>All</td></tr>
+<tr><td>5</td><td>"The #1 thing eco brands don't want you to know about their packaging."</td><td>Curiosity gap</td><td>Sophie (Eco-Identity)</td></tr>
+</table>
+
+<h3>4.3 Volume Targets (Per Brand, Per Month)</h3>
+<table>
+<tr><th>Metric</th><th>Month 1-2 (Setup)</th><th>Month 3-4 (Scaling)</th><th>Month 5-6 (Velocity)</th></tr>
+<tr><td>New concepts</td><td>5 per brand</td><td>8-10 per brand</td><td>12-15 per brand</td></tr>
+<tr><td>Total variants tested</td><td>15-20 per brand</td><td>30-40 per brand</td><td>50+ per brand</td></tr>
+<tr><td>Expected winners (12-18% win rate)</td><td>2-3 per brand</td><td>4-7 per brand</td><td>6-9 per brand</td></tr>
+<tr><td>Creative DNA entries documented</td><td>5-10</td><td>15-25</td><td>30-50</td></tr>
+<tr><td>Cross-brand pattern transfers</td><td>0 (building baseline)</td><td>2-3 per month</td><td>5+ per month</td></tr>
+</table>
+
+<h3>4.4 Format Diversification Plan</h3>
+<table>
+<tr><th>Format</th><th>Production complexity</th><th>Best for</th><th>Current industry trend</th></tr>
+<tr><td><strong>UGC-style video</strong></td><td><span class="tag green">Low</span> Phone + natural setting</td><td>HappyHund (dog content), MamaWillow (mom content)</td><td>Declining. Overused. Still works in pet category.</td></tr>
+<tr><td><strong>B-roll + voiceover</strong></td><td><span class="tag blue">Medium</span> Product footage + scripted VO</td><td>All brands. Rising format.</td><td><span class="tag green">Rising</span> Works as UGC fatigues.</td></tr>
+<tr><td><strong>Text-wall / static</strong></td><td><span class="tag green">Low</span> Design only, no video</td><td>ShareSwiss (education-heavy). All brands for retargeting.</td><td><span class="tag green">Rising</span> High CTR, low production cost.</td></tr>
+<tr><td><strong>Demonstration</strong></td><td><span class="tag blue">Medium</span> Product + comparison setup</td><td>MamaWillow (sheet dissolving). HappyHund (dog eating chew).</td><td>Stable. High conversion for physical products.</td></tr>
+<tr><td><strong>Founder narrative</strong></td><td><span class="tag blue">Medium</span> Lena on camera + product shots</td><td>MamaWillow (authentic brand story). ShareSwiss (family origin).</td><td>Stable. Works for authenticity positioning.</td></tr>
+<tr><td><strong>Expert/authority</strong></td><td><span class="tag yellow">High</span> Needs vet or expert participation</td><td>HappyHund (vet endorsement). ShareSwiss (wellness expert).</td><td>Stable. High trust but harder to produce at volume.</td></tr>
+<tr><td><strong>Comparison / us vs them</strong></td><td><span class="tag green">Low</span> Side-by-side design</td><td>MamaWillow (sheet vs bottle). HappyHund (vs generic Amazon).</td><td><span class="tag green">Rising</span> Works at Stage 4 sophistication.</td></tr>
+</table>
+</section>
+
+<!-- =============================== -->
+<!-- PHASE 5: EVOLVE                 -->
+<!-- =============================== -->
+<section id="evolve">
+<span class="phase-badge">E &mdash; EVOLVE</span>
+<h2>Phase 5: Evolve Through Documented Learning</h2>
+<div class="simple">Evolve is what separates a creative strategist from a content creator. It's the system that makes every test smarter than the last. Not "we tried this and it worked." Rather: "we know WHY it worked, where else it applies, and what to test next because of it."</div>
+
+<h3>5.1 Creative DNA Library Architecture</h3>
+<p>Every winning creative element gets catalogued. Every losing one gets tagged with why it failed. Nothing gets tested twice. The library compounds across all three brands.</p>
+
+<table>
+<tr><th>DNA element</th><th>What gets recorded</th><th>Example entry</th></tr>
+<tr><td><strong>Winning hook</strong></td><td>Hook text, hook type (stat shock / personal story / result first / curiosity gap), 3-sec view rate, brand, ICP, date</td><td>"80% of your detergent is water" &mdash; Stat shock &mdash; 42% hook rate &mdash; MamaWillow &mdash; Anna ICP &mdash; Aug 2026</td></tr>
+<tr><td><strong>Winning visual</strong></td><td>Visual description, format, thumbnail, hold rate, brand, date</td><td>Sheet dissolving in glass of water &mdash; Demo &mdash; 65% hold rate &mdash; MamaWillow &mdash; Aug 2026</td></tr>
+<tr><td><strong>Winning angle</strong></td><td>Angle name, entry emotion, LF8 trigger, CPA, brand, ICP, date</td><td>"The Bottle Problem" &mdash; Surprise/guilt &mdash; LF6 superiority &mdash; &euro;12.40 CPA &mdash; MamaWillow &mdash; Aug 2026</td></tr>
+<tr><td><strong>Failed concept</strong></td><td>Concept, hypothesis, result, WHY it failed (hypothesis), brand, date</td><td>"Eco-guilt" angle &mdash; Hypothesis: guilt drives action &mdash; Result: 0.4% CTR &mdash; WHY: Stage 4 market is skeptical of guilt-based messaging</td></tr>
+<tr><td><strong>Cross-brand transfer</strong></td><td>Original brand, original element, adapted brand, original result, adapted result</td><td>"UGC + voiceover" format &mdash; HappyHund 3.2% CTR &mdash; Adapted to MamaWillow &mdash; 2.8% CTR &mdash; Works cross-category</td></tr>
+</table>
+
+<h3>5.2 Weekly Creative Review Cadence</h3>
+<table>
+<tr><th>Day</th><th>Activity</th><th>Output</th></tr>
+<tr><td>Monday</td><td>Pull performance data across all 3 brands. Identify top/bottom performers from last week.</td><td>Updated DNA library. Flagged fatiguing creatives.</td></tr>
+<tr><td>Tuesday</td><td>New concept development based on DNA patterns. Write hooks and brief structures.</td><td>5-10 new concept briefs ready for Alexander.</td></tr>
+<tr><td>Wednesday</td><td>Production collaboration. Brief handoff to Alexander (video) and Pia (email adaptation).</td><td>Clear briefs with hook, visual direction, format, ICP, and compliance notes.</td></tr>
+<tr><td>Thursday</td><td>VOC extraction from Joey (support). Review customer language from the week.</td><td>New angles and hooks from real customer words.</td></tr>
+<tr><td>Friday</td><td>Launch new tests. Document hypotheses. Update cross-brand transfer opportunities.</td><td>New tests live. Previous tests analyzed. Learning documented.</td></tr>
+</table>
+
+<h3>5.3 Scaling Framework &mdash; 90-Day Roadmap</h3>
+<table>
+<tr><th>Phase</th><th>Timeline</th><th>Focus</th><th>Deliverables</th></tr>
+<tr><td><strong>Foundation</strong></td><td>Days 1-30</td><td>Audit existing creatives across all 3 brands. Build DNA library from historical winners. Establish testing architecture. Audit MamaWillow for EU Green Claims compliance.</td><td>Creative DNA v1 &bull; Testing playbook &bull; Compliance audit &bull; First 15 concept briefs</td></tr>
+<tr><td><strong>Velocity</strong></td><td>Days 31-60</td><td>Increase creative output to 30+ variants/brand/month. Launch Level 1-3 tests (hook, visual, sound). Begin cross-brand pattern transfer.</td><td>30-40 variants per brand tested &bull; First cross-brand transfers documented &bull; VOC pipeline from Joey established</td></tr>
+<tr><td><strong>System</strong></td><td>Days 61-90</td><td>Full creative engine operational. Level 4-6 tests running (format, angle, desire). MamaWillow localization framework for IT and UK markets launched.</td><td>50+ variants per brand &bull; Localization playbook v1 &bull; Creative DNA library at 30+ entries &bull; Michael fully unbottlenecked from creative decisions</td></tr>
+</table>
+
+<div class="kta"><h3>The Evolve Promise</h3>
+<ul>
+<li>At month 3, the creative engine runs with or without the Creative Strategist. The system is the deliverable, not the person.</li>
+<li>Every test makes the next test smarter. The DNA library is the institutional memory that prevents "we tried that 6 months ago and it didn't work" amnesia.</li>
+<li>Cross-brand learning is the multiplier. A winning hook format in HappyHund gets adapted for MamaWillow within 48 hours. Three brands learn at the speed of one.</li>
+<li>This is what Michael means by "Always Testing, Always Learning" &mdash; but operationalized. Not a philosophy. A system.</li>
+</ul>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- =============================== -->
+<!-- BIG IDEA FORMULATION            -->
+<!-- =============================== -->
+<section id="bigidea">
+<h2>Big Idea Formulation &amp; Scoring</h2>
+<div class="simple">A Big Idea is the strategic core of a creative campaign &mdash; the single insight that makes the product impossible to ignore. Each Big Idea is scored on 5 criteria out of 25. Anything above 18 is worth testing. Above 21 is worth scaling.</div>
+
+<h3>Scoring Criteria</h3>
+<table>
+<tr><th>Criterion</th><th>1 (Weak)</th><th>3 (Moderate)</th><th>5 (Strong)</th></tr>
+<tr><td><strong>Specificity</strong></td><td>Vague claim anyone could make</td><td>Category-specific but not brand-specific</td><td>Only this brand can make this claim</td></tr>
+<tr><td><strong>Emotional charge</strong></td><td>Intellectual interest only</td><td>Nods &mdash; "that's interesting"</td><td>Stops scrolling &mdash; "wait, what?"</td></tr>
+<tr><td><strong>Proof-ability</strong></td><td>Opinion &mdash; can't be demonstrated</td><td>Can be supported with testimonials</td><td>Can be demonstrated visually (demo, data, before/after)</td></tr>
+<tr><td><strong>Scalability</strong></td><td>One ad. One format. Done.</td><td>Works across 2-3 formats</td><td>Generates 20+ variations across formats, hooks, and ICPs</td></tr>
+<tr><td><strong>Reframe power</strong></td><td>Agrees with how the market sees the problem</td><td>Adds a new angle to the problem</td><td>Changes what the prospect thinks the problem is</td></tr>
+</table>
+
+<h3>Big Idea 1: MamaWillow &mdash; "You're Paying to Ship Water"</h3>
+<table>
+<tr><td><strong>The Idea</strong></td><td>Conventional detergent is 80-90% water. Every bottle is a scam of logistics, not cleaning. MamaWillow eliminated the water and the bottle. What's left is just the clean.</td></tr>
+<tr><td><strong>Specificity</strong></td><td><span class="score">5</span> Only sheet-format brands can make this claim. Within sheets, MamaWillow's founder story adds differentiation.</td></tr>
+<tr><td><strong>Emotional charge</strong></td><td><span class="score">4</span> "Wait &mdash; I've been paying to ship WATER?" &mdash; triggers surprise and indignation.</td></tr>
+<tr><td><strong>Proof-ability</strong></td><td><span class="score">5</span> Can be demonstrated: weigh a bottle (2kg) vs a pack of sheets (200g). Same number of washes. Visual proof.</td></tr>
+<tr><td><strong>Scalability</strong></td><td><span class="score">5</span> Works as video demo, carousel comparison, text-wall, founder story, stat graphic, UGC reaction. 30+ variations easily.</td></tr>
+<tr><td><strong>Reframe power</strong></td><td><span class="score">5</span> Changes the problem from "chemicals" (where everyone competes) to "the bottle itself" (where only sheet brands compete).</td></tr>
+<tr><td><strong>Total</strong></td><td><span class="score" style="background:var(--green);font-size:1.1rem">24/25</span> &larr; Scale immediately</td></tr>
+</table>
+
+<h3>Big Idea 2: HappyHund &mdash; "Modern Food Took Away What Nature Gave"</h3>
+<table>
+<tr><td><strong>The Idea</strong></td><td>Dogs evolved eating raw bone and cartilage &mdash; natural sources of glucosamine and collagen. Processed kibble removes these nutrients. Your dog isn't aging; your dog's food is incomplete. HappyHund puts back what modern food took out.</td></tr>
+<tr><td><strong>Specificity</strong></td><td><span class="score">4</span> Any supplement brand could theoretically claim this, but few frame it as a diet problem rather than an aging problem.</td></tr>
+<tr><td><strong>Emotional charge</strong></td><td><span class="score">5</span> "I've been feeding my dog something that's missing what they need?" &mdash; guilt + urgency.</td></tr>
+<tr><td><strong>Proof-ability</strong></td><td><span class="score">4</span> Can reference evolutionary biology and ingredient comparisons. Before/after UGC adds experiential proof.</td></tr>
+<tr><td><strong>Scalability</strong></td><td><span class="score">4</span> Works as explainer, UGC, comparison (kibble vs raw vs HappyHund), vet authority, founder narrative.</td></tr>
+<tr><td><strong>Reframe power</strong></td><td><span class="score">5</span> Changes the frame from "old dogs need supplements" to "all dogs on kibble are nutritionally incomplete." Massively expands the addressable market (all dog owners, not just those with aging dogs).</td></tr>
+<tr><td><strong>Total</strong></td><td><span class="score" style="background:var(--green);font-size:1.1rem">22/25</span> &larr; Strong. Test and iterate.</td></tr>
+</table>
+
+<h3>Big Idea 3: ShareSwiss &mdash; "Not a Supplement. A Food."</h3>
+<table>
+<tr><td><strong>The Idea</strong></td><td>You've tried supplements. Capsules. Powders. Probiotics. They worked a little. Then they didn't. Because supplements bypass your digestion. Fermented food USES your digestion. The Japanese figured this out 1,000 years ago. We just put it in a plum.</td></tr>
+<tr><td><strong>Specificity</strong></td><td><span class="score">5</span> Only fermented food products can claim this. The Japanese tradition + specific product form (plum) is unique in DACH.</td></tr>
+<tr><td><strong>Emotional charge</strong></td><td><span class="score">4</span> For supplement-fatigued prospects, "not a supplement" is the most powerful opening possible. For unaware prospects, the cultural curiosity hook is strong.</td></tr>
+<tr><td><strong>Proof-ability</strong></td><td><span class="score">3</span> Fermentation science is real but harder to demonstrate visually than a dissolving sheet or a running dog. Requires more education-style creative.</td></tr>
+<tr><td><strong>Scalability</strong></td><td><span class="score">4</span> Works as educational video, comparison (pill vs food), cultural story (Japanese tradition), taste test UGC, morning routine content.</td></tr>
+<tr><td><strong>Reframe power</strong></td><td><span class="score">5</span> Changes the frame from "which supplement is best" to "supplements are the wrong format entirely." Category-breaking reframe.</td></tr>
+<tr><td><strong>Total</strong></td><td><span class="score" style="background:var(--green);font-size:1.1rem">21/25</span> &larr; Strong. Needs more visual proof development.</td></tr>
+</table>
+</section>
+
+<hr class="divider">
+
+<!-- =============================== -->
+<!-- APPENDIX: HEADLINES             -->
+<!-- =============================== -->
+<section id="appendix-headlines">
+<h2>Appendix A: Headline Library (70+)</h2>
+<div class="simple">Each headline is ready to test as a Meta ad primary text opening, a hook for video, or a subject line for Pia's email campaigns. Organized by brand and angle.</div>
+
+<h3>MamaWillow Headlines (25)</h3>
+<details><summary>The Bottle Problem (7)</summary>
+<ol>
+<li>80% of your laundry detergent is water. You're paying &euro;7 to ship water.</li>
+<li>I stopped buying detergent bottles. Here's what replaced them.</li>
+<li>The average household throws away 12 detergent bottles a year. What if you threw away zero?</li>
+<li>Your "eco-friendly" detergent still comes in a plastic bottle. Think about that.</li>
+<li>One sheet. One wash. No bottle. No waste. Same clean.</li>
+<li>We eliminated the bottle. Turns out that was the problem all along.</li>
+<li>What weighs less than a credit card and replaces a 2kg detergent bottle?</li>
+</ol>
+</details>
+
+<details><summary>Skin Safety (6)</summary>
+<ol>
+<li>You read food labels. Do you read detergent labels? Your skin absorbs both.</li>
+<li>My toddler's eczema cleared up 3 weeks after I switched. This is what I switched to.</li>
+<li>23 chemicals in your detergent touch your family's skin for 16 hours a day.</li>
+<li>The ingredient list on your detergent is longer than your grocery receipt. Is that normal?</li>
+<li>I stopped putting things I can't pronounce on my children's clothes.</li>
+<li>Your baby's skin absorbs 60% more than yours. What's on their onesie?</li>
+</ol>
+</details>
+
+<details><summary>Convenience (6)</summary>
+<ol>
+<li>I haven't carried a detergent bottle in 6 months. My back thanks me.</li>
+<li>Laundry just got stupid simple. One sheet. Drop it in. Done.</li>
+<li>No measuring. No spilling. No bottles. Just clean clothes.</li>
+<li>I used to carry 4kg of detergent up 3 flights. Now I carry an envelope.</li>
+<li>The laziest way to do laundry also happens to be the cleanest.</li>
+<li>Travel with laundry sheets. TSA doesn't question a sheet.</li>
+</ol>
+</details>
+
+<details><summary>Identity / Community (6)</summary>
+<ol>
+<li>5,000+ households switched. Here's what they're not going back to.</li>
+<li>Becoming a "MamaWillow household" was the easiest decision I made this year.</li>
+<li>"Lena" started this in her kitchen. 5,000 families later, it's a movement.</li>
+<li>Join the households that stopped shipping water across Europe.</li>
+<li>Not just clean laundry. A clean conscience.</li>
+<li>The subscription box I actually look forward to. (It's for laundry. I know.)</li>
+</ol>
+</details>
+
+<h3>HappyHund Headlines (25)</h3>
+<details><summary>Joint Health / Aging (8)</summary>
+<ol>
+<li>My vet said 3 words about my 9-year-old Lab that broke my heart. Then she recommended this.</li>
+<li>He stopped greeting me at the door. That's when I knew something was wrong.</li>
+<li>Joint cartilage doesn't regenerate. What you prevent today can't be fixed tomorrow.</li>
+<li>She's running again. Two months ago, she couldn't get off the couch.</li>
+<li>The supplement my dog thinks is a treat. The supplement my vet calls "essential."</li>
+<li>60% of joint damage happens before you see the first limp.</li>
+<li>I'd do anything for my dog. Turns out "anything" costs &euro;1.50 a day.</li>
+<li>Your dog can't tell you their joints hurt. But you can see it if you know where to look.</li>
+</ol>
+</details>
+
+<details><summary>Diet Gap (6)</summary>
+<ol>
+<li>Wild dogs eat raw bone and cartilage. Your dog eats processed kibble. Guess which one needs supplements.</li>
+<li>Your dog's food is missing something. Here's what &mdash; and why.</li>
+<li>Modern dog food removed the nutrients dogs evolved to eat. HappyHund puts them back.</li>
+<li>Glucosamine, collagen, MSM. Your dog used to get these from food. Now they don't.</li>
+<li>Premium kibble. Premium price. Still missing the 3 nutrients your dog needs most.</li>
+<li>The gap between what dogs eat and what dogs need is costing you vet bills.</li>
+</ol>
+</details>
+
+<details><summary>Prevention (5)</summary>
+<ol>
+<li>The one thing your vet won't tell you about large-breed puppies until it's too late.</li>
+<li>&euro;1.50/day now vs &euro;3,000 surgery later. Prevention isn't optional for large breeds.</li>
+<li>Your puppy looks fine. Their joints are already under stress you can't see.</li>
+<li>Start at 6 months. Not at 6 years. Your dog will thank you at 12.</li>
+<li>"I wish I'd started earlier." The #1 thing dog owners say about joint supplements.</li>
+</ol>
+</details>
+
+<details><summary>Emotional / UGC (6)</summary>
+<ol>
+<li>"I got my dog back." &mdash; HappyHund review (4.8 stars)</li>
+<li>Watch this 11-year-old Dachshund run for the first time in 2 years.</li>
+<li>Dogs can't choose their supplements. You choose for them. Choose well.</li>
+<li>The tail wag test: if your dog wags less than they used to, read this.</li>
+<li>Germany's most stubborn Labrador vs. the chew he can't resist.</li>
+<li>My dog doesn't know it's a supplement. He thinks it's the best part of his day.</li>
+</ol>
+</details>
+
+<h3>ShareSwiss Headlines (20)</h3>
+<details><summary>Mechanism / Education (7)</summary>
+<ol>
+<li>Not a supplement. Not a probiotic. A 1,000-year-old Japanese fermented food.</li>
+<li>I spent &euro;2,000 on gut health products that didn't work. A &euro;25 plum changed everything.</li>
+<li>Supplements deliver bacteria. Fermented food delivers nutrients your body can actually absorb.</li>
+<li>The Japanese eat this every morning. 95% of Europeans have never heard of it.</li>
+<li>Probiotics treat symptoms. Fermentation treats the cause. Here's the difference.</li>
+<li>Your gut doesn't need more bacteria. It needs better food. Here's what that means.</li>
+<li>Japanese apricot plums have been fermented for 1,000 years. Science just caught up.</li>
+</ol>
+</details>
+
+<details><summary>Fatigue / Frustration (6)</summary>
+<ol>
+<li>Tried probiotics. Tried kombucha. Tried that powder thing. Still bloated. Try this.</li>
+<li>The &euro;25 thing that worked after &euro;2,000 of things that didn't.</li>
+<li>"Nothing works for me." I said that too. Then I stopped taking supplements and started eating this.</li>
+<li>If capsules worked, you wouldn't still be looking. That's the point.</li>
+<li>Your gut didn't fail you. Your supplements did. Here's why.</li>
+<li>Stop taking supplements. Start eating fermented food. (Yes, there's a difference.)</li>
+</ol>
+</details>
+
+<details><summary>Lifestyle / Curiosity (7)</summary>
+<ol>
+<li>One plum a day. That's the entire routine.</li>
+<li>The morning ritual I stole from Japan. Takes 30 seconds.</li>
+<li>I added one thing to my morning. My gut noticed in 72 hours.</li>
+<li>A plum, a praline, or a drink. Pick your format. Same fermented magic.</li>
+<li>The wellness product that tastes like you're cheating.</li>
+<li>6,396 trees planted. Zero plastic bottles shipped. One plum at a time.</li>
+<li>From Hartberg, Austria to your gut. The unlikely origin story of ShareSwiss.</li>
+</ol>
+</details>
+</section>
+
+<!-- =============================== -->
+<!-- APPENDIX: COMPLIANCE            -->
+<!-- =============================== -->
+<section id="appendix-compliance">
+<h2>Appendix B: Compliance Notes</h2>
+<div class="simple">Every headline and creative concept must clear these compliance filters before going live. The Creative Strategist is responsible for flagging risk before production, not after rejection.</div>
+
+<table>
+<tr><th>Risk area</th><th>Brand(s)</th><th>Specific risk</th><th>Mitigation</th></tr>
+<tr><td><strong>EU Green Claims Directive</strong></td><td>MamaWillow</td><td>All environmental claims must be substantiated by 27 Sept 2026. "Eco-friendly," "sustainable," "green" require third-party certification.</td><td>Audit all MamaWillow ad copy for unsubstantiated eco claims within first 30 days. Replace vague claims with specific ones: "94% less packaging" (measurable) vs "eco-friendly" (vague).</td></tr>
+<tr><td><strong>Health claims (EFSA)</strong></td><td>ShareSwiss, HappyHund</td><td>EU Health Claims Regulation (EC 1924/2006) restricts health claims on food and supplements. "Cures," "treats," "heals" are prohibited without EFSA authorization.</td><td>Use structure/function claims only: "supports gut health," "contributes to joint mobility." Never "cures bloating" or "fixes joint problems."</td></tr>
+<tr><td><strong>Meta ad policy &mdash; health</strong></td><td>ShareSwiss, HappyHund</td><td>Before/after images restricted. Personal health attributes ("your bloating") may trigger rejection.</td><td>Use third-person framing: "Dog owners report..." not "Your dog will..." Avoid before/after body imagery for ShareSwiss.</td></tr>
+<tr><td><strong>Meta ad policy &mdash; misleading</strong></td><td>All</td><td>"#1 in Germany" claim (HappyHund) needs substantiation or will be flagged as misleading.</td><td>Add source citation or reframe: "Trusted by thousands of German dog owners" instead of "#1."</td></tr>
+<tr><td><strong>Testimonial rules</strong></td><td>All</td><td>Customer testimonials must be genuine and not imply guaranteed results. EU Omnibus Directive (2022) requires verification of review authenticity.</td><td>Use verified review platforms. Add "Individual results may vary" where appropriate. Never fabricate or incentivize reviews for ad use without disclosure.</td></tr>
+<tr><td><strong>Veterinary claims</strong></td><td>HappyHund</td><td>"Veterinarian recommended" must reference actual veterinary endorsement, not generic claim.</td><td>Document which veterinarian(s) recommend the product. If no named vet, reframe to "formulated with veterinary-grade ingredients."</td></tr>
+</table>
+</section>
+
+<!-- =============================== -->
+<!-- APPENDIX: METRICS               -->
+<!-- =============================== -->
+<section id="appendix-metrics">
+<h2>Appendix C: Metrics Framework</h2>
+<div class="simple">These metrics tell the Creative Strategist whether creative is working, where it's failing, and what to do about it. Every metric maps to a creative decision.</div>
+
+<table>
+<tr><th>Metric</th><th>What it measures</th><th>Benchmark (DACH DTC)</th><th>Creative action if below benchmark</th></tr>
+<tr><td><strong>Hook rate</strong> (3-sec view)</td><td>Does the first 3 seconds stop the scroll?</td><td>30-40%</td><td>Test new hooks. Keep same body creative, swap opening 3 seconds.</td></tr>
+<tr><td><strong>Hold rate</strong> (ThruPlay / avg watch)</td><td>Does the creative keep attention after the hook?</td><td>20-25% ThruPlay</td><td>Shorten the middle. Cut to mechanism or proof faster. Add visual variety (scene changes every 3-5 sec).</td></tr>
+<tr><td><strong>CTR</strong></td><td>Does the creative drive clicks?</td><td>1.5-2.5% (DACH)</td><td>Strengthen CTA. Test curiosity gaps. Add urgency frame.</td></tr>
+<tr><td><strong>CPA</strong></td><td>Does the creative convert efficiently?</td><td>Brand-specific. Set after 30-day baseline.</td><td>If CPA rising + CTR stable: landing page problem, not creative. If CPA rising + CTR dropping: creative fatigue &mdash; launch new variants.</td></tr>
+<tr><td><strong>ROAS</strong></td><td>Does the creative drive profitable revenue?</td><td>3-5x for DTC supplements/CPG</td><td>If ROAS below target: test higher-AOV offers (bundles, subscriptions). Test angles that attract higher-LTV ICPs.</td></tr>
+<tr><td><strong>Creative fatigue indicators</strong></td><td>Frequency &gt;3, CTR declining week-over-week, CPM rising on same audience</td><td>Launch new variants when frequency hits 3</td><td>Refresh hooks and visuals first (fastest production). If still fatiguing, launch new concept entirely.</td></tr>
+<tr><td><strong>Win rate</strong></td><td>% of tested creatives that scale (CPA below target)</td><td>12-18%</td><td>If below 12%: research quality issue. Go back to VOC. If above 18%: not testing boldly enough &mdash; increase variance.</td></tr>
+</table>
+
+<h3>Dashboard View (Suggested)</h3>
+<div class="grid">
+<div class="card"><div class="stat">Hook Rate</div>Target: 30-40%<br>Measures: Opening 3 seconds<br>Owner: Creative Strategist</div>
+<div class="card"><div class="stat">Win Rate</div>Target: 12-18%<br>Measures: Concepts that scale<br>Owner: Creative Strategist</div>
+<div class="card"><div class="stat">Velocity</div>Target: 50+ variants/brand/mo<br>Measures: Testing throughput<br>Owner: Creative Strategist + Alexander</div>
+<div class="card"><div class="stat">DNA Entries</div>Target: 10+ new/month<br>Measures: Learning capture<br>Owner: Creative Strategist</div>
+</div>
+</section>
+
+<hr class="divider">
+<p class="small" style="text-align:center;margin-top:40px">
+DRIVE Creative Strategy &mdash; Applied to RSTM ECOM Portfolio<br>
+Produced by Mohammad Usman using the DRIVE Framework<br>
+Every ICP is a real person. Every mechanism is evidence-based. Every headline is production-ready.<br>
+This is not a strategy deck. It's the operating system for a creative engine.
+</p>
+</main>

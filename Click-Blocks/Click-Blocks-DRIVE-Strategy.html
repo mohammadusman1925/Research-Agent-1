@@ -1,0 +1,577 @@
+<title>Click Blocks — DRIVE Strategy Document</title>
+<style>
+:root{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#111113;--surface:#1C1C1E;--raised:#2A2A2C;--text:#EDEDEC;--muted:#A1A09D;
+  --accent:#F47B68;--teal:#5DC4AD;--teal-soft:#1A2B27;--accent-soft:#2E1F1B;
+  --border:#333;--deep:#0A0A0A;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#FAFAF8;--surface:#fff;--raised:#F3F2EF;--text:#1C1917;--muted:#78716C;
+  --accent:#E94D35;--teal:#1A6B5C;--teal-soft:#E8F5F1;--accent-soft:#FEF0ED;
+  --border:#E7E5E4;--deep:#292524;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 24px 100px}
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 40px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:700px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:640px;line-height:1.6}
+.masthead .lock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:16px 18px;border-radius:8px;margin-top:22px;font-size:.9rem;line-height:1.55;color:#ccc}
+.masthead .lock strong{color:var(--accent)}
+nav{background:var(--surface);border:1px solid var(--border);padding:12px 18px;border-radius:8px;margin-bottom:40px;display:flex;flex-wrap:wrap;gap:4px 14px}
+nav a{font-size:.82rem;color:var(--muted);text-decoration:none;font-weight:500}
+nav a:hover{color:var(--accent)}
+section{margin-top:56px}
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+.part-label{font:800 .68rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:6px}
+section>h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+h4{font:600 .95rem/1.2 -apple-system,system-ui,sans-serif;margin-top:22px;margin-bottom:6px}
+p{margin:.55em 0;max-width:68ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.band{background:var(--deep);color:#EDEDEC;padding:24px 26px;border-radius:10px;margin:28px 0}
+.band h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+.band ul{padding-left:1.1em}.band li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+}
+:root[data-theme="dark"] .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue{background:#1E3A5F;color:#93C5FD}
+.score{display:inline-block;background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-weight:700;font-size:.78rem}
+.score-teal{background:var(--teal)}
+blockquote{border-left:3px solid var(--accent);margin:16px 0;padding:10px 18px;background:var(--surface);border-radius:0 8px 8px 0;font-size:.93rem;font-style:italic}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.cg{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.cg strong{display:block;margin-bottom:4px}
+.icp{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:16px 0;overflow:hidden}
+.icp-head{padding:14px 18px;background:var(--raised);border-bottom:1px solid var(--border);font:600 1rem/1.2 -apple-system,system-ui,sans-serif}
+.icp-body{padding:14px 18px;font-size:.9rem}
+.icp-body p{margin:.35em 0}
+.reframe-chain{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin:16px 0}
+.reframe-chain h4{margin-top:0;color:var(--accent)}
+.reframe-chain p{font-size:.93rem;margin:.5em 0;padding-left:14px;border-left:2px solid var(--border)}
+.fine{font-size:.8rem;color:var(--muted);margin-top:48px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  main{padding:0 14px 60px}.masthead{padding:32px 14px 28px;margin:0 -14px 28px}
+  section{margin-top:40px}.card-grid{grid-template-columns:1fr}
+}
+</style>
+
+<main>
+<header class="masthead">
+  <div class="mast-label">DRIVE Strategy Document</div>
+  <h1>Click Blocks</h1>
+  <p>Full strategic framework for performance marketing &mdash; Discover, Reframe, Ignite, Variate, Evolve &mdash; built on the Brand Intelligence Report and extended with consumer psychology, market positioning, and creative architecture.</p>
+  <div class="lock"><strong>Strategic foundation:</strong> Magnetic building blocks for children &middot; "Dopamine Click" mechanism &middot; Mums 28&ndash;45 with kids 3&ndash;12 &middot; Screen time guilt entry point &middot; $23.96&ndash;$51.96 &middot; Problem-Aware market &middot; Sophistication Stage 2&ndash;3.</div>
+</header>
+
+<nav>
+  <a href="#discover">Discover</a>
+  <a href="#reframe">Reframe</a>
+  <a href="#ignite">Ignite</a>
+  <a href="#variate">Variate</a>
+  <a href="#evolve">Evolve</a>
+</nav>
+
+<!-- ============================================ -->
+<!-- DISCOVER -->
+<!-- ============================================ -->
+<section id="discover">
+  <div class="sec-rule"></div>
+  <div class="part-label">Part 1</div>
+  <h2>Discover</h2>
+  <p style="color:var(--muted);margin-bottom:20px">Understanding what the market already wants &mdash; not what we want to tell them. Who's buying, what stage they're at, and what emotional triggers drive their decisions.</p>
+
+  <h3>1.1 Mass Desire Analysis</h3>
+  <p>The mass desire is not "magnetic building blocks." The mass desire is: <strong>"I want my kid to put the screen down and be a kid again &mdash; without me having to fight for it."</strong></p>
+  <p>This desire predates Click Blocks. It's the same desire that drives parents to buy educational toys, enforce screen-time rules, sign kids up for activities, and lie awake at 2am wondering if their child's brain is being rewired by YouTube Shorts. Click Blocks intercepts this desire at the moment the parent has exhausted willpower and is searching for a solution that doesn't require constant supervision.</p>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Desire dimension</th><th>Assessment</th><th>Evidence</th></tr>
+    <tr><td>Urgency</td><td><span class="score">HIGH</span></td><td>The guilt is daily. Every handed-over iPad is a fresh reminder. Not a "someday" problem &mdash; it's happening right now, today, every day.</td></tr>
+    <tr><td>Staying power</td><td><span class="score">HIGH</span></td><td>Screen time anxiety doesn't resolve itself. It grows as children age and devices multiply. The desire renews every school morning, every dinner table, every bedtime.</td></tr>
+    <tr><td>Scope</td><td><span class="score">HIGH</span></td><td>Every parent on social media is addressable. Screen guilt crosses income, geography, parenting style. Universal anxiety in the 2020s.</td></tr>
+  </table></div>
+
+  <p><strong>Forces amplifying this desire:</strong></p>
+  <ul>
+    <li>Schools sending home screen-time warning newsletters</li>
+    <li>Paediatricians flagging attention span and social development concerns</li>
+    <li>Social media showing "perfect" screen-free households (comparison guilt)</li>
+    <li>Rising ADHD diagnosis rates linked to excessive screen use in parenting discourse</li>
+    <li>Parents' own awareness of their own phone addiction projected onto fears for their kids</li>
+  </ul>
+
+  <h3>1.2 Schwartz Sophistication Map</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stage</th><th>Who's here</th><th>What kills conversion</th><th>What converts</th></tr>
+    <tr><td><strong>Stage 2</strong><br>Bigger claims</td><td>First-time searchers. Browsing "educational toys" or "screen-free toys" on Amazon.</td><td>Generic "reduces screen time" claims. Feature comparisons (piece counts, colours).</td><td>Specific, measurable results: "two hours without asking for the iPad." Named parents. Time-bound outcomes.</td></tr>
+    <tr><td><strong>Stage 3 &#9733;</strong><br>New mechanism</td><td>Bought toys before that collected dust. Tried taking screens away and got meltdowns. Looking for WHY nothing works.</td><td>"Our toy is better" without explaining why. More features.</td><td>The Dopamine Click: "This toy uses the screen's own dopamine trick against it." A new mechanism that explains the failure of everything else.</td></tr>
+    <tr><td><strong>Stage 4</strong><br>Amplify</td><td>Seen "educational toy" ads before. Sceptical. Needs deeper proof.</td><td>Another mechanism claim without differentiation.</td><td>Amplified with specificity: neurochemistry language, teacher endorsements, customer-reported behaviour changes over specific timelines.</td></tr>
+    <tr><td><strong>Stage 5</strong><br>Identity</td><td>Most sophisticated. Buys based on who they want to be, not product specs.</td><td>Any product-first pitch.</td><td>"You're the kind of parent who finds the real answer, not the easy screen." Identity-level messaging.</td></tr>
+  </table></div>
+
+  <div class="callout callout-accent">
+    <strong>Primary opportunity</strong>
+    Stage 3 is where the largest addressable audience sits &mdash; parents who've tried toys and screen limits and need to understand WHY those failed. The Dopamine Click mechanism is the answer to that question. Stage 4 is the growth frontier for retargeting.
+  </div>
+
+  <h3>1.3 Purchase Trigger Map</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Trigger</th><th>Intensity</th><th>Click Blocks application</th></tr>
+    <tr><td>Freedom from guilt / fear</td><td><span class="score">HIGH</span></td><td>"I'm ruining my kid's brain with screens and I can't stop." The dominant trigger. Every ad must touch this.</td></tr>
+    <tr><td>Care and protection of children</td><td><span class="score">HIGH</span></td><td>"I want to give them a childhood like I had &mdash; building, imagining, playing outside. Not scrolling."</td></tr>
+    <tr><td>Social approval / parenting identity</td><td><span class="score">MED</span></td><td>"I don't want to be the mum whose kid is glued to the iPad at the restaurant." Status-adjacent.</td></tr>
+    <tr><td>Superiority / being right</td><td><span class="score">MED</span></td><td>"I found something that actually works. My sister is still handing over the tablet." Discovery pride.</td></tr>
+    <tr><td>Comfortable living</td><td><span class="score">MED</span></td><td>"20 minutes of peace" &mdash; the selfish desire every parent has but rarely admits. Click Blocks delivers it without guilt.</td></tr>
+    <tr><td>Curiosity / novelty</td><td><span class="score">LOW</span></td><td>"What's this dopamine click thing?" &mdash; mechanism curiosity drives clicks but not purchases alone.</td></tr>
+  </table></div>
+
+  <p><strong>Top 3 triggers:</strong> (1) Freedom from guilt, (2) Protecting the child's development, (3) Parenting identity. These form the emotional backbone of all creative.</p>
+
+  <p><strong>Underused high-intensity trigger:</strong> "20 minutes of peace." The selfish desire. Guilt-free quiet time is what the product actually delivers first &mdash; the developmental benefits come second. Ads that start here (the hook does) convert because they're honest.</p>
+
+  <h3>1.4 ICP Profiles</h3>
+
+  <div class="icp">
+    <div class="icp-head">ICP 1: The Guilty Scroller (Primary)</div>
+    <div class="icp-body">
+      <p><strong>Trigger event:</strong> Caught herself handing over the iPad for the third time today. Saw a post about screen time damage and felt sick. Or: school sent home a newsletter about device limits and she felt called out.</p>
+      <p><strong>Mental state:</strong> "I know it's bad. I keep saying 'just 20 more minutes' and it turns into two hours. I'm a terrible parent."</p>
+      <p><strong>What she's tried:</strong> Screen-time limits (meltdowns). Taking devices away (tantrums). Buying toys (cupboard after day one). Activity books (10 minutes max).</p>
+      <p><strong>Awareness:</strong> Problem-Aware. Knows screens are bad. Doesn't know a toy can fight back using dopamine.</p>
+      <p><strong>Sophistication:</strong> Stage 3 &mdash; needs a new mechanism.</p>
+      <p><strong>Dominant trigger:</strong> Freedom from guilt.</p>
+      <p><strong>Belief blocking the sale:</strong> "No toy can compete with a screen. I've tried. They all end up in the cupboard."</p>
+      <p><strong>Emotional doorway:</strong> Guilt &rarr; Relief.</p>
+    </div>
+  </div>
+
+  <div class="icp">
+    <div class="icp-head">ICP 2: The Developmental Worrier (Primary)</div>
+    <div class="icp-body">
+      <p><strong>Trigger event:</strong> Noticed her child can't sit still without a device. Teacher mentioned attention issues. Or: read an article linking screen time to ADHD-like symptoms and panicked.</p>
+      <p><strong>Mental state:</strong> "His attention span is shot. He can't focus on anything that isn't a screen. What have I done?"</p>
+      <p><strong>What she's tried:</strong> More outdoor time (weather/logistics). Reading time (he loses focus). Educational apps (still a screen).</p>
+      <p><strong>Awareness:</strong> Problem-Aware, edging Solution-Aware. Actively searching for "toys that improve focus."</p>
+      <p><strong>Sophistication:</strong> Stage 2&ndash;3.</p>
+      <p><strong>Dominant trigger:</strong> Protection of child's development.</p>
+      <p><strong>Belief blocking the sale:</strong> "The damage might already be done. A toy can't undo years of screen time."</p>
+      <p><strong>Emotional doorway:</strong> Fear &rarr; Hope.</p>
+    </div>
+  </div>
+
+  <div class="icp">
+    <div class="icp-head">ICP 3: The Toy Graveyard Parent (Secondary)</div>
+    <div class="icp-body">
+      <p><strong>Trigger event:</strong> Just cleaned out the playroom. Found $300 worth of toys her kids played with once. Swore she wouldn't buy another toy that collects dust.</p>
+      <p><strong>Mental state:</strong> "I'm done wasting money on toys they don't use. Unless someone can prove this one is different."</p>
+      <p><strong>What she's tried:</strong> Expensive educational toys, LEGO sets (completed and shelved), arts &amp; crafts (mess, supervision).</p>
+      <p><strong>Awareness:</strong> Solution-Aware. Knows toys exist. Doesn't believe any will work.</p>
+      <p><strong>Sophistication:</strong> Stage 3&ndash;4. Very sceptical. Needs proof.</p>
+      <p><strong>Dominant trigger:</strong> Superiority ("I'm a smart buyer, show me why this is different").</p>
+      <p><strong>Belief blocking the sale:</strong> "Every toy company says their product is different. None of them are."</p>
+      <p><strong>Emotional doorway:</strong> Cynicism &rarr; Surprise.</p>
+    </div>
+  </div>
+
+  <div class="icp">
+    <div class="icp-head">ICP 4: The ADHD/Neurodiverse Parent (Segment)</div>
+    <div class="icp-body">
+      <p><strong>Trigger event:</strong> Searching for sensory toys or focus aids for a neurodivergent child. Exhausted from trying to find something that holds attention beyond 5 minutes.</p>
+      <p><strong>Mental state:</strong> "Nothing holds his attention. Not toys, not books, not activities. Only the screen works and I hate it."</p>
+      <p><strong>What she's tried:</strong> Sensory toys (fidget spinners lasted a week). Structured activities (overwhelmed by instructions). OT-recommended tools (expensive, clinical).</p>
+      <p><strong>Awareness:</strong> Solution-Aware. Actively searching.</p>
+      <p><strong>Sophistication:</strong> Stage 3. Wants to know WHY it works for her specific child.</p>
+      <p><strong>Dominant trigger:</strong> Care and protection.</p>
+      <p><strong>Belief blocking the sale:</strong> "This isn't designed for kids like mine."</p>
+      <p><strong>Emotional doorway:</strong> Exhaustion &rarr; Discovery.</p>
+    </div>
+  </div>
+
+  <div class="icp">
+    <div class="icp-head">ICP 5: The Gift-Giver (Seasonal)</div>
+    <div class="icp-body">
+      <p><strong>Trigger event:</strong> Birthday or Christmas approaching. Wants to buy something meaningful, not more junk. Or: grandparent who sees the grandkids glued to screens and wants to intervene.</p>
+      <p><strong>Mental state:</strong> "I want to give them something they'll actually use. Something that makes me look like a thoughtful gift-giver, not just another Amazon order."</p>
+      <p><strong>Awareness:</strong> Unaware to Problem-Aware. May not feel the screen guilt directly but witnesses it.</p>
+      <p><strong>Sophistication:</strong> Stage 2. A strong claim with social proof is enough.</p>
+      <p><strong>Dominant trigger:</strong> Social approval + care for loved ones.</p>
+      <p><strong>Belief blocking the sale:</strong> "Will they actually play with this or will it sit in the pile?"</p>
+      <p><strong>Emotional doorway:</strong> Uncertainty &rarr; Confidence.</p>
+    </div>
+  </div>
+
+  <h3>1.5 Big Idea</h3>
+  <div class="callout callout-accent">
+    <strong>Big Idea</strong>
+    "The first toy that fights screens with the screen's own weapon &mdash; a magnetic dopamine click that keeps kids building for hours, not scrolling for minutes."
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Criterion</th><th>Score</th><th>Rationale</th></tr>
+    <tr><td>Novelty</td><td><span class="score">5/5</span></td><td>No toy brand has named or claimed a dopamine mechanism. "The screen's own weapon" is a genuinely new frame.</td></tr>
+    <tr><td>Mechanism</td><td><span class="score">4/5</span></td><td>The Dopamine Click is tangible, demonstrable (you can hear it), and scientifically plausible. Loses a point because it's a brand claim, not a peer-reviewed study.</td></tr>
+    <tr><td>Emotional charge</td><td><span class="score">5/5</span></td><td>"Fights screens with the screen's own weapon" is instantly emotionally resonant for any parent. It's revenge. It's justice. It's hope.</td></tr>
+    <tr><td>Scalability</td><td><span class="score">5/5</span></td><td>Powers dozens of angles: by ICP, by failed toy, by screen-time scenario, by child age, by season.</td></tr>
+    <tr><td>Proof potential</td><td><span class="score">3/5</span></td><td>Customer reviews provide strong anecdotal proof. Brand stats (82% less screen time) support it. No independent clinical data.</td></tr>
+    <tr><td><strong>Total</strong></td><td><span class="score score-teal">22/25</span></td><td>Exceptional. Novelty and emotional charge are the strongest elements.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways &mdash; Discover</h4>
+    <ul>
+      <li>The mass desire is freedom from screen guilt, not a toy. All creative starts in the parent's world.</li>
+      <li>Stage 3 (New Mechanism) is the primary conversion zone &mdash; the Dopamine Click is the brand's sharpest creative weapon.</li>
+      <li>Freedom from guilt and protecting the child's development are the dominant emotional triggers.</li>
+      <li>Five ICPs identified: two primary (Guilty Scroller, Developmental Worrier), one secondary (Toy Graveyard), one segment (ADHD), one seasonal (Gift-Giver). Each needs its own ad line.</li>
+      <li>Big Idea scores 22/25 &mdash; strong enough to power dozens of angles without rework.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- REFRAME -->
+<!-- ============================================ -->
+<section id="reframe">
+  <div class="sec-rule teal"></div>
+  <div class="part-label">Part 2</div>
+  <h2>Reframe</h2>
+  <p style="color:var(--muted);margin-bottom:20px">Changing what the customer believes. Most parents have a wrong idea about why their kid can't put the screen down and what will fix it. Our job: show the real cause, explain why everything else failed, reveal why this works.</p>
+
+  <h3>2.1 Problem Mechanism</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Layer</th><th>Detail</th></tr>
+    <tr><td><strong>Surface problem</strong></td><td>"My kid won't put the screen down. I've tried taking it away and it's World War 3."</td></tr>
+    <tr><td><strong>True cause</strong></td><td>Screens aren't winning because they're better than toys. They're winning because they deliver constant micro-dopamine rewards &mdash; likes, scrolls, level-ups, new content every 15 seconds. Every toy competes against this dopamine drip and loses because toys don't have a reward loop built in. The child isn't choosing the screen. The screen's chemistry is choosing for them.</td></tr>
+    <tr><td><strong>Why this matters</strong></td><td>If the true cause is dopamine, then any toy that doesn't deliver its own dopamine reward loop will fail &mdash; no matter how educational, creative, or expensive. This reframes the entire toy category: it's not about the toy's features. It's about whether the toy can match the screen's neurochemistry.</td></tr>
+    <tr><td><strong>The knowledge gap</strong></td><td>Most parents blame themselves ("I should enforce limits better") or the child ("he's addicted"). They don't understand the neurochemical mechanism. Once they do, the problem shifts from personal failure to a chemistry problem with a chemistry solution.</td></tr>
+  </table></div>
+
+  <h3>2.2 Why Other Solutions Fail</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Alternative</th><th>What parents believe</th><th>Why it actually fails</th></tr>
+    <tr><td>Taking screens away</td><td>"If I just remove it, they'll find something else to do."</td><td>Removing the dopamine source without providing an alternative triggers withdrawal (tantrums, meltdowns). The child doesn't have another reward source, so they demand the screen back.</td></tr>
+    <tr><td>Screen time limits</td><td>"30 minutes a day is reasonable."</td><td>Limits create a scarcity loop &mdash; the child spends the non-screen time anticipating screen time. Their attention isn't on the alternative activity. It's on the countdown.</td></tr>
+    <tr><td>Educational toys</td><td>"If it says 'STEM' on the box, it's better than the iPad."</td><td>Educational toys front-load learning and back-load reward. Screens do the opposite. A child will always choose the path of immediate reward unless the alternative provides its own.</td></tr>
+    <tr><td>LEGO / construction kits</td><td>"Building things is creative and screen-free."</td><td>LEGO has a finish line. Once built, the dopamine stops. The set goes on the shelf. Open-ended + reward loop is the missing combination.</td></tr>
+    <tr><td>Arts &amp; crafts</td><td>"Drawing and painting are wholesome activities."</td><td>Require supervision, create mess, and the reward (a finished drawing) is delayed. Screens give rewards every 3 seconds. A 20-minute art project can't compete.</td></tr>
+    <tr><td>Willpower / guilt</td><td>"I just need to be a better parent."</td><td>You're not fighting your parenting. You're fighting a dopamine system designed by the best engineers in the world. Willpower is a finite resource competing against an infinite reward loop.</td></tr>
+  </table></div>
+
+  <h3>2.3 Category Gap Analysis</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>What everyone says (commodity)</th><th>What no one says (gap)</th></tr>
+    <tr><td>"Educational," "STEM," "screen-free"</td><td>"Why your child's brain chooses the screen over every toy you buy"</td></tr>
+    <tr><td>"Hours of creative play"</td><td>"The sound that hijacks the same reward loop the screen uses"</td></tr>
+    <tr><td>"Loved by parents and kids"</td><td>"He sat there for two hours. Without asking for the iPad once."</td></tr>
+    <tr><td>"Magnetic building blocks"</td><td>"A toy that can't be completed &mdash; because the dopamine never stops"</td></tr>
+    <tr><td>"Great gift idea"</td><td>"The $24 toy that replaced a $500 iPad habit"</td></tr>
+  </table></div>
+
+  <h3>2.4 Solution Mechanism</h3>
+
+  <h4>Layer 1: The Dopamine Click</h4>
+  <p>The magnetic snap sound delivers a micro-dopamine reward every time two pieces connect. This creates a self-sustaining reward loop: build &rarr; click &rarr; dopamine &rarr; build more. The child doesn't need external motivation (parental encouragement, instructions, screen prompts). The mechanism is built into the physics of the toy.</p>
+
+  <h4>Layer 2: Open-Ended Architecture</h4>
+  <p>No instructions. No finish line. No "completed" state. Unlike LEGO (build the set, done) or puzzles (solve it, shelve it), Click Blocks have infinite configurations. The dopamine loop never terminates because there's always another thing to build. The child decides the game, so the game never ends.</p>
+
+  <h4>Layer 3: Narrative Layer (Characters)</h4>
+  <p>Included characters transform construction into storytelling. The child isn't just snapping blocks &mdash; they're building worlds, creating stories, assigning roles. This engages language, imagination, and social cognition simultaneously, making the play deeper and longer-lasting than pure construction.</p>
+
+  <div class="callout callout-accent">
+    <strong>Proprietary mechanism name</strong>
+    "The Dopamine Click" &mdash; a magnetic sound-reward loop that gives children the same micro-dopamine hits screens use, redirected into building, creating, and imagining instead of scrolling.
+  </div>
+
+  <h3>2.5 Reframe Chains</h3>
+
+  <div class="reframe-chain">
+    <h4>Variation 1: Logical / Educational</h4>
+    <p>1. Most parents think their child prefers screens because screens are more interesting than toys.</p>
+    <p>2. But the real reason is neurochemical: screens deliver micro-dopamine rewards every few seconds. No traditional toy matches that frequency.</p>
+    <p>3. That's why every toy you've bought ends up in the cupboard. Not because the toy was bad &mdash; because it couldn't match the screen's reward chemistry.</p>
+    <p>4. Click Blocks work because every magnetic snap delivers the same dopamine micro-reward. The building loop replaces the scrolling loop &mdash; without you having to fight for it.</p>
+  </div>
+
+  <div class="reframe-chain">
+    <h4>Variation 2: Emotional / Story-Based</h4>
+    <p>1. I used to hand my kid the iPad just to get 20 minutes of peace. Every time, I'd feel that stab of guilt.</p>
+    <p>2. I'd buy toys. Nice ones. They'd sit in a cupboard after day one. Because nothing can compete with a screen.</p>
+    <p>3. Then I found out WHY. Screens aren't better than toys. They just deliver dopamine faster. And no toy I bought could match that speed.</p>
+    <p>4. Until these. Every time the pieces click together, they make this sound. And that sound gives them a tiny hit of dopamine &mdash; the same thing the screens use. Except now it's keeping them building. For hours.</p>
+  </div>
+
+  <div class="reframe-chain">
+    <h4>Variation 3: Provocative / Pattern-Interrupt</h4>
+    <p>1. You're not a bad parent. You're fighting a dopamine system designed by the best engineers in Silicon Valley.</p>
+    <p>2. Every app, every game, every social feed is engineered to deliver rewards faster than real life can. Your kid's brain isn't choosing the screen. The screen's chemistry is choosing for your kid.</p>
+    <p>3. Taking the screen away doesn't fix it. Buying "educational" toys doesn't fix it. Setting timers doesn't fix it. Because none of those solutions match the dopamine frequency.</p>
+    <p>4. One toy does. Every magnetic snap = a micro-reward. Same chemistry, different direction. Building instead of scrolling. Creating instead of consuming. And no meltdowns when you take it away &mdash; because the reward is still flowing.</p>
+  </div>
+
+  <h3>2.6 Visual Proof Architecture</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Concept</th><th>Why it works</th><th>Format</th></tr>
+    <tr><td>Close-up of the magnetic click sound</td><td>Makes the mechanism tangible. You can HEAR the dopamine. Sensory proof.</td><td>Close-up video, slow-mo, ASMR-style. 3&ndash;5 seconds.</td></tr>
+    <tr><td>Split-screen: kid on iPad vs kid building</td><td>Visual contrast of glazed-eyes scrolling vs engaged-eyes building. No words needed.</td><td>Side-by-side video, 10&ndash;15s.</td></tr>
+    <tr><td>Timer on screen showing elapsed play time</td><td>"Two hours" is a claim. A visible timer is proof. Shows real-time engagement.</td><td>Sped-up timelapse with visible clock, 15&ndash;30s.</td></tr>
+    <tr><td>Kid carrying creation to the car</td><td>Behavioural proof lifted from real reviews. The toy goes with them. No iPad does this.</td><td>UGC-style capture, candid, 5s.</td></tr>
+    <tr><td>Mum's genuine reaction to what kid built</td><td>Unscripted surprise = authenticity. The parent's face is the proof.</td><td>UGC reaction video, 5&ndash;10s.</td></tr>
+  </table></div>
+
+  <h3>2.7 Scepticism Pre-emption</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Objection</th><th>Why they think this</th><th>The reframe</th></tr>
+    <tr><td>"My kid won't play with this"</td><td>Every toy they've bought has been abandoned.</td><td>"That's because those toys didn't have a reward loop. This one does. The click sound keeps them coming back the same way a screen does."</td></tr>
+    <tr><td>"Magnetic tiles are nothing new"</td><td>They've seen Magna-Tiles on Amazon.</td><td>"Magnetic tiles aren't new. A magnetic toy engineered around a dopamine click IS new. This isn't the same product with a different name."</td></tr>
+    <tr><td>"$24 for blocks? Seems cheap/scammy"</td><td>Facebook ad + low price + unknown brand = scepticism.</td><td>"100,000+ parents. 4.1 on Trustpilot. 30-day guarantee. If your kid doesn't love them, full refund. The price is low because we sell direct &mdash; no retail markup."</td></tr>
+    <tr><td>"Dopamine click sounds like marketing BS"</td><td>Seen too many pseudo-science claims in ads.</td><td>"Try it. Put the blocks in front of your kid. Listen to the sound. Watch them not ask for the iPad. The mechanism is the sound. The proof is the silence."</td></tr>
+    <tr><td>"It'll work for a week then collect dust"</td><td>Every toy follows the novelty-then-abandon curve.</td><td>"78% of kids still building daily after 3 months. The secret is open-ended play &mdash; there's no 'finished.' Plus monthly new designs if you subscribe."</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways &mdash; Reframe</h4>
+    <ul>
+      <li>The reframe from "bad parenting" to "dopamine chemistry" is the most powerful belief shift in the strategy. It removes shame and introduces a solvable problem.</li>
+      <li>"You're not fighting your parenting. You're fighting Silicon Valley's dopamine engineers" is a line that could power an entire ad on its own.</li>
+      <li>The ASMR close-up of the magnetic click is the single strongest visual proof concept &mdash; it makes the mechanism tangible and audible.</li>
+      <li>The "toys collecting dust" objection is the most dangerous blocker. The subscription model is the structural answer; "78% still building after 3 months" is the proof answer.</li>
+      <li>Three reframe chains give different entry points: logical (educated parent), emotional (guilty parent), provocative (sceptical parent).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- IGNITE -->
+<!-- ============================================ -->
+<section id="ignite">
+  <div class="sec-rule"></div>
+  <div class="part-label">Part 3</div>
+  <h2>Ignite</h2>
+  <p style="color:var(--muted);margin-bottom:20px">Strategy becomes emotion. The exact emotional triggers for each ICP, the proof and urgency that push people to act, and the persuasion sequence every ad will follow.</p>
+
+  <h3>3.1 Emotional Drivers per ICP</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>ICP</th><th>Primary fear</th><th>Secret desire</th><th>Trigger phrase</th></tr>
+    <tr><td>Guilty Scroller</td><td>Ruining my child's brain and being unable to stop</td><td>Handing over something that ISN'T a screen and watching them choose it willingly</td><td>"What if the screen wasn't the only thing that worked?"</td></tr>
+    <tr><td>Developmental Worrier</td><td>My child's attention span is permanently damaged</td><td>A teacher saying "his focus has improved" and knowing something she did caused it</td><td>"What if the damage isn't permanent?"</td></tr>
+    <tr><td>Toy Graveyard</td><td>Wasting more money on another toy that fails</td><td>Finding the ONE toy that doesn't end up in the cupboard</td><td>"What if this one is actually different?"</td></tr>
+    <tr><td>ADHD Parent</td><td>Nothing will ever hold my child's attention</td><td>Watching him sit and focus for longer than 10 minutes on something that isn't a screen</td><td>"What if the right toy just uses different chemistry?"</td></tr>
+    <tr><td>Gift-Giver</td><td>Giving another forgettable, useless present</td><td>Being the one who gave the gift they talk about for months</td><td>"What if you could give them something they actually keep?"</td></tr>
+  </table></div>
+
+  <h3>3.2 Proof Hierarchy</h3>
+  <ol>
+    <li><strong>Behavioural proof from real parents:</strong> "He sat there for two hours. TWO HOURS." Specific, named, time-bound. Most believable.</li>
+    <li><strong>Teacher / authority endorsement:</strong> "His teacher told me his focus has actually improved." Third-party, unsolicited, from a trusted source.</li>
+    <li><strong>Volume social proof:</strong> 100K+ customers. 4.1 Trustpilot. 622 reviews. Safety in numbers.</li>
+    <li><strong>Brand stats with specificity:</strong> "82% of parents report less screen time." Powerful but self-reported &mdash; needs visual support.</li>
+    <li><strong>Visual/auditory proof:</strong> The click sound itself. The timelapse of a child building for 2 hours. The creation carried to the car. Seeing is believing.</li>
+  </ol>
+
+  <h3>3.3 Urgency Frames (Ethical)</h3>
+  <ul>
+    <li><strong>Developmental window:</strong> "Every month of unchecked screen time is a month of missed development. Start the alternative now."</li>
+    <li><strong>Seasonal:</strong> "Summer sale," "Back to school," "Christmas gift guide." Genuine time-bound events.</li>
+    <li><strong>Stock-based:</strong> Only if genuine. "Up to 73% off" sale pricing with an end date is sufficient urgency without manufactured scarcity.</li>
+    <li><strong>Social proof momentum:</strong> "101,488 parents already switched." The bandwagon is real &mdash; use it.</li>
+  </ul>
+
+  <h3>3.4 Risk Removal</h3>
+  <ul>
+    <li><strong>30-day guarantee:</strong> "If your kid doesn't love them, full refund." At $24 entry, this is almost unnecessary &mdash; but it removes the last excuse.</li>
+    <li><strong>Price framing:</strong> "Twenty-four bucks. Less than one month of Disney+. Less than one drive-through dinner."</li>
+    <li><strong>Social normalisation:</strong> "100,000+ parents already bought these." You're not the guinea pig.</li>
+    <li><strong>Confidence close:</strong> "Good luck getting them back." Stealth proof that the product delivers.</li>
+  </ul>
+
+  <h3>3.5 Persuasion Stack (Ad Positions)</h3>
+
+  <h4>Position 1: Guilt Activation &mdash; "I used to hand my kid the iPad"</h4>
+  <p>Open with the parent's confession. They see themselves immediately. No product, no claim, just their own life reflected back. Works for cold traffic at maximum scale.</p>
+
+  <h4>Position 2: Mechanism Reveal &mdash; "Here's WHY nothing else worked"</h4>
+  <p>Pivot from problem to explanation. "It's not you, it's dopamine." The parent's shame transforms into understanding. The Dopamine Click is introduced as the answer to the chemistry problem.</p>
+
+  <h4>Position 3: Proof Stack &mdash; "Two hours. TWO HOURS."</h4>
+  <p>Behavioural proof, teacher endorsement, visual proof layered together. The parent moves from "could this work?" to "this works for people like me."</p>
+
+  <h4>Position 4: Risk-Free Close &mdash; "Twenty-four bucks and a 30-day guarantee"</h4>
+  <p>Price anchor (less than Disney+), guarantee (full refund), confidence (good luck getting them back). The only remaining objection is "I'll do it later" &mdash; urgency handles this.</p>
+
+  <h3>3.6 Offer Architecture</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Tier</th><th>What's included</th><th>Price</th><th>Who it's for</th></tr>
+    <tr><td>Pro</td><td>35 pieces + characters</td><td>$23.96</td><td>First-time buyer. Impulse. "Let me just try it."</td></tr>
+    <tr><td>Legendary (hero)</td><td>150 pieces + characters</td><td>$51.96</td><td>Best value. The ad should anchor here. "The big set."</td></tr>
+    <tr><td>Subscription (proposed lead)</td><td>Monthly new designs, 20% off</td><td>Varies</td><td>Kills "dust" objection. Should be positioned as "new worlds every month."</td></tr>
+    <tr><td>Sibling Bundle (proposed)</td><td>2&times; Pro sets</td><td>~$39.99</td><td>Multi-child households. "One each. No fighting."</td></tr>
+    <tr><td>Gift Bundle (proposed)</td><td>Legendary + LED Glow Blocks</td><td>~$54.99</td><td>Gifters. Premium packaging. Birthday/Christmas positioning.</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways &mdash; Ignite</h4>
+    <ul>
+      <li>Guilt &rarr; Understanding &rarr; Proof &rarr; Close is the four-beat persuasion sequence. Every ad follows this arc.</li>
+      <li>Behavioural proof ("two hours without asking for the iPad") outperforms statistical proof ("82% report less screen time") because it triggers the emotional brain.</li>
+      <li>The Legendary 150pc set at $51.96 should be the hero SKU in ads &mdash; best value story, highest AOV.</li>
+      <li>Two proposed bundles (Sibling, Gift) and subscription lead positioning are untapped revenue levers.</li>
+      <li>"Good luck getting them back" is the strongest CTA close &mdash; funny, confident, and stealth social proof.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- VARIATE -->
+<!-- ============================================ -->
+<section id="variate">
+  <div class="sec-rule teal"></div>
+  <div class="part-label">Part 4</div>
+  <h2>Variate</h2>
+  <p style="color:var(--muted);margin-bottom:20px">Creative variation architecture. Same Big Idea, different entry points &mdash; by ICP, by format, by awareness stage, by hook register.</p>
+
+  <h3>4.1 Hook Variations by ICP</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>ICP</th><th>Hook</th><th>Register</th></tr>
+    <tr><td>Guilty Scroller</td><td>"I used to hand my kid the iPad just to get 20 minutes of peace."</td><td>Confession. Quiet. First-person UGC.</td></tr>
+    <tr><td>Developmental Worrier</td><td>"His teacher pulled me aside and said she was worried about his attention span."</td><td>Story. Serious. Authority seed.</td></tr>
+    <tr><td>Toy Graveyard</td><td>"I just threw out $300 worth of toys my kids touched once."</td><td>Frustration. Direct. Relatable anger.</td></tr>
+    <tr><td>ADHD Parent</td><td>"My ADHD son doesn't play with toys. He plays with these."</td><td>Challenge. Bold claim. Identity.</td></tr>
+    <tr><td>Gift-Giver</td><td>"My mum bought these for my son's birthday and he hasn't put them down in three months."</td><td>Third-party endorsement. Story.</td></tr>
+  </table></div>
+
+  <h3>4.2 Format Variations</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Format</th><th>Duration</th><th>Best for</th><th>Key creative note</th></tr>
+    <tr><td>UGC mum-to-camera</td><td>45&ndash;60s</td><td>Cold traffic. The primary format. Trust through authenticity.</td><td>Kitchen/living room. Phone-shot. Natural light. No script-reading feel.</td></tr>
+    <tr><td>Problem/solution B-roll</td><td>15&ndash;30s</td><td>Retargeting. Quick mechanism reminder for people who've seen the long version.</td><td>Glazed-eyes iPad B-roll &rarr; magnetic click close-up &rarr; kid building &rarr; CTA.</td></tr>
+    <tr><td>Timelapse / engagement proof</td><td>15&ndash;30s</td><td>Proof-stage. Best paired with a "two hours" claim.</td><td>Sped-up footage of a child building for 1&ndash;2 hours with a visible clock. No voiceover. Text overlays only.</td></tr>
+    <tr><td>Review compilation</td><td>30&ndash;45s</td><td>Social proof. Multiple parents, multiple kids, same transformation.</td><td>3&ndash;4 mums, each with one line: "He didn't mention the tablet," "She built a castle," "Two hours." Rapid cuts.</td></tr>
+    <tr><td>ASMR click montage</td><td>10&ndash;20s</td><td>Scroll-stop. The sound IS the hook. Sensory marketing.</td><td>Close-up clicks. Satisfying snaps. No voiceover. Text: "The sound that replaced the iPad in our house." Mechanism in 10 seconds.</td></tr>
+  </table></div>
+
+  <h3>4.3 Angle Rotation Plan</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Wave</th><th>Angle</th><th>ICP</th><th>Format</th><th>Budget weight</th></tr>
+    <tr><td>Wave 1 (Test)</td><td>Screen time guilt &mdash; Dopamine Click mechanism</td><td>Guilty Scroller</td><td>UGC 60s</td><td>50%</td></tr>
+    <tr><td>Wave 1 (Test)</td><td>Screen time guilt &mdash; short proof</td><td>Guilty Scroller</td><td>B-roll 15s</td><td>20%</td></tr>
+    <tr><td>Wave 1 (Test)</td><td>ASMR click sound</td><td>Broad</td><td>ASMR 15s</td><td>15%</td></tr>
+    <tr><td>Wave 1 (Test)</td><td>Toy graveyard &mdash; mechanism bridge</td><td>Toy Graveyard</td><td>UGC 45s</td><td>15%</td></tr>
+    <tr><td>Wave 2 (Scale winners)</td><td>Top performer from Wave 1 with 3 new hooks</td><td>Primary ICP</td><td>Winner format</td><td>60%</td></tr>
+    <tr><td>Wave 2</td><td>Teacher/development angle</td><td>Developmental Worrier</td><td>UGC 60s</td><td>20%</td></tr>
+    <tr><td>Wave 2</td><td>ADHD segment test</td><td>ADHD Parent</td><td>UGC 45s</td><td>10%</td></tr>
+    <tr><td>Wave 2</td><td>Gift angle (if seasonal)</td><td>Gift-Giver</td><td>UGC 30s</td><td>10%</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways &mdash; Variate</h4>
+    <ul>
+      <li>Five hook variations by ICP give five distinct entry points into the same Big Idea. Test all five, scale winners.</li>
+      <li>Five format variations give different content lengths and styles for different funnel positions.</li>
+      <li>Wave 1 tests the core angle (screen time guilt) across three formats plus one secondary angle. Wave 2 scales winners and opens new ICPs.</li>
+      <li>The ASMR click montage is the highest-upside wildcard &mdash; if the sound is as satisfying as claimed, it could outperform all other formats on pure scroll-stop.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- EVOLVE -->
+<!-- ============================================ -->
+<section id="evolve">
+  <div class="sec-rule"></div>
+  <div class="part-label">Part 5</div>
+  <h2>Evolve</h2>
+  <p style="color:var(--muted);margin-bottom:20px">The iteration framework. What to test, what to measure, when to kill, and when to scale.</p>
+
+  <h3>5.1 Testing Hierarchy</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Test level</th><th>What changes</th><th>What stays constant</th><th>Kill threshold</th></tr>
+    <tr><td>Hook test</td><td>First 3 seconds only</td><td>Body, CTA, offer, landing page</td><td>Below 25% hook retention at 3s</td></tr>
+    <tr><td>Angle test</td><td>The pain point / entry emotion</td><td>Mechanism, CTA, offer</td><td>CPA 2&times; above target after $200 spend</td></tr>
+    <tr><td>Format test</td><td>UGC vs B-roll vs ASMR vs timelapse</td><td>Same angle, same hook concept</td><td>CTR below 1.5% after 10K impressions</td></tr>
+    <tr><td>Body test</td><td>Mechanism depth, proof sequence</td><td>Same hook, same CTA</td><td>Completion rate below 15% at 30s</td></tr>
+    <tr><td>CTA/offer test</td><td>Price framing, guarantee language, urgency</td><td>Everything else</td><td>CVR below 1.5% on landing page</td></tr>
+  </table></div>
+
+  <h3>5.2 Fatigue Signals</h3>
+  <ul>
+    <li><strong>Frequency &gt; 3.0:</strong> Creative fatigue. Rotate to a new hook on the same angle.</li>
+    <li><strong>CTR declining 15%+ week-over-week:</strong> The hook is dying. New creative needed.</li>
+    <li><strong>CPM rising with stable CTR:</strong> Audience saturation. Expand targeting or test new ICP.</li>
+    <li><strong>Comment sentiment shifting negative:</strong> Over-exposure. Pull creative temporarily and relaunch with fresh variation.</li>
+  </ul>
+
+  <h3>5.3 Scale Triggers</h3>
+  <ul>
+    <li><strong>CPA at or below target for 3 consecutive days:</strong> Increase budget 20% daily.</li>
+    <li><strong>Hook retention above 40% at 3s:</strong> The hook works. Create 3 body variations under it.</li>
+    <li><strong>ROAS above 2.5&times; at $500+ spend:</strong> Scale hard. This is a winner.</li>
+    <li><strong>Comment section generating organic UGC:</strong> Boost and reshare. The ad is creating its own social proof.</li>
+  </ul>
+
+  <h3>5.4 Sophistication Escalation Plan</h3>
+  <p>As the market evolves and competitors copy the mechanism angle, the creative strategy must evolve through Schwartz's stages:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Phase</th><th>When</th><th>Creative shift</th></tr>
+    <tr><td>Current: Stage 3</td><td>Now</td><td>Introduce the Dopamine Click mechanism. "Here's WHY this works." Name it, own it, demonstrate it.</td></tr>
+    <tr><td>Next: Stage 4</td><td>When competitors copy "dopamine" language</td><td>Amplify with specificity: neurochemistry detail, named teachers, school partnerships, longitudinal customer data ("still building after 6 months").</td></tr>
+    <tr><td>Future: Stage 5</td><td>When mechanism claims are saturated</td><td>Identity positioning: "You're the parent who found the real answer." Community-driven. UGC from loyal customers, not paid creators.</td></tr>
+  </table></div>
+
+  <h3>5.5 Content Calendar Framework</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Cadence</th><th>Deliverable</th></tr>
+    <tr><td>Weekly</td><td>1&ndash;2 new hook variations on the winning angle. Test against current best.</td></tr>
+    <tr><td>Bi-weekly</td><td>1 new format test (if ASMR hasn't been tested, test it; if timelapse hasn't, try it).</td></tr>
+    <tr><td>Monthly</td><td>1 new ICP angle test. Open a new audience segment with a dedicated script.</td></tr>
+    <tr><td>Quarterly</td><td>Full creative audit. Kill underperformers. Double down on winners. Refresh body copy on top hooks.</td></tr>
+    <tr><td>Seasonal</td><td>Gift-angle campaign for Christmas, Back-to-School, Easter, birthday season (Oct&ndash;Dec peak).</td></tr>
+  </table></div>
+
+  <div class="band"><h4>Key Takeaways &mdash; Evolve</h4>
+    <ul>
+      <li>Test hooks first, angles second, formats third. Hooks are cheapest to produce and highest-impact on performance.</li>
+      <li>Kill fast: $200 spend or 10K impressions is enough signal. Don't let losing creative drain budget hoping it'll turn around.</li>
+      <li>Scale fast: when CPA is below target for 3 days, push hard. Winners have a shelf life.</li>
+      <li>The sophistication escalation plan (Stage 3 &rarr; 4 &rarr; 5) ensures the brand stays ahead as competitors enter the mechanism space.</li>
+      <li>Weekly hook rotation prevents fatigue. Monthly ICP tests prevent audience saturation. Quarterly audits prevent strategy drift.</li>
+    </ul>
+  </div>
+</section>
+
+<p class="fine">DRIVE Strategy built on Click Blocks Brand Intelligence Report. Discover &rarr; Reframe &rarr; Ignite &rarr; Variate &rarr; Evolve. All psychology references mapped to Schwartz, Hopkins, and Evolve system principles. August 2026.</p>
+</main>
