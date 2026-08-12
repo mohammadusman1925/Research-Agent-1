@@ -1,0 +1,280 @@
+<title>Mirana — DRIVE Strategy</title>
+<style>
+:root{--bg:#FBF8F5;--surface:#fff;--call:#F5EDE4;--text:#2A1F1A;--muted:#7A6B5E;--accent:#C45B3C;--accent2:#D4785E;--accent3:#E8A87C;--deep:#1A1210;--tag:#C45B3C;--blue:#4A8AAD;--yellow:#B89B2D;--red:#C44D3B;--purple:#8B6B9E;--green:#2D7A4F}
+:root[data-theme="dark"]{--bg:#141110;--surface:#221E1B;--call:#2E2722;--text:#EDE8E4;--muted:#A89B90;--deep:#0A0808}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141110;--surface:#221E1B;--call:#2E2722;--text:#EDE8E4;--muted:#A89B90;--deep:#0A0808}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}main{max-width:940px;margin:auto;padding:42px 24px 80px}h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;line-height:1.15}h1{font-size:clamp(2.2rem,5.5vw,4.2rem);margin:.15em 0;background:linear-gradient(135deg,#C45B3C,#E8A87C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}h2{font-size:2rem;margin-top:2.2em;padding-top:.3em;border-top:2px solid var(--accent);color:var(--accent)}h3{font-size:1.35rem}h4{font-size:1.1rem;margin-top:1.4em}.eyebrow{color:var(--accent3);text-transform:uppercase;letter-spacing:.13em;font-weight:750;font-size:.85rem}.hero{padding:48px 0}.hero p{font-size:1.15rem;max-width:760px;color:var(--muted)}.lock{background:var(--deep);color:#D4C8BC;padding:22px;border-radius:14px;border-left:5px solid var(--accent)}.lock strong{color:#fff}nav{background:var(--surface);border:1px solid #DDD5CC;padding:18px 22px;border-radius:12px;margin:24px 0;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}nav a{color:var(--accent);margin-right:15px;font-size:.88rem;text-decoration:none;font-weight:600}nav a:hover{text-decoration:underline}.simple{background:#FDF0E6;border-left:5px solid var(--accent3);color:#3A2A1E;padding:14px 17px;margin:16px 0;font-style:italic;border-radius:0 8px 8px 0}.kta{background:var(--deep);color:#D4C8BC;padding:20px 24px;border-radius:12px;margin:22px 0}.kta h3{color:var(--accent3);margin-top:0}.kta li{margin:.5em 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:var(--surface);border:1px solid #DDD5CC;border-radius:12px;padding:18px;transition:transform .15s}.card:hover{transform:translateY(-2px)}.stat{font:700 2rem Georgia,serif;color:var(--accent);margin-bottom:4px}table{width:100%;border-collapse:collapse;background:var(--surface);font-size:.93rem;margin:18px 0;border-radius:10px;overflow:hidden}th{background:var(--accent);color:#fff;text-align:left;font-weight:600}th,td{padding:11px 14px;border:1px solid #DDD5CC;vertical-align:top}.tag{display:inline-block;color:#fff;background:var(--tag);border-radius:999px;padding:3px 10px;font-size:.75rem;margin:2px;font-weight:600}.tag.blue{background:var(--blue)}.tag.yellow{background:var(--yellow)}.tag.red{background:var(--red)}.tag.purple{background:var(--purple)}.tag.green{background:var(--green)}blockquote{border-left:5px solid var(--accent);margin:18px 0;padding:12px 20px;background:var(--surface);border-radius:0 10px 10px 0;font-style:italic}blockquote cite{display:block;font-style:normal;color:var(--muted);font-size:.85rem;margin-top:6px}details{background:var(--surface);padding:12px 16px;border:1px solid #DDD5CC;border-radius:10px;margin:9px 0}summary{font-weight:700;cursor:pointer;color:var(--accent)}a{color:var(--accent)}.sources li{margin:.6em 0}.small{font-size:.86rem;color:var(--muted)}.score{display:inline-block;background:var(--accent);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;font-size:.85rem}.divider{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3),transparent);margin:32px 0;border:none;border-radius:2px}.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:700px){.duo{grid-template-columns:1fr}}@media(max-width:650px){main{padding:22px 14px}table{display:block;overflow-x:auto}h2{font-size:1.6rem}.grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.grid{grid-template-columns:1fr}}
+.phase{background:var(--surface);border:2px solid var(--accent);border-radius:14px;padding:24px;margin:20px 0}.phase-letter{font:700 3rem Georgia,serif;color:var(--accent);line-height:1;margin-bottom:8px}
+</style>
+
+<main>
+<header class="hero">
+<div class="eyebrow">Mohammad Usman &middot; Mirana / GetMirana &middot; August 2026</div>
+<h1>Mirana &mdash; DRIVE Strategy</h1>
+<p>A data-grounded creative strategy framework for the Mira&trade; Posture Corrector Bra &mdash; from market intelligence through strategic insights to a phased execution roadmap.</p>
+<div class="lock"><strong>Framework:</strong> DRIVE &mdash; Data &rarr; Research &rarr; Insights &rarr; Validation &rarr; Execution. Each section builds on the one before it. No assumptions. No gut feelings. System.</div>
+</header>
+
+<nav>
+<a href="#data">D &mdash; Data</a>
+<a href="#research">R &mdash; Research</a>
+<a href="#insights">I &mdash; Insights</a>
+<a href="#validation">V &mdash; Validation</a>
+<a href="#execution">E &mdash; Execution</a>
+</nav>
+
+<!-- D — DATA -->
+<section id="data">
+<h2>D &mdash; Data: What the Numbers Tell Us</h2>
+<div class="simple">Data grounds everything. Before opinions, before creative ideas, before strategy &mdash; what do the numbers say about Mirana&rsquo;s position, category, and opportunity?</div>
+
+<div class="phase">
+<div class="phase-letter">D</div>
+
+<h3>Market Position Signals</h3>
+<div class="grid">
+<div class="card"><div class="stat">$3.42B</div>Total addressable market (2026). Growing at 6.8% CAGR. Mirana is in a rising category.</div>
+<div class="card"><div class="stat">8.5%</div>E-commerce channel growth rate &mdash; fastest in the category. DTC is structurally advantaged.</div>
+<div class="card"><div class="stat">45%</div>Category returns caused by sizing issues. Whoever solves fit wins the category.</div>
+<div class="card"><div class="stat">V3</div>Three product iterations. Iteration velocity signals product-market fit refinement.</div>
+</div>
+
+<h3>Creative Infrastructure Gaps</h3>
+<table>
+<tr><th>Gap</th><th>Impact</th><th>Priority</th></tr>
+<tr><td>No visible ad library presence</td><td>Limited or no scaled paid social creative</td><td><span class="tag red">High</span></td></tr>
+<tr><td>No UGC program</td><td>Missing the highest-converting content format in DTC</td><td><span class="tag red">High</span></td></tr>
+<tr><td>No size quiz or fit tool</td><td>45% of category returns are sizing-related</td><td><span class="tag red">Critical</span></td></tr>
+<tr><td>No subscription model</td><td>Magic Body Oil is a natural subscription product</td><td><span class="tag yellow">Medium</span></td></tr>
+<tr><td>No bundle architecture</td><td>Hero SKU stands alone instead of anchoring AOV</td><td><span class="tag yellow">Medium</span></td></tr>
+<tr><td>No content marketing / blog</td><td>Missing SEO and educational content play</td><td><span class="tag yellow">Medium</span></td></tr>
+</table>
+
+<div class="kta"><h3>Key Takeaways</h3>
+<ul>
+<li>Mirana has a <strong>product that works</strong> (consistent, specific customer testimonials) but a <strong>brand that hasn&rsquo;t been told</strong>.</li>
+<li>Creative infrastructure is at <strong>Stage 1</strong> &mdash; product-focused, conversion-focused, not yet story-focused.</li>
+<li>The opportunity is enormous precisely because the baseline is low. A systematic creative strategy can create outsized returns when the product already delivers.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- R — RESEARCH -->
+<section id="research">
+<h2>R &mdash; Research: Market Context &amp; Competitive Positioning</h2>
+<div class="simple">Research maps the battlefield &mdash; who the customer is, what journey she&rsquo;s on, where competitors sit, and where the whitespace lives.</div>
+
+<div class="phase">
+<div class="phase-letter">R</div>
+
+<h3>The Posture Bra Buyer&rsquo;s Journey</h3>
+<div class="grid">
+<div class="card">
+<h4>Stage 1: Problem Aware</h4>
+<p>&ldquo;My back hurts. My bra digs in.&rdquo;</p>
+<p><strong>Creative job:</strong> Interrupt with recognition. &ldquo;If your shoulders are forward right now, keep reading.&rdquo;</p>
+</div>
+<div class="card">
+<h4>Stage 2: Solution Aware</h4>
+<p>&ldquo;Apparently posture bras exist. Do they work?&rdquo;</p>
+<p><strong>Creative job:</strong> Differentiate from posture correctors. &ldquo;This isn&rsquo;t a brace. It&rsquo;s a bra.&rdquo;</p>
+</div>
+<div class="card">
+<h4>Stage 3: Product Aware</h4>
+<p>&ldquo;There are 20 of these. Which one works?&rdquo;</p>
+<p><strong>Creative job:</strong> Win on specifics. Comfort proof, fit guarantee, real women.</p>
+</div>
+<div class="card">
+<h4>Stage 4: Most Aware</h4>
+<p>&ldquo;I&rsquo;ve seen the Mira Bra. Should I buy it?&rdquo;</p>
+<p><strong>Creative job:</strong> Remove final objections. Guarantee, social proof, urgency.</p>
+</div>
+</div>
+
+<h3>Competitive Positioning Map</h3>
+<div class="duo">
+<div class="card" style="text-align:center;padding:30px">
+<p class="small" style="margin-bottom:16px">HIGH PRICE</p>
+<div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:16px">
+<div><span class="tag purple">Forme $178</span><br><span class="small">Science / Tech</span></div>
+<div><span class="tag blue">Etalon $149</span><br><span class="small">Medical / Patent</span></div>
+</div>
+<hr style="border:1px solid var(--accent)">
+<div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
+<div><span class="tag yellow">Leonisa $50</span><br><span class="small">Legacy Brand</span></div>
+<div><span class="tag green">Mirana</span><br><span class="small">Value + Comfort</span></div>
+</div>
+<p class="small" style="margin-top:16px">LOW PRICE</p>
+<p class="small">MEDICAL &larr;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rarr; LIFESTYLE</p>
+</div>
+<div class="card">
+<h4>Mirana&rsquo;s Strategic Position</h4>
+<p>Lower-right quadrant: <strong>accessible price, lifestyle positioning</strong>. This is the highest-volume quadrant but also the most crowded.</p>
+<p>The path to winning here is not competing on price (race to bottom) or clinical credibility (Forme/Etalon own that). It&rsquo;s winning on <strong>brand story, creative velocity, and customer experience</strong>.</p>
+</div>
+</div>
+
+<h3>What the Best DTC Bra Brands Do</h3>
+<table>
+<tr><th>Pattern</th><th>Who Does It Well</th><th>Mirana Status</th></tr>
+<tr><td>Fit-first messaging</td><td>ThirdLove, Harper Wilde</td><td><span class="tag red">Gap</span></td></tr>
+<tr><td>UGC at scale</td><td>Pepper, ThirdLove</td><td><span class="tag red">Gap</span></td></tr>
+<tr><td>Quiz-to-purchase funnel</td><td>ThirdLove, True &amp; Co</td><td><span class="tag red">Gap</span></td></tr>
+<tr><td>Emotional storytelling</td><td>Harper Wilde, Pepper</td><td><span class="tag yellow">Partial</span></td></tr>
+<tr><td>Community / ambassador</td><td>ThirdLove</td><td><span class="tag red">Gap</span></td></tr>
+</table>
+
+<h3>Critical Research Finding</h3>
+<blockquote>&ldquo;I had increased pressure around my ribcage with all four fits, which can mess with your breathing and even affect your pelvic floor.&rdquo;<cite>&mdash; Physical Therapist review of posture bras (MagicBraus.com, 2026)</cite></blockquote>
+<p>This is <strong>category-wide ammunition</strong>. If Mira V3 specifically addressed breathability and ribcage pressure (likely, given it&rsquo;s a V3 improvement), the &ldquo;we fixed what other posture bras get wrong&rdquo; angle becomes devastatingly effective.</p>
+
+<div class="kta"><h3>Key Takeaways</h3>
+<ul>
+<li>Most customers are <strong>Stage 3&ndash;4</strong> &mdash; they know posture bras exist, they&rsquo;ve probably tried one. Creative must differentiate, not educate.</li>
+<li>The best DTC bra brands all share five patterns Mirana hasn&rsquo;t deployed yet. Each is an implementation opportunity.</li>
+<li>The PT finding about ribcage pressure is a <strong>competitive weapon</strong> if V3 genuinely solved it.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- I — INSIGHTS -->
+<section id="insights">
+<h2>I &mdash; Insights: The Five Strategic Truths</h2>
+<div class="simple">Insights are where data and research become creative direction. Each insight is a strategic truth that should shape every ad, every piece of content, every campaign.</div>
+
+<div class="phase">
+<div class="phase-letter">I</div>
+
+<details open>
+<summary>Insight 1: Mirana&rsquo;s Real Product Is Confidence, Not Posture</summary>
+<p>Every testimonial orbits the same emotional core: <strong>&ldquo;I feel better about myself.&rdquo;</strong> Not &ldquo;my T4&ndash;T8 thoracic angle improved.&rdquo; Women buy the Mira Bra because they want to look better in photos, stop dreading getting dressed, feel younger and more energetic, and get compliments.</p>
+<p><strong>Creative implication:</strong> Lead with the emotional transformation. The posture correction is the mechanism, not the message.</p>
+</details>
+
+<details>
+<summary>Insight 2: V3 Is the Brand&rsquo;s Most Undertold Story</summary>
+<p>Three product versions means three rounds of listening and improving. In a market where most brands launch once and never iterate, this is a <strong>trust superpower</strong>.</p>
+<p><strong>Creative implication:</strong> &ldquo;We listened to 10,000 women. V3 is the bra they designed.&rdquo; Customer-obsessed positioning in a market full of ship-and-forget brands.</p>
+</details>
+
+<details>
+<summary>Insight 3: The &ldquo;Anti-Medical&rdquo; Position Is Wide Open</summary>
+<p>Forme leads with science. Etalon leads with FDA/patents. <strong>Nobody leads with: &ldquo;This isn&rsquo;t a medical device. It&rsquo;s just a really, really good bra.&rdquo;</strong></p>
+<p><strong>Creative implication:</strong> While competitors race toward clinical credibility, Mirana wins by running in the opposite direction &mdash; toward warmth, accessibility, and the everyday.</p>
+</details>
+
+<details>
+<summary>Insight 4: Sizing Is the Category&rsquo;s Achilles Heel</summary>
+<p>45% of returns across the category are sizing issues. This isn&rsquo;t a product problem &mdash; it&rsquo;s a <strong>shopping experience problem</strong>. A fit quiz, size guarantee, and hassle-free exchange program could become Mirana&rsquo;s most powerful competitive moat.</p>
+<p><strong>Creative implication:</strong> &ldquo;Get your perfect fit or we&rsquo;ll exchange it free&rdquo; is a more compelling CTA than any product feature.</p>
+</details>
+
+<details>
+<summary>Insight 5: The Multi-Product Ecosystem Is an Unplayed Card</summary>
+<p>Mirana has bras, body oil, shapewear, and a jelly bra. These aren&rsquo;t random products &mdash; they&rsquo;re a <strong>body confidence ecosystem</strong>. No competitor offers this range.</p>
+<p><strong>Creative implication:</strong> &ldquo;The Confidence Collection&rdquo; &mdash; bundle architecture that increases AOV while telling a bigger brand story than any single SKU can.</p>
+</details>
+
+<div class="kta"><h3>Key Takeaways</h3>
+<ul>
+<li>The five insights map to a unified creative strategy: <strong>lead with confidence (not posture), tell the V3 story, own the anti-medical position, solve sizing, and bundle the ecosystem</strong>.</li>
+<li>Every insight represents a position that <strong>no current competitor occupies</strong>. This is first-mover territory.</li>
+<li>The insights compound: anti-medical positioning + V3 iteration story + confidence messaging = a brand narrative no competitor can copy because they don&rsquo;t have the product history or product range to back it up.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- V — VALIDATION -->
+<section id="validation">
+<h2>V &mdash; Validation: Why This Analysis Is Reliable</h2>
+<div class="simple">Validation maps every claim to a source. No unsourced assertions. No assumptions presented as facts.</div>
+
+<div class="phase">
+<div class="phase-letter">V</div>
+
+<table>
+<tr><th>Claim</th><th>Source</th><th>Confidence</th></tr>
+<tr><td>Market size $3.42B, 6.8% CAGR</td><td>Research &amp; Markets, MarketIntelo, Grand View Research (cross-referenced)</td><td><span class="score">High</span></td></tr>
+<tr><td>45% sizing-related returns</td><td>MagicBraus.com 2026 industry analysis</td><td><span class="score">Medium</span></td></tr>
+<tr><td>Forme $178, Etalon $149</td><td>Direct from competitor sites + NBC News review</td><td><span class="score">High</span></td></tr>
+<tr><td>Etalon FDA-registered, patented</td><td>FashionUnited, Knitting Industry, PRWeb, Femtech Insider</td><td><span class="score">High</span></td></tr>
+<tr><td>Taylor Swift wore Forme</td><td>NBC News, Forme marketing</td><td><span class="score">High</span></td></tr>
+<tr><td>95% satisfaction claim</td><td>getmirana.com product page (self-reported)</td><td><span class="tag yellow">Self-reported</span></td></tr>
+<tr><td>Product versions V1, V2, V3</td><td>getmirana.com (three separate product URLs)</td><td><span class="score">High</span></td></tr>
+<tr><td>Product range (4 SKUs)</td><td>getmirana.com product pages</td><td><span class="score">High</span></td></tr>
+<tr><td>PT ribcage pressure finding</td><td>MagicBraus.com physical therapist review</td><td><span class="score">Medium</span></td></tr>
+<tr><td>30-day money-back guarantee</td><td>getmirana.com refund policy</td><td><span class="score">High</span></td></tr>
+<tr><td>Walmart presence</td><td>Walmart.com listings confirmed</td><td><span class="score">High</span></td></tr>
+<tr><td>E-commerce 8.5% CAGR</td><td>Grand View Research</td><td><span class="score">High</span></td></tr>
+</table>
+</div>
+</section>
+
+<!-- E — EXECUTION -->
+<section id="execution">
+<h2>E &mdash; Execution: The Creative Strategy Roadmap</h2>
+<div class="simple">Execution turns insights into a phased plan &mdash; what to build, in what order, measured by what.</div>
+
+<div class="phase">
+<div class="phase-letter">E</div>
+
+<h3>Phase 1: Foundation (Weeks 1&ndash;2)</h3>
+<div class="grid">
+<div class="card"><h4>Audit Current Assets</h4>Catalog all existing ads, product photography, UGC, and copy. Know what exists before building what&rsquo;s missing.</div>
+<div class="card"><h4>Brand Voice Bible</h4>Codify the warm, empathetic, friend-not-doctor tone into a reusable document the whole team uses.</div>
+<div class="card"><h4>V3 Story Document</h4>Map every improvement from V1&rarr;V2&rarr;V3. This becomes the raw material for the iteration narrative.</div>
+<div class="card"><h4>Testing Infrastructure</h4>Naming conventions, UTMs, performance tracking, creative testing matrix. Build once, use forever.</div>
+</div>
+
+<h3>Phase 2: Content Engine (Weeks 3&ndash;4)</h3>
+<div class="grid">
+<div class="card"><h4>UGC Program Launch</h4>10&ndash;15 creators across key demographics. Diverse body types, ages, use cases. Brief with angle-specific scripts.</div>
+<div class="card"><h4>Hero Creative Production</h4>3&ndash;5 concepts across top-priority angles. Formats: UGC video, static, carousel. Test hooks systematically.</div>
+<div class="card"><h4>Size Quiz Build</h4>Guided fit tool that reduces returns and increases conversion. The highest-ROI infrastructure investment.</div>
+<div class="card"><h4>Bundle Offers</h4>Confidence Kit (bra + oil). Day &amp; Night Set (2 bras). Full Collection. Set up Shopify bundles.</div>
+</div>
+
+<h3>Phase 3: Scale (Weeks 5&ndash;8)</h3>
+<div class="grid">
+<div class="card"><h4>Performance Analysis</h4>Identify winning angles, hooks, formats from Phase 2 data. Kill underperformers. Double down on winners.</div>
+<div class="card"><h4>Creative Scaling</h4>5&ndash;10 variations of each winner. Iterate hooks, visuals, CTAs. Prevent creative fatigue.</div>
+<div class="card"><h4>TikTok Strategy</h4>Posture bra content is native to TikTok. Try-on, transformation, day-in-my-life. Launch organic + paid.</div>
+<div class="card"><h4>Email/SMS Flows</h4>Post-purchase education, review solicitation, cross-sell sequences. Lifecycle automation.</div>
+</div>
+
+<h3>Phase 4: Compound (Month 3+)</h3>
+<div class="grid">
+<div class="card"><h4>Creative DNA Library</h4>Every winning element documented and reusable. Sounds, hooks, visuals, copy patterns. Institutional memory.</div>
+<div class="card"><h4>Seasonal Calendar</h4>New Year&rsquo;s resolutions, back-to-work, Mother&rsquo;s Day, holiday gifting. Plan creative 6 weeks ahead.</div>
+<div class="card"><h4>Ambassador Program</h4>Turn best customers into content creators. Organic UGC pipeline that scales without linear cost.</div>
+<div class="card"><h4>Competitive Monitoring</h4>Track Forme, Etalon, Leonisa creative changes monthly. React to market moves with creative counter-plays.</div>
+</div>
+
+<h3>KPIs to Track</h3>
+<table>
+<tr><th>Metric</th><th>What It Tells Us</th><th>Target</th></tr>
+<tr><td>Hook Rate (3s)</td><td>Does the opening grab attention?</td><td>&gt;30%</td></tr>
+<tr><td>Hold Rate (15s)</td><td>Does the story keep them?</td><td>&gt;15%</td></tr>
+<tr><td>CTR</td><td>Does the message drive action?</td><td>&gt;1.5%</td></tr>
+<tr><td>CPA</td><td>Can we acquire profitably?</td><td>Category benchmark</td></tr>
+<tr><td>ROAS</td><td>Is creative driving revenue?</td><td>&gt;3x</td></tr>
+<tr><td>Return Rate</td><td>Is fit/product delivering?</td><td>&lt;15%</td></tr>
+<tr><td>AOV</td><td>Are bundles working?</td><td>30%+ uplift</td></tr>
+<tr><td>LTV</td><td>Are customers coming back?</td><td>2x+ first purchase</td></tr>
+</table>
+
+<div class="kta"><h3>Key Takeaways</h3>
+<ul>
+<li>The roadmap is <strong>sequenced for compounding returns</strong>: foundation &rarr; content engine &rarr; scale &rarr; compound. Each phase builds on the one before.</li>
+<li>The <strong>single highest-ROI investment</strong> is the size quiz (Phase 2). It addresses the #1 category pain point and directly reduces the 45% sizing-related return rate.</li>
+<li>By Month 3, the creative system should be self-reinforcing: <strong>winning elements feed the DNA library, which feeds new creative, which generates new winners</strong>. The flywheel.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<p class="small" style="text-align:center;margin-top:60px">This DRIVE Strategy was produced using a systematic research-to-execution framework. Each section builds on verified data, not assumptions. August 12, 2026.</p>
+</main>

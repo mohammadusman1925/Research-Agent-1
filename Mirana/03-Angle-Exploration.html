@@ -1,0 +1,351 @@
+<title>Mirana — Angle Exploration</title>
+<style>
+:root{--bg:#FBF8F5;--surface:#fff;--call:#F5EDE4;--text:#2A1F1A;--muted:#7A6B5E;--accent:#C45B3C;--accent2:#D4785E;--accent3:#E8A87C;--deep:#1A1210;--tag:#C45B3C;--blue:#4A8AAD;--yellow:#B89B2D;--red:#C44D3B;--purple:#8B6B9E;--green:#2D7A4F}
+:root[data-theme="dark"]{--bg:#141110;--surface:#221E1B;--call:#2E2722;--text:#EDE8E4;--muted:#A89B90;--deep:#0A0808}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141110;--surface:#221E1B;--call:#2E2722;--text:#EDE8E4;--muted:#A89B90;--deep:#0A0808}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}main{max-width:940px;margin:auto;padding:42px 24px 80px}h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;line-height:1.15}h1{font-size:clamp(2.2rem,5.5vw,4.2rem);margin:.15em 0;background:linear-gradient(135deg,#C45B3C,#E8A87C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}h2{font-size:2rem;margin-top:2.2em;padding-top:.3em;border-top:2px solid var(--accent);color:var(--accent)}h3{font-size:1.35rem}h4{font-size:1.1rem;margin-top:1.4em}.eyebrow{color:var(--accent3);text-transform:uppercase;letter-spacing:.13em;font-weight:750;font-size:.85rem}.hero{padding:48px 0}.hero p{font-size:1.15rem;max-width:760px;color:var(--muted)}.lock{background:var(--deep);color:#D4C8BC;padding:22px;border-radius:14px;border-left:5px solid var(--accent)}.lock strong{color:#fff}nav{background:var(--surface);border:1px solid #DDD5CC;padding:18px 22px;border-radius:12px;margin:24px 0;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}nav a{color:var(--accent);margin-right:15px;font-size:.88rem;text-decoration:none;font-weight:600}nav a:hover{text-decoration:underline}.simple{background:#FDF0E6;border-left:5px solid var(--accent3);color:#3A2A1E;padding:14px 17px;margin:16px 0;font-style:italic;border-radius:0 8px 8px 0}.kta{background:var(--deep);color:#D4C8BC;padding:20px 24px;border-radius:12px;margin:22px 0}.kta h3{color:var(--accent3);margin-top:0}.kta li{margin:.5em 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:var(--surface);border:1px solid #DDD5CC;border-radius:12px;padding:18px;transition:transform .15s}.card:hover{transform:translateY(-2px)}.stat{font:700 2rem Georgia,serif;color:var(--accent);margin-bottom:4px}table{width:100%;border-collapse:collapse;background:var(--surface);font-size:.93rem;margin:18px 0;border-radius:10px;overflow:hidden}th{background:var(--accent);color:#fff;text-align:left;font-weight:600}th,td{padding:11px 14px;border:1px solid #DDD5CC;vertical-align:top}.tag{display:inline-block;color:#fff;background:var(--tag);border-radius:999px;padding:3px 10px;font-size:.75rem;margin:2px;font-weight:600}.tag.blue{background:var(--blue)}.tag.yellow{background:var(--yellow)}.tag.red{background:var(--red)}.tag.purple{background:var(--purple)}.tag.green{background:var(--green)}blockquote{border-left:5px solid var(--accent);margin:18px 0;padding:12px 20px;background:var(--surface);border-radius:0 10px 10px 0;font-style:italic}blockquote cite{display:block;font-style:normal;color:var(--muted);font-size:.85rem;margin-top:6px}details{background:var(--surface);padding:12px 16px;border:1px solid #DDD5CC;border-radius:10px;margin:9px 0}summary{font-weight:700;cursor:pointer;color:var(--accent)}a{color:var(--accent)}.small{font-size:.86rem;color:var(--muted)}.score{display:inline-block;background:var(--accent);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;font-size:.85rem}.divider{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3),transparent);margin:32px 0;border:none;border-radius:2px}.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:700px){.duo{grid-template-columns:1fr}}@media(max-width:650px){main{padding:22px 14px}table{display:block;overflow-x:auto}h2{font-size:1.6rem}.grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.grid{grid-template-columns:1fr}}
+.angle{background:var(--surface);border:2px solid var(--accent);border-radius:14px;padding:24px;margin:20px 0}.angle-id{font:700 1rem Georgia,serif;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.hook{background:var(--call);padding:10px 14px;border-radius:8px;margin:6px 0;font-style:italic;font-size:.95rem}.risk{background:#FFF0EC;border-left:4px solid var(--red);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.93rem}
+</style>
+
+<main>
+<header class="hero">
+<div class="eyebrow">Mohammad Usman &middot; Mirana / GetMirana &middot; August 2026</div>
+<h1>Mirana &mdash; Angle Exploration</h1>
+<p>Strategic angle mapping for the Mira&trade; Posture Corrector Bra V3 &mdash; 7 clusters, 13 angles, 39+ hooks, one system. Each angle is a creative hypothesis to validate through testing.</p>
+<div class="lock"><strong>How to read this:</strong> Each angle maps a thesis, formats, hooks, metrics, and risks. Angles are ranked in the Priority Matrix at the bottom. Start with the launch batch. Kill what doesn&rsquo;t work. Scale what does.</div>
+</header>
+
+<nav>
+<a href="#c1">Comfort</a>
+<a href="#c2">Pain</a>
+<a href="#c3">Transformation</a>
+<a href="#c4">V3 Evolution</a>
+<a href="#c5">Anti-Medical</a>
+<a href="#c6">Social Proof</a>
+<a href="#c7">Bundle</a>
+<a href="#priority">Priority</a>
+<a href="#launch">Launch Batch</a>
+</nav>
+
+<!-- CLUSTER 1 -->
+<section id="c1">
+<h2>Cluster 1: The Comfort Revolution</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 1A</div>
+<h3>&ldquo;The Last Bra You&rsquo;ll Ever Dread&rdquo;</h3>
+<p><strong>Thesis:</strong> Most women have an adversarial relationship with their bras. Underwires poke. Straps dig. The Mira Bra isn&rsquo;t a posture device &mdash; it&rsquo;s the end of bra dread.</p>
+<p><strong>Why it works:</strong> Reframes the purchase from &ldquo;health product&rdquo; to &ldquo;daily quality of life upgrade.&rdquo; Every woman who rips off her bra the second she gets home is the target audience.</p>
+
+<h4>Formats</h4>
+<div class="grid">
+<div class="card"><span class="tag blue">Video/UGC</span><br>&ldquo;The moment I get home&rdquo; &mdash; peeling off regular bra vs. forgetting Mira is on</div>
+<div class="card"><span class="tag purple">Static</span><br>Split-screen: marks from regular bras vs. smooth skin after Mira</div>
+<div class="card"><span class="tag green">Carousel</span><br>&ldquo;Things I don&rsquo;t miss: strap marks, underwire stabbing, adjusting every hour&rdquo;</div>
+</div>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;If you hate putting on a bra in the morning, keep watching.&rdquo;</div>
+<div class="hook">&ldquo;The last time I ripped my bra off at the end of the day was [date].&rdquo;</div>
+<div class="hook">&ldquo;I didn&rsquo;t know bras could feel like this.&rdquo;</div>
+<div class="hook">&ldquo;Name one bra you actually enjoy wearing. Exactly.&rdquo;</div>
+
+<p><strong>Metrics:</strong> Hook rate (bra dread resonance), Hold rate (emotional story retention), CTR (relatability &rarr; clicks)</p>
+<div class="risk"><strong>Risk:</strong> If the Mira Bra doesn&rsquo;t genuinely deliver all-day comfort for larger cup sizes, this angle backfires. Must be truthful.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 1B</div>
+<h3>&ldquo;Invisible Support&rdquo;</h3>
+<p><strong>Thesis:</strong> Women want posture support nobody knows about. Mira&rsquo;s seamless design means she gets the benefit without the &ldquo;medical device&rdquo; stigma.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;I&rsquo;ve been wearing a posture corrector for 6 months. Nobody has noticed.&rdquo;</div>
+<div class="hook">&ldquo;My chiropractor asked what I changed. I showed her my bra.&rdquo;</div>
+<div class="hook">&ldquo;Posture support you can&rsquo;t see, from a bra you can&rsquo;t feel.&rdquo;</div>
+
+<p><strong>Format:</strong> Try-on under different outfits &mdash; work blouse, casual tee, date night top &mdash; showing zero visibility.</p>
+<div class="risk"><strong>Risk:</strong> If the bra shows visible lines under certain fabrics, this angle generates returns and negative UGC.</div>
+</div>
+</section>
+
+<!-- CLUSTER 2 -->
+<section id="c2">
+<h2>Cluster 2: The Pain Story</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 2A</div>
+<h3>&ldquo;The 3pm Backache Is Not Normal&rdquo;</h3>
+<p><strong>Thesis:</strong> Millions of women accept daily back pain as part of being a woman. It&rsquo;s normalized but not inevitable. Mira is the intervention that doesn&rsquo;t feel like one.</p>
+<p><strong>Why it works:</strong> Pain is the #1 purchase driver. Getting specific &mdash; &ldquo;3pm backache,&rdquo; &ldquo;the commute slouch,&rdquo; &ldquo;the bedtime shoulder ache&rdquo; &mdash; makes the audience feel seen.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;If your back starts hurting around 3pm every day, it&rsquo;s not your spine. It&rsquo;s your bra.&rdquo;</div>
+<div class="hook">&ldquo;I spent $3,000 on a chiropractor before I spent $XX on this bra.&rdquo;</div>
+<div class="hook">&ldquo;The pain I thought was permanent turned out to be preventable.&rdquo;</div>
+<div class="hook">&ldquo;My doctor said strengthen your core. My friend said change your bra. My friend was right.&rdquo;</div>
+
+<h4>Formats</h4>
+<div class="grid">
+<div class="card"><span class="tag blue">Video</span><br>Day-in-the-life showing exact pain moments and how Mira changes each one</div>
+<div class="card"><span class="tag purple">Static</span><br>Clock graphic: &ldquo;When does YOUR back give up?&rdquo; with time markers</div>
+<div class="card"><span class="tag green">UGC</span><br>Women describing exact pain moments &mdash; raw, unscripted, specific</div>
+</div>
+
+<div class="risk"><strong>Risk:</strong> Making medical claims without clinical backing. Must stay in &ldquo;comfort/support&rdquo; territory, not &ldquo;treats/cures.&rdquo; Compliance-critical.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 2B</div>
+<h3>&ldquo;What Your Bra Is Doing to Your Body&rdquo;</h3>
+<p><strong>Thesis:</strong> Educational content about how poorly designed bras contribute to posture problems. Position Mira as the solution that addresses root cause.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Your bra is doing more damage to your posture than your desk chair.&rdquo;</div>
+<div class="hook">&ldquo;Physical therapist here. Let me show you what&rsquo;s happening to your shoulders right now.&rdquo;</div>
+<div class="hook">&ldquo;The shoulder groove from your bra strap isn&rsquo;t just cosmetic &mdash; here&rsquo;s what it means.&rdquo;</div>
+
+<p><strong>Metrics:</strong> Save rate (educational content gets saved), Share rate, CPM (Meta rewards engagement).</p>
+<div class="risk"><strong>Risk:</strong> Too educational = boring. Lead with a provocative claim, then deliver the education.</div>
+</div>
+</section>
+
+<!-- CLUSTER 3 -->
+<section id="c3">
+<h2>Cluster 3: The Transformation Story</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 3A</div>
+<h3>&ldquo;The Confidence Shift&rdquo;</h3>
+<p><strong>Thesis:</strong> The real transformation isn&rsquo;t physical posture &mdash; it&rsquo;s how she carries herself, how she&rsquo;s perceived, and how she feels in her own body. Mira doesn&rsquo;t correct posture; it unlocks confidence.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;I didn&rsquo;t buy a bra. I bought the version of me that stands like she means it.&rdquo;</div>
+<div class="hook">&ldquo;My coworkers asked if I started working out. I just changed my bra.&rdquo;</div>
+<div class="hook">&ldquo;The first thing I noticed wasn&rsquo;t my posture. It was my confidence.&rdquo;</div>
+
+<div class="risk"><strong>Risk:</strong> Confidence claims are harder to prove than posture claims. Must be anchored in specific, relatable moments.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 3B</div>
+<h3>&ldquo;I Look Like I Lost 10 Pounds&rdquo;</h3>
+<p><strong>Thesis:</strong> Better posture visually slims the body, opens the chest, elongates the torso. Mira creates an immediate visual transformation that looks like weight loss &mdash; without dieting.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Same jeans. Same top. Different posture. I look 10 pounds lighter.&rdquo;</div>
+<div class="hook">&ldquo;The cheapest weight loss hack is fixing your posture.&rdquo;</div>
+<div class="hook">&ldquo;I didn&rsquo;t change my body. I changed how my body shows up.&rdquo;</div>
+
+<p><strong>Metrics:</strong> CTR (vanity hooks drive highest CTR in category), Conversion rate, Share rate.</p>
+<div class="risk"><strong>Risk:</strong> Body-positive audience may react negatively. Frame as &ldquo;stand taller, look longer&rdquo; not weight-focused. Test carefully.</div>
+</div>
+</section>
+
+<!-- CLUSTER 4 -->
+<section id="c4">
+<h2>Cluster 4: The V3 Evolution</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 4A</div>
+<h3>&ldquo;We Listened. We Improved. Three Times.&rdquo;</h3>
+<p><strong>Thesis:</strong> Most brands launch a product and defend it. Mirana launched, listened, and rebuilt &mdash; three times. V3 is the product their customers designed.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Most brands launch once and call it done. We launched three times.&rdquo;</div>
+<div class="hook">&ldquo;V1 wasn&rsquo;t perfect. V2 was better. V3 is what 10,000 women told us to make.&rdquo;</div>
+<div class="hook">&ldquo;We took every 1-star review from V1 and built V3 to answer it.&rdquo;</div>
+
+<h4>Formats</h4>
+<div class="grid">
+<div class="card"><span class="tag blue">Video</span><br>Timeline: V1 (what we got right/wrong) &rarr; V2 (customer feedback) &rarr; V3 (what they told us to make)</div>
+<div class="card"><span class="tag purple">Static</span><br>V1 vs. V3 comparison showing specific design improvements</div>
+<div class="card"><span class="tag green">Carousel</span><br>&ldquo;Why V3 exists&rdquo; &mdash; customer complaint &rarr; V3 solution per slide</div>
+</div>
+
+<div class="risk"><strong>Risk:</strong> If V3 improvements aren&rsquo;t substantial or specific, this angle feels hollow. Must have concrete, demonstrable changes.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 4B</div>
+<h3>&ldquo;Built by 10,000 Women&rdquo;</h3>
+<p><strong>Thesis:</strong> V3 wasn&rsquo;t designed in a lab. It was designed by thousands of real women. Customer co-creation, not corporate iteration.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;This bra was designed by 10,000 women. None of them work here.&rdquo;</div>
+<div class="hook">&ldquo;Every improvement in V3 came from a real customer complaint.&rdquo;</div>
+<div class="hook">&ldquo;You designed this bra. We just built it.&rdquo;</div>
+
+<div class="risk"><strong>Risk:</strong> &ldquo;10,000 women&rdquo; needs to be defensible. If volume isn&rsquo;t there, adjust the framing.</div>
+</div>
+</section>
+
+<!-- CLUSTER 5 -->
+<section id="c5">
+<h2>Cluster 5: The Anti-Medical</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 5A</div>
+<h3>&ldquo;It&rsquo;s Not a Device. It&rsquo;s a Bra.&rdquo;</h3>
+<p><strong>Thesis:</strong> Competitors race toward medical credibility. Mirana wins by going opposite: &ldquo;We&rsquo;re not a medical device. We&rsquo;re just a really good bra that happens to fix your posture.&rdquo;</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Stop Googling &lsquo;posture corrector.&rsquo; Start Googling &lsquo;comfortable bra.&rsquo;&rdquo;</div>
+<div class="hook">&ldquo;FDA-registered, patented, clinically tested&hellip; or you could just wear a bra that works.&rdquo;</div>
+<div class="hook">&ldquo;My posture corrector doesn&rsquo;t come with a manual. It comes in a bra size.&rdquo;</div>
+
+<h4>Formats</h4>
+<div class="grid">
+<div class="card"><span class="tag blue">Video</span><br>Side-by-side: clinical posture corrector experience vs. Mira Bra experience</div>
+<div class="card"><span class="tag purple">Static</span><br>&ldquo;Theirs vs. Ours&rdquo; &mdash; medical device aesthetic vs. lingerie-drawer aesthetic</div>
+<div class="card"><span class="tag green">UGC</span><br>&ldquo;I expected a medical device. I got the most comfortable bra I&rsquo;ve ever owned.&rdquo;</div>
+</div>
+
+<div class="risk"><strong>Risk:</strong> Some customers want clinical validation. This angle explicitly opts out of that audience &mdash; must be comfortable losing the &ldquo;FDA-approved&rdquo; segment.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 5B</div>
+<h3>&ldquo;Your Bra Should Do This Already&rdquo;</h3>
+<p><strong>Thesis:</strong> Posture support shouldn&rsquo;t be a special feature &mdash; it should be baseline. Mira is what bras always should have been.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Why does a posture bra even need to exist? Because the bra industry failed you.&rdquo;</div>
+<div class="hook">&ldquo;Your $60 bra doesn&rsquo;t support your posture. Your $XX Mira does. Think about that.&rdquo;</div>
+<div class="hook">&ldquo;Every bra should do this. Most brands just can&rsquo;t be bothered.&rdquo;</div>
+
+<div class="risk"><strong>Risk:</strong> Antagonizing the bra industry could feel arrogant. Balance critique with solution.</div>
+</div>
+</section>
+
+<!-- CLUSTER 6 -->
+<section id="c6">
+<h2>Cluster 6: Social Proof Amplification</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 6A</div>
+<h3>&ldquo;95% of Women Saw Results in 2 Weeks&rdquo;</h3>
+<p><strong>Thesis:</strong> The 95% satisfaction stat is the single most powerful proof point. Build entire campaigns around this number.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;95% of women saw better posture in under 2 weeks. Here&rsquo;s what happened to the other 5%.&rdquo;</div>
+<div class="hook">&ldquo;Day 1: skeptical. Day 14: obsessed.&rdquo;</div>
+<div class="hook">&ldquo;I gave it 2 weeks. It took 3 days.&rdquo;</div>
+
+<p><strong>Format:</strong> Countdown video (Day 1&hellip; Day 3&hellip; Day 14), bold stat graphics, UGC &ldquo;2-week challenge.&rdquo;</p>
+<div class="risk"><strong>Risk:</strong> If the 95% claim isn&rsquo;t backed by rigorous data, it&rsquo;s vulnerable to scrutiny. Must be defensible.</div>
+</div>
+
+<div class="angle">
+<div class="angle-id">Angle 6B</div>
+<h3>&ldquo;What Happened After 90 Days&rdquo;</h3>
+<p><strong>Thesis:</strong> Most ads show immediate results. Nobody talks about 90 days. Mirana can own the long-term story.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;Everyone shows you Day 1. Here&rsquo;s Day 90.&rdquo;</div>
+<div class="hook">&ldquo;The posture bra industry doesn&rsquo;t want you to see this timeline.&rdquo;</div>
+<div class="hook">&ldquo;I wore it every day for 90 days. Here&rsquo;s what actually happened.&rdquo;</div>
+
+<div class="risk"><strong>Risk:</strong> Requires real 90-day customer data. Can&rsquo;t be faked. If results plateau, the angle collapses.</div>
+</div>
+</section>
+
+<!-- CLUSTER 7 -->
+<section id="c7">
+<h2>Cluster 7: The Bundle Play</h2>
+
+<div class="angle">
+<div class="angle-id">Angle 7A</div>
+<h3>&ldquo;The Confidence Kit&rdquo;</h3>
+<p><strong>Thesis:</strong> Mira Bra + Magic Body Oil = a body confidence ritual. Bundle the physical transformation with the sensory experience into a daily self-care routine.</p>
+
+<h4>Hooks</h4>
+<div class="hook">&ldquo;My morning routine takes 2 minutes and changed how I carry myself all day.&rdquo;</div>
+<div class="hook">&ldquo;The Confidence Kit: because posture and skin deserve the same attention.&rdquo;</div>
+<div class="hook">&ldquo;This isn&rsquo;t a bra and a body oil. It&rsquo;s a ritual.&rdquo;</div>
+
+<h4>Formats</h4>
+<div class="grid">
+<div class="card"><span class="tag blue">Video</span><br>Morning routine: apply oil, put on Mira, walk out standing tall</div>
+<div class="card"><span class="tag purple">Static</span><br>Gift-box product photography &mdash; &ldquo;The Confidence Kit&rdquo;</div>
+<div class="card"><span class="tag green">Gift Guide</span><br>&ldquo;The gift she won&rsquo;t return&rdquo; &mdash; holidays, Mother&rsquo;s Day, birthdays</div>
+</div>
+
+<div class="risk"><strong>Risk:</strong> If the body oil doesn&rsquo;t complement the bra experience, the bundle feels forced.</div>
+</div>
+</section>
+
+<!-- PRIORITY MATRIX -->
+<section id="priority">
+<h2>Priority Matrix</h2>
+<div class="simple">Each angle is scored on Impact, Feasibility, and Uniqueness to determine launch priority. Start at the top. Test. Scale winners. Kill losers.</div>
+
+<table>
+<tr><th>Angle</th><th>Impact</th><th>Feasibility</th><th>Uniqueness</th><th>Priority</th></tr>
+<tr><td><strong>1A:</strong> Last Bra You&rsquo;ll Ever Dread</td><td><span class="tag green">Very High</span></td><td><span class="tag green">High</span></td><td><span class="tag green">High</span></td><td><strong>Launch first</strong></td></tr>
+<tr><td><strong>2A:</strong> 3pm Backache</td><td><span class="tag green">Very High</span></td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><strong>Launch first</strong></td></tr>
+<tr><td><strong>3B:</strong> Lost 10 Pounds</td><td><span class="tag green">High</span></td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><strong>Week 2</strong></td></tr>
+<tr><td><strong>5A:</strong> Not a Device, It&rsquo;s a Bra</td><td><span class="tag green">High</span></td><td><span class="tag green">High</span></td><td><span class="tag green">Very High</span></td><td><strong>Week 2</strong></td></tr>
+<tr><td><strong>4A:</strong> Listened. Improved. Three Times.</td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><span class="tag green">Very High</span></td><td><strong>Week 3</strong></td></tr>
+<tr><td><strong>6A:</strong> 95% in 2 Weeks</td><td><span class="tag green">High</span></td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><strong>Week 3</strong></td></tr>
+<tr><td><strong>1B:</strong> Invisible Support</td><td><span class="tag blue">Medium</span></td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><strong>Ongoing</strong></td></tr>
+<tr><td><strong>3A:</strong> Confidence Shift</td><td><span class="tag green">High</span></td><td><span class="tag blue">Medium</span></td><td><span class="tag blue">Medium</span></td><td><strong>Week 4</strong></td></tr>
+<tr><td><strong>7A:</strong> Confidence Kit</td><td><span class="tag blue">Medium</span></td><td><span class="tag blue">Medium</span></td><td><span class="tag green">High</span></td><td><strong>Week 4</strong></td></tr>
+<tr><td><strong>2B:</strong> What Your Bra Is Doing</td><td><span class="tag blue">Medium</span></td><td><span class="tag blue">Medium</span></td><td><span class="tag blue">Medium</span></td><td><strong>Content cal</strong></td></tr>
+<tr><td><strong>5B:</strong> Should Do This Already</td><td><span class="tag blue">Medium</span></td><td><span class="tag blue">Medium</span></td><td><span class="tag green">High</span></td><td><strong>Month 2</strong></td></tr>
+<tr><td><strong>4B:</strong> Built by 10,000 Women</td><td><span class="tag green">High</span></td><td><span class="tag yellow">Low</span></td><td><span class="tag green">Very High</span></td><td><strong>Month 2</strong></td></tr>
+<tr><td><strong>6B:</strong> After 90 Days</td><td><span class="tag green">Very High</span></td><td><span class="tag yellow">Low</span></td><td><span class="tag green">Very High</span></td><td><strong>Month 3+</strong></td></tr>
+</table>
+</section>
+
+<!-- LAUNCH BATCH -->
+<section id="launch">
+<h2>Launch Batch: Top 5 for First 2 Weeks</h2>
+<div class="simple">These five angles launch first because they combine high impact with high feasibility. They don&rsquo;t require new infrastructure (size quiz, bundles) &mdash; just creative execution.</div>
+
+<div class="grid">
+<div class="card" style="border-color:var(--accent);border-width:2px">
+<div class="stat">1</div>
+<h4>&ldquo;The Last Bra You&rsquo;ll Ever Dread&rdquo;</h4>
+<p><span class="tag blue">UGC Video</span> 3&ndash;5 creators, diverse body types</p>
+<p class="small">Universal pain point, highest relatability, lowest creative risk.</p>
+</div>
+<div class="card" style="border-color:var(--accent);border-width:2px">
+<div class="stat">2</div>
+<h4>&ldquo;The 3pm Backache&rdquo;</h4>
+<p><span class="tag blue">UGC Video</span> <span class="tag purple">Static Carousel</span></p>
+<p class="small">Pain is the #1 driver. Time-specific framing is differentiated.</p>
+</div>
+<div class="card" style="border-color:var(--accent);border-width:2px">
+<div class="stat">3</div>
+<h4>&ldquo;I Look Like I Lost 10 Pounds&rdquo;</h4>
+<p><span class="tag blue">Before/After Video</span> <span class="tag purple">Static</span></p>
+<p class="small">Vanity hooks drive highest CTR in the category.</p>
+</div>
+<div class="card" style="border-color:var(--accent);border-width:2px">
+<div class="stat">4</div>
+<h4>&ldquo;Not a Device. It&rsquo;s a Bra.&rdquo;</h4>
+<p><span class="tag purple">Static Comparison</span> <span class="tag blue">Short Video</span></p>
+<p class="small">Unique positioning no competitor occupies.</p>
+</div>
+<div class="card" style="border-color:var(--accent);border-width:2px">
+<div class="stat">5</div>
+<h4>&ldquo;95% Saw Results in 2 Weeks&rdquo;</h4>
+<p><span class="tag purple">Static</span> <span class="tag green">UGC Compilation</span></p>
+<p class="small">Proof-based messaging for the skeptical, comparison-shopping audience.</p>
+</div>
+</div>
+
+<div class="kta"><h3>What This Exploration Demonstrates</h3>
+<ul>
+<li>This isn&rsquo;t a list of ad ideas. It&rsquo;s a <strong>strategic creative map</strong>.</li>
+<li>7 clusters. 13 angles. 39+ hooks. Every angle rooted in market data and customer voice research.</li>
+<li>Each angle is risk-assessed before a single creative dollar is spent.</li>
+<li>Prioritized by impact, feasibility, and uniqueness &mdash; sequenced into a launch plan.</li>
+<li>Angles are <strong>hypotheses to be validated through testing</strong>, not final creative direction.</li>
+</ul>
+</div>
+</section>
+
+<p class="small" style="text-align:center;margin-top:60px">This Angle Exploration was produced using brand intelligence, market research, competitive analysis, and customer voice data. August 12, 2026.</p>
+</main>
