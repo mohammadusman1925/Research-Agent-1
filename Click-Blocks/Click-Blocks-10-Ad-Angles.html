@@ -1,0 +1,646 @@
+<title>Click Blocks — 10 Ad Angles</title>
+<style>
+@font-face {
+  font-family: 'Display';
+  src: local('Georgia'), local('Times New Roman');
+  font-weight: 400 700;
+}
+
+:root {
+  --bg: #FAF8F5;
+  --surface: #FFFFFF;
+  --surface-alt: #F0EDE8;
+  --text: #1A1714;
+  --text-secondary: #6B6560;
+  --accent: #C44B2B;
+  --accent-light: #F4DDD6;
+  --accent-dark: #8B3520;
+  --border: #E2DDD7;
+  --tag-bg: #EDE8E2;
+  --high: #C44B2B;
+  --medium: #D4942A;
+  --low: #5A8A6A;
+  --angle-num: #D9C4B8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141210;
+    --surface: #1E1C19;
+    --surface-alt: #262320;
+    --text: #E8E4DF;
+    --text-secondary: #9A9590;
+    --accent: #E06040;
+    --accent-light: #3A2420;
+    --accent-dark: #F08060;
+    --border: #3A3530;
+    --tag-bg: #2E2A26;
+    --high: #E06040;
+    --medium: #E0AA44;
+    --low: #6AAA7A;
+    --angle-num: #3A3228;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #141210;
+  --surface: #1E1C19;
+  --surface-alt: #262320;
+  --text: #E8E4DF;
+  --text-secondary: #9A9590;
+  --accent: #E06040;
+  --accent-light: #3A2420;
+  --accent-dark: #F08060;
+  --border: #3A3530;
+  --tag-bg: #2E2A26;
+  --high: #E06040;
+  --medium: #E0AA44;
+  --low: #6AAA7A;
+  --angle-num: #3A3228;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* ── Header ── */
+.header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.header-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.header h1 {
+  font-family: 'Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  text-wrap: balance;
+  margin-bottom: 0.75rem;
+}
+
+.header-desire {
+  font-family: 'Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1.5;
+  max-width: 38em;
+}
+
+.header-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.header-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Research context ── */
+.context {
+  background: var(--surface-alt);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.context h2 {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Angle cards ── */
+.angles {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.angle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.angle::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -0.3rem;
+  right: 1rem;
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--angle-num);
+  line-height: 1;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.angle-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.angle-title {
+  font-family: 'Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+  flex: 1;
+}
+
+.angle-format {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.angle-hook {
+  font-family: 'Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  line-height: 1.45;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.angle-body {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.angle-body p + p {
+  margin-top: 0.75rem;
+}
+
+.angle-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 550px) {
+  .angle-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-block h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.detail-block p, .detail-block ul {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.detail-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-block ul li::before {
+  content: "→ ";
+  color: var(--accent);
+}
+
+/* ── Impact rating ── */
+.impact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.impact-high { background: var(--accent-light); color: var(--high); }
+.impact-medium { background: #FFF3E0; color: var(--medium); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .impact-medium { background: #332A1A; }
+}
+:root[data-theme="dark"] .impact-medium { background: #332A1A; }
+
+/* ── Footer ── */
+.footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .page { padding: 2rem 1rem 3rem; }
+  .angle { padding: 1.5rem 1.25rem; }
+  .angle::before { font-size: 3.5rem; }
+}
+</style>
+
+<div class="page">
+  <header class="header">
+    <div class="header-eyebrow">Click Blocks — Creative Strategy</div>
+    <h1>10 Ad Angles, One Mass Desire</h1>
+    <div class="header-desire">"I want my kid to put the screen down and be a kid again — without me having to fight for it."</div>
+    <div class="header-meta">
+      <span>Product: Click Blocks Magnetic Building Set</span>
+      <span>Target: Parents of kids 5–12</span>
+      <span>August 2026</span>
+    </div>
+  </header>
+
+  <section class="context">
+    <h2>Research context — why this desire converts</h2>
+    <div class="context-grid">
+      <div class="stat">
+        <div class="stat-number">84%</div>
+        <div class="stat-label">of parents feel guilty about their child's screen use (Lingokids, 2025)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">93%</div>
+        <div class="stat-label">of toddler parents report tantrums when transitioning away from screens (BYU)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">45%</div>
+        <div class="stat-label">higher anxiety risk in kids with 4+ hours daily screen time (2026 study, 50k children)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">50k+</div>
+        <div class="stat-label">families already using Click Blocks as a screen replacement</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="angles">
+
+    <!-- ANGLE 1 -->
+    <article class="angle" data-num="01">
+      <div class="angle-header">
+        <div class="angle-title">The iPaddy</div>
+        <span class="angle-format">Video — UGC</span>
+      </div>
+      <div class="angle-hook">"My kid threw a 20-minute tantrum when I took the iPad away. That was the last time."</div>
+      <div class="angle-body">
+        <p>Open on a real parent recounting the exact moment — the scream, the negotiation, the guilt spiral afterward. Parents have a name for it: "the iPaddy." Over half of parents report their kids throw tantrums when devices are confiscated. This angle doesn't sell blocks. It sells the absence of that fight.</p>
+        <p>The visual turn: cut from the parent's face to their kid, cross-legged on the floor, quietly building. No drama. No negotiation. Just… absorbed. The parent's voiceover: "Nobody told him to put anything down. He just didn't pick it up."</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Relief from daily conflict. The parent is exhausted from being the "bad guy" every night.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>93% recognition rate — nearly every parent has lived this</li>
+            <li>"iPaddy" is a shareable, meme-ready word</li>
+            <li>Positions Click Blocks as a truce, not a punishment</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 2 -->
+    <article class="angle" data-num="02">
+      <div class="angle-header">
+        <div class="angle-title">The 2am Scroll</div>
+        <span class="angle-format">Static — Text-heavy</span>
+      </div>
+      <div class="angle-hook">"It's 2am. You're googling 'is YouTube Shorts rewiring my kid's brain.' You already know the answer."</div>
+      <div class="angle-body">
+        <p>This angle meets the parent at their most vulnerable — alone, in the dark, doom-scrolling articles about dopamine loops and attention spans. Recent research shows heavy short-form video consumption reduces sustained attention capacity significantly (r = -0.45). Kids' prefrontal cortices aren't fully developed until their mid-20s, making them especially susceptible.</p>
+        <p>The ad doesn't lecture. It mirrors. It says: "You're not overreacting." Then it pivots — not to fear, but to a single concrete action they can take tomorrow morning. A box of Click Blocks on the kitchen table before the iPad even gets picked up.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Validation of late-night anxiety + immediate relief through action. Guilt → agency.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Targets the "research spiral" moment — high intent, high emotion</li>
+            <li>Doesn't create fear, reflects existing fear back</li>
+            <li>The action is tiny: "put a box on the table"</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 3 -->
+    <article class="angle" data-num="03">
+      <div class="angle-header">
+        <div class="angle-title">The Sound</div>
+        <span class="angle-format">Video — ASMR / Product</span>
+      </div>
+      <div class="angle-hook">"There's a reason they call it Click Blocks."</div>
+      <div class="angle-body">
+        <p>This is a sensory-first angle. No parenting guilt, no fear — just the deeply satisfying <em>clack</em> of six powerful magnets snapping into place. The same dopamine hit a kid gets from swiping to the next Short, except it's real. It's tactile. It's in their hands.</p>
+        <p>Film extreme close-ups: fingertips guiding a block toward another, the magnetic pull taking over in the last centimeter, the snap. Repeat from different angles, different builds. The sound does the selling. Parents scroll past fear-based ads. They stop for sounds that make their brain tingle.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Sensory curiosity. The "I need to feel that" impulse. Subtext: your kid will feel this instead of swiping.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>ASMR content consistently outperforms on social (high watch time)</li>
+            <li>Product-forward without feeling like an ad</li>
+            <li>Reframes "addictive" as a feature, not a bug</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 4 -->
+    <article class="angle" data-num="04">
+      <div class="angle-header">
+        <div class="angle-title">The Replacement Theory</div>
+        <span class="angle-format">Video — Founder / Expert</span>
+      </div>
+      <div class="angle-hook">"You can't just take the screen away. You have to replace what it was giving them."</div>
+      <div class="angle-body">
+        <p>This angle reframes the entire screen time conversation. Screens aren't the enemy — boredom is. Kids don't love iPads. They love novelty, reward, and creative control. YouTube Shorts deliver micro-doses of dopamine through unpredictable, fast-cycling content. The question isn't "how do I remove screens?" — it's "what else delivers that loop?"</p>
+        <p>Click Blocks are engineered to hit the same triggers: the magnetic snap is a tactile reward cycle. Every new configuration is novel. The build is the game — no instructions, no end state, no batteries. Frame this as a parenting strategy, not a product pitch. The product is the proof.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Intellectual respect. Treats the parent as smart enough to understand the mechanism, not just the symptom.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>"You can't just take it away" — validates failed attempts</li>
+            <li>Science-adjacent framing builds trust without citations</li>
+            <li>Makes the parent feel like they've found a strategy, not a toy</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 5 -->
+    <article class="angle" data-num="05">
+      <div class="angle-header">
+        <div class="angle-title">The Kitchen Table Test</div>
+        <span class="angle-format">Video — Split screen</span>
+      </div>
+      <div class="angle-hook">"We put Click Blocks on the kitchen table next to the iPad. Didn't say a word. Just watched."</div>
+      <div class="angle-body">
+        <p>Split screen. Left side: iPad, glowing, autoplay queued. Right side: a pile of Click Blocks, colorful, magnetic, chaotic. A kid walks in. The parent says nothing. Real time. No cuts. No music. Just a kid making a choice.</p>
+        <p>This works because it removes the parent from the equation — which is the entire desire. "Without me having to fight for it." The parent didn't confiscate anything. Didn't lecture. Didn't set a timer. They just offered an alternative and stepped back. The ad is proof that the product can win a fair fight against the most engineered attention trap ever built.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Hope through proof. "Maybe I don't have to be the screen police after all."</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Zero narration = maximum credibility</li>
+            <li>The kid choosing blocks over iPad is the most powerful visual possible</li>
+            <li>Instantly shareable — "try this with your kid"</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 6 -->
+    <article class="angle" data-num="06">
+      <div class="angle-header">
+        <div class="angle-title">The Report Card No One Sends</div>
+        <span class="angle-format">Static — Infographic</span>
+      </div>
+      <div class="angle-hook">"If screens gave your kid a report card, you wouldn't frame it."</div>
+      <div class="angle-body">
+        <p>A mock "report card" design. One column: <strong>Screen Time</strong> — Attention Span: D. Creativity: F. Problem Solving: Incomplete. Social Skills: See me after class. Other column: <strong>Building Time</strong> — Spatial Reasoning: A. Focus: A-. Creativity: A+. Fine Motor Skills: A. Independent Play: A.</p>
+        <p>It weaponizes a format every parent already understands. No research citations needed — the metaphor carries the data. The insight underneath: screens are graded on consumption (time watched), but play should be graded on creation (things built). Click Blocks flip the input/output ratio.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Parental aspiration. Every parent wants to raise a builder, not a consumer.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Report card format is universal, instantly scannable</li>
+            <li>Shame-adjacent without being preachy — the grades speak</li>
+            <li>Shareable as a meme — "my kid's real report card"</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 7 -->
+    <article class="angle" data-num="07">
+      <div class="angle-header">
+        <div class="angle-title">The Quiet House</div>
+        <span class="angle-format">Video — Cinematic</span>
+      </div>
+      <div class="angle-hook">"The house went quiet. Not the bad kind of quiet. The kind where someone is making something."</div>
+      <div class="angle-body">
+        <p>Every parent knows two types of silence. The anxious kind — "what are they watching?" And the golden kind — "they're in the zone." This ad lives in the second silence. Slow, warm footage: afternoon light on a wood floor. A kid building. The soft click of magnets. A parent in the next room, reading, glancing over, smiling.</p>
+        <p>No voiceover for the first 15 seconds. Just ambient sound — the house, the magnets, breathing. Then a single text card: "No WiFi. No batteries. No arguments. Just building." This is an aspiration ad. It doesn't sell a toy. It sells a feeling — the feeling of a home that isn't at war with itself over screens.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Nostalgia for a childhood the parent remembers having — and fears their kid is missing.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Aspirational tone cuts through the fear-based noise</li>
+            <li>"No WiFi. No batteries. No arguments" — the anti-feature list</li>
+            <li>Parents share content that reflects who they want to be</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 8 -->
+    <article class="angle" data-num="08">
+      <div class="angle-header">
+        <div class="angle-title">The Babysitter You Don't Feel Guilty About</div>
+        <span class="angle-format">Static — Testimonial</span>
+      </div>
+      <div class="angle-hook">"I used to hand them the iPad so I could cook dinner in peace. Now I hand them Click Blocks. Same 45 minutes. Zero guilt."</div>
+      <div class="angle-body">
+        <p>This angle goes directly at the Screen Guilt Paradox: 84% of parents feel guilty about screen time, yet 98% allow it — because they need the break. The top reason for that guilt? "Using screens as a babysitter." This ad doesn't judge. It says: you still get your 45 minutes. The difference is what happens during it.</p>
+        <p>The visual is a real parent's handwritten note or a screenshot-style text post — raw, personal, unpolished. The format signals authenticity. Below the testimonial: a photo of a kid's build from that evening. The proof isn't a claim. It's what the kid made while the parent made dinner.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Permission. It tells parents: you're not a bad parent for needing a break. Here's how to take one guilt-free.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Addresses the real use case nobody talks about openly</li>
+            <li>Handwritten/screenshot format outperforms polished creative</li>
+            <li>The kid's build is social proof that doesn't feel like marketing</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 9 -->
+    <article class="angle" data-num="09">
+      <div class="angle-header">
+        <div class="angle-title">The Three-Month Check</div>
+        <span class="angle-format">Video — Follow-up UGC</span>
+      </div>
+      <div class="angle-hook">"I bought these 3 months ago thinking they'd last a week. Here's what happened."</div>
+      <div class="angle-body">
+        <p>The biggest objection to any screen-time toy: "My kid will play with it twice and go back to the iPad." This angle kills that objection with time. A parent films a 60-second update. Month 1: "He built a tower." Month 2: "She built a city." Month 3: "They built together." The progression isn't just about the toy lasting — it's about the kid's imagination expanding.</p>
+        <p>End on the parent holding up their kid's Screen Time report from their phone settings. The number is visibly down. No narration needed — just the number and a nod. The kicker: "Still building. Still haven't asked for the iPad back."</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Overcoming skepticism. The parent watching this ad has been burned by "screen-free" toys before.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>Time-lapse format is inherently compelling (before/after over months)</li>
+            <li>Screen Time report screenshot = undeniable proof</li>
+            <li>Addresses the #1 purchase objection head-on</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ANGLE 10 -->
+    <article class="angle" data-num="10">
+      <div class="angle-header">
+        <div class="angle-title">The Thing They Built</div>
+        <span class="angle-format">Carousel — User gallery</span>
+      </div>
+      <div class="angle-hook">"Nobody told them what to build. That's the point."</div>
+      <div class="angle-body">
+        <p>A carousel of kids' Click Blocks creations — submitted by real parents. A dragon. A house for their hamster. A "robot that protects my sister." Each image captioned with the kid's age and what they named their build. No marketing copy. No benefit claims. Just proof of imagination happening.</p>
+        <p>The subtext is devastating in its simplicity: screens consume creativity. This produces it. You're not looking at a toy working. You're looking at a brain working. The final slide: a blank table with a pile of unbuilt Click Blocks and the line — "What will yours build?" The CTA isn't "buy now." It's an open question directed at the parent's hope for their child.</p>
+      </div>
+      <div class="angle-details">
+        <div class="detail-block">
+          <h4>Emotional lever</h4>
+          <p>Pride and possibility. Every parent wants to believe their kid has a wild imagination — if something unlocks it.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Why it works</h4>
+          <ul>
+            <li>User-submitted content = highest trust format</li>
+            <li>Kid names for builds are inherently shareable and charming</li>
+            <li>"What will yours build?" — the most effective CTA is a question</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer class="footer">
+    <p>Research sourced from Pew Research Center, Lingokids 2025 Screen Guilt Survey, BYU screen transition study, Humanities and Social Sciences Communications (2026, n=50,231), MindLAB Neuroscience, and Click Blocks customer reviews (Trustpilot, 4.9★). All angles target Meta (Facebook/Instagram) paid media.</p>
+  </footer>
+</div>
