@@ -19,6 +19,54 @@ Each angle is a strategic direction for creative production. For each, I map:
 
 ---
 
+## Research Foundation — Customer Voice Data
+
+This angle exploration is grounded in primary research across Reddit, TikTok, Amazon reviews, forums (Quora, DC Urban Mom, Mayo Clinic Connect), professional reviews (NBC Select, Reviewed, Tom's Guide), and competitive intelligence. Key findings that shaped every angle:
+
+### What Drives the Search (Pain Points)
+- **Physical:** Upper back pain from desk work, shoulder grooves from straps, "tech neck," nerve compression, headaches from forward head posture
+- **Emotional:** Self-consciousness about slouching in photos, feeling like they've "tried everything," age-related posture decline
+- **Situational:** WFH/desk lifestyle, large bust creating mechanical problems, post-nursing body changes, motherhood posture tax
+
+### What Holds Them Back (Objections)
+1. **"It's just a crutch"** — #1 objection. PTs on Reddit say muscles weaken with passive support. Counter: position as training tool building proprioception/muscle memory
+2. **"Posture reverts when removed"** — NBC Select's 5-month Forme review: "hasn't made enough difference to justify the price." Counter: cumulative benefit messaging
+3. **"It's uncomfortable"** — Armpit chafing is universal. Ribcage pressure restricts breathing in all tested competitors. Counter: all-day comfort as primary differentiator
+4. **"Sizing is a nightmare"** — 45% of competitor returns are sizing issues. Counter: fit guarantee, clear sizing, easy exchange
+5. **"It looks medical"** — "Can be uncomfortable or look dorky." Counter: invisible-under-clothes angle
+6. **"Is it a scam?"** — Before/after marketing generates strong skepticism. Counter: honest-skeptic format, raw reviews, transparency
+
+### Real Customer Language (Direct Quotes)
+> "I slouch like Quasimodo" · "My back is killing me" · "I've tried everything" · "The second I took it off, I went right back to slouching" · "The band was so tight on the ribcage it drove me nuts and made it almost impossible to take a deep breath" · "Straps can painfully chafe underarms" · "Sleek, smooth and lightweight" · "Game changer" · "I'd pay more if I knew it would fit" · "The more we live that laptop life, posture is one of the fastest things to go"
+
+### Competitor Intelligence
+| Brand | Price | Key Weakness |
+|---|---|---|
+| Forme Power Bra | $179 | Price backlash (NBC, CNN questioned value), posture reverts when removed |
+| Etalon | $89-120 | FDA-registered but shoulder pads visible under clothing, seams create bumps |
+| AlignMed | $95 | Clinically proven but medical aesthetic, not fashion-forward |
+| Budget tier (Amazon) | $15-50 | "Complete waste of money," poor durability, zero support |
+
+### Underserved Segments (Gaps to Exploit)
+- **Nursing/postpartum moms** — No premium brand offers nursing-access posture bra (only tiny brand Pipperly exists)
+- **Plus-size women** — Premium brands stop at standard sizes; only budget options serve extended sizing
+- **WFH professionals** — Massive demand, zero brand positioning for all-day home-office wear
+- **The breathing problem** — No brand addresses the ribcage pressure trade-off
+
+### TikTok & Content Insights
+- **Honest-skeptic format outperforms all other content** — "I was doubtful" → visual proof converts better than promotional content
+- **"Proprioception" is the credibility word** — bridges influencer content and medical legitimacy
+- **Budget hero angle drives virality** — PureWow's "$28 Amazon dupe" was category's top-performing content
+- **Always address "what happens when you take it off?"** — the question every viewer asks
+
+### Market Context
+- **$3.42B** global posture corrector market (2026), growing at **6.8% CAGR**
+- **$80-120** optimal price range for value perception
+- **FSA/HSA eligibility** is a powerful purchase trigger
+- **42%** of the market is North America
+
+---
+
 ## Cluster 1: The Comfort Revolution
 
 ### 1.1 — "The Last Bra You'll Ever Dread"
