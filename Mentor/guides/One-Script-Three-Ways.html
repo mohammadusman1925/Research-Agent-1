@@ -1,0 +1,428 @@
+<title>One Script, Three Ways</title>
+<style>
+  :root {
+    --paper:      #f4f5f6;
+    --surface:    #ffffff;
+    --ink:        #15191d;
+    --ink-soft:   #5f6a74;
+    --rule:       #dce0e4;
+    --rule-soft:  #e9ecee;
+    --change:     #b8331c;
+    --change-bg:  #fbeeeb;
+    --keep:       #4a6b5c;
+    --shadow:     0 1px 2px rgba(21,25,29,.05), 0 8px 24px -12px rgba(21,25,29,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #101315;
+      --surface:    #181c1f;
+      --ink:        #e6e9eb;
+      --ink-soft:   #929da6;
+      --rule:       #2b3237;
+      --rule-soft:  #22282c;
+      --change:     #ff7a5e;
+      --change-bg:  #2a1a16;
+      --keep:       #85ab99;
+      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #101315;
+    --surface:    #181c1f;
+    --ink:        #e6e9eb;
+    --ink-soft:   #929da6;
+    --rule:       #2b3237;
+    --rule-soft:  #22282c;
+    --change:     #ff7a5e;
+    --change-bg:  #2a1a16;
+    --keep:       #85ab99;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    padding: clamp(24px, 5vw, 64px) clamp(16px, 4vw, 48px) 96px;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(17px, 2.4vw, 21px);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+  .meta b { color: var(--ink); font-weight: 600; }
+
+  section { display: flex; flex-direction: column; gap: 12px; }
+
+  h2 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .count {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .scroller {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 720px;
+    font-size: 13.5px;
+  }
+
+  thead th {
+    text-align: left;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  td.layer, td.beat {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td.beat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  td.mark { width: 1%; white-space: nowrap; }
+
+  .tag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .tag.change {
+    color: var(--change);
+    background: var(--change-bg);
+    border-color: var(--change);
+    font-weight: 700;
+  }
+  .tag.keep {
+    color: var(--keep);
+    border-color: var(--rule);
+  }
+
+  tr.is-change td:first-child { box-shadow: inset 3px 0 0 var(--change); }
+  tr.is-change td.layer, tr.is-change td.beat { color: var(--change); }
+
+  .why { color: var(--ink-soft); }
+  .sample { font-style: italic; }
+  .verbatim { color: var(--ink-soft); font-style: normal; }
+
+  .note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    max-width: 78ch;
+    margin: 0;
+  }
+  .note b { color: var(--ink); }
+
+  ol.kta {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: k;
+    display: grid;
+    gap: 10px;
+  }
+  ol.kta li {
+    counter-increment: k;
+    position: relative;
+    padding-left: 42px;
+    max-width: 92ch;
+  }
+  ol.kta li::before {
+    content: counter(k, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: .06em;
+  }
+
+  .summary {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--change);
+    border-radius: 3px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .summary p:first-child {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(19px, 3vw, 25px);
+    margin: 0;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .summary p:last-child { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .swaps { display: grid; gap: 18px; }
+
+  .swap {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .swap > .beatline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .swap > .pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+  @media (max-width: 760px) {
+    .swap > .pair { grid-template-columns: minmax(0, 1fr); }
+  }
+  .swap .side { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .swap .side + .side { border-left: 1px solid var(--rule-soft); }
+  @media (max-width: 760px) {
+    .swap .side + .side { border-left: 0; border-top: 1px solid var(--rule-soft); }
+  }
+  .swap .side.old { color: var(--ink-soft); }
+  .swap .side.new { background: var(--change-bg); }
+  .swap .side h4 {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .swap .side.new h4 { color: var(--change); }
+  .swap p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+  .swap .side.new p { color: var(--ink); }
+
+  .script {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: clamp(16px, 3vw, 28px);
+    display: grid;
+    gap: 26px;
+  }
+  .scripthead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .scripthead span { padding: 0 18px; }
+  .scripthead span:last-child { color: var(--change); }
+  .script .block { display: grid; gap: 7px; }
+  .script .block .tagline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .script .block.moved .tagline { color: var(--change); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .cols .col { padding: 14px 18px; }
+  .cols .col + .col { border-left: 1px solid var(--rule-soft); }
+  .cols .col.a { color: var(--ink-soft); }
+  .block.moved .cols { border-color: var(--change); }
+  .block.moved .col.b { background: var(--change-bg); }
+  @media (max-width: 900px) {
+    .scripthead { display: none; }
+    .cols { grid-template-columns: 1fr; }
+    .cols .col + .col { border-left: 0; border-top: 1px solid var(--rule-soft); }
+    .cols .col::before {
+      content: attr(data-label);
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+  }
+  .hl { border-bottom: 2px solid var(--change); }
+  .col.b .hl { color: var(--change); font-weight: 600; }
+  .col.a .hl { text-decoration: line-through; text-decoration-color: var(--change); text-decoration-thickness: 1px; }
+
+  .script p {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-soft); align-items: center; }
+  .legend .dot { display: inline-block; width: 10px; height: 2px; background: var(--change); margin-right: 6px; vertical-align: middle; }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 0; }
+    .scroller { box-shadow: none; border-color: #bbb; }
+    section { break-inside: avoid; }
+    tr { break-inside: avoid; }
+  }
+</style>
+<main>
+  <header>
+    <div class="eyebrow">Master Concept &middot; the sample</div>
+    <h1>One Script, Three Ways</h1>
+    <p class="standfirst">The same seventeen beats, rewritten by each of the three moves.</p>
+    <div class="meta">
+      <span><b>Iteration</b> 1 beat</span>
+      <span><b>Use case swap</b> 6 beats</span>
+      <span><b>Angle swap</b> 8 beats</span>
+    </div>
+  </header>
+  <section>
+    <h2>Beat by beat, all three <span class="count">17 beats</span></h2>
+    <p class="note"><b>&ldquo;same&rdquo; means copy and paste from the control, word for word.</b> Count the coloured cells down each column and you have the name of the test.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>Beat</th><th>Control<br>the surgery countdown</th><th>Iteration<br>the sock hook</th><th>Use case swap<br>the cortisone ladder</th><th>Angle swap<br>the question nobody asked</th></tr></thead><tbody>
+        <tr class="is-change"><td class="beat">1 Hook</td><td>The 14 month wait for my hip replacement turned out to be the best thing that ever happened to me.</td><td class="sample" style="color:var(--change)">I sat on the edge of my bed for eleven minutes one morning, holding a sock. Sixty four years old, and I could not reach my own foot.</td><td class="sample" style="color:var(--change)">My surgeon told me I had two injections left in that hip. After that, we talk about replacing it.</td><td class="sample" style="color:var(--change)">Eighteen months. Four appointments. And not one of them asked me when my periods stopped.</td></tr>
+        <tr><td class="beat">2 Credential</td><td>My name is Maggie. I'm 64.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr><td class="beat">3 Personal Crisis</td><td>I went to step off the kerb outside my house and my hip just gave out. The pain jumped from 0 to 9 in a second.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr><td class="beat">4 Pattern</td><td>I could no longer put my own socks on without wanting to scream. Sixty four years old and beaten by a sock.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr class="is-change"><td class="beat">6 Failed Attempts, the verdict</td><td>&ldquo;It's bone on bone. We'll want to replace that.&rdquo; And just like that, I was on a waiting list. Fourteen months.</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">He sent me for a cortisone injection. The first one gave me four good months. The second gave me seven weeks. When I asked about a third, he told me there's a limit.</td><td class="sample" style="color:var(--change)">Same, then: Four appointments in eighteen months. Every one of them looked at the scan. Not one of them asked me a single question about anything else.</td></tr>
+        <tr class="is-change"><td class="beat">6 Failed Attempts, the 2am search</td><td>Typing &ldquo;bone on bone alternatives&rdquo;</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">Typing &ldquo;how many cortisone injections can you have in one hip&rdquo;</td><td class="sample" style="color:var(--change)">Typing &ldquo;why does everything hurt after menopause&rdquo;</td></tr>
+        <tr><td class="beat">7 Low Point, at home</td><td>John started doing the grocery runs without telling me. I noticed. I didn't say anything. But it broke something in me.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr class="is-change"><td class="beat">7 Low Point, the situation</td><td>I cried in the driveway. Not because of the surgery exactly. Because of the date.</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">I sat in the car park and cried. Not about the pain. I was counting. Two left.</td><td class="verbatim">same</td></tr>
+        <tr class="is-change"><td class="beat">8 Bridge</td><td>&ldquo;Maggie, has anyone actually told you what's gone wrong in there, or did they just point at the bone?&rdquo;</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">&ldquo;Maggie, in eighteen months, has a single one of them asked you anything that wasn't about the scan?&rdquo;</td></tr>
+        <tr class="is-change"><td class="beat">10 Mechanism</td><td>Those tendons lose their blood supply and their ability to repair themselves. They get inflamed, then stuck in a loop where they stop healing.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">&ldquo;When did your periods stop?&rdquo; Oestrogen is a big part of what keeps those tendons supplied with blood. When it drops away, that supply drops with it.</td></tr>
+        <tr class="is-change"><td class="beat">12 Differentiation</td><td>Not numbing. Not masking. Not loading it. Something that would drive warmth and blood into that exact spot.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">Something that would put back what my body stopped delivering to that spot on its own.</td></tr>
+        <tr><td class="beat">13 Product</td><td>A therapy belt that does four things at once. Red and near infrared light, gentle heat, vibration, light compression.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr><td class="beat">18 Guarantee</td><td>I only bought it because it came with a 30 day money back promise, so I figured I could send it back and feel smug about it.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr><td class="beat">14 Results</td><td>I slept four hours on my right side. The side I had not slept on in over a year.</td><td class="verbatim">same</td><td class="verbatim">same</td><td class="verbatim">same</td></tr>
+        <tr class="is-change"><td class="beat">14 Resolution</td><td>By the time the hospital rang to confirm my surgery date, I realised I genuinely didn't want it anymore.</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">The clinic rang about booking number three. I told them I did not need it.</td><td class="verbatim">same</td></tr>
+        <tr class="is-change"><td class="beat">17 CTA</td><td>So if you're lying awake right now, dreading a date on a calendar...</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">So if you're lying awake right now, counting how many injections you have left...</td><td class="sample" style="color:var(--change)">So if nobody has asked you a single thing that wasn't about the scan...</td></tr>
+        <tr class="is-change"><td class="beat">19 Echo Close</td><td>I wish someone had told me eighteen months ago. So now I'm telling you.</td><td class="verbatim">same</td><td class="sample" style="color:var(--change)">I still have those two injections. I'm never going to use them.</td><td class="sample" style="color:var(--change)">Nobody asked me the question. So I'm asking you. When did yours stop?</td></tr>
+      </tbody></table></div>
+  </section>
+  <section>
+    <h2>The count</h2>
+    <div class="scroller"><table>
+      <thead><tr><th></th><th>Iteration</th><th>Use case swap</th><th>Angle swap</th></tr></thead><tbody>
+        <tr><td class="layer">Beats changed</td><td class="mark">1</td><td class="mark">6</td><td class="mark">8</td></tr>
+        <tr><td class="layer">Beats copied</td><td class="mark">16</td><td class="mark">11</td><td class="mark">9</td></tr>
+        <tr><td class="layer">Beat 10, the mechanism</td><td>untouched</td><td>untouched</td><td><b style="color:var(--change)">rewritten</b></td></tr>
+        <tr><td class="layer">Named</td><td class="mark">ITE</td><td class="mark">NN</td><td class="mark">NN</td></tr>
+      </tbody></table></div>
+    <p class="note"><b>Beat 10 is the only honest test.</b> The iteration and the use case swap leave the mechanism completely alone. The angle swap rewrites it. If you set out to change the angle and beat 10 still reads the same, you did not change the angle.</p>
+  </section>
+  <section><div class="summary">
+    <p>Sixteen of seventeen beats are copy and paste in an iteration.</p>
+    <p>Nine of seventeen even in the biggest move. Most of a working ad never changes, and that is the point.</p>
+  </div></section>
+</main>

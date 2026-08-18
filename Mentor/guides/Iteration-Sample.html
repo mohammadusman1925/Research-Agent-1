@@ -1,0 +1,1156 @@
+<title>Hook Iteration</title>
+<style>
+  :root {
+    --paper:      #f4f5f6;
+    --surface:    #ffffff;
+    --ink:        #15191d;
+    --ink-soft:   #5f6a74;
+    --rule:       #dce0e4;
+    --rule-soft:  #e9ecee;
+    --change:     #b8331c;
+    --change-bg:  #fbeeeb;
+    --keep:       #4a6b5c;
+    --shadow:     0 1px 2px rgba(21,25,29,.05), 0 8px 24px -12px rgba(21,25,29,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #101315;
+      --surface:    #181c1f;
+      --ink:        #e6e9eb;
+      --ink-soft:   #929da6;
+      --rule:       #2b3237;
+      --rule-soft:  #22282c;
+      --change:     #ff7a5e;
+      --change-bg:  #2a1a16;
+      --keep:       #85ab99;
+      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #101315;
+    --surface:    #181c1f;
+    --ink:        #e6e9eb;
+    --ink-soft:   #929da6;
+    --rule:       #2b3237;
+    --rule-soft:  #22282c;
+    --change:     #ff7a5e;
+    --change-bg:  #2a1a16;
+    --keep:       #85ab99;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    padding: clamp(24px, 5vw, 64px) clamp(16px, 4vw, 48px) 96px;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(17px, 2.4vw, 21px);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+  .meta b { color: var(--ink); font-weight: 600; }
+
+  section { display: flex; flex-direction: column; gap: 12px; }
+
+  h2 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .count {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .scroller {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 720px;
+    font-size: 13.5px;
+  }
+
+  thead th {
+    text-align: left;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  td.layer, td.beat {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td.beat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  td.mark { width: 1%; white-space: nowrap; }
+
+  .tag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .tag.change {
+    color: var(--change);
+    background: var(--change-bg);
+    border-color: var(--change);
+    font-weight: 700;
+  }
+  .tag.keep {
+    color: var(--keep);
+    border-color: var(--rule);
+  }
+
+  tr.is-change td:first-child { box-shadow: inset 3px 0 0 var(--change); }
+  tr.is-change td.layer, tr.is-change td.beat { color: var(--change); }
+
+  .why { color: var(--ink-soft); }
+  .sample { font-style: italic; }
+  .verbatim { color: var(--ink-soft); font-style: normal; }
+
+  .note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    max-width: 78ch;
+    margin: 0;
+  }
+  .note b { color: var(--ink); }
+
+  ol.kta {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: k;
+    display: grid;
+    gap: 10px;
+  }
+  ol.kta li {
+    counter-increment: k;
+    position: relative;
+    padding-left: 42px;
+    max-width: 92ch;
+  }
+  ol.kta li::before {
+    content: counter(k, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: .06em;
+  }
+
+  .summary {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--change);
+    border-radius: 3px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .summary p:first-child {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(19px, 3vw, 25px);
+    margin: 0;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .summary p:last-child { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .swaps { display: grid; gap: 18px; }
+
+  .swap {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .swap > .beatline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .swap > .pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+  @media (max-width: 760px) {
+    .swap > .pair { grid-template-columns: minmax(0, 1fr); }
+  }
+  .swap .side { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .swap .side + .side { border-left: 1px solid var(--rule-soft); }
+  @media (max-width: 760px) {
+    .swap .side + .side { border-left: 0; border-top: 1px solid var(--rule-soft); }
+  }
+  .swap .side.old { color: var(--ink-soft); }
+  .swap .side.new { background: var(--change-bg); }
+  .swap .side h4 {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .swap .side.new h4 { color: var(--change); }
+  .swap p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+  .swap .side.new p { color: var(--ink); }
+
+  .script {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: clamp(16px, 3vw, 28px);
+    display: grid;
+    gap: 26px;
+  }
+  .scripthead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .scripthead span { padding: 0 18px; }
+  .scripthead span:last-child { color: var(--change); }
+  .script .block { display: grid; gap: 7px; }
+  .script .block .tagline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .script .block.moved .tagline { color: var(--change); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .cols .col { padding: 14px 18px; }
+  .cols .col + .col { border-left: 1px solid var(--rule-soft); }
+  .cols .col.a { color: var(--ink-soft); }
+  .block.moved .cols { border-color: var(--change); }
+  .block.moved .col.b { background: var(--change-bg); }
+  @media (max-width: 900px) {
+    .scripthead { display: none; }
+    .cols { grid-template-columns: 1fr; }
+    .cols .col + .col { border-left: 0; border-top: 1px solid var(--rule-soft); }
+    .cols .col::before {
+      content: attr(data-label);
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+  }
+  .hl { border-bottom: 2px solid var(--change); }
+  .col.b .hl { color: var(--change); font-weight: 600; }
+  .col.a .hl { text-decoration: line-through; text-decoration-color: var(--change); text-decoration-thickness: 1px; }
+
+  .script p {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-soft); align-items: center; }
+  .legend .dot { display: inline-block; width: 10px; height: 2px; background: var(--change); margin-right: 6px; vertical-align: middle; }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 0; }
+    .scroller { box-shadow: none; border-color: #bbb; }
+    section { break-inside: avoid; }
+    tr { break-inside: avoid; }
+  }
+</style>
+<main>
+  <header>
+    <div class="eyebrow">Master Concept &middot; Guide 02</div>
+    <h1>Hook Iteration</h1>
+    <p class="standfirst">Same woman. Same scene. Same reason it works. A different way in.</p>
+    <div class="meta">
+      <span><b>Control</b> Maggie, the 14 month wait</span>
+      <span><b>Test</b> Three doors into the same room</span>
+      <span><b>Moves</b> 0 layers, 1 beat</span>
+    </div>
+  </header>
+  <section>
+    <h2>The layers <span class="count">nothing moves</span></h2>
+    <div class="scroller"><table>
+      <thead><tr><th>Layer</th><th>Control</th><th>Test</th><th></th></tr></thead><tbody>
+        <tr><td class="layer">ICP</td><td>Surgery Candidate</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Use Case</td><td>14 month wait for a hip replacement</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Angle, belief shift</td><td>Bone is not the whole story, the tissue is starved and stuck</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Angle, emotion</td><td>Something irreversible is coming at me</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Awareness</td><td>Problem Aware</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Bucket</td><td>Static</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Format</td><td>Native article, long</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Length</td><td>Around 1,100 words</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+        <tr><td class="layer">Audience, budget, page, LP</td><td>Unchanged</td><td class="verbatim">Identical</td><td class="mark"><span class="tag keep">KEEP</span></td></tr>
+      </tbody></table></div>
+    <p class="note">This is what makes an iteration an iteration. <b>Not one layer of the master concept moves.</b> Same person, same situation, same belief shift, same stage, same bucket, same format. If any row above changes, you are running a new concept and it gets named NN.</p>
+  </section>
+  <section>
+    <h2>Beat by beat <span class="count">1 change &middot; 17 keep</span></h2>
+    <div class="scroller"><table>
+      <thead><tr><th>Beat</th><th>In your script</th><th></th><th>Why</th><th>Sample</th></tr></thead><tbody>
+        <tr class="is-change"><td class="beat">1 Hook</td><td>The 14 month wait, best thing that ever happened</td><td class="mark"><span class="tag change">CHANGE</span></td><td class="why">The only thing being tested. Three doors into the same room.</td><td class="sample">"I sat on the edge of my bed for eleven minutes, holding a sock."</td></tr>
+        <tr><td class="beat">2 Credential</td><td>My name is Maggie, I'm 64</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same narrator</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">3 Personal Crisis</td><td>The kerb, 0 to 9, 6am</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same origin</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">4 Pattern</td><td>Car, chair, bed, the sock, the nights</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same losses. Note the sock already lives here</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">6 Failed Attempts</td><td>Doctor, X ray, surgeon, waiting list</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same scene</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">7 Low Point</td><td>John doing the groceries</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same cost at home</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">7 Low Point</td><td>Crying in the driveway about the date</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same trigger</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">6 Failed Attempts</td><td>2am googling, TENS, pillow, physio</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same searches</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">8 Bridge</td><td>Denise arrives</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same discovery</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">10 Mechanism</td><td>Tendons, blood supply, stuck loop</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">The control</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">12 Differentiation</td><td>Not numbing, not masking, not loading</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same argument</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">13 Product Intro</td><td>The belt, four things at once</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same product</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">18 Guarantee</td><td>30 day money back, said by her</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same risk reversal</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">14 Results</td><td>Twenty minutes, four hours, kerb, socks</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same results</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">14 Results</td><td>Hospital rings to confirm the date</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same resolution</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">17 CTA</td><td>Dreading a date on a calendar</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same reader</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">17 CTA</td><td>Try it yourself</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Same close</td><td class="verbatim">Word for word</td></tr>
+        <tr><td class="beat">19 Echo Close</td><td>I wish someone had told me eighteen months ago</td><td class="mark"><span class="tag keep">KEEP</span></td><td class="why">Generic enough to survive all three doors. Leave it alone</td><td class="verbatim">Word for word</td></tr>
+      </tbody></table></div>
+    <p class="note">One beat. That is the whole test. Compare that with the use case swap, where six beats moved. <b>The size of the change is how you know which test you are running.</b></p>
+  </section>
+  <section>
+    <h2>Sample output <span class="count">three doors</span></h2>
+    <p class="note">Every door lands on the same bridge line and then runs into the identical body copy. Only the opening changes.</p>
+    <div class="swaps">
+      <div class="swap">
+        <div class="beatline">Door A &middot; The sock</div>
+        <div class="pair">
+          <div class="side old"><h4>Control hook</h4><p>The 14 month wait for my hip replacement turned out to be the best thing that ever happened to me, because by my surgery date I no longer needed it.
+
+I still haven't told my surgeon that.</p></div>
+          <div class="side new"><h4>Door A</h4><p>I sat on the edge of my bed for eleven minutes one morning, holding a sock.
+
+Sixty four years old, and I could not reach my own foot.
+
+That was the morning I stopped telling myself it would settle down on its own.</p></div>
+        </div>
+        <div class="beatline" style="border-top:1px solid var(--rule-soft);border-bottom:0"><b style="color:var(--ink)">Why</b> Opens on an object in one moment, with no story built first. Same shape as the strongest opening in the account. &nbsp;&nbsp; <b style="color:var(--change)">Risk</b> The sock is proven as a payoff 700 words in. It is unproven as a cold opening. That gap is the whole point of the test.</div>
+      </div>
+      <div class="swap">
+        <div class="beatline">Door B &middot; Ninety seconds</div>
+        <div class="pair">
+          <div class="side old"><h4>Control hook</h4><p>The 14 month wait for my hip replacement turned out to be the best thing that ever happened to me, because by my surgery date I no longer needed it.
+
+I still haven't told my surgeon that.</p></div>
+          <div class="side new"><h4>Door B</h4><p>My surgeon looked at my scan for about ninety seconds.
+
+Then he said four words that put a date on the rest of my year.
+
+“It's bone on bone.”</p></div>
+        </div>
+        <div class="beatline" style="border-top:1px solid var(--rule-soft);border-bottom:0"><b style="color:var(--ink)">Why</b> Opens at the decision point, which is where three of the seven winners already sit. &nbsp;&nbsp; <b style="color:var(--change)">Risk</b> Bone on bone is ground the client has already tested. Closest to the control, so expect the smallest difference.</div>
+      </div>
+      <div class="swap">
+        <div class="beatline">Door C &middot; 4:45 in the morning</div>
+        <div class="pair">
+          <div class="side old"><h4>Control hook</h4><p>The 14 month wait for my hip replacement turned out to be the best thing that ever happened to me, because by my surgery date I no longer needed it.
+
+I still haven't told my surgeon that.</p></div>
+          <div class="side new"><h4>Door C</h4><p>For most of last year I gave up on sleep around 4:45 in the morning.
+
+I'd sit in the dark kitchen with a heat pack on my hip, waiting for the sky to go grey.
+
+Nobody tells you that the worst part of a bad hip is the hours nobody sees.</p></div>
+        </div>
+        <div class="beatline" style="border-top:1px solid var(--rule-soft);border-bottom:0"><b style="color:var(--ink)">Why</b> Opens on night pain, the single biggest theme in the review corpus, and the one no ad has ever led with. &nbsp;&nbsp; <b style="color:var(--change)">Risk</b> Furthest from the control, so it is the highest variance door. Sleep has 11 angle cards and zero winners behind it.</div>
+      </div>
+    </div>
+    <p class="note">Then all three continue: <i>But if you're reading this with that deep ache in the side of your hip right now, you need to hear how I got here.</i></p>
+  </section>
+  <section>
+    <h2>Old script vs iterated script <span class="count">door A</span></h2>
+    <p class="legend"><span><span class="dot"></span>Struck through on the left is what came out. Underlined on the right is what went in. Everything else is identical, which is the point.</span></p>
+    <div class="script">
+      <div class="scripthead"><span>Old script, the surgery countdown hook</span><span>Iterated script, the sock hook</span></div>
+      <div class="block moved">
+        <div class="tagline">1 &middot; Hook</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p><span class="hl">The 14 month wait for my hip replacement turned out to be the best thing that ever happened to me, because by my surgery date I no longer needed it.
+
+I still haven't told my surgeon that.</span>
+
+But if you're reading this with that deep ache in the side of your hip right now, you need to hear how I got here.</p></div>
+          <div class="col b" data-label="Iterated script"><p><span class="hl">I sat on the edge of my bed for eleven minutes one morning, holding a sock.
+
+Sixty four years old, and I could not reach my own foot.
+
+That was the morning I stopped telling myself it would settle down on its own.</span>
+
+But if you're reading this with that deep ache in the side of your hip right now, you need to hear how I got here.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">2 &middot; Credential</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>My name is Maggie.
+
+I'm 64.
+
+And eighteen months ago I honestly believed my life as I knew it was over.</p></div>
+          <div class="col b" data-label="Iterated script"><p>My name is Maggie.
+
+I'm 64.
+
+And eighteen months ago I honestly believed my life as I knew it was over.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">3 &middot; Personal Crisis</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>It didn't start with a fall or an accident.
+
+Just a dull soreness on the outside of my right hip that I was sure would go away on its own.
+
+It didn't.
+
+One morning I went to step off the kerb outside my house and my hip just gave out.
+
+The pain jumped from 0 to 9 in a second.
+
+I grabbed the fence so hard I scraped my palm, standing there in my dressing gown at 6am, thinking, what is happening to me.
+
+After that day, the pain never really left.
+
+It moved into my life like it owned the place.</p></div>
+          <div class="col b" data-label="Iterated script"><p>It didn't start with a fall or an accident.
+
+Just a dull soreness on the outside of my right hip that I was sure would go away on its own.
+
+It didn't.
+
+One morning I went to step off the kerb outside my house and my hip just gave out.
+
+The pain jumped from 0 to 9 in a second.
+
+I grabbed the fence so hard I scraped my palm, standing there in my dressing gown at 6am, thinking, what is happening to me.
+
+After that day, the pain never really left.
+
+It moved into my life like it owned the place.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">4 &middot; Pattern</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>Getting out of the car became a project I had to plan.
+
+I could barely walk, get up and down out of a chair, the bed or the toilet.
+
+It was horrible.
+
+I'll be honest about the thing that humiliated me the most.
+
+I could no longer put my own socks on without wanting to scream.
+
+Sixty four years old and beaten by a sock.
+
+But the nights were the worst part.
+
+The absolute worst.
+
+I couldn't lie on my right side anymore.
+
+The second my hip touched the mattress it felt like someone pressing their thumb into a deep bruise.
+
+So I'd roll to my left.
+
+Then my left would start.
+
+I'd wake up and not be able to go back to sleep.
+
+I'd lay there and toss and turn, sometimes for hours.
+
+Most nights I gave up around 4:45 and just sat in the dark kitchen with a heat pack, waiting for the sky to go grey.</p></div>
+          <div class="col b" data-label="Iterated script"><p>Getting out of the car became a project I had to plan.
+
+I could barely walk, get up and down out of a chair, the bed or the toilet.
+
+It was horrible.
+
+I'll be honest about the thing that humiliated me the most.
+
+I could no longer put my own socks on without wanting to scream.
+
+Sixty four years old and beaten by a sock.
+
+But the nights were the worst part.
+
+The absolute worst.
+
+I couldn't lie on my right side anymore.
+
+The second my hip touched the mattress it felt like someone pressing their thumb into a deep bruise.
+
+So I'd roll to my left.
+
+Then my left would start.
+
+I'd wake up and not be able to go back to sleep.
+
+I'd lay there and toss and turn, sometimes for hours.
+
+Most nights I gave up around 4:45 and just sat in the dark kitchen with a heat pack, waiting for the sky to go grey.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">7 &middot; Low Point, at home</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I used to be the one who organised everything.
+
+Family gatherings.
+
+Birthdays.
+
+Now I was the woman in the car park doing the maths on whether I could make it to the shops and back without having to stop and hold onto something.
+
+My husband John started doing the grocery runs without telling me, so I wouldn't feel like I had to come along.
+
+I noticed.
+
+I didn't say anything.
+
+But it broke something in me.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I used to be the one who organised everything.
+
+Family gatherings.
+
+Birthdays.
+
+Now I was the woman in the car park doing the maths on whether I could make it to the shops and back without having to stop and hold onto something.
+
+My husband John started doing the grocery runs without telling me, so I wouldn't feel like I had to come along.
+
+I noticed.
+
+I didn't say anything.
+
+But it broke something in me.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">6 &middot; Failed Attempts, the verdict</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>So I did what you're supposed to do.
+
+I went to the doctor.
+
+He pressed on my hip, sent me for an X-ray, and a week later gave me the verdict.
+
+Osteoarthritis.
+
+The cartilage was wearing thin.
+
+“It's fairly common at your age, Maggie.”
+
+At your age.
+
+I wanted to scream.
+
+He gave me anti inflammatories that wrecked my stomach and barely touched the pain.
+
+When I went back, he sent me to an orthopaedic surgeon.
+
+The surgeon looked at my scan for about ninety seconds.
+
+Pointed at the gap on the screen.
+
+Said the words I'll never forget.
+
+“It's bone on bone. We'll want to replace that.”
+
+And just like that, I was on a waiting list.
+
+Fourteen months.
+
+He offered me a cortisone injection to get me through until then.</p></div>
+          <div class="col b" data-label="Iterated script"><p>So I did what you're supposed to do.
+
+I went to the doctor.
+
+He pressed on my hip, sent me for an X-ray, and a week later gave me the verdict.
+
+Osteoarthritis.
+
+The cartilage was wearing thin.
+
+“It's fairly common at your age, Maggie.”
+
+At your age.
+
+I wanted to scream.
+
+He gave me anti inflammatories that wrecked my stomach and barely touched the pain.
+
+When I went back, he sent me to an orthopaedic surgeon.
+
+The surgeon looked at my scan for about ninety seconds.
+
+Pointed at the gap on the screen.
+
+Said the words I'll never forget.
+
+“It's bone on bone. We'll want to replace that.”
+
+And just like that, I was on a waiting list.
+
+Fourteen months.
+
+He offered me a cortisone injection to get me through until then.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">7 &middot; Low Point, the date</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I drove home and cried in the driveway.
+
+Not because of the surgery exactly.
+
+Because of the date.
+
+There was now a date hanging over my whole life, and a 14 month countdown of pain to survive before it.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I drove home and cried in the driveway.
+
+Not because of the surgery exactly.
+
+Because of the date.
+
+There was now a date hanging over my whole life, and a 14 month countdown of pain to survive before it.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">6 &middot; Failed Attempts, the 2am search</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>That's when the 2am googling started.
+
+If you've done it, you know exactly what I mean.
+
+Phone screen too bright.
+
+John asleep beside me.
+
+Typing things like “hip pain can't sleep” and “bone on bone alternatives” and, on the dark nights, “how bad is hip replacement recovery.”
+
+I read everything.
+
+I bought a TENS machine that did nothing.
+
+I bought a special pillow.
+
+I tried the physio exercises off the photocopied sheet, and I swear my hip got angrier, not better.
+
+I was willing to try everything.
+
+Stretches, tennis ball, over the counter meds, heat packs, physical therapy, anything to stop me wincing every time I stood up.
+
+And still, nobody was answering the one question I actually had.
+
+Why did this happen so fast, and is there anything that actually heals it instead of just numbing it.</p></div>
+          <div class="col b" data-label="Iterated script"><p>That's when the 2am googling started.
+
+If you've done it, you know exactly what I mean.
+
+Phone screen too bright.
+
+John asleep beside me.
+
+Typing things like “hip pain can't sleep” and “bone on bone alternatives” and, on the dark nights, “how bad is hip replacement recovery.”
+
+I read everything.
+
+I bought a TENS machine that did nothing.
+
+I bought a special pillow.
+
+I tried the physio exercises off the photocopied sheet, and I swear my hip got angrier, not better.
+
+I was willing to try everything.
+
+Stretches, tennis ball, over the counter meds, heat packs, physical therapy, anything to stop me wincing every time I stood up.
+
+And still, nobody was answering the one question I actually had.
+
+Why did this happen so fast, and is there anything that actually heals it instead of just numbing it.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">8 &middot; Bridge</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>The answer came from the most unlikely place.
+
+My sister in law, Denise.
+
+A retired theatre nurse.
+
+Sharp as a tack and not one for nonsense.
+
+She came over for a cup of tea, watched me lever myself out of the armchair using both arms, and went quiet.
+
+Then she said something that genuinely annoyed me at the time.
+
+“Maggie, has anyone actually told you what's gone wrong in there, or did they just point at the bone?”</p></div>
+          <div class="col b" data-label="Iterated script"><p>The answer came from the most unlikely place.
+
+My sister in law, Denise.
+
+A retired theatre nurse.
+
+Sharp as a tack and not one for nonsense.
+
+She came over for a cup of tea, watched me lever myself out of the armchair using both arms, and went quiet.
+
+Then she said something that genuinely annoyed me at the time.
+
+“Maggie, has anyone actually told you what's gone wrong in there, or did they just point at the bone?”</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">10 &middot; Mechanism</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I said the surgeon told me.
+
+Bone on bone.
+
+And she said, “That's the joint. That's not why you can't sleep on your side. That's not why it stabs the second you stand up.”
+
+Then she explained the thing not one doctor had bothered to.
+
+She said the sharp pain on the outside of the hip, the can't lie on it pain, very often isn't the cartilage at all.
+
+It's the soft tissue around the joint.
+
+The tendons that anchor the muscles to the outside of your hip.
+
+She said as we get older, and especially for us women around menopause, those tendons lose their blood supply and their ability to repair themselves.
+
+They get inflamed.
+
+And then they get stuck in a loop where they simply stop healing.
+
+Here's the part that made me sit up straight.
+
+She said the reason the painkillers and the rest never worked was that none of them touched that.
+
+They quieten the alarm.
+
+They don't get fresh blood and repair into a starved tendon that has stopped fixing itself.
+
+And you can't stretch your way out of it either, because loading an angry tendon just inflames it more.
+
+Which explained, finally, why that physio sheet made everything worse.
+
+For the first time in months, something actually made sense.
+
+The problem wasn't only a worn out joint waiting for the scalpel.
+
+The problem was tissue that had been starved of circulation and left stuck in inflammation, and nothing I'd tried was bringing it back to life.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I said the surgeon told me.
+
+Bone on bone.
+
+And she said, “That's the joint. That's not why you can't sleep on your side. That's not why it stabs the second you stand up.”
+
+Then she explained the thing not one doctor had bothered to.
+
+She said the sharp pain on the outside of the hip, the can't lie on it pain, very often isn't the cartilage at all.
+
+It's the soft tissue around the joint.
+
+The tendons that anchor the muscles to the outside of your hip.
+
+She said as we get older, and especially for us women around menopause, those tendons lose their blood supply and their ability to repair themselves.
+
+They get inflamed.
+
+And then they get stuck in a loop where they simply stop healing.
+
+Here's the part that made me sit up straight.
+
+She said the reason the painkillers and the rest never worked was that none of them touched that.
+
+They quieten the alarm.
+
+They don't get fresh blood and repair into a starved tendon that has stopped fixing itself.
+
+And you can't stretch your way out of it either, because loading an angry tendon just inflames it more.
+
+Which explained, finally, why that physio sheet made everything worse.
+
+For the first time in months, something actually made sense.
+
+The problem wasn't only a worn out joint waiting for the scalpel.
+
+The problem was tissue that had been starved of circulation and left stuck in inflammation, and nothing I'd tried was bringing it back to life.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">12 &middot; Differentiation</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>So I went looking for the opposite of everything I'd been doing.
+
+Not numbing.
+
+Not masking.
+
+Not loading it.
+
+Something that would actually drive warmth and blood and repair into that exact spot.</p></div>
+          <div class="col b" data-label="Iterated script"><p>So I went looking for the opposite of everything I'd been doing.
+
+Not numbing.
+
+Not masking.
+
+Not loading it.
+
+Something that would actually drive warmth and blood and repair into that exact spot.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">13 &middot; Product Introduction</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>What I found was a therapy belt that wraps right around the hip and does four things at once.
+
+Red and near infrared light that sinks down into the tissue.
+
+Gentle heat.
+
+A soft vibration massage.
+
+And a light compression that holds it all exactly where the pain lives.</p></div>
+          <div class="col b" data-label="Iterated script"><p>What I found was a therapy belt that wraps right around the hip and does four things at once.
+
+Red and near infrared light that sinks down into the tissue.
+
+Gentle heat.
+
+A soft vibration massage.
+
+And a light compression that holds it all exactly where the pain lives.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">18 &middot; Guarantee</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I'll be honest with you.
+
+After everything that had failed, I expected nothing.
+
+I only bought it because it came with a 30 day money back promise, so I figured I could send it back and feel smug about it.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I'll be honest with you.
+
+After everything that had failed, I expected nothing.
+
+I only bought it because it came with a 30 day money back promise, so I figured I could send it back and feel smug about it.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">14 &middot; Personal Results</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>The first night I used it for twenty minutes in my armchair while the news was on.
+
+The warmth alone was the nicest my hip had felt in a year.
+
+I went to bed thinking, well, at least that was pleasant.
+
+I slept four hours on my right side.
+
+The side I had not slept on in over a year.
+
+I cried again.
+
+A very different reason this time.
+
+I won't pretend it was instant magic.
+
+It wasn't.
+
+But over the next few weeks, twenty minutes a day, the change was undeniable.
+
+The morning stiffness got shorter.
+
+The stab when I stepped off the kerb softened to a murmur, then most days, to nothing.
+
+I got down on the floor with my granddaughter and got back up without the two armed push up off the couch.
+
+I put my own socks on one morning and didn't even think about it until I was halfway out the door.</p></div>
+          <div class="col b" data-label="Iterated script"><p>The first night I used it for twenty minutes in my armchair while the news was on.
+
+The warmth alone was the nicest my hip had felt in a year.
+
+I went to bed thinking, well, at least that was pleasant.
+
+I slept four hours on my right side.
+
+The side I had not slept on in over a year.
+
+I cried again.
+
+A very different reason this time.
+
+I won't pretend it was instant magic.
+
+It wasn't.
+
+But over the next few weeks, twenty minutes a day, the change was undeniable.
+
+The morning stiffness got shorter.
+
+The stab when I stepped off the kerb softened to a murmur, then most days, to nothing.
+
+I got down on the floor with my granddaughter and got back up without the two armed push up off the couch.
+
+I put my own socks on one morning and didn't even think about it until I was halfway out the door.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">14 &middot; Personal Results, the resolution</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>By the time the hospital rang to confirm my surgery date, I sat there with the phone in my hand and realised I genuinely didn't want it anymore.
+
+I think about what that 14 month wait nearly cost me.
+
+Not just the operation.
+
+The mornings with my grandkids I was too sore to enjoy.
+
+The walks with John I kept saying no to.
+
+The nights of sleep I will never get back.
+
+That's the part that still gets me.
+
+Not the pain.
+
+The lost time.</p></div>
+          <div class="col b" data-label="Iterated script"><p>By the time the hospital rang to confirm my surgery date, I sat there with the phone in my hand and realised I genuinely didn't want it anymore.
+
+I think about what that 14 month wait nearly cost me.
+
+Not just the operation.
+
+The mornings with my grandkids I was too sore to enjoy.
+
+The walks with John I kept saying no to.
+
+The nights of sleep I will never get back.
+
+That's the part that still gets me.
+
+Not the pain.
+
+The lost time.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">17 &middot; CTA</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I'm not a doctor.
+
+I'm just a woman who was handed a date and a countdown, and stumbled onto the thing nobody had explained to me.
+
+So if you're lying awake right now with that ache on the side of your hip, dreading a date on a calendar, I want you to know something.
+
+The bone might not be the whole story.
+
+There may be something starved and inflamed around that joint that nobody has properly looked at, and it may not be as finished as you have been told.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I'm not a doctor.
+
+I'm just a woman who was handed a date and a countdown, and stumbled onto the thing nobody had explained to me.
+
+So if you're lying awake right now with that ache on the side of your hip, dreading a date on a calendar, I want you to know something.
+
+The bone might not be the whole story.
+
+There may be something starved and inflamed around that joint that nobody has properly looked at, and it may not be as finished as you have been told.</p></div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tagline">19 &middot; Echo Close</div>
+        <div class="cols">
+          <div class="col a" data-label="Old script"><p>I wish someone had told me eighteen months ago.
+
+So now I'm telling you.
+
+Try it yourself.</p></div>
+          <div class="col b" data-label="Iterated script"><p>I wish someone had told me eighteen months ago.
+
+So now I'm telling you.
+
+Try it yourself.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>The image <span class="count">one per door</span></h2>
+    <p class="note">Every image in this account so far is text on a plain background. Zero symptom images have ever run, despite the copy handing over the sock, the letter, the heat pack. So <b>each direction below is untested here</b>. One image per script, no backups, no options. The method's own rule: show the most interesting concrete thing in the script. Never an idea, never a text overlay, and on cold traffic <b>never the product</b>, because the belt has not been earned yet.</p>
+
+    <p class="note"><b>The rule.</b> The image comes from whatever the hook names. Not from the use case as a category, not from the pain point as a category. From the hook. That is why the method says finish the headline first: a changed headline voids its image direction.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>If the hook names</th><th>The image comes from</th><th>Beat</th></tr></thead><tbody>
+        <tr><td class="layer">The situation she is in</td><td>The use case</td><td class="mark">1 and 6</td></tr>
+        <tr><td class="layer">A thing she can no longer do</td><td>The pain point</td><td class="mark">4</td></tr>
+        <tr><td class="layer">Why the last treatment failed</td><td>The explanation</td><td class="mark">10</td></tr>
+        <tr><td class="layer">A number or a result</td><td>The proof</td><td class="mark">14</td></tr>
+        <tr><td class="layer">The offer or the price</td><td>The product</td><td class="mark">13</td></tr>
+      </tbody></table></div>
+    <p class="note"><b>The gate that overrules it.</b> Awareness. If the two disagree, awareness wins. Problem aware and cold: the use case or the pain point, and never the product because it has not been earned. Solution aware: the explanation, the diagram, the depth. Most aware: the product and the offer, never a symptom. Every script on this page is problem aware, so the belt never appears.</p>
+    <p class="note"><b>The pattern, four steps.</b> 1. Read the hook. 2. Circle every noun you could photograph. 3. If there is more than one, take the most specific and the least expected. 4. That noun is the image, alone in the frame, nothing else.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>Hook</th><th>The noun it sticks to</th><th>Source</th></tr></thead><tbody>
+        <tr><td>&ldquo;I was on a waiting list. Fourteen months.&rdquo;</td><td class="layer">the waiting list</td><td>Use case</td></tr>
+        <tr><td>&ldquo;I had two injections left in that hip.&rdquo;</td><td class="layer">the injections</td><td>Use case</td></tr>
+        <tr><td>&ldquo;Eleven minutes, holding a sock.&rdquo;</td><td class="layer">the sock</td><td>Pain point</td></tr>
+        <tr><td>&ldquo;Looked at my scan for about ninety seconds.&rdquo;</td><td class="layer">the scan</td><td>Use case</td></tr>
+        <tr><td>&ldquo;Sat in the dark kitchen with a heat pack.&rdquo;</td><td class="layer">the heat pack</td><td>Pain point</td></tr>
+      </tbody></table></div>
+    <p class="note"><b>Two tests before you shoot.</b> The swap test: could this image sit on any other ad in the category? If yes, it is not specific enough, go back to step 3. The loop test: does the image answer the question or ask it? It has to ask. An image that gives away the ending kills the reason to read.</p>
+
+    <div class="scroller"><table>
+      <thead><tr><th>Script</th><th>The line it comes from</th><th>The image</th><th>Level</th><th>Hypothesis</th></tr></thead><tbody>
+        <tr><td class="layer">Control<br>the 14 month wait</td><td class="sample">"And just like that, I was on a waiting list. Fourteen months."</td><td>The hospital letter, still in its envelope, unopened on the kitchen bench. A pen beside it.</td><td class="mark">1</td><td class="why">The baseline. Every door below is measured against this one, and all four run the same body copy underneath.</td></tr>
+        <tr class="is-change"><td class="layer">Door A<br>the sock</td><td class="sample">"I sat on the edge of my bed for eleven minutes, holding a sock."</td><td>One sock on the floor beside the edge of an unmade bed, early morning light through the curtain. Nothing else in frame. No person, no hands.</td><td class="mark">2</td><td class="why">If a sock on the floor stops her with no context at all, the account has a scroll stopper that costs nothing to shoot and nobody else in the category is using. The risk is real: the sock is proven as a payoff 700 words into a winning ad, and completely unproven as a cold opening.</td></tr>
+        <tr class="is-change"><td class="layer">Door B<br>ninety seconds</td><td class="sample">"My surgeon looked at my scan for about ninety seconds."</td><td>The hip X-ray on a consulting room screen, one finger pointing at the joint gap. Shot over the shoulder. No face, no name on the scan.</td><td class="mark">2</td><td class="why">This is closest to the control, so expect the smallest difference. It tells you whether the decision point is still the strongest entry into this market, or whether three winners sitting there have already worn it out.</td></tr>
+        <tr class="is-change"><td class="layer">Door C<br>4:45 in the morning</td><td class="sample">"Most nights I gave up around 4:45 and sat in the dark kitchen with a heat pack."</td><td>A dark kitchen before dawn. One light on over the bench. A heat pack left on the chair. Empty room, no person.</td><td class="mark">2</td><td class="why">Night pain is the single biggest theme in the review corpus and no ad has ever led with it. Furthest from the control, so the highest variance of the three. If it wins, sleep is a doorway worth its own concept, not just a hook.</td></tr>
+      </tbody></table></div>
+    <p class="note"><b>Run the image test before the copy tests.</b> Same winning ad, same headline, text card against the concrete photo. That is one clean variable and it answers the biggest open question in the account. Then run the copy tests on whichever image style won. If you change the image and the copy in the same round, you will not know which one moved the number.</p>
+  </section>
+
+  <section>
+    <h2>KTA <span class="count">act on these</span></h2>
+    <ol class="kta">
+      <li>Move one beat. If a second beat moved, you are not iterating, you are writing a new concept.</li>
+      <li>Keep the bridge line into the body identical across every door. That is the seam, and it has to hold.</li>
+      <li>Do not touch the echo close. This one is generic enough to survive all three openings, so leave it alone.</li>
+      <li>Run all three doors at once against the control. Hooks are the cheapest thing you will ever test.</li>
+      <li>Name them ITE and bump the version. Same angle code, same batch. Only the version moves.</li>
+      <li>Judge on click through first, then CPA. A door can win attention and still lose the sale.</li>
+    </ol>
+  </section>
+  <section>
+    <div class="summary">
+      <p>Same ad. New front door.</p>
+      <p>An iteration does not move the concept. It only changes who stops to read it.</p>
+    </div>
+  </section>
+  <footer>Guide 02 of 3. Guide 01 is the Use Case Swap, where the scene moves and six beats go with it. Guide 03 is the Angle Swap, where the scene holds still and the belief shift changes.</footer>
+</main>

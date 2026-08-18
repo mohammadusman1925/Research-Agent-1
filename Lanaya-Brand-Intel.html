@@ -1,0 +1,843 @@
+<title>Lanaya Brand Intel</title>
+<style>
+:root {
+  --bg: #f5f4f0;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #edece7;
+  --bg-dark: #161614;
+  --text: #1a1a18;
+  --text-secondary: #55554e;
+  --text-muted: #8a8a80;
+  --text-on-dark: #ddddd5;
+  --accent: #1f6b52;
+  --accent-light: #e4f0eb;
+  --warm: #b8612e;
+  --warm-light: #fdf0e8;
+  --red: #a12e2e;
+  --red-light: #fce8e8;
+  --blue: #2a5a8c;
+  --blue-light: #e8f0f8;
+  --yellow: #8a7a20;
+  --yellow-light: #faf6e0;
+  --border: #d5d4cc;
+  --border-light: #e5e4dc;
+  --shadow-sm: 0 1px 3px rgba(26,26,24,0.05);
+  --shadow-md: 0 4px 12px rgba(26,26,24,0.07);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Cascadia Code', 'SF Mono', Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111110;
+    --bg-surface: #1a1a18;
+    --bg-surface-alt: #222220;
+    --bg-dark: #0a0a09;
+    --text: #e0dfda;
+    --text-secondary: #a0a098;
+    --text-muted: #666660;
+    --text-on-dark: #c0c0b8;
+    --accent: #3da882;
+    --accent-light: #182e26;
+    --warm: #d07840;
+    --warm-light: #281c12;
+    --red: #d04848;
+    --red-light: #281212;
+    --blue: #5088c0;
+    --blue-light: #121e2a;
+    --yellow: #b8a830;
+    --yellow-light: #222010;
+    --border: #333330;
+    --border-light: #2a2a28;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111110;
+  --bg-surface: #1a1a18;
+  --bg-surface-alt: #222220;
+  --bg-dark: #0a0a09;
+  --text: #e0dfda;
+  --text-secondary: #a0a098;
+  --text-muted: #666660;
+  --text-on-dark: #c0c0b8;
+  --accent: #3da882;
+  --accent-light: #182e26;
+  --warm: #d07840;
+  --warm-light: #281c12;
+  --red: #d04848;
+  --red-light: #281212;
+  --blue: #5088c0;
+  --blue-light: #121e2a;
+  --yellow: #b8a830;
+  --yellow-light: #222010;
+  --border: #333330;
+  --border-light: #2a2a28;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  padding: 10px 0;
+}
+.nav .wrap {
+  display: flex; align-items: center; gap: 8px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav .wrap::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  color: var(--accent); white-space: nowrap; margin-right: 8px;
+  padding-right: 12px; border-right: 1px solid var(--border);
+}
+.nav a {
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  color: var(--text-muted); padding: 4px 10px; border-radius: 4px;
+  white-space: nowrap; letter-spacing: 0.03em; transition: all 0.15s;
+}
+.nav a:hover { color: var(--accent); background: var(--accent-light); }
+
+/* Hero */
+.hero { padding: 56px 0 40px; }
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700; line-height: 1.2; margin-bottom: 10px; text-wrap: balance;
+}
+.hero h1 em { font-style: italic; color: var(--warm); }
+.hero-sub {
+  font-size: 16px; color: var(--text-secondary);
+  max-width: 580px; line-height: 1.5; margin-bottom: 20px;
+}
+.hero-meta {
+  display: flex; gap: 20px; font-size: 12px;
+  color: var(--text-muted); flex-wrap: wrap;
+}
+
+/* Divider */
+.divider {
+  height: 2px; border-radius: 2px; margin: 44px 0; opacity: 0.4;
+  background: linear-gradient(90deg, var(--accent), var(--warm), var(--accent));
+}
+
+/* Section */
+.section { padding: 28px 0 12px; }
+.section h2 {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  line-height: 1.3; margin-bottom: 6px;
+}
+.section h3 {
+  font-family: var(--font-display); font-size: 17px; font-weight: 700;
+  margin: 24px 0 8px;
+}
+.sn { font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-right: 6px; }
+.section p { margin-bottom: 12px; color: var(--text-secondary); }
+
+/* Tables */
+.tw {
+  overflow-x: auto; margin: 14px 0 22px;
+  border-radius: var(--radius); border: 1px solid var(--border-light);
+}
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+thead th {
+  background: var(--bg-surface-alt); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted);
+  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+
+/* Alert box */
+.alert {
+  padding: 16px 20px; border-radius: var(--radius); margin: 16px 0;
+  font-size: 13.5px;
+}
+.alert-red { background: var(--red-light); border: 1px solid var(--red); color: var(--text); }
+.alert-yellow { background: var(--yellow-light); border: 1px solid var(--yellow); color: var(--text); }
+.alert-blue { background: var(--blue-light); border: 1px solid var(--blue); color: var(--text); }
+.alert-accent { background: var(--accent-light); border: 1px solid var(--accent); color: var(--text); }
+.alert-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.alert-red .alert-label { color: var(--red); }
+.alert-yellow .alert-label { color: var(--yellow); }
+.alert-blue .alert-label { color: var(--blue); }
+.alert-accent .alert-label { color: var(--accent); }
+
+/* Lock box */
+.lock {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  padding: 20px 24px; border-radius: var(--radius-lg);
+  margin: 18px 0 24px; border-left: 3px solid var(--accent);
+}
+.lock .lock-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+}
+.lock p { color: var(--text-on-dark); margin-bottom: 8px; }
+.lock p:last-child { margin-bottom: 0; }
+
+/* Tags */
+.tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 3px;
+}
+.tag-red { background: var(--red-light); color: var(--red); }
+.tag-yellow { background: var(--yellow-light); color: var(--yellow); }
+.tag-accent { background: var(--accent-light); color: var(--accent); }
+.tag-blue { background: var(--blue-light); color: var(--blue); }
+
+/* Cards */
+.card {
+  background: var(--bg-surface); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); padding: 22px; margin: 14px 0;
+  box-shadow: var(--shadow-sm);
+}
+.card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.card-sub { font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 12px; }
+
+/* Stat grid */
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px; margin: 18px 0;
+}
+.stat {
+  background: var(--bg-surface); border: 1px solid var(--border-light);
+  border-radius: var(--radius); padding: 16px; text-align: center;
+}
+.stat-val {
+  font-family: var(--font-display); font-size: 26px; font-weight: 700;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-size: 11px; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px;
+}
+
+/* Competitor card grid */
+.comp-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px; margin: 18px 0;
+}
+.comp-card {
+  background: var(--bg-surface); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); padding: 20px;
+}
+.comp-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.comp-card .comp-type { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+.comp-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 0; }
+.comp-row {
+  display: flex; justify-content: space-between; font-size: 12.5px;
+  padding: 5px 0; border-bottom: 1px solid var(--border-light);
+}
+.comp-row:last-of-type { border-bottom: none; }
+.comp-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Collapsible */
+details { margin: 12px 0; border: 1px solid var(--border-light); border-radius: var(--radius); }
+summary {
+  padding: 12px 16px; font-weight: 700; font-size: 14px; cursor: pointer;
+  background: var(--bg-surface-alt); border-radius: var(--radius); list-style: none;
+}
+summary::before { content: '+ '; font-family: var(--font-mono); color: var(--accent); margin-right: 4px; }
+details[open] summary::before { content: '- '; }
+details[open] summary { border-radius: var(--radius) var(--radius) 0 0; }
+.det-body { padding: 16px; }
+</style>
+
+<nav class="nav">
+  <div class="wrap">
+    <span class="nav-brand">LANAYA</span>
+    <a href="#company">Company</a>
+    <a href="#product">Product</a>
+    <a href="#trust">Trust Signals</a>
+    <a href="#market">Market</a>
+    <a href="#competitors">Competitors</a>
+    <a href="#haritaki-landscape">Haritaki Landscape</a>
+    <a href="#voc">VOC</a>
+    <a href="#gaps">Gaps &amp; Opportunities</a>
+    <a href="#verdict">Verdict</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Intelligence Report</div>
+    <h1>Lanaya &mdash; <em>trylanaya.com</em></h1>
+    <p class="hero-sub">Full brand, product, competitor, and market analysis for a DTC Shopify store selling Haritaki capsules positioned for kidney wellness.</p>
+    <div class="hero-meta">
+      <span>Domain: trylanaya.com</span>
+      <span>Platform: Shopify</span>
+      <span>Researched: August 2026</span>
+    </div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- COMPANY OVERVIEW -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="company">
+    <h2><span class="sn">01</span> Company Overview</h2>
+  </div>
+
+  <div class="alert alert-red">
+    <div class="alert-label">Critical Finding</div>
+    <strong>This brand is approximately 10 weeks old.</strong> Domain registered June 8, 2026 via NameCheap. WHOIS is privacy-protected. No legal entity name, no founders, no physical address, no phone number, no social media accounts found anywhere.
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Attribute</th><th>Finding</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Domain</strong></td><td>trylanaya.com &mdash; registered June 8, 2026, expires June 8, 2027</td></tr>
+        <tr><td><strong>Registrar</strong></td><td>NameCheap, Inc. Registrant details hidden behind WhoisGuard</td></tr>
+        <tr><td><strong>Platform</strong></td><td>Shopify</td></tr>
+        <tr><td><strong>Legal entity</strong></td><td>Not disclosed. Terms of Service reference "TryLanaya" with no LLC/Inc designation, no state, no address</td></tr>
+        <tr><td><strong>Contact</strong></td><td>Email only: hey@trylanaya.com. No phone. No address. No social media.</td></tr>
+        <tr><td><strong>About page</strong></td><td>Returns 404</td></tr>
+        <tr><td><strong>LinkedIn</strong></td><td>No company page found</td></tr>
+        <tr><td><strong>Trustpilot</strong></td><td>No dedicated page</td></tr>
+        <tr><td><strong>BBB</strong></td><td>Not listed</td></tr>
+        <tr><td><strong>Amazon</strong></td><td>Not present</td></tr>
+        <tr><td><strong>Reddit mentions</strong></td><td>None found</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Likely Operator: Hes Holdings LLC</h3>
+  </div>
+  <p>The sister site <strong>tryharitaki.com</strong> sells the identical product (1,000mg Terminalia chebula, same 99-day guarantee language, same Shopify template, same product photography). That site discloses its entity as <strong>Hes Holdings LLC, 312 W 2nd St Unit #A2299, Casper, WY 82601</strong> (a well-known virtual office / registered agent address). Phone: +1 838-300-0325.</p>
+
+  <div class="alert alert-yellow">
+    <div class="alert-label">Pattern</div>
+    Multiple "try___" branded Shopify stores exist under what appears to be the same operation: <strong>tryluraya, trymaluna, tryninja, trygaias, tryharitaki, trylanaya</strong>. Some have Trustpilot complaints. The pattern is consistent with a white-label dropship operation launching multiple storefronts.
+  </div>
+
+  <!-- ======================== -->
+  <!-- PRODUCT CATALOG -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="product">
+    <h2><span class="sn">02</span> Product Catalog</h2>
+    <p>15 SKUs across supplements, skincare serums, and sunscreen. All products last updated August 17, 2026. The catalog breadth suggests a general white-label operation, not a focused supplement brand.</p>
+  </div>
+
+  <div class="section">
+    <h3>Supplements (Core Line)</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Product</th><th>Regular</th><th>Sale</th><th>Bundle</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Haritaki Gut Supplement</strong> (1,000mg T. chebula, 2 caps/day)</td><td>$59.95</td><td>$29.95</td><td>Buy 2 Get 1 Free &mdash; $59.30/3mo</td></tr>
+        <tr><td><strong>Haritaki Kidney Supplement</strong> (same formula, kidney positioning)</td><td>$59.95</td><td>$29.95</td><td>Buy 2 Get 1 Free &mdash; $59.30/3mo</td></tr>
+        <tr><td><strong>Haritaki Kidney Supplement</strong> (tablet variant)</td><td>$59.95</td><td>$29.95</td><td>Same bundle</td></tr>
+        <tr><td><strong>Lanaya Astaxanthin</strong> (skin, joints, vision softgel)</td><td>$79.97</td><td>$39.97</td><td>Buy 2 Get 3 Free &mdash; $79.94/5</td></tr>
+        <tr><td><strong>Saffron Gummies</strong> (saffron + GABA + passionflower + SJW)</td><td>$79.95</td><td>$39.95</td><td>Buy 2 Get 1 Free</td></tr>
+        <tr><td><strong>Beef Organ Supplement</strong> (60 caps)</td><td>$49.97</td><td>$39.97</td><td>&mdash;</td></tr>
+        <tr><td><strong>MEN V2 Gummies</strong></td><td>$99.95</td><td>$49.95</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Skincare (Secondary Line)</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Product</th><th>Regular</th><th>Sale</th></tr></thead>
+      <tbody>
+        <tr><td>Vibrating Collagen Eye Cream</td><td>$79.99</td><td>$39.99</td></tr>
+        <tr><td>GHK-CU Copper Peptides Serum</td><td>$39.97</td><td>$39.97</td></tr>
+        <tr><td>Level 2 Mandelic Acid Serum</td><td>$79.97</td><td>$34.97</td></tr>
+        <tr><td>PDRN Salmon DNA Peptide-8 Serum</td><td>$69.97</td><td>$39.97</td></tr>
+        <tr><td>Retinol Shot</td><td>$39.00</td><td>$29.00</td></tr>
+        <tr><td>Collagen Gel</td><td>$59.97</td><td>$39.97</td></tr>
+        <tr><td>Lotus Drops</td><td>$39.97</td><td>$39.97</td></tr>
+        <tr><td>Beauty of Joseon SPF50+ Sunscreen</td><td>$80.00</td><td>$40.00</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-yellow">
+    <div class="alert-label">Note</div>
+    The Beauty of Joseon SPF50+ is a well-known K-beauty product widely available at $16-22. Lanaya lists it at $40 (from $80). This confirms the reselling / white-label operation model.
+  </div>
+
+  <!-- ======================== -->
+  <!-- HARITAKI KIDNEY PRODUCT SPEC -->
+  <!-- ======================== -->
+  <div class="section">
+    <h3>Haritaki Kidney Product &mdash; Detailed Spec</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Spec</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Active ingredient</td><td>Terminalia chebula (Haritaki) extract</td></tr>
+        <tr><td>Dose per capsule</td><td>1,000mg</td></tr>
+        <tr><td>Suggested use</td><td>2 capsules daily (2,000mg total)</td></tr>
+        <tr><td>Format</td><td>Capsule</td></tr>
+        <tr><td>Supply</td><td>30-day (60 capsules)</td></tr>
+        <tr><td>Price</td><td>$29.95 (anchored from $59.95)</td></tr>
+        <tr><td>Bundle</td><td>Buy 2 Get 1 Free = $59.30 / 3 months ($0.66/day)</td></tr>
+        <tr><td>Guarantee</td><td>99-day money-back</td></tr>
+        <tr><td>Certifications claimed</td><td>Gluten-free, soy-free, non-GMO, FDA-registered facility, GMP-certified, third-party lab tested</td></tr>
+        <tr><td>Subscription</td><td>None offered</td></tr>
+        <tr><td>Shipping</td><td>5-10 business days US (suggests overseas fulfillment)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-blue">
+    <div class="alert-label">Note on Certifications</div>
+    No specific lab names, certificate numbers, or COA links provided. Claims are label-level only with no supporting documentation visible on site.
+  </div>
+
+  <!-- ======================== -->
+  <!-- TRUST SIGNALS -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="trust">
+    <h2><span class="sn">03</span> Trust Signal Audit</h2>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Signal</th><th>Status</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>On-site reviews</td><td><span class="tag tag-red">Suspect</span></td><td>"4.8/5 stars from 5,457 verified reviews" &mdash; this identical number appears on ALL 15 products. Consistent with templated/fabricated review widgets.</td></tr>
+        <tr><td>Independent reviews</td><td><span class="tag tag-red">None</span></td><td>Zero reviews on Trustpilot, BBB, Amazon, Reddit, or any third-party platform.</td></tr>
+        <tr><td>Transparency</td><td><span class="tag tag-red">Failing</span></td><td>No founders named, no physical address, no about page, no social media, no LinkedIn.</td></tr>
+        <tr><td>Third-party testing</td><td><span class="tag tag-yellow">Claimed</span></td><td>Claimed on product page. No lab name, no COA, no certificate number provided.</td></tr>
+        <tr><td>GMP certification</td><td><span class="tag tag-yellow">Claimed</span></td><td>Claimed. No facility name or registration number.</td></tr>
+        <tr><td>Pricing authenticity</td><td><span class="tag tag-yellow">Inflated anchors</span></td><td>Every product shows 50-65% discount from an "original" price. Permanent sale pricing pattern.</td></tr>
+        <tr><td>Urgency language</td><td><span class="tag tag-yellow">Aggressive</span></td><td>"LOW STOCK," "TODAY ONLY" across all pages. Standard high-pressure DTC funnel.</td></tr>
+        <tr><td>Product page quality</td><td><span class="tag tag-yellow">Mixed</span></td><td>Haritaki Kidney product page returned 404 during research. Advertorial pages functional.</td></tr>
+        <tr><td>Domain age</td><td><span class="tag tag-red">10 weeks</span></td><td>Registered June 8, 2026. Brand has zero track record.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock">
+    <div class="lock-label">Trust Verdict</div>
+    <p>This brand has <strong>zero independent social proof</strong>. The on-site reviews are almost certainly fabricated (same count across all products). There is no verifiable identity behind the brand. The creative strategy must build trust from the science and the mechanism, not from the brand.</p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- ADVERTORIAL ANALYSIS -->
+  <!-- ======================== -->
+  <div class="section">
+    <h3>Existing Advertorial Analysis</h3>
+    <p>Lanaya runs at least 11 dedicated advertorial landing pages, all focused on Haritaki kidney positioning. The primary page analyzed: <strong>haritaki-kid-adv-v2</strong>.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Element</th><th>What they do</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr><td>Format</td><td>"Health & Wellness Report" disguise. Native-ad style.</td><td><span class="tag tag-accent">Good</span> &mdash; proven format for 50+ demo</td></tr>
+        <tr><td>Angle</td><td>"Forgotten Filter" &mdash; kidneys are the forgotten organ</td><td><span class="tag tag-yellow">Stage 1-2</span> &mdash; curiosity play, no mechanism</td></tr>
+        <tr><td>Mechanism</td><td>Mentions polyphenols and tannins vaguely</td><td><span class="tag tag-yellow">Weak</span> &mdash; no named pathways, no specific biology</td></tr>
+        <tr><td>Science cited</td><td>General references to antioxidant properties</td><td><span class="tag tag-red">Insufficient</span> &mdash; no specific studies, no PubMed</td></tr>
+        <tr><td>Testimonials</td><td>Present but unverifiable</td><td><span class="tag tag-red">Suspect</span> &mdash; no last names, no photos, no verification</td></tr>
+        <tr><td>Offer</td><td>Buy 2 Get 1 Free, money-back guarantee</td><td><span class="tag tag-accent">Standard</span> &mdash; adequate for DTC supplement</td></tr>
+        <tr><td>Target demo</td><td>Adults 50+</td><td><span class="tag tag-accent">Correct</span> &mdash; aligned with CKD incidence</td></tr>
+        <tr><td>Compliance</td><td>FDA disclaimer present. Structure/function language mostly.</td><td><span class="tag tag-yellow">Adequate</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ======================== -->
+  <!-- MARKET LANDSCAPE -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="market">
+    <h2><span class="sn">04</span> Market Landscape</h2>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val">$3.56B</div><div class="stat-label">CKD Supplements (2023)</div></div>
+    <div class="stat"><div class="stat-val">$5.20B</div><div class="stat-label">Projected 2033</div></div>
+    <div class="stat"><div class="stat-val">3.86%</div><div class="stat-label">CAGR</div></div>
+    <div class="stat"><div class="stat-val">40%</div><div class="stat-label">North America Share</div></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val">35.5M</div><div class="stat-label">Americans with CKD</div></div>
+    <div class="stat"><div class="stat-val">83%</div><div class="stat-label">Don't know they have it</div></div>
+    <div class="stat"><div class="stat-val">34%</div><div class="stat-label">Adults 65+ Affected</div></div>
+    <div class="stat"><div class="stat-val">27.8%</div><div class="stat-label">CKD Adults Use Supplements</div></div>
+  </div>
+
+  <div class="section">
+    <h3>Dominant Messaging Angles in Market</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Angle</th><th>Prevalence</th><th>Scientific Support</th><th>Example Brands</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kidney Cleanse / Detox / Flush</strong></td><td><span class="tag tag-red">Dominant</span></td><td>Zero. NKF actively warns against.</td><td>NutraChamps, NOW Foods, Sunergetic</td></tr>
+        <tr><td><strong>Urinary Tract / Bladder</strong></td><td>High</td><td>Cranberry has moderate evidence for UTI prevention</td><td>Cranberry extract products (many)</td></tr>
+        <tr><td><strong>Kidney Stone Prevention</strong></td><td>Moderate</td><td>Chanca Piedra has some evidence</td><td>Eu Natural Stone Breaker</td></tr>
+        <tr><td><strong>Kidney Function / Renal Support</strong></td><td>Moderate</td><td>Varies. Medical experts call it a "red flag."</td><td>VitaPost, Himalaya UriCare</td></tr>
+        <tr><td><strong>Ancestral / Organ Meat</strong></td><td>Growing</td><td>Zero mechanism. Carnivore trend.</td><td>Various organ meat brands</td></tr>
+        <tr><td><strong>Blood Filtration / Blood Pressure</strong></td><td><span class="tag tag-accent">Low</span></td><td>Underexplored</td><td>Nobody owns this</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock">
+    <div class="lock-label">Market Position</div>
+    <p>The kidney supplement market is large ($3.5B+), growing, and <strong>shockingly underdeveloped from a brand standpoint</strong>. The category is dominated by low-cost commodity products using "cleanse/detox" messaging that the National Kidney Foundation explicitly warns against. There is <strong>no dominant DTC kidney supplement brand</strong> at the Ritual/Seed/Thorne quality tier. The blood-origin mechanism angle is completely uncontested.</p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- COMPETITORS -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="competitors">
+    <h2><span class="sn">05</span> Competitor Analysis</h2>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <h4>Eu Natural Stone Breaker</h4>
+      <div class="comp-type">Kidney Stone Niche &mdash; Amazon Dominant</div>
+      <div class="comp-row"><span>Price</span><span class="comp-val">$29.99</span></div>
+      <div class="comp-row"><span>Amazon Rating</span><span class="comp-val">4.4 / 14,261 reviews</span></div>
+      <div class="comp-row"><span>Key Ingredient</span><span class="comp-val">Chanca Piedra</span></div>
+      <div class="comp-row"><span>Formula</span><span class="comp-val">1,200mg proprietary blend (5 herbs)</span></div>
+      <div class="comp-row"><span>Positioning</span><span class="comp-val">Stone dissolving / kidney cleanse</span></div>
+      <p style="margin-top: 10px;">Hides individual doses in proprietary blend. "The Original" first-mover claim. HSA/FSA eligible. Massive Amazon social proof. No named mechanism.</p>
+    </div>
+
+    <div class="comp-card">
+      <h4>VitaPost Kidney Support</h4>
+      <div class="comp-type">Multi-Herb Blend &mdash; Mass Market</div>
+      <div class="comp-row"><span>Price</span><span class="comp-val">~$25-30</span></div>
+      <div class="comp-row"><span>Formula</span><span class="comp-val">11 herbs + superfruit blend</span></div>
+      <div class="comp-row"><span>Positioning</span><span class="comp-val">"Kidney nourishment"</span></div>
+      <p style="margin-top: 10px;">Kitchen-sink formulation. Proprietary blend hides doses. No named mechanism. Stage 2 sophistication. Generic "supports" claims.</p>
+    </div>
+
+    <div class="comp-card">
+      <h4>Renew Life Kidney Cleanse</h4>
+      <div class="comp-type">Cleanse Program &mdash; Retail</div>
+      <div class="comp-row"><span>Positioning</span><span class="comp-val">"Cleanse, sterilize, alkalize"</span></div>
+      <div class="comp-row"><span>Format</span><span class="comp-val">30-day program</span></div>
+      <p style="margin-top: 10px;">Diuretic-based cleanse with a stop date. No ongoing support angle. Kidney stress doesn't pause when the program ends.</p>
+    </div>
+
+    <div class="comp-card">
+      <h4>Himalaya UriCare</h4>
+      <div class="comp-type">Ayurvedic &mdash; Kidney + Bladder</div>
+      <div class="comp-row"><span>Price</span><span class="comp-val">$26.99 / 120 caps</span></div>
+      <div class="comp-row"><span>Key Ingredients</span><span class="comp-val">Didymocarpus, Shilajeet, Cyperus</span></div>
+      <div class="comp-row"><span>Positioning</span><span class="comp-val">Kidney filtration + bladder support</span></div>
+      <p style="margin-top: 10px;">Does NOT contain Haritaki. Non-GMO verified. No proprietary blend (transparent labeling). cGMP facility. The closest thing to a "legitimate" player but weak marketing.</p>
+    </div>
+
+    <div class="comp-card">
+      <h4>NutraBio KIDNEY</h4>
+      <div class="comp-type">Clinical / Premium Tier</div>
+      <div class="comp-row"><span>Key Differentiator</span><span class="comp-val">Opitac L-Glutathione + Astragaloside IV</span></div>
+      <div class="comp-row"><span>Positioning</span><span class="comp-val">Clinical / bioavailability</span></div>
+      <p style="margin-top: 10px;">Most clinically differentiated kidney supplement found. Uses BioPerine for absorption. Premium positioning. Small market share.</p>
+    </div>
+
+    <div class="comp-card">
+      <h4>Horbaach</h4>
+      <div class="comp-type">Value Brand &mdash; NOT in Kidney</div>
+      <div class="comp-row"><span>Kidney Product?</span><span class="comp-val tag tag-red">None</span></div>
+      <p style="margin-top: 10px;">Sells White Kidney Bean Extract (carb blocker, NOT kidney health). Broad commodity supplement catalog. Not a competitor in this category despite the name confusion.</p>
+    </div>
+  </div>
+
+  <div class="lock">
+    <div class="lock-label">Competitive Verdict</div>
+    <p><strong>No competitor names a biological mechanism.</strong> Not one. Every kidney supplement is either a diuretic cleanse (dandelion, parsley, horsetail) or a mystery blend with generic "supports" language. The blood-origin mechanism (XOD/URAT1/NLRP3) gives Lanaya a clear Schwartz Stage 3 advantage in a Stage 2 market.</p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- HARITAKI COMPETITIVE LANDSCAPE -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="haritaki-landscape">
+    <h2><span class="sn">06</span> Haritaki Competitive Landscape</h2>
+    <p>Who else sells Haritaki in the US, what they charge, how they position it, and whether anyone claims the kidney angle.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Brand</th><th>Product</th><th>Price</th><th>Dose</th><th>Positioning</th><th>Kidney Claims?</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Banyan Botanicals</strong></td>
+          <td>Organic Haritaki Tablets</td>
+          <td>$24.99 / 90 tabs</td>
+          <td>1,000mg (2 tabs)</td>
+          <td>Colon cleanse, digestive support, rejuvenation. Vata balancing.</td>
+          <td><span class="tag tag-accent">No</span></td>
+        </tr>
+        <tr>
+          <td><strong>Third Eye Awakening</strong></td>
+          <td>Haritaki Capsules</td>
+          <td>$19.00</td>
+          <td>Varies</td>
+          <td>Spiritual / pineal gland activation. "Third eye" positioning.</td>
+          <td><span class="tag tag-accent">No</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cona Nature / Organic India</strong></td>
+          <td>Haritaki Capsules 2250mg</td>
+          <td>$22.00</td>
+          <td>2,250mg</td>
+          <td>Digestion, rejuvenation</td>
+          <td><span class="tag tag-accent">No</span></td>
+        </tr>
+        <tr>
+          <td><strong>Organic India</strong></td>
+          <td>Triphala only (haritaki = 1/3 of blend)</td>
+          <td>$19.99</td>
+          <td>Split across 3 fruits</td>
+          <td>Digestive health. Info page mentions kidney but not product page.</td>
+          <td><span class="tag tag-yellow">Informational only</span></td>
+        </tr>
+        <tr>
+          <td><strong>Himalaya</strong></td>
+          <td>No standalone Haritaki in US market</td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+          <td>India-only. US line has UriCare (no haritaki).</td>
+          <td><span class="tag tag-accent">No</span></td>
+        </tr>
+        <tr>
+          <td><strong>tryharitaki.com</strong></td>
+          <td>Same product as Lanaya (sister site)</td>
+          <td>$29.95</td>
+          <td>1,000mg</td>
+          <td>Kidney wellness (identical advertorial)</td>
+          <td><span class="tag tag-blue">Yes (same operator)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-accent">
+    <div class="alert-label">Wide Open</div>
+    <strong>Zero brands position standalone Haritaki for kidney health.</strong> Every Haritaki product on Amazon US is positioned for digestion, spiritual practice, or general wellness. The kidney angle is scientifically supported and competitively uncontested. Lanaya (and its sister site) are the only operators in this space.
+  </div>
+
+  <div class="section">
+    <h3>How the Market Currently Positions Haritaki</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>Positioning</th><th>Prevalence</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Digestion / regularity / gentle laxative</td><td><strong>Dominant</strong></td></tr>
+        <tr><td>2</td><td>Detoxification / internal cleansing</td><td>Secondary</td></tr>
+        <tr><td>3</td><td>Spiritual / third eye / pineal gland</td><td>Niche (but #1 Best Seller on Amazon)</td></tr>
+        <tr><td>4</td><td>Rejuvenation / tissue nourishment</td><td>Tertiary (Ayurvedic-specific audience)</td></tr>
+        <tr><td>5</td><td>Kidney health</td><td><strong>Nobody</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ======================== -->
+  <!-- VOC -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="voc">
+    <h2><span class="sn">07</span> Voice of Customer</h2>
+    <p>Aggregated from Amazon reviews (Haritaki products, kidney supplements), Reddit, and health forums. No Lanaya-specific reviews exist.</p>
+  </div>
+
+  <div class="section">
+    <h3>What Haritaki Buyers Say (Amazon)</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Theme</th><th>Sample Quotes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Digestion results</strong> (most common)</td><td>"This stuff works wonders for my gut." "GERD symptoms improved within a week." "Best thing I've ever taken for constipation."</td></tr>
+        <tr><td><strong>General wellness</strong></td><td>"I feel like a new person." "I was a skeptic, but this changed my mind." "More energy than I've had in years."</td></tr>
+        <tr><td><strong>Kidney mention</strong> (one review found)</td><td>"My kidney levels returned to normal range after taking this for three months." &mdash; single Banyan Botanicals reviewer. The only kidney-specific testimonial across thousands of reviews.</td></tr>
+        <tr><td><strong>Taste complaint</strong> (powder format)</td><td>"The bitterest thing I've ever tasted." "Had to switch to capsules." "I can't do the powder form."</td></tr>
+        <tr><td><strong>Initial discomfort</strong></td><td>"First few days were rough on my stomach." "Mild cramping that went away after a week."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>What Kidney Supplement Buyers Want (Category-Wide)</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>What They Say</th><th>What They Mean</th></tr></thead>
+      <tbody>
+        <tr><td>"Can't prove it works"</td><td>No measurable outcome. No blood work change. No symptom improvement. Buying on hope.</td></tr>
+        <tr><td>"My doctor said watch and wait"</td><td>"I want to DO something. Watching is unbearable."</td></tr>
+        <tr><td>"Is this safe with my medications?"</td><td>Fear of interaction. Already on BP meds, statins, metformin. Doesn't trust supplement labels.</td></tr>
+        <tr><td>"How do I know this is real?"</td><td>Trust crisis. Too many scam products. Wants third-party verification.</td></tr>
+        <tr><td>"I watched my [parent] on dialysis"</td><td>Inherited trauma driving prevention behavior. The strongest purchase motivator in the category.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock">
+    <div class="lock-label">VOC Gap</div>
+    <p>Consumers want <strong>safety, evidence, and doctor alignment</strong>. Brands offer <strong>herbal detox buzzwords</strong>. The disconnect is severe. The highest-intent buyer &mdash; a 50-70 year old with scary lab results managing diabetes or hypertension &mdash; is dramatically underserved. She doesn't want a "cleanse." She wants to protect what she has left.</p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- REGULATORY LANDSCAPE -->
+  <!-- ======================== -->
+  <div class="section">
+    <h3>Regulatory Landscape</h3>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Authority</th><th>Current Stance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FDA</strong></td><td>Warning letter to Nupack Inc. (March 2026) for kidney supplement drug claims. Structure/function claims with disclaimer are compliant. Any treatment/prevention/cure claim triggers enforcement.</td></tr>
+        <tr><td><strong>FTC</strong></td><td>200+ supplement cases since 1998. Requires two RCTs for efficacy claims. 2022 Health Products Compliance Guidance tightened requirements significantly. Warning letters demand response within 15 business days.</td></tr>
+        <tr><td><strong>Meta</strong></td><td>~30% of supplement ads rejected before running. AI review system stricter in 2025-2026. Kidney supplements in higher risk tier. No before/after. No personal attribute inference. No disease treatment claims.</td></tr>
+        <tr><td><strong>Medical establishment</strong></td><td>National Kidney Foundation, Cleveland Clinic, VA all warn against kidney supplements. "Limited evidence and potential harm." This is the trust headwind every kidney supplement faces.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ======================== -->
+  <!-- GAPS & OPPORTUNITIES -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="gaps">
+    <h2><span class="sn">08</span> Gaps &amp; Opportunities</h2>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Gap</th><th>What's Missing</th><th>Opportunity for Lanaya</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Mechanism-first positioning</strong></td>
+          <td>Zero kidney supplements explain HOW they work biologically</td>
+          <td>Blood-origin mechanism (XOD/URAT1/NLRP3) enters at Schwartz Stage 3 in a Stage 2 market. Clear runway.</td>
+        </tr>
+        <tr>
+          <td><strong>Haritaki + kidney</strong></td>
+          <td>No brand positions Haritaki for kidney health</td>
+          <td>Scientifically supported (5+ studies, 1 human RCT on uric acid) and competitively uncontested.</td>
+        </tr>
+        <tr>
+          <td><strong>Single-ingredient transparency</strong></td>
+          <td>Market dominated by proprietary blends hiding doses</td>
+          <td>One ingredient. One named dose (1,000mg). Named pathways. Published research on the actual compound.</td>
+        </tr>
+        <tr>
+          <td><strong>Premium DTC brand</strong></td>
+          <td>No Ritual/Seed/Thorne equivalent in kidney category</td>
+          <td>White space at $40-65 price point with clinical positioning. (Lanaya's $29.95 is commodity-tier pricing.)</td>
+        </tr>
+        <tr>
+          <td><strong>Lab-result emotional trigger</strong></td>
+          <td>"You just got your results back. Now what?" &mdash; nobody uses this</td>
+          <td>Blood work anxiety is the highest-intent trigger in the category. Education around lab literacy without making treatment claims.</td>
+        </tr>
+        <tr>
+          <td><strong>Safety-first positioning</strong></td>
+          <td>No brand leads with "safe for compromised kidneys" or mineral-load transparency</td>
+          <td>Haritaki is a single botanical, not a multi-mineral blend. No excess phosphorus/potassium/calcium risk.</td>
+        </tr>
+        <tr>
+          <td><strong>Daily protection vs. one-time cleanse</strong></td>
+          <td>Market dominated by 30-day "cleanse" programs</td>
+          <td>"Ongoing kidney protection" subscription angle is wide open. Kidney stress doesn't pause.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ======================== -->
+  <!-- VERDICT -->
+  <!-- ======================== -->
+  <div class="divider"></div>
+  <div class="section" id="verdict">
+    <h2><span class="sn">09</span> Strategic Verdict</h2>
+  </div>
+
+  <div class="card" style="border-left: 3px solid var(--accent);">
+    <h4>Strengths</h4>
+    <ul style="padding-left: 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.9;">
+      <li>Haritaki-for-kidney is a genuinely uncontested positioning</li>
+      <li>Published science supports the mechanism (human RCT, pharmacokinetics, 5 animal nephroprotection studies)</li>
+      <li>Single-ingredient transparency in a market of mystery blends</li>
+      <li>1,000mg extract dose is above most competitors' powder doses</li>
+      <li>Capsule format eliminates the #1 Haritaki complaint (bitter taste)</li>
+      <li>Advertorial format is correct for 50+ demo</li>
+      <li>Blood-origin mechanism is a clear Stage 3 play in a Stage 2 market</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-left: 3px solid var(--red);">
+    <h4>Weaknesses &amp; Risks</h4>
+    <ul style="padding-left: 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.9;">
+      <li>Brand is 10 weeks old with zero track record</li>
+      <li>No verifiable identity (no founders, no address, no social media)</li>
+      <li>On-site reviews are almost certainly fabricated (identical count across all 15 products)</li>
+      <li>Part of a multi-store white-label operation ("try___" pattern)</li>
+      <li>Product catalog is scattered (supplements + K-beauty sunscreen + vibrating eye cream)</li>
+      <li>Kidney-specific research is preclinical (animal models). Human RCT measured uric acid, not kidney function directly</li>
+      <li>The human RCT tested a different extract formulation than what Lanaya sells</li>
+      <li>Medical establishment (NKF, Cleveland Clinic) is uniformly hostile to kidney supplements</li>
+      <li>Haritaki is contraindicated in advanced kidney disease and dialysis patients</li>
+      <li>5-10 day shipping suggests overseas fulfillment</li>
+      <li>No subscription model limits LTV</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-left: 3px solid var(--warm);">
+    <h4>Creative Strategy Implication</h4>
+    <ul style="padding-left: 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.9;">
+      <li><strong>Trust must come from the science, not the brand.</strong> Lead with the mechanism, the published research, the named pathways. The brand has no equity to spend.</li>
+      <li><strong>Never overclaim the research.</strong> Honesty about the evidence level (preclinical kidney data, human uric acid data) is the differentiator. Every other brand overclaims. Intellectual honesty builds trust this brand can't get any other way.</li>
+      <li><strong>Build real testimonials from actual buyers.</strong> The current review situation is a liability. Real customer stories need to be captured and verified.</li>
+      <li><strong>The mechanism is the moat.</strong> Any competitor can copy "kidney support." Nobody can easily copy "XOD inhibition at the same enzyme target as prescription allopurinol, URAT1/GLUT9 downregulation, NLRP3/NF-kB suppression" without doing the research work.</li>
+    </ul>
+  </div>
+
+  <div style="padding-bottom: 60px;"></div>
+
+</div>

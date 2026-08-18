@@ -1,0 +1,2057 @@
+<title>Lanaya Haritaki DRIVE Strategy</title>
+<style>
+@font-face {
+  font-family: 'Charter';
+  src: local('Charter'), local('Georgia');
+  font-display: swap;
+}
+
+:root {
+  --bg: #f7f6f3;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f0efeb;
+  --bg-lock: #1a2e3b;
+  --text: #1a1a18;
+  --text-secondary: #5a5a55;
+  --text-muted: #8a8a82;
+  --text-on-lock: #e8e6df;
+  --accent: #2a6b5a;
+  --accent-light: #e8f2ee;
+  --accent-muted: #3d8b77;
+  --warm: #c4713b;
+  --warm-light: #fdf3ec;
+  --warm-muted: #d4885a;
+  --red: #a83232;
+  --red-light: #fceaea;
+  --blue: #2a5a8c;
+  --blue-light: #eaf0f7;
+  --border: #d8d6cf;
+  --border-light: #e8e6df;
+  --divider: linear-gradient(90deg, var(--accent) 0%, var(--warm) 50%, var(--accent) 100%);
+  --shadow-sm: 0 1px 3px rgba(26,26,24,0.06);
+  --shadow-md: 0 4px 12px rgba(26,26,24,0.08);
+  --shadow-lg: 0 8px 24px rgba(26,26,24,0.1);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --font-display: 'Charter', Georgia, 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121210;
+    --bg-surface: #1c1c18;
+    --bg-surface-alt: #242420;
+    --bg-lock: #0d1f2a;
+    --text: #e4e2da;
+    --text-secondary: #a8a69e;
+    --text-muted: #6e6c66;
+    --text-on-lock: #c8d6de;
+    --accent: #4aab8e;
+    --accent-light: #1a2e28;
+    --accent-muted: #3d9478;
+    --warm: #d4885a;
+    --warm-light: #2a1e14;
+    --warm-muted: #e0a070;
+    --red: #d45454;
+    --red-light: #2a1414;
+    --blue: #5a8ec4;
+    --blue-light: #14202a;
+    --border: #3a3a34;
+    --border-light: #2e2e28;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #121210;
+  --bg-surface: #1c1c18;
+  --bg-surface-alt: #242420;
+  --bg-lock: #0d1f2a;
+  --text: #e4e2da;
+  --text-secondary: #a8a69e;
+  --text-muted: #6e6c66;
+  --text-on-lock: #c8d6de;
+  --accent: #4aab8e;
+  --accent-light: #1a2e28;
+  --accent-muted: #3d9478;
+  --warm: #d4885a;
+  --warm-light: #2a1e14;
+  --warm-muted: #e0a070;
+  --red: #d45454;
+  --red-light: #2a1414;
+  --blue: #5a8ec4;
+  --blue-light: #14202a;
+  --border: #3a3a34;
+  --border-light: #2e2e28;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Sticky Nav */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  padding: 10px 0;
+  backdrop-filter: blur(8px);
+}
+.sticky-nav .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sticky-nav .wrapper::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+  white-space: nowrap;
+  margin-right: 8px;
+  padding-right: 12px;
+  border-right: 1px solid var(--border);
+}
+.nav-link {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  transition: all 0.15s;
+}
+.nav-link:hover { color: var(--accent); background: var(--accent-light); }
+
+/* Hero */
+.hero {
+  padding: 64px 0 48px;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.5;
+}
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+/* Phase Badge */
+.phase-divider {
+  padding: 48px 0 8px;
+}
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.phase-d { background: var(--accent-light); color: var(--accent); }
+.phase-r { background: var(--warm-light); color: var(--warm); }
+.phase-i { background: var(--blue-light); color: var(--blue); }
+.phase-v { background: var(--red-light); color: var(--red); }
+.phase-e { background: var(--accent-light); color: var(--accent); }
+
+/* Section Headers */
+.section { padding: 32px 0 16px; }
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-wrap: balance;
+}
+.section h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 28px 0 10px;
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  margin-right: 6px;
+}
+.section p { margin-bottom: 14px; color: var(--text-secondary); }
+
+/* Gradient Divider */
+.grad-divider {
+  height: 2px;
+  background: var(--divider);
+  border-radius: 2px;
+  margin: 48px 0;
+  opacity: 0.5;
+}
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+thead th {
+  background: var(--bg-surface-alt);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+
+/* Lock Box */
+.lock-box {
+  background: var(--bg-lock);
+  color: var(--text-on-lock);
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  margin: 20px 0 28px;
+  border-left: 3px solid var(--accent);
+}
+.lock-box .lock-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.lock-box p { color: var(--text-on-lock); margin-bottom: 8px; }
+.lock-box p:last-child { margin-bottom: 0; }
+
+/* Cards */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+}
+.card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.tag-accent { background: var(--accent-light); color: var(--accent); }
+.tag-warm { background: var(--warm-light); color: var(--warm); }
+.tag-blue { background: var(--blue-light); color: var(--blue); }
+.tag-red { background: var(--red-light); color: var(--red); }
+.tag-primary { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent); }
+.tag-secondary { background: var(--bg-surface-alt); color: var(--text-muted); border: 1px solid var(--border); }
+.tag-na { background: var(--bg-surface-alt); color: var(--text-muted); }
+
+/* ICP Card */
+.icp-card {
+  border-left: 3px solid var(--accent);
+}
+.icp-card:nth-child(2n) { border-left-color: var(--warm); }
+.icp-card:nth-child(3n) { border-left-color: var(--blue); }
+
+/* Reframe Chain */
+.reframe-chain {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 16px 0;
+}
+.reframe-line {
+  padding: 14px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-light);
+}
+.reframe-line:last-child { border-bottom: none; }
+.reframe-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding-top: 2px;
+}
+.reframe-validate .reframe-label { color: var(--text-muted); }
+.reframe-crack .reframe-label { color: var(--warm); }
+.reframe-reframe .reframe-label { color: var(--accent); }
+.reframe-bridge .reframe-label { color: var(--blue); }
+.reframe-text { font-size: 14px; color: var(--text); }
+
+/* Score Badge */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.score-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.score-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.score-card .score-tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.score-row:last-of-type { border-bottom: none; }
+.score-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.score-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 0 0;
+  margin-top: 8px;
+  border-top: 2px solid var(--accent);
+}
+.score-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-top: 8px;
+}
+.score-scale { background: var(--accent-light); color: var(--accent); }
+.score-test { background: var(--warm-light); color: var(--warm); }
+.score-rework { background: var(--red-light); color: var(--red); }
+
+/* Collapsible */
+details {
+  margin: 12px 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+}
+summary {
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius);
+  list-style: none;
+}
+summary::before {
+  content: '+ ';
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-right: 4px;
+}
+details[open] summary::before { content: '- '; }
+details[open] summary { border-radius: var(--radius) var(--radius) 0 0; }
+.details-body { padding: 16px; }
+.hook-list { list-style: none; padding: 0; }
+.hook-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+  color: var(--text);
+}
+.hook-list li:last-child { border-bottom: none; }
+.hook-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-right: 8px;
+}
+
+/* Stat cards */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+/* Root cause highlight */
+.root-cause {
+  background: var(--bg-lock);
+  color: var(--text-on-lock);
+  padding: 28px 32px;
+  border-radius: var(--radius-lg);
+  margin: 24px 0;
+  text-align: center;
+}
+.root-cause .rc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.root-cause blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-on-lock);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Pathway card */
+.pathway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.pathway-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border-top: 3px solid var(--accent);
+}
+.pathway-card:nth-child(2) { border-top-color: var(--warm); }
+.pathway-card:nth-child(3) { border-top-color: var(--blue); }
+.pathway-card h4 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.pathway-card .pw-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.pathway-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 0; }
+
+/* Connection map */
+.conn-map {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 20px 0;
+}
+
+/* Three Failures */
+.failure-stack { margin: 20px 0; }
+.failure-item {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+.failure-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+  min-width: 36px;
+}
+.failure-body h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.failure-body p { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 0; }
+
+/* Brand Intel callout */
+.intel-callout {
+  background: var(--warm-light);
+  border: 1px solid var(--warm-muted);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 13px;
+}
+.intel-callout .ic-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--warm);
+  margin-bottom: 6px;
+}
+</style>
+
+<nav class="sticky-nav">
+  <div class="wrapper">
+    <span class="nav-brand">LANAYA HARITAKI</span>
+    <a href="#discover" class="nav-link">D - Discover</a>
+    <a href="#reframe" class="nav-link">R - Reframe</a>
+    <a href="#ignite" class="nav-link">I - Ignite</a>
+    <a href="#variate" class="nav-link">V - Variate</a>
+    <a href="#evolve" class="nav-link">E - Evolve</a>
+    <a href="#big-ideas" class="nav-link">Big Ideas</a>
+    <a href="#headlines" class="nav-link">Headlines</a>
+    <a href="#compliance" class="nav-link">Compliance</a>
+    <a href="#metrics" class="nav-link">Metrics</a>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">DRIVE Creative Strategy</div>
+    <h1>Lanaya Haritaki &mdash; <em>Blood-Origin Mechanism</em></h1>
+    <p class="hero-sub">New mechanism. New brand. The kidneys don't fail because they're weak. They fail because of what's been running through them for decades.</p>
+    <div class="hero-meta">
+      <span>Brand: Lanaya (trylanaya.com)</span>
+      <span>Product: Haritaki Kidney Capsule</span>
+      <span>August 2026</span>
+    </div>
+  </div>
+
+  <!-- BRAND INTEL SNAPSHOT -->
+  <div class="intel-callout">
+    <div class="ic-label">Brand Intel Snapshot</div>
+    <strong>Lanaya</strong> is a Shopify-based DTC store selling 15+ SKUs across skincare and supplements. No Amazon presence. No independent reviews anywhere (Trustpilot, BBB, Reddit). On-site claims 5,457 reviews &mdash; all 5-star, pattern consistent with templated/fabricated reviews. Haritaki Kidney product page returned 404 during research. Pricing: $29.95 (anchored from $59.95). Claims: 1,000mg Terminalia chebula extract, third-party tested, GMP, non-GMO. Multi-category store profile suggests white-label operation.
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- PHASE 1: DISCOVER -->
+  <!-- ================================================ -->
+  <div class="phase-divider" id="discover">
+    <span class="phase-badge phase-d">Phase 1 &mdash; Discover</span>
+  </div>
+
+  <!-- 1.0 ROOT CAUSE -->
+  <div class="section">
+    <h2><span class="section-num">1.0</span> The Root Cause &mdash; "The Something New"</h2>
+    <p>The buyer is a skeptical believer. She believes kidney health matters. She no longer believes any supplement delivers it. Every kidney product she's seen is either a "cleanse" full of diuretics or a mystery blend of 15 herbs with no explanation. Only new information re-opens belief.</p>
+  </div>
+
+  <div class="root-cause">
+    <div class="rc-label">The Root Cause</div>
+    <blockquote>"Your doctor is watching the filter. Nobody cleaned what's been flowing through it."</blockquote>
+  </div>
+
+  <div class="lock-box">
+    <div class="lock-label">The New Fact That Breaks The Old Belief</div>
+    <p>Your kidneys filter 180 liters of blood every day. When that blood carries excess uric acid, oxidative debris, and inflammatory signals &mdash; decade after decade &mdash; the filters don't just wear out. They get destroyed. Uric acid crystallizes inside the kidney tubules. Those crystals trigger an inflammatory alarm (NLRP3 inflammasome) that the body can't shut off. The alarm drives fibrosis. Fibrosis kills nephrons. Dead nephrons don't grow back.</p>
+    <p>Rising creatinine and falling GFR are not the disease. They are the scoreboard. The damage is upstream: in the blood itself.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>What she believes now</th><th>The new fact that breaks it</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Kidney problems just happen with age"</td>
+          <td>The kidneys don't age randomly. They degrade because uric acid, oxidative stress, and inflammatory signals in the blood accumulate faster than the body clears them after 50. The blood gets heavier. The filter pays the price.</td>
+          <td>BMC Nephrology 2025, PMC12469920</td>
+        </tr>
+        <tr>
+          <td>"Kidney supplements flush toxins out"</td>
+          <td>Most kidney supplements are diuretics (dandelion, parsley, horsetail). They flush water, not waste. More urine volume does not mean cleaner blood. The uric acid, the oxidized LDL, the inflammatory markers &mdash; they stay.</td>
+          <td>Competitor ingredient analysis; VitaPost/Renew Life formulations</td>
+        </tr>
+        <tr>
+          <td>"My doctor would tell me if something was wrong"</td>
+          <td>Only 17% of people with early-stage CKD know they have it. Kidney disease is high burden, high cost, low awareness. By the time creatinine rises enough for your doctor to mention it, you've already lost nephrons you can't replace.</td>
+          <td>NIDDK Kidney Statistics; CKD awareness study</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 1.1 MASS DESIRE -->
+  <div class="section">
+    <h2><span class="section-num">1.1</span> Mass Desire Analysis</h2>
+    <p>"The power in your advertising will always come from channeling an existing desire, not from creating a new one." &mdash; Eugene Schwartz</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Product</th><th>Surface want</th><th>Mass desire (the real purchase)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lanaya Haritaki</td>
+          <td>"Support my kidney health"</td>
+          <td><strong>Independence.</strong> Not ending up on dialysis. Not being a burden. Staying in my own home. Playing with grandchildren. Keeping my body working long enough to live the retirement I earned.</td>
+        </tr>
+        <tr>
+          <td>Kidney supplement (generic)</td>
+          <td>"Cleanse my kidneys"</td>
+          <td><strong>Control over aging.</strong> The desire to do something &mdash; anything &mdash; proactive about a body that's slipping quietly. Agency over decline.</td>
+        </tr>
+        <tr>
+          <td>Blood work / health test</td>
+          <td>"Check my numbers"</td>
+          <td><strong>Permission to stop worrying.</strong> The purchase isn't the test. It's the relief of a normal result.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock-box">
+    <div class="lock-label">Creative Implication</div>
+    <p>Never lead with "kidney health" or "kidney support." Lead with what kidneys protect: independence, mobility, the life you built. The kidney is the mechanism. The sale is the decade ahead.</p>
+  </div>
+
+  <!-- 1.2 SCHWARTZ SOPHISTICATION -->
+  <div class="section">
+    <h2><span class="section-num">1.2</span> Schwartz Sophistication Map</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Definition</th><th>Kidney Market Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Be first. Make the direct claim.</td>
+          <td>Passed. "Supports kidney health" has been said.</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>Enlarge the claim. Bigger, bolder, more specific.</td>
+          <td style="background: var(--accent-light);"><span class="tag tag-accent">Market is here</span> Most brands are stacking herbs and making bigger "supports" claims. VitaPost: 11 herbs + superfruit blend. Renew Life: "cleanse, sterilize, alkalize."</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Introduce a mechanism. Explain WHY it works.</td>
+          <td style="background: var(--warm-light);"><span class="tag tag-warm">We enter here</span> Almost no one in the kidney supplement space is explaining a biological mechanism. Lanaya's advertorial page (Haritaki Kidney Adv v2) already introduces polyphenols and tannins. The blood-origin mechanism goes further.</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Prove the mechanism. Stack evidence.</td>
+          <td>Open territory. The science exists (RCT, animal studies, pharmacokinetics). No brand is using it.</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td>Connect to identity. Market is exhausted.</td>
+          <td>Not yet applicable.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock-box">
+    <div class="lock-label">Creative Implication</div>
+    <p>Stage 3 advantage. The entire kidney supplement market is stuck at Stage 2 &mdash; more herbs, bigger blends, louder claims. Nobody is explaining WHY. The blood-origin mechanism (XOD inhibition, URAT1 downregulation, NLRP3 suppression) is the weapon. Every ad should teach biology, not stack promises. We have a clear runway before anyone else in this category introduces a mechanism.</p>
+  </div>
+
+  <!-- 1.3 LF8 -->
+  <div class="section">
+    <h2><span class="section-num">1.3</span> Purchase Trigger Map (Life Force 8)</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>LF8 Drive</th><th>Relevance</th><th>How It Manifests</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Survival / life extension</td>
+          <td><span class="tag tag-primary">Primary</span></td>
+          <td>The core fear. Dialysis. Kidney failure. The body giving out before you're ready. "I want to be around for my grandchildren."</td>
+        </tr>
+        <tr>
+          <td>2. Food / drink enjoyment</td>
+          <td><span class="tag tag-na">Low</span></td>
+          <td>Secondary connection through dietary restrictions that come with kidney problems. Losing the ability to eat freely.</td>
+        </tr>
+        <tr>
+          <td>3. Freedom from fear / pain</td>
+          <td><span class="tag tag-primary">Primary</span></td>
+          <td>Fear of the unknown. Fear of the blood test. Fear of the doctor's tone changing. Fear of swelling that won't go down. The dull anxiety of knowing something is wrong but not knowing how wrong.</td>
+        </tr>
+        <tr>
+          <td>4. Sexual companionship</td>
+          <td><span class="tag tag-na">Not applicable</span></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>5. Comfortable living</td>
+          <td><span class="tag tag-secondary">Secondary</span></td>
+          <td>Swollen ankles. Puffy face. Waking 3x a night to urinate. Fatigue that sleep doesn't fix. The daily discomfort of kidneys under strain.</td>
+        </tr>
+        <tr>
+          <td>6. Superiority / winning</td>
+          <td><span class="tag tag-secondary">Secondary</span></td>
+          <td>"I found something my doctor hasn't heard of." The pride of being proactive. Knowing something the system missed.</td>
+        </tr>
+        <tr>
+          <td>7. Care of loved ones</td>
+          <td><span class="tag tag-primary">Primary</span></td>
+          <td>Not being a burden. "My mother was on dialysis for 7 years. I watched what it did to her. I watched what it did to my father who had to take her three times a week." The caregiver's trauma recycled as prevention motivation.</td>
+        </tr>
+        <tr>
+          <td>8. Social approval</td>
+          <td><span class="tag tag-secondary">Secondary</span></td>
+          <td>Staying active in the community. Not becoming the person who can't travel, can't attend, can't keep up. The social cost of physical decline.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lock-box">
+    <div class="lock-label">Dominant Triggers</div>
+    <p><strong>LF1 (Survival) + LF3 (Freedom from fear) + LF7 (Care of loved ones)</strong> &mdash; this is the most emotionally intense combination in direct response. The prospect is not buying a supplement. She is buying ten more years of independence and the certainty that she won't repeat her mother's story.</p>
+  </div>
+
+  <!-- 1.4 ICP PROFILES -->
+  <div class="section">
+    <h2><span class="section-num">1.4</span> ICP Profiles</h2>
+  </div>
+
+  <!-- ICP 1 -->
+  <div class="card icp-card">
+    <div class="card-header">
+      <span class="card-title">The Foam Noticer &mdash; "Patricia"</span>
+      <span class="card-subtitle">Age 60 &middot; Female</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <span class="tag tag-accent">Problem Aware</span>
+      <span class="tag tag-warm">Stage 2 Sophistication</span>
+      <span class="tag tag-blue">LF1 + LF3</span>
+    </div>
+    <div class="table-wrap" style="margin-top: 0;">
+      <table>
+        <tbody>
+          <tr><td style="width:180px;"><strong>Trigger event</strong></td><td>Noticed foamy urine. Googled "why is my pee foaming." Read something about protein leaking and got scared. Hasn't told anyone yet.</td></tr>
+          <tr><td><strong>Mental state</strong></td><td>Quietly panicking. Watching the toilet every morning. Counting how many times she gets up at night. Wondering if she should call the doctor or if she's overreacting.</td></tr>
+          <tr><td><strong>Belief blocking sale</strong></td><td>"Supplements don't work for real problems. If this was serious, I'd need a doctor, not a capsule."</td></tr>
+          <tr><td><strong>Emotional doorway</strong></td><td>Validation. Someone naming what she's experiencing without telling her to panic. The relief of "this has a cause, and the cause is addressable."</td></tr>
+          <tr><td><strong>Hook direction</strong></td><td>"I was peeing and it was foaming like beer. I thought it was nothing. Then I read what foam actually means."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 2 -->
+  <div class="card icp-card">
+    <div class="card-header">
+      <span class="card-title">The Number Watcher &mdash; "Robert"</span>
+      <span class="card-subtitle">Age 58 &middot; Male</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <span class="tag tag-accent">Solution Aware</span>
+      <span class="tag tag-warm">Stage 2-3 Sophistication</span>
+      <span class="tag tag-blue">LF1 + LF6</span>
+    </div>
+    <div class="table-wrap" style="margin-top: 0;">
+      <table>
+        <tbody>
+          <tr><td style="width:180px;"><strong>Trigger event</strong></td><td>Got blood work back. Creatinine at 1.3. GFR trending from 78 to 64 over two years. Doctor said "let's keep an eye on it." That phrase landed like a diagnosis.</td></tr>
+          <tr><td><strong>Mental state</strong></td><td>Researching obsessively. Knows his numbers better than his doctor. Has compared every blood test since 2022. Wants control. Hates "watch and wait."</td></tr>
+          <tr><td><strong>Belief blocking sale</strong></td><td>"If there was something that actually helped kidney function, my nephrologist would know about it. The supplement aisle is for people who don't understand science."</td></tr>
+          <tr><td><strong>Emotional doorway</strong></td><td>Science. Published studies. PubMed links. The mechanism explained at a level that makes him feel like he found it, not like he was sold it.</td></tr>
+          <tr><td><strong>Hook direction</strong></td><td>"If your GFR dropped more than 10 points in the last two years, your doctor is watching one number and missing another."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 3 -->
+  <div class="card icp-card">
+    <div class="card-header">
+      <span class="card-title">The Dialysis Daughter &mdash; "Linda"</span>
+      <span class="card-subtitle">Age 55 &middot; Female</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <span class="tag tag-accent">Problem Aware</span>
+      <span class="tag tag-warm">Stage 1-2 Sophistication</span>
+      <span class="tag tag-blue">LF7 + LF3</span>
+    </div>
+    <div class="table-wrap" style="margin-top: 0;">
+      <table>
+        <tbody>
+          <tr><td style="width:180px;"><strong>Trigger event</strong></td><td>Watched her mother go through dialysis for years. The chairs. The hours. The bruises on her arms. Now Linda is the same age her mother was when it started. She's terrified of the same path.</td></tr>
+          <tr><td><strong>Mental state</strong></td><td>Proactive but unfocused. She'll buy anything that promises prevention but doesn't know how to evaluate claims. Has a cabinet of half-finished bottles.</td></tr>
+          <tr><td><strong>Belief blocking sale</strong></td><td>"This is probably genetic. If my mother had it, I'm going to get it. Nothing I take is going to change my DNA."</td></tr>
+          <tr><td><strong>Emotional doorway</strong></td><td>Legacy. "You are not your mother's story. Genetics loads the gun. What runs through your blood pulls the trigger." The promise that the outcome is not predetermined.</td></tr>
+          <tr><td><strong>Hook direction</strong></td><td>"My mother spent 7 years on dialysis. I swore I'd never sit in that chair. Here's what I found at age 55 that she never had access to."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 4 -->
+  <div class="card icp-card">
+    <div class="card-header">
+      <span class="card-title">The Pill-Fatigued &mdash; "James"</span>
+      <span class="card-subtitle">Age 67 &middot; Male</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <span class="tag tag-accent">Solution Aware</span>
+      <span class="tag tag-warm">Stage 3 Sophistication</span>
+      <span class="tag tag-blue">LF1 + LF5</span>
+    </div>
+    <div class="table-wrap" style="margin-top: 0;">
+      <table>
+        <tbody>
+          <tr><td style="width:180px;"><strong>Trigger event</strong></td><td>Already on BP meds, a statin, and metformin. Doctor just added a diuretic. James realized his kidneys are now filtering five prescription medications every day on top of everything else. The irony hit him: the pills meant to save him might be wearing out the organs that process them.</td></tr>
+          <tr><td><strong>Mental state</strong></td><td>Frustrated. Feels managed, not improved. Every new prescription feels like evidence that the last one didn't work. Doesn't want to "add another pill" but will if the science is different.</td></tr>
+          <tr><td><strong>Belief blocking sale</strong></td><td>"Another capsule is just another thing my kidneys have to filter. How is adding more going to help organs that are already overloaded?"</td></tr>
+          <tr><td><strong>Emotional doorway</strong></td><td>The upstream angle. "What if, instead of adding another thing the kidneys have to process, you addressed what's making them work so hard in the first place?" The distinction between loading the filter and cleaning the blood.</td></tr>
+          <tr><td><strong>Hook direction</strong></td><td>"I'm on 4 prescriptions. Each one my kidneys have to filter. Then my doctor said the word 'fifth.' That's when I started looking upstream."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 5 -->
+  <div class="card icp-card">
+    <div class="card-header">
+      <span class="card-title">The Silent Decliner &mdash; "Margaret"</span>
+      <span class="card-subtitle">Age 62 &middot; Female</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <span class="tag tag-accent">Unaware &rarr; Problem Aware</span>
+      <span class="tag tag-warm">Stage 1 Sophistication</span>
+      <span class="tag tag-blue">LF5 + LF7</span>
+    </div>
+    <div class="table-wrap" style="margin-top: 0;">
+      <table>
+        <tbody>
+          <tr><td style="width:180px;"><strong>Trigger event</strong></td><td>Ankles swelling by evening. Rings tighter. Face puffy in the morning. She's attributed it to salt, heat, standing too long. Hasn't connected these to her kidneys. The word "kidney" hasn't entered her vocabulary yet.</td></tr>
+          <tr><td><strong>Mental state</strong></td><td>Mildly annoyed, not alarmed. "This is just getting older." Will not search for kidney supplements. Will respond to content about swelling, puffiness, fatigue &mdash; the symptoms, not the organ.</td></tr>
+          <tr><td><strong>Belief blocking sale</strong></td><td>"I don't have a kidney problem. I'd know if I did. These are just normal aging things."</td></tr>
+          <tr><td><strong>Emotional doorway</strong></td><td>The reveal. "The parts of your body that make the most noise get the most attention. Your kidneys are silent. That's what makes them dangerous." Curiosity, not fear.</td></tr>
+          <tr><td><strong>Hook direction</strong></td><td>"Your ankles are swelling. Your rings are tight. Your face is puffy in the morning. You think it's salt. It isn't."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- PHASE 2: REFRAME -->
+  <!-- ================================================ -->
+  <div class="phase-divider" id="reframe">
+    <span class="phase-badge phase-r">Phase 2 &mdash; Reframe</span>
+  </div>
+
+  <!-- 2.1 PROBLEM MECHANISM -->
+  <div class="section">
+    <h2><span class="section-num">2.1</span> Problem Mechanism</h2>
+  </div>
+
+  <div class="lock-box">
+    <div class="lock-label">The Reframe</div>
+    <p>The problem isn't that your kidneys are failing. The problem is that your blood has been overloaded for decades &mdash; with uric acid, oxidative debris, and inflammatory signals &mdash; and nobody addressed what was flowing through the filter before the filter started giving out.</p>
+  </div>
+
+  <p>Every kidney supplement on the market treats the kidneys like the problem. Flush them. Cleanse them. Detox them. But the kidneys are the victim, not the villain. They've been faithfully filtering blood that's been getting heavier every year &mdash; more uric acid, more oxidized LDL, more inflammatory markers. The filter didn't fail. It was overwhelmed.</p>
+  <p>This reframe does three things: (1) it separates Lanaya from every "kidney cleanse" competitor, (2) it introduces a mechanism the prospect has never heard, and (3) it makes the solution obvious before the product is named &mdash; if the problem is in the blood, the solution must start in the blood too.</p>
+
+  <!-- ROOT CAUSE CONNECTION MAP -->
+  <div class="section">
+    <h3>Root Cause Connection Map</h3>
+    <p>Every angle traces to one root cause: toxic metabolic load in the blood overwhelming the kidney filters. The emotional journey is the same in every angle. Problem, failed attempts, discovery, mechanism, solution.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Angle</th><th>Root cause</th><th>Downstream damage</th><th>Key markers</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Blood Toxicity</strong></td>
+          <td>Uric acid + oxidative waste accumulate faster than kidneys clear them</td>
+          <td>Crystals form in tubules, NLRP3 inflammasome fires, fibrosis begins</td>
+          <td>Serum uric acid, MDA, CRP</td>
+        </tr>
+        <tr>
+          <td><strong>Kidney Function</strong></td>
+          <td>Same blood toxicity grinds the glomerular filters</td>
+          <td>Nephrons destroyed one by one, protein leaks, creatinine rises, GFR drops</td>
+          <td>eGFR, creatinine, albumin-to-creatinine ratio</td>
+        </tr>
+        <tr>
+          <td><strong>Inflammation</strong></td>
+          <td>Same uric acid crystals trigger NLRP3 stuck ON</td>
+          <td>Chronic low-grade inflammation, endothelial damage, accelerated aging</td>
+          <td>CRP, IL-6, TNF-alpha</td>
+        </tr>
+        <tr>
+          <td><strong>Blood Pressure</strong></td>
+          <td>Same oxidative stress stiffens renal arterioles</td>
+          <td>Reduced kidney blood flow, vascular damage, BP rises</td>
+          <td>BP readings, renal artery stiffness</td>
+        </tr>
+        <tr>
+          <td><strong>Joint / Gout</strong></td>
+          <td>Same excess uric acid precipitates in joints</td>
+          <td>Crystal-induced inflammation, gout flares</td>
+          <td>Serum uric acid &gt; 6.8 mg/dL</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- THREE BIOLOGICAL PATHWAYS -->
+  <div class="section">
+    <h3>The Three Biological Pathways</h3>
+    <p>Adapted from the Metabolae structure (GLUT4/AMPK/NLRP3). Three named pathways that Haritaki's compounds act on, each backed by published research.</p>
+  </div>
+
+  <div class="pathway-grid">
+    <div class="pathway-card">
+      <h4>PATHWAY 1</h4>
+      <div class="pw-name">XOD &mdash; Xanthine Oxidase</div>
+      <p>The enzyme that produces uric acid from purines. Haritaki inhibits XOD activity, reducing uric acid production at the source. Same target as allopurinol and febuxostat &mdash; prescription drugs for gout. (J Ethnopharmacol 2025; J Inflammation Research 2024)</p>
+    </div>
+    <div class="pathway-card">
+      <h4>PATHWAY 2</h4>
+      <div class="pw-name">URAT1 / GLUT9 &mdash; Urate Transporters</div>
+      <p>Kidney transporters that reabsorb uric acid back into the blood instead of flushing it out. Haritaki downregulates both, promoting excretion. Less reabsorption = lower serum uric acid. (Li et al., 2025, J Ethnopharmacol)</p>
+    </div>
+    <div class="pathway-card">
+      <h4>PATHWAY 3</h4>
+      <div class="pw-name">NLRP3 / NF-kB &mdash; Inflammatory Cascade</div>
+      <p>Uric acid crystals trigger the NLRP3 inflammasome in kidney tubular cells, releasing IL-1beta and IL-18. Haritaki suppresses both NLRP3 activation and the NF-kB pathway that amplifies it. The alarm gets turned off. (J Ethnopharmacol 2024; PMC 38159820)</p>
+    </div>
+  </div>
+
+  <!-- HARITAKI SCIENCE SUMMARY -->
+  <div class="section">
+    <h3>Haritaki Science Summary</h3>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Study Type</th><th>Finding</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Human RCT (double-blind, placebo-controlled, n=110)</td>
+          <td>T. chebula 500mg BID produced significant reduction in serum uric acid vs placebo and baseline, starting at week 4. (Caveat: T. bellerica performed better in the same trial.)</td>
+          <td>Usharani et al., 2016, Clin Pharmacol Adv App. PMC4922806</td>
+        </tr>
+        <tr>
+          <td>Human RCT (type 2 diabetes, double-blind)</td>
+          <td>T. chebula aqueous extract decreased serum TNF-alpha from baseline to day 84. CRP trended down.</td>
+          <td>Shatoor et al., 2020, Phytotherapy Research</td>
+        </tr>
+        <tr>
+          <td>Pharmacokinetics (UPLC-MS/MS, rats)</td>
+          <td>Chebulagic acid: Cmax 4,983 ng/mL, AUC 231,112. Chebulinic acid: 43-hour half-life. Compounds reach systemic circulation at therapeutic concentrations.</td>
+          <td>Frontiers in Pharmacology, 2023</td>
+        </tr>
+        <tr>
+          <td>Hyperuricemic nephropathy (animal)</td>
+          <td>T. chebula significantly decreased serum uric acid, BUN, creatinine. Reduced renal fibrosis via TLR4/MyD88/NF-kB suppression. Inhibited NOX1.</td>
+          <td>J Ethnopharmacol, 2024. PMID 38159820</td>
+        </tr>
+        <tr>
+          <td>Cisplatin nephrotoxicity (animal)</td>
+          <td>T. chebula dose-dependently inhibited elevation of serum creatinine and BUN. Reversed tubular necrosis on histology.</td>
+          <td>Ghosh et al., 2018, Nat Prod Res. PubMed 29343091</td>
+        </tr>
+        <tr>
+          <td>Gout / XOD inhibition (animal, 2025)</td>
+          <td>T. chebula inhibited xanthine oxidase, downregulated URAT1 and GLUT9, suppressed NLRP3 inflammasome. Triple mechanism.</td>
+          <td>Li et al., 2025, J Ethnopharmacol. PMID 40268110</td>
+        </tr>
+        <tr>
+          <td>Antioxidant comparison (in vitro)</td>
+          <td>T. chebula IC50 = 1.73 ug/mL vs ascorbic acid IC50 = 5.29 ug/mL. Roughly 3x more potent than vitamin C by ABTS assay.</td>
+          <td>Hazra et al., 2010, BMC Complement Med</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- THREE FAILURES -->
+  <div class="section">
+    <h3>The Three Failures</h3>
+    <p>Always in this order. Approach, then Dose, then Format. Why other Haritaki and kidney products fail.</p>
+  </div>
+
+  <div class="failure-stack">
+    <div class="failure-item">
+      <div class="failure-num">1</div>
+      <div class="failure-body">
+        <h4>Wrong Approach.</h4>
+        <p>95% of kidney supplements are diuretics &mdash; dandelion, parsley, horsetail, juniper, buchu. They increase urine volume. More water out does not mean cleaner blood. The uric acid crystals forming in your tubules, the oxidized LDL damaging your glomeruli, the NLRP3 alarm stuck in the ON position &mdash; none of that is addressed by making you urinate more. You are draining the bathtub while the faucet stays on.</p>
+      </div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-num">2</div>
+      <div class="failure-body">
+        <h4>Wrong Dose.</h4>
+        <p>Most Haritaki products deliver 500mg of raw ground powder. The pharmacokinetics research (Frontiers in Pharmacology, 2023) shows the key compounds &mdash; chebulagic acid and chebulinic acid &mdash; require concentrated extraction to reach therapeutic plasma levels. Lanaya delivers 1,000mg of full-spectrum Terminalia chebula extract per capsule, 2,000mg daily at the suggested two-capsule routine.</p>
+      </div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-num">3</div>
+      <div class="failure-body">
+        <h4>Wrong Format.</h4>
+        <p>Traditional Haritaki is one of the bitterest fruits in Ayurveda. Raw powder is so unpleasant that most people abandon it within a week. The routine dies before it becomes a routine. Capsule format removes the compliance barrier entirely. Two capsules with water. No bitter taste. No tea to prepare. No powder to measure. The most scientifically interesting botanical in the world does nothing sitting untouched in the back of your cupboard.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2.2 WHY OTHER APPROACHES FAIL -->
+  <div class="section">
+    <h2><span class="section-num">2.2</span> Why Other Approaches Fail</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Approach</th><th>What they claim</th><th>Why it fails</th><th>Lanaya advantage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kidney cleanse / detox (Renew Life, etc.)</td>
+          <td>"Cleanse, sterilize, alkalize the urinary system"</td>
+          <td>Diuretics flush water, not metabolic waste. 30-day program with a stop date &mdash; kidney stress doesn't pause.</td>
+          <td>Addresses the blood upstream. Daily habit, not a cleanse cycle.</td>
+        </tr>
+        <tr>
+          <td>Multi-herb blends (VitaPost, etc.)</td>
+          <td>"11 herbs + superfruit blend for kidney nourishment"</td>
+          <td>Proprietary blends hide individual doses. No named mechanism. No research on the combination. Kitchen-sink formulation.</td>
+          <td>Single ingredient. Named dose (1,000mg). Named mechanism (XOD, URAT1, NLRP3). Published research on the actual compound.</td>
+        </tr>
+        <tr>
+          <td>Cranberry extract products</td>
+          <td>"Prevents bacteria from adhering to urinary tract walls"</td>
+          <td>UTI prevention, not kidney function support. Wrong organ, wrong problem.</td>
+          <td>Haritaki's published research is specifically on kidney stress markers (creatinine, BUN, uric acid, renal fibrosis). Not a UTI product.</td>
+        </tr>
+        <tr>
+          <td>Prescription (allopurinol / febuxostat)</td>
+          <td>"Reduces uric acid production"</td>
+          <td>Effective but addresses only XOD. Does not reduce URAT1 reabsorption. Does not suppress NLRP3 inflammation. Does not scavenge oxidative waste. Single-pathway intervention.</td>
+          <td>Haritaki acts on three pathways simultaneously: reduces production (XOD), increases excretion (URAT1/GLUT9), calms inflammation (NLRP3/NF-kB). Plus antioxidant activity 3x vitamin C.</td>
+        </tr>
+        <tr>
+          <td>"Kidney support" with no mechanism</td>
+          <td>"Supports healthy kidney function"</td>
+          <td>Schwartz Stage 1-2 claim. No explanation of HOW. The prospect has heard "supports" on 50 bottles. It means nothing to her anymore.</td>
+          <td>Stage 3 mechanism. Names the pathways. Shows the biology. Teaches instead of promises.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2.3 CATEGORY GAP -->
+  <div class="section">
+    <h2><span class="section-num">2.3</span> Category Gap Analysis</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category norm</th><th>The gap</th><th>How Lanaya fills it</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kidney supplements treat the kidney as the problem</td>
+          <td>Nobody is asking what's in the blood BEFORE it reaches the kidney</td>
+          <td>Blood-origin mechanism. The kidney is the victim, not the villain.</td>
+        </tr>
+        <tr>
+          <td>Multi-ingredient blends dominate</td>
+          <td>No single-ingredient kidney product with a named mechanism</td>
+          <td>One ingredient. One compound. Three named pathways.</td>
+        </tr>
+        <tr>
+          <td>No brand is citing published research</td>
+          <td>Zero kidney supplement brands reference specific studies</td>
+          <td>Human RCT (PMC4922806), pharmacokinetics data, five animal nephroprotection studies. All citable.</td>
+        </tr>
+        <tr>
+          <td>Category language is "cleanse" and "detox"</td>
+          <td>No education-first advertorial positioning</td>
+          <td>Lanaya's existing advertorial page is the right format. The blood mechanism gives it something to teach.</td>
+        </tr>
+        <tr>
+          <td>Haritaki is virtually unknown in the US</td>
+          <td>Zero consumer awareness = zero competitor fatigue</td>
+          <td>Clean slate. The prospect has never been disappointed by Haritaki. No broken promises to overcome.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2.4 SOLUTION MECHANISM 3-LAYER -->
+  <div class="section">
+    <h2><span class="section-num">2.4</span> Solution Mechanism (3-Layer)</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>What it is</th><th>How to communicate</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Layer 1: Surface</strong><br>What the product does</td>
+          <td>Haritaki capsule that supports healthy kidney function by addressing what's in the blood before it reaches the filter.</td>
+          <td>"A 3,000-year-old Ayurvedic fruit that modern researchers are studying for the compounds inside it &mdash; compounds that act on the same pathways as prescription medications."</td>
+        </tr>
+        <tr>
+          <td><strong>Layer 2: Unique</strong><br>Why this product works differently</td>
+          <td>Triple-pathway action: reduces uric acid production (XOD), increases uric acid excretion (URAT1/GLUT9), suppresses the inflammatory cascade those crystals trigger (NLRP3/NF-kB). No other kidney supplement names these pathways.</td>
+          <td>"Most kidney products flush water. This is not a flush. It acts on the three pathways that control what's actually in your blood. One enzyme, two transporters, one inflammatory switch."</td>
+        </tr>
+        <tr>
+          <td><strong>Layer 3: Hidden</strong><br>Identity / behavioral layer</td>
+          <td>The person who finds this is the person who looks upstream. She doesn't accept "let's keep an eye on it." She's the one who reads the research, asks the hard questions, and takes action before her body forces her to.</td>
+          <td>"You already take care of your heart, your joints, your gut. This is just the organ you forgot. And forgetting it doesn't mean it forgot you."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2.5 REFRAME CHAINS -->
+  <div class="section">
+    <h2><span class="section-num">2.5</span> Four-Line Reframe Chains</h2>
+  </div>
+
+  <div class="reframe-chain">
+    <div class="reframe-line reframe-validate"><span class="reframe-label">Validate</span><span class="reframe-text">You've been told kidney problems just happen with age. That after 50, things slow down. That it's normal.</span></div>
+    <div class="reframe-line reframe-crack"><span class="reframe-label">Crack</span><span class="reframe-text">But your kidneys at 50 are the same kidneys you had at 30. What changed isn't the organ. It's what's been running through it for the last 20 years.</span></div>
+    <div class="reframe-line reframe-reframe"><span class="reframe-label">Reframe</span><span class="reframe-text">Uric acid, oxidative waste, inflammatory signals &mdash; they accumulate in your blood decade after decade. The kidneys don't age. They get overwhelmed by blood that got heavier.</span></div>
+    <div class="reframe-line reframe-bridge"><span class="reframe-label">Bridge</span><span class="reframe-text">Haritaki is a 3,000-year-old Ayurvedic fruit. Modern researchers found it acts on the enzyme that produces uric acid, the transporters that recycle it, and the inflammatory alarm it triggers in kidney tissue.</span></div>
+  </div>
+
+  <div class="reframe-chain">
+    <div class="reframe-line reframe-validate"><span class="reframe-label">Validate</span><span class="reframe-text">You've tried a kidney cleanse. Maybe more than one. Dandelion. Parsley. Cranberry. You drank more water. You urinated more. Nothing changed.</span></div>
+    <div class="reframe-line reframe-crack"><span class="reframe-label">Crack</span><span class="reframe-text">Because flushing water through the filter doesn't clean the filter. It never did. The uric acid crystals forming inside your kidney tubules aren't water-soluble.</span></div>
+    <div class="reframe-line reframe-reframe"><span class="reframe-label">Reframe</span><span class="reframe-text">The problem is upstream. It's the blood. More specifically, it's the metabolic waste your blood carries that your body can no longer clear fast enough. Clean the blood and the filter stops taking damage.</span></div>
+    <div class="reframe-line reframe-bridge"><span class="reframe-label">Bridge</span><span class="reframe-text">Terminalia chebula &mdash; Haritaki &mdash; inhibits xanthine oxidase, the same enzyme prescription gout drugs target. Except it also downregulates the transporters that reabsorb uric acid back into your blood. That's two pathways. No kidney cleanse touches either one.</span></div>
+  </div>
+
+  <div class="reframe-chain">
+    <div class="reframe-line reframe-validate"><span class="reframe-label">Validate</span><span class="reframe-text">Your doctor is tracking your creatinine and GFR. Maybe your numbers are borderline. Maybe they're trending the wrong direction. She said "let's keep an eye on it."</span></div>
+    <div class="reframe-line reframe-crack"><span class="reframe-label">Crack</span><span class="reframe-text">"Keep an eye on it" means "watch the damage happen." Creatinine doesn't rise until nephrons are already dead. By the time the scoreboard changes, you've lost filters you can't replace.</span></div>
+    <div class="reframe-line reframe-reframe"><span class="reframe-label">Reframe</span><span class="reframe-text">The scoreboard isn't the game. The game is what's in the blood. Uric acid, oxidative stress, inflammatory pressure &mdash; those are the forces destroying nephrons before creatinine ever moves.</span></div>
+    <div class="reframe-line reframe-bridge"><span class="reframe-label">Bridge</span><span class="reframe-text">Researchers studying Haritaki in a kidney-stress model measured significant changes in creatinine, BUN, oxidative markers, and kidney tissue &mdash; not by treating the kidneys directly, but by acting on the blood-level compounds that were damaging them.</span></div>
+  </div>
+
+  <!-- 2.6 SKEPTICISM PRE-EMPTION -->
+  <div class="section">
+    <h2><span class="section-num">2.6</span> Skepticism Pre-emption</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Objection</th><th>Pre-emption strategy</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"If this worked, my doctor would prescribe it"</td>
+          <td>Doctors prescribe allopurinol for the SAME enzyme (xanthine oxidase). Haritaki isn't a prescription because it's a food, not a drug &mdash; the same reason your doctor doesn't prescribe omega-3 or turmeric. The science exists. The regulatory category doesn't.</td>
+        </tr>
+        <tr>
+          <td>"This is just an herb. Herbs don't do anything real"</td>
+          <td>There is a randomized, double-blind, placebo-controlled human trial on Terminalia chebula showing measurable uric acid reduction. That's the same study design as a pharmaceutical trial. Herbs aren't magic. This one has data.</td>
+        </tr>
+        <tr>
+          <td>"The studies are on rats, not people"</td>
+          <td>Acknowledge it directly. Say: "The kidney-specific research is preclinical. The human trial measured uric acid, not kidney function directly. We cite what exists and don't pretend it says more than it does." Honesty is the differentiator. Every other brand overclaims.</td>
+        </tr>
+        <tr>
+          <td>"I've never heard of Haritaki"</td>
+          <td>Lean into it. "Neither had we. That's what made it interesting. An ingredient nobody's selling, nobody's hyping, no one has a failed experience with. Just published research that keeps accumulating quietly."</td>
+        </tr>
+        <tr>
+          <td>"Adding another supplement won't help kidneys already under strain"</td>
+          <td>Reframe. "This isn't another load on the filter. Haritaki acts in the blood, upstream of the kidney. It reduces what the kidney has to process &mdash; less uric acid to filter, less oxidative damage to repair, less inflammatory pressure to absorb."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- PHASE 3: IGNITE -->
+  <!-- ================================================ -->
+  <div class="phase-divider" id="ignite">
+    <span class="phase-badge phase-i">Phase 3 &mdash; Ignite</span>
+  </div>
+
+  <!-- 3.1 EMOTIONAL DRIVER MATRIX -->
+  <div class="section">
+    <h2><span class="section-num">3.1</span> Emotional Driver Matrix</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>ICP</th><th>Primary emotion</th><th>Secondary emotion</th><th>Emotional peak moment</th><th>Creative format</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Foam Noticer (Patricia)</td>
+          <td>Quiet panic</td>
+          <td>Shame (hasn't told anyone)</td>
+          <td>"The moment she realizes foam means protein and protein means damage"</td>
+          <td>UGC testimonial &mdash; woman talking to camera in bathroom. "I almost didn't Google it."</td>
+        </tr>
+        <tr>
+          <td>The Number Watcher (Robert)</td>
+          <td>Controlled fear</td>
+          <td>Frustration (wants agency)</td>
+          <td>"The moment the doctor says 'let's keep an eye on it' and he realizes that means 'watch it happen'"</td>
+          <td>Authority / education &mdash; screen share of blood work, numbers highlighted, mechanism explained</td>
+        </tr>
+        <tr>
+          <td>The Dialysis Daughter (Linda)</td>
+          <td>Inherited trauma</td>
+          <td>Determination</td>
+          <td>"The moment she looks at her hands and sees her mother's hands. Same age. Same veins."</td>
+          <td>Storytelling &mdash; caregiver narrative. "I watched what dialysis did to my mother. I swore it wouldn't be my story."</td>
+        </tr>
+        <tr>
+          <td>The Pill-Fatigued (James)</td>
+          <td>Frustration</td>
+          <td>Distrust (of the system)</td>
+          <td>"The moment the doctor says 'we're adding a fifth medication' and James realizes every pill goes through his kidneys"</td>
+          <td>Anti-establishment / medication resistance angle. "I'm on 4 prescriptions. Each one my kidneys have to filter."</td>
+        </tr>
+        <tr>
+          <td>The Silent Decliner (Margaret)</td>
+          <td>Mild annoyance</td>
+          <td>Dawning recognition</td>
+          <td>"The moment she reads that swelling, puffiness, and tight rings aren't 'just aging' &mdash; they're her kidneys signaling"</td>
+          <td>Curiosity / education. Native-style content. "Your body has been sending you signals. You've been blaming salt."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3.2 PROOF ARCHITECTURE -->
+  <div class="section">
+    <h2><span class="section-num">3.2</span> Proof Architecture</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Trust Level</th><th>Proof Type</th><th>Available Assets</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;">Tier 1 (Highest)</td>
+          <td>Human clinical trial</td>
+          <td>RCT: 110 subjects, double-blind, placebo-controlled, uric acid reduction (PMC4922806). T2DM trial: TNF-alpha reduction (Shatoor 2020).</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tier 2</td>
+          <td>Specific biological mechanism</td>
+          <td>XOD inhibition, URAT1/GLUT9 downregulation, NLRP3/NF-kB suppression. Named pathways with published evidence. Pharmacokinetics: 43-hour half-life of chebulinic acid in plasma.</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tier 3</td>
+          <td>Comparative data</td>
+          <td>Antioxidant potency 3x vitamin C (ABTS assay). Same enzyme target as prescription allopurinol/febuxostat.</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tier 4</td>
+          <td>Historical / traditional authority</td>
+          <td>3,000+ years in Ayurvedic medicine. Classified as Tridoshahara. One of three Triphala ingredients. Referenced in Charaka Samhita and Bhavaprakash Nighantu.</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">Tier 5</td>
+          <td>Social proof / testimonials</td>
+          <td>Weak. No verified independent reviews. On-site reviews appear templated. This is a gap &mdash; real customer stories need to be built from actual purchaser feedback.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3.3 CONVERSION AMPLIFIERS -->
+  <div class="section">
+    <h2><span class="section-num">3.3</span> Conversion Amplifiers</h2>
+  </div>
+
+  <div class="section">
+    <h3>Urgency Frames</h3>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Frame</th><th>Application</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Biological urgency</strong></td><td>"Every nephron you lose is gone permanently. You do not grow them back." This isn't manufactured scarcity. It's biology.</td></tr>
+        <tr><td><strong>Time urgency</strong></td><td>"34% of people over 65 have CKD. Most don't know until it's too late to reverse the damage."</td></tr>
+        <tr><td><strong>Risk reversal</strong></td><td>Money-back guarantee. "Try it in your own routine. If it doesn't earn a permanent place, you get your money back."</td></tr>
+        <tr><td><strong>Bundle economics</strong></td><td>Buy 2 Get 1 Free reduces daily cost and encourages the 90-day trial necessary for any kidney-support routine to show results.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>CTA Stack</h3>
+    <p>The complete argument in order, before the click.</p>
+  </div>
+  <div style="padding: 0 0 24px;">
+    <ol style="padding-left: 20px; color: var(--text-secondary); font-size: 14px; line-height: 2;">
+      <li>You now understand why your kidneys are under strain (the blood, not the organ)</li>
+      <li>You understand why cleanses and multi-herb blends didn't work (wrong approach)</li>
+      <li>You've seen the published research on Haritaki (human trial, mechanism studies)</li>
+      <li>You know what Lanaya contains (1,000mg full-spectrum extract, clearly dosed)</li>
+      <li>You know it's third-party tested, no fillers, no bitter powder</li>
+      <li>You know there's a money-back guarantee</li>
+      <li>You know the Buy 2 Get 1 Free offer is available right now</li>
+      <li>CTA: "See today's Lanaya Haritaki offer"</li>
+    </ol>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- PHASE 4: VARIATE -->
+  <!-- ================================================ -->
+  <div class="phase-divider" id="variate">
+    <span class="phase-badge phase-v">Phase 4 &mdash; Variate</span>
+  </div>
+
+  <!-- 4.1 HOOK VARIATIONS -->
+  <div class="section">
+    <h2><span class="section-num">4.1</span> Hook Variations by Angle</h2>
+  </div>
+
+  <details>
+    <summary>Blood-Origin / Root Cause Angle (8 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">01</span>"Your kidneys are not failing because they're weak. They're failing because of what's been running through them."</li>
+        <li><span class="hook-num">02</span>"Your doctor is watching the filter. Nobody is looking at what's flowing through it."</li>
+        <li><span class="hook-num">03</span>"Creatinine doesn't rise until nephrons are already dead. By the time the scoreboard changes, you've already lost filters you can't replace."</li>
+        <li><span class="hook-num">04</span>"Your kidneys filter 180 liters of blood a day. The question is not whether they work. The question is what they've been working on."</li>
+        <li><span class="hook-num">05</span>"Every kidney supplement you've seen tries to fix the filter. This is the first one that cleans what's flowing through it."</li>
+        <li><span class="hook-num">06</span>"Your blood has been getting heavier for 20 years. More uric acid. More oxidative waste. More inflammatory signals. Your kidneys have been quiet about it. Until now."</li>
+        <li><span class="hook-num">07</span>"There's an enzyme in your body producing uric acid faster than your kidneys can flush it. Your doctor has a drug for it. But there's a 3,000-year-old fruit that targets the same enzyme."</li>
+        <li><span class="hook-num">08</span>"The most overlooked organ in your body is also the one filtering half a cup of blood every single minute. What happens when the blood gets dirty?"</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Symptom / Recognition Angle (6 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">09</span>"I was peeing and it was foaming like beer. I thought it was nothing. Then I read what foam actually means."</li>
+        <li><span class="hook-num">10</span>"Your ankles are swelling. Your rings are tight. Your face is puffy in the morning. You think it's salt. It isn't."</li>
+        <li><span class="hook-num">11</span>"The most dangerous sign of kidney strain is not back pain. It is not swelling. It is the one thing you check every morning without realizing you're checking it."</li>
+        <li><span class="hook-num">12</span>"You wake up three times a night. Your doctor says it's your prostate. What if it's your kidneys trying to keep up with blood they can barely filter anymore?"</li>
+        <li><span class="hook-num">13</span>"Metallic taste. Itchy skin. Fatigue sleep doesn't fix. Three symptoms, one organ, zero attention."</li>
+        <li><span class="hook-num">14</span>"The skin tags are not a skin problem. The swelling is not a salt problem. The fatigue is not a sleep problem. Your body is sending you a message from two organs you've been ignoring."</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Caregiver / Legacy Angle (6 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">15</span>"My mother spent 7 years on dialysis. I swore I'd never sit in that chair. Here's what I found at age 55 that she never had access to."</li>
+        <li><span class="hook-num">16</span>"Genetics loads the gun. What runs through your blood pulls the trigger. That's the sentence that changed how I think about my kidneys."</li>
+        <li><span class="hook-num">17</span>"I drove my father to dialysis three times a week for four years. I know exactly what kidney failure costs a family. So I started looking upstream."</li>
+        <li><span class="hook-num">18</span>"Two women in my family. Same genetics. Same risk. Different outcomes. The difference wasn't luck."</li>
+        <li><span class="hook-num">19</span>"The hardest part of watching someone on dialysis isn't the treatment. It's knowing they didn't know it was coming."</li>
+        <li><span class="hook-num">20</span>"My grandmother said Haritaki was for the blood. She didn't know about xanthine oxidase or NLRP3 inflammasomes. She just knew."</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Numbers / Blood Work Angle (6 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">21</span>"If your GFR dropped more than 10 points in the last two years, your doctor is watching one number and missing another."</li>
+        <li><span class="hook-num">22</span>"Creatinine 1.3. GFR 64. My doctor said 'let's keep an eye on it.' That phrase sounded like a diagnosis."</li>
+        <li><span class="hook-num">23</span>"There's a number on your blood work your doctor barely mentions. It's called uric acid. And it may be doing more damage to your kidneys than anything else on that panel."</li>
+        <li><span class="hook-num">24</span>"Your blood work has two kidneys numbers. One your doctor watches. One nobody explains. The second one is the one that matters."</li>
+        <li><span class="hook-num">25</span>"My nephrologist ran the labs twice. He thought there was an error. There wasn't."</li>
+        <li><span class="hook-num">26</span>"35.5 million Americans have kidney disease. 83% of them don't know it. The first sign isn't pain. It's a number you've been overlooking."</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Medication Resistance / Pill Fatigue Angle (6 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">27</span>"I'm on 4 prescriptions. Each one my kidneys have to filter. Then my doctor said the word 'fifth.' That's when I started looking upstream."</li>
+        <li><span class="hook-num">28</span>"Every pill you swallow goes through your kidneys. Has anyone asked what that's doing to them over 10 years?"</li>
+        <li><span class="hook-num">29</span>"Metformin manages the flood. Lisinopril relaxes the pipe. Neither one opens the drain. And both go through your kidneys."</li>
+        <li><span class="hook-num">30</span>"I'm about to say something that might annoy a few nephrologists. But my kidneys are tired of being polite."</li>
+        <li><span class="hook-num">31</span>"There's a difference between adding another pill to the pile and addressing why the pile keeps growing."</li>
+        <li><span class="hook-num">32</span>"Your doctor manages the symptoms. Your pharmacist fills the prescriptions. Who is looking after the two organs processing all of it?"</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Ancient Tradition / Discovery Angle (6 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">33</span>"Long before laboratories existed, Ayurvedic practitioners were already calling Haritaki 'the king of medicines.' Modern researchers just found out why."</li>
+        <li><span class="hook-num">34</span>"3,000 years of traditional use. Then a team of researchers ran it through a pharmacokinetics study and found compounds with a 43-hour half-life in human plasma."</li>
+        <li><span class="hook-num">35</span>"Ancient tradition identified the fruit. Modern science identified the compounds inside it. The fruit didn't change. We finally had the tools to see what was always there."</li>
+        <li><span class="hook-num">36</span>"The most interesting kidney discovery I've made this year is 3,000 years old."</li>
+        <li><span class="hook-num">37</span>"In Ayurveda they called it Rakta Shodhana &mdash; blood purification. They didn't have a name for xanthine oxidase. They didn't need one. They could see what it did."</li>
+        <li><span class="hook-num">38</span>"A fruit most Americans have never heard of. Published in journals most Americans will never read. Working on pathways most Americans don't know exist."</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Prevention / "The Forgotten Organ" Angle (8 hooks)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">39</span>"You take care of your heart. Your joints. Your gut. When was the last time you thought about the two organs filtering your blood every minute?"</li>
+        <li><span class="hook-num">40</span>"There's a supplement aisle for your heart, your joints, your sleep, your gut, your brain. Where's the aisle for the organ that filters everything?"</li>
+        <li><span class="hook-num">41</span>"The parts of your body that make the most noise get the most attention. Your kidneys are silent. That's what makes them dangerous."</li>
+        <li><span class="hook-num">42</span>"You think about your heart before it demands attention. Your bones before they break. Why are the two organs filtering your blood the only ones you wait on?"</li>
+        <li><span class="hook-num">43</span>"34% of people over 65 have chronic kidney disease. How many of them had a kidney supplement in their cabinet before the diagnosis?"</li>
+        <li><span class="hook-num">44</span>"The body you want ten years from now is being built by the choices you make today. Two organs aren't getting any of those choices."</li>
+        <li><span class="hook-num">45</span>"Should we really wait until part of our body demands attention before we start thinking about it?"</li>
+        <li><span class="hook-num">46</span>"Your heart gets your cardiologist. Your joints get your orthopedist. Your gut gets your probiotics. Your kidneys get... nothing. Until they get a diagnosis."</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- 4.2 FORMAT VARIATIONS -->
+  <div class="section">
+    <h2><span class="section-num">4.2</span> Format Variations</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Format</th><th>Best for</th><th>Length</th><th>Key element</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>UGC testimonial</td><td>Patricia, Margaret</td><td>900-1,400w</td><td>First-person symptom discovery. Camera phone energy. "I noticed the foam and..."</td></tr>
+        <tr><td>Education / advertorial</td><td>Robert, James</td><td>1,600-2,200w</td><td>Mechanism-heavy. Named pathways. Science cited. The existing Lanaya advertorial format.</td></tr>
+        <tr><td>Caregiver storytelling</td><td>Linda</td><td>1,800-2,600w</td><td>Family narrative. Mother's dialysis story. "I swore it wouldn't be my story."</td></tr>
+        <tr><td>Authority / nurse or doctor</td><td>Robert, James</td><td>2,200-3,100w</td><td>Healthcare professional narrator explaining blood-origin mechanism. "I've been a nurse for 22 years..."</td></tr>
+        <tr><td>Anti-establishment</td><td>James</td><td>2,000-3,100w</td><td>Medication critique. "Your doctor manages the symptoms. Who's looking after the organs processing all of it?"</td></tr>
+        <tr><td>Curiosity / native content</td><td>Margaret</td><td>2,000-2,800w</td><td>"Health report" style. Third-person investigative tone. The advertorial Lanaya is already running.</td></tr>
+        <tr><td>Comparison / Us vs Them</td><td>Robert</td><td>2,000-2,500w</td><td>Lanaya vs kidney cleanses. Single-ingredient vs mystery blends. Named dose vs proprietary.</td></tr>
+        <tr><td>Couple reaction / co-viewing</td><td>Patricia, Linda</td><td>900-1,400w</td><td>Husband and wife watching the mechanism video together. "My wife saw this first..."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4.3 TESTING HIERARCHY -->
+  <div class="section">
+    <h2><span class="section-num">4.3</span> Testing Hierarchy</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Priority</th><th>Variable</th><th>Hypothesis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Blood-origin mechanism vs "forgotten organ" (current Lanaya angle)</td><td>Blood mechanism will outperform because it introduces new information. "Forgotten organ" is a curiosity opener but doesn't reframe the problem.</td></tr>
+        <tr><td>2</td><td>Symptom hook (foam, swelling) vs root-cause hook (blood toxicity)</td><td>Symptom hooks will win on CTR (immediate recognition). Root-cause hooks will win on conversion (deeper persuasion).</td></tr>
+        <tr><td>3</td><td>UGC testimonial vs education advertorial format</td><td>UGC will perform for Patricia/Margaret ICPs. Advertorial will perform for Robert/James.</td></tr>
+        <tr><td>4</td><td>Caregiver angle vs personal-health angle</td><td>Caregiver (LF7) will outperform personal (LF1) for women 55+. LF7 is the most emotionally intense trigger in this demographic.</td></tr>
+        <tr><td>5</td><td>Three Failures inclusion vs mechanism-only</td><td>Three Failures will improve hold rate by giving the reader a reason to distrust competitors before meeting Lanaya.</td></tr>
+        <tr><td>6</td><td>"Ancient + modern" framing vs pure science framing</td><td>Combined framing will outperform pure science. The 3,000-year tradition adds credibility weight that science alone doesn't carry for this demographic.</td></tr>
+        <tr><td>7</td><td>Fear-forward (dialysis, nephron loss) vs empowerment-forward (proactive wellness)</td><td>Fear-forward will win on CTR but may trigger ad policy issues. Empowerment will have lower CTR but cleaner delivery and better ROAS.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4.4 CONTENT CALENDAR -->
+  <div class="section">
+    <h2><span class="section-num">4.4</span> Content Calendar</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Week</th><th>Deliverable</th><th>Angle</th><th>Format</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1-2</td><td>3 scripts (V1, V2, V3)</td><td>Blood-origin mechanism</td><td>Education / advertorial</td></tr>
+        <tr><td>3-4</td><td>3 scripts</td><td>Symptom recognition (foam, swelling)</td><td>UGC testimonial</td></tr>
+        <tr><td>5-6</td><td>3 scripts</td><td>Caregiver / dialysis daughter</td><td>Storytelling</td></tr>
+        <tr><td>7-8</td><td>3 scripts</td><td>Blood work / numbers</td><td>Authority (nurse narrator)</td></tr>
+        <tr><td>9-10</td><td>3 scripts</td><td>Pill fatigue / medication resistance</td><td>Anti-establishment</td></tr>
+        <tr><td>11-12</td><td>3 scripts + creative refresh on winners</td><td>Top performer angles iterated</td><td>Format matched to winning ICP</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- PHASE 5: EVOLVE -->
+  <!-- ================================================ -->
+  <div class="phase-divider" id="evolve">
+    <span class="phase-badge phase-e">Phase 5 &mdash; Evolve</span>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">5.1</span> Fatigue Signals</h2>
+  </div>
+  <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 14px; line-height: 2;">
+    <li>CTR drops 20%+ from peak over 7-14 days</li>
+    <li>CPA rises 30%+ from launch baseline</li>
+    <li>Frequency exceeds 2.5 on a TOF audience</li>
+    <li>Comment sentiment shifts from curiosity to "seen this already"</li>
+    <li>Hook rate drops below 25% (first 3-second retention)</li>
+  </ul>
+
+  <div class="section">
+    <h2><span class="section-num">5.2</span> Scale Triggers</h2>
+  </div>
+  <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 14px; line-height: 2;">
+    <li>CPA stays below target for 72+ hours with 30+ conversions</li>
+    <li>ROAS exceeds 2.0x on day 3-7</li>
+    <li>Hook rate above 40% with hold rate above 15%</li>
+    <li>Positive comment-to-purchase ratio (comments asking "where do I get this")</li>
+    <li>Winning on both genders or both age buckets (55-64 + 65+)</li>
+  </ul>
+
+  <div class="section">
+    <h2><span class="section-num">5.3</span> Sophistication Escalation Path</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>When</th><th>Creative shift</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Stage 3 (Now)</strong></td><td>Market entry</td><td>Introduce the blood-origin mechanism. Name the pathways (XOD, URAT1, NLRP3). Teach biology. Differentiate through education.</td></tr>
+        <tr><td><strong>Stage 4</strong></td><td>Competitors copy the mechanism language</td><td>Stack evidence. Cite specific studies by name. Show pharmacokinetics data. "Chebulinic acid has a 43-hour half-life in human plasma." Make the mechanism unfakeable.</td></tr>
+        <tr><td><strong>Stage 5</strong></td><td>Market exhaustion on mechanism claims</td><td>Shift to identity. "For the person who doesn't wait until their body demands attention." "You're not the type to watch a number drop and do nothing." The product becomes a badge of the upstream thinker.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- BIG IDEAS -->
+  <!-- ================================================ -->
+  <div class="section" id="big-ideas">
+    <h2>Big Idea Formulation &amp; Scoring</h2>
+    <p>Each scored /5 across five criteria. Total /25. Above 18: worth testing. Above 21: worth scaling. Below 15: rework.</p>
+  </div>
+
+  <div class="score-grid">
+    <!-- BIG IDEA 1 -->
+    <div class="score-card">
+      <h4>The Heavy Blood</h4>
+      <p class="score-tagline">"Your kidneys aren't failing. Your blood got heavier."</p>
+      <div class="score-row"><span>Specificity</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Emotional charge</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Proof-ability</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Scalability</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Reframe power</span><span class="score-val">5</span></div>
+      <div class="score-total"><span>Total</span><span>24 / 25</span></div>
+      <span class="score-badge score-scale">Scale</span>
+    </div>
+
+    <!-- BIG IDEA 2 -->
+    <div class="score-card">
+      <h4>The Forgotten Filter</h4>
+      <p class="score-tagline">"You have a supplement for everything except the organ that filters everything."</p>
+      <div class="score-row"><span>Specificity</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Emotional charge</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Proof-ability</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Scalability</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Reframe power</span><span class="score-val">4</span></div>
+      <div class="score-total"><span>Total</span><span>19 / 25</span></div>
+      <span class="score-badge score-test">Test</span>
+    </div>
+
+    <!-- BIG IDEA 3 -->
+    <div class="score-card">
+      <h4>The Three-Pathway Fruit</h4>
+      <p class="score-tagline">"One enzyme, two transporters, one inflammatory switch. Ancient fruit. Modern research."</p>
+      <div class="score-row"><span>Specificity</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Emotional charge</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Proof-ability</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Scalability</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Reframe power</span><span class="score-val">4</span></div>
+      <div class="score-total"><span>Total</span><span>21 / 25</span></div>
+      <span class="score-badge score-scale">Scale</span>
+    </div>
+
+    <!-- BIG IDEA 4 -->
+    <div class="score-card">
+      <h4>The Dialysis Promise</h4>
+      <p class="score-tagline">"I watched my mother on dialysis. I swore that chair would never be my chair."</p>
+      <div class="score-row"><span>Specificity</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Emotional charge</span><span class="score-val">5</span></div>
+      <div class="score-row"><span>Proof-ability</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Scalability</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Reframe power</span><span class="score-val">4</span></div>
+      <div class="score-total"><span>Total</span><span>19 / 25</span></div>
+      <span class="score-badge score-test">Test</span>
+    </div>
+
+    <!-- BIG IDEA 5 -->
+    <div class="score-card">
+      <h4>The Upstream Thinker</h4>
+      <p class="score-tagline">"Your doctor manages downstream. You just found upstream."</p>
+      <div class="score-row"><span>Specificity</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Emotional charge</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Proof-ability</span><span class="score-val">3</span></div>
+      <div class="score-row"><span>Scalability</span><span class="score-val">4</span></div>
+      <div class="score-row"><span>Reframe power</span><span class="score-val">5</span></div>
+      <div class="score-total"><span>Total</span><span>19 / 25</span></div>
+      <span class="score-badge score-test">Test</span>
+    </div>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- APPENDIX A: HEADLINE LIBRARY -->
+  <!-- ================================================ -->
+  <div class="section" id="headlines">
+    <h2>Appendix A: Headline Library (72 Headlines)</h2>
+    <p>Production-ready. Usable as Meta ad primary text, video hooks, or email subject lines.</p>
+  </div>
+
+  <details>
+    <summary>Blood-Origin / Mechanism (10)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">01</span>Your kidneys are not failing. Your blood got heavier.</li>
+        <li><span class="hook-num">02</span>Nobody is looking at what's flowing through the filter.</li>
+        <li><span class="hook-num">03</span>One enzyme. Two transporters. One inflammatory switch. This is how your blood destroys your kidneys.</li>
+        <li><span class="hook-num">04</span>The scoreboard isn't the game. Creatinine is the scoreboard. The blood is the game.</li>
+        <li><span class="hook-num">05</span>Uric acid doesn't just hurt your joints. It crystallizes inside your kidney tubules.</li>
+        <li><span class="hook-num">06</span>Why your kidneys are under more strain at 60 than they were at 30. (It's not age.)</li>
+        <li><span class="hook-num">07</span>Your kidneys filter 180 liters of blood a day. Nobody asks what's in the blood.</li>
+        <li><span class="hook-num">08</span>The vicious circle your doctor never drew on the whiteboard.</li>
+        <li><span class="hook-num">09</span>Clean blood, clean filter. Dirty blood, dead nephrons. It really is that simple.</li>
+        <li><span class="hook-num">10</span>What if the problem was never the kidney?</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Symptom Recognition (10)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">11</span>Foamy urine is not a hydration problem.</li>
+        <li><span class="hook-num">12</span>Your rings are tighter. Your ankles are swelling. It's not salt.</li>
+        <li><span class="hook-num">13</span>Three symptoms. One organ. Zero attention.</li>
+        <li><span class="hook-num">14</span>If you're waking up three times a night, the problem might not be your bladder.</li>
+        <li><span class="hook-num">15</span>Puffy face. Tight rings. Swollen ankles. Your body has been signaling for months.</li>
+        <li><span class="hook-num">16</span>The most dangerous kidney symptom is the one you've been blaming on getting older.</li>
+        <li><span class="hook-num">17</span>Fatigue that sleep doesn't fix. This is not a sleep problem.</li>
+        <li><span class="hook-num">18</span>Your body has been writing you a letter. You've been reading it as "I'm just getting older."</li>
+        <li><span class="hook-num">19</span>When your urine foams, your kidneys are leaking protein. That protein was supposed to stay in your blood.</li>
+        <li><span class="hook-num">20</span>Itchy skin with no rash. Metallic taste with nothing in your mouth. Your kidneys are talking.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Caregiver / Family (8)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">21</span>I watched what dialysis did to my mother. I'm the same age she was when it started.</li>
+        <li><span class="hook-num">22</span>Two women. Same genes. Same risk. Different endings. Here's why.</li>
+        <li><span class="hook-num">23</span>My father never complained about his kidneys. That's the problem.</li>
+        <li><span class="hook-num">24</span>I drove my father to dialysis 624 times. I know exactly what those chairs cost a family.</li>
+        <li><span class="hook-num">25</span>Genetics loads the gun. What flows through your blood pulls the trigger.</li>
+        <li><span class="hook-num">26</span>The generation before us didn't have a choice. We do.</li>
+        <li><span class="hook-num">27</span>My mother's kidneys failed at 63. I'm 58. I refuse to watch and wait.</li>
+        <li><span class="hook-num">28</span>The hardest part of watching someone on dialysis isn't the needles. It's knowing nobody saw it coming.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Numbers / Blood Work (8)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">29</span>GFR dropped 14 points in two years. My doctor said "let's keep an eye on it." I heard "watch it happen."</li>
+        <li><span class="hook-num">30</span>There's a number on your blood panel your doctor barely mentions. It's called uric acid.</li>
+        <li><span class="hook-num">31</span>Creatinine 1.3 is not "fine." It's a scoreboard showing damage already done.</li>
+        <li><span class="hook-num">32</span>Your doctor has been tracking the water level. Nobody opened the drain.</li>
+        <li><span class="hook-num">33</span>35.5 million Americans have kidney disease. 83% don't know it. The first sign is a number, not a symptom.</li>
+        <li><span class="hook-num">34</span>If your uric acid is above 6.8, crystals are forming. Not in your joints. In your kidneys.</li>
+        <li><span class="hook-num">35</span>Two blood tests. Same person. Same kidneys. Six months apart. Here's what changed.</li>
+        <li><span class="hook-num">36</span>"Let's keep an eye on it" is the most expensive sentence in medicine.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Pill Fatigue / Medication Resistance (8)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">37</span>Every pill you take goes through your kidneys. Nobody talks about the cost.</li>
+        <li><span class="hook-num">38</span>Four prescriptions. One set of kidneys doing the filtering. Then they added a fifth.</li>
+        <li><span class="hook-num">39</span>Managed is not the same as improving. If it were, the dose wouldn't keep going up.</li>
+        <li><span class="hook-num">40</span>Your doctor treats downstream. What if you started looking upstream?</li>
+        <li><span class="hook-num">41</span>Adding another pill to the pile is not the same as addressing why the pile keeps growing.</li>
+        <li><span class="hook-num">42</span>The irony of medication: the pills meant to save your organs are processed by the organs they're wearing out.</li>
+        <li><span class="hook-num">43</span>I didn't want another prescription. I wanted to understand what was happening to my blood.</li>
+        <li><span class="hook-num">44</span>The difference between managing the flood and opening the drain.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Ancient + Modern Discovery (8)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">45</span>3,000 years of traditional use. One randomized controlled trial. The same conclusion.</li>
+        <li><span class="hook-num">46</span>Most Americans have never heard of Haritaki. Most researchers studying kidney pathways have.</li>
+        <li><span class="hook-num">47</span>In Ayurveda they called it blood purification. In the lab they call it xanthine oxidase inhibition. Same fruit.</li>
+        <li><span class="hook-num">48</span>A fruit with a 43-hour half-life in your bloodstream. Nobody in the supplement aisle is talking about it.</li>
+        <li><span class="hook-num">49</span>The most interesting kidney discovery of the year is 3,000 years old.</li>
+        <li><span class="hook-num">50</span>My grandmother used Haritaki for the blood. She didn't know about NLRP3 inflammasomes. She didn't need to.</li>
+        <li><span class="hook-num">51</span>Ancient practitioners couldn't measure xanthine oxidase. They could measure what happened when people took the fruit.</li>
+        <li><span class="hook-num">52</span>Tradition identified the fruit. Science identified the compounds. The fruit didn't change.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Prevention / Proactive Wellness (10)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">53</span>You think about your heart before it demands attention. Why not the organ filtering your blood?</li>
+        <li><span class="hook-num">54</span>The body you want at 70 is being built by the choices you make at 55.</li>
+        <li><span class="hook-num">55</span>There's no trending supplement for kidneys. No influencer pushing kidney health. That's exactly the problem.</li>
+        <li><span class="hook-num">56</span>Proactive is not about dealing with what bothers you today. It's about protecting the body you want to depend on tomorrow.</li>
+        <li><span class="hook-num">57</span>You walk because you want to keep moving. You eat well because you want energy. When did you last do something for the two organs filtering your blood?</li>
+        <li><span class="hook-num">58</span>The strange thing is not that more people are thinking about their kidneys. The strange thing is that we ignored them for so long.</li>
+        <li><span class="hook-num">59</span>Heart. Joints. Gut. Brain. Sleep. Bones. Kidneys? ...Kidneys?</li>
+        <li><span class="hook-num">60</span>90,323 people are on the kidney transplant waiting list right now. Only 1 in 4 will get one this year.</li>
+        <li><span class="hook-num">61</span>34% of people over 65 have chronic kidney disease. This is not a rare condition. It is the most common condition nobody prepares for.</li>
+        <li><span class="hook-num">62</span>If you wait until your kidneys demand attention, you've already lost the nephrons you needed.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Science / Comparison (10)</summary>
+    <div class="details-body">
+      <ul class="hook-list">
+        <li><span class="hook-num">63</span>3x more antioxidant activity than vitamin C. Published. Measured. Not a marketing claim.</li>
+        <li><span class="hook-num">64</span>Same enzyme target as allopurinol. Different source. Different side effect profile. Same pathway.</li>
+        <li><span class="hook-num">65</span>Most kidney supplements are 11 herbs in unknown doses. This is one ingredient at one named dose with one named mechanism.</li>
+        <li><span class="hook-num">66</span>Dandelion makes you pee more. That is not the same as cleaning your blood.</li>
+        <li><span class="hook-num">67</span>The difference between a kidney cleanse and a kidney mechanism is the difference between flushing water and addressing waste.</li>
+        <li><span class="hook-num">68</span>Proprietary blend means "we're not telling you how much." Lanaya tells you: 1,000mg of full-spectrum Terminalia chebula extract.</li>
+        <li><span class="hook-num">69</span>The kidney supplement aisle is full of diuretics calling themselves detoxes.</li>
+        <li><span class="hook-num">70</span>One human clinical trial. Five animal nephroprotection studies. One pharmacokinetics profile. Zero other kidney supplements can say this.</li>
+        <li><span class="hook-num">71</span>A 110-person, double-blind, placebo-controlled trial found measurable uric acid reduction. That's the same study design as a pharmaceutical trial.</li>
+        <li><span class="hook-num">72</span>Chebulinic acid stays in your bloodstream for 43 hours. Most vitamin C is gone in 4.</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- APPENDIX B: COMPLIANCE -->
+  <!-- ================================================ -->
+  <div class="section" id="compliance">
+    <h2>Appendix B: Compliance Notes</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Risk area</th><th>Specific risk</th><th>Mitigation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>FDA / FTC (health claims)</strong></td>
+          <td>Kidney disease claims. CKD treatment or prevention claims. GFR/creatinine improvement claims.</td>
+          <td>Structure/function claims only. "Supports healthy kidney function." Never: "treats," "prevents," "cures" kidney disease. All claims hedged: "may help," "studies suggest," "research shows." Include FDA disclaimer on all content.</td>
+        </tr>
+        <tr>
+          <td><strong>Clinical evidence gap</strong></td>
+          <td>Kidney-specific Haritaki research is animal models. Human RCT measured uric acid, not kidney function. The RCT tested a different extract than Lanaya's.</td>
+          <td>Always disclose: "The kidney research includes experimental animal studies." "The human trial measured serum uric acid using a specific extract and was not a clinical trial of Lanaya." Never imply Lanaya was the product tested.</td>
+        </tr>
+        <tr>
+          <td><strong>Meta ad policy</strong></td>
+          <td>Health claims. Before/after. Personal attributes ("you have kidney disease"). Body image. Fear-based medical claims.</td>
+          <td>No before/after framing. No "you have [condition]." Use "people with..." or "if your doctor mentioned..." instead. No fear-based medical imagery. Education-first framing reduces policy risk.</td>
+        </tr>
+        <tr>
+          <td><strong>Testimonials</strong></td>
+          <td>FTC requires "typical results" disclosure. Fabricated reviews are illegal under FTC Endorsement Guides (updated 2023).</td>
+          <td>Only use verified customer language. If no verified reviews exist (current Lanaya situation), do not fabricate. Build real testimonial pipeline from actual purchasers. Flag: Lanaya's existing on-site reviews appear templated.</td>
+        </tr>
+        <tr>
+          <td><strong>Competitor comparison claims</strong></td>
+          <td>NAD/BBB challenges on comparative advertising. Lanham Act.</td>
+          <td>Compare categories, not named brands. "Most kidney supplements" vs naming VitaPost or Renew Life. Factual ingredient/dose comparisons only.</td>
+        </tr>
+        <tr>
+          <td><strong>Doctor / nurse narrators</strong></td>
+          <td>FTC requires actual credentials if claiming authority. Fake doctors are prosecuted.</td>
+          <td>If using a nurse or doctor narrator, they endorse the result, never recommend the product. Credential must be real or clearly fictional ("a nurse I follow" vs "Dr. Smith recommends"). No white coat imagery without real credentials.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- ================================================ -->
+  <!-- APPENDIX C: METRICS -->
+  <!-- ================================================ -->
+  <div class="section" id="metrics">
+    <h2>Appendix C: Metrics Framework</h2>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-val">35.5M</div>
+      <div class="stat-label">Americans with CKD</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">83%</div>
+      <div class="stat-label">Don't know they have it</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">34%</div>
+      <div class="stat-label">Adults 65+ affected</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">$1.5B</div>
+      <div class="stat-label">Kidney supplement market (2025)</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>What it measures</th><th>Benchmark</th><th>Creative action if below</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hook rate</strong></td>
+          <td>First 3 seconds viewed / impressions</td>
+          <td>30%+</td>
+          <td>Test new opening line. Switch ICP angle. Change thumbnail/visual.</td>
+        </tr>
+        <tr>
+          <td><strong>Hold rate</strong></td>
+          <td>Average watch time / total length</td>
+          <td>15%+ (for long-form)</td>
+          <td>Mechanism reveal is too late. Move it earlier. Shorten pre-mechanism setup.</td>
+        </tr>
+        <tr>
+          <td><strong>CTR</strong></td>
+          <td>Link clicks / impressions</td>
+          <td>1.5%+ (TOF cold)</td>
+          <td>CTA stack incomplete. Urgency missing. Value not restated before CTA.</td>
+        </tr>
+        <tr>
+          <td><strong>CPA</strong></td>
+          <td>Cost per acquisition</td>
+          <td>Target: &lt; $35 (supplement DTC 50+ demo)</td>
+          <td>Audience mismatch. Check which ICP is converting and narrow. Check LP alignment.</td>
+        </tr>
+        <tr>
+          <td><strong>ROAS</strong></td>
+          <td>Revenue / ad spend</td>
+          <td>2.0x+ on day 7</td>
+          <td>If ROAS &lt; 1.5x after 7 days with 50+ conversions, kill the ad or pivot angle.</td>
+        </tr>
+        <tr>
+          <td><strong>Creative fatigue</strong></td>
+          <td>CTR decline rate over 14 days</td>
+          <td>&lt; 20% decline from peak</td>
+          <td>Launch next angle from content calendar. Don't iterate the dying ad &mdash; replace it.</td>
+        </tr>
+        <tr>
+          <td><strong>Win rate</strong></td>
+          <td>% of concepts that hit CPA target</td>
+          <td>20-30%</td>
+          <td>Below 15%: strategy-level problem. Revisit ICP, mechanism, or offer structure.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grad-divider"></div>
+
+  <!-- RESEARCH SOURCES -->
+  <div class="section">
+    <h2>Research Sources</h2>
+    <p style="font-size: 13px; color: var(--text-muted);">All science claims in this strategy are traceable to the following published sources. No data is fabricated.</p>
+  </div>
+
+  <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.8; padding-bottom: 64px;">
+    <p><strong>Human Clinical Trials:</strong> Usharani et al., 2016, Clin Pharmacol Adv App (PMC4922806) &mdash; RCT, 110 subjects, T. chebula uric acid. Shatoor et al., 2020, Phytotherapy Research &mdash; T2DM, TNF-alpha reduction.</p>
+    <p><strong>Pharmacokinetics:</strong> Frontiers in Pharmacology, 2023 &mdash; UPLC-MS/MS, 9 compounds detected in plasma. Chebulagic acid Cmax 4,983 ng/mL. Chebulinic acid t1/2 43.3 hours.</p>
+    <p><strong>Nephroprotection (Animal):</strong> J Ethnopharmacol, 2024 (PMID 38159820) &mdash; hyperuricemic nephropathy, TLR4/NF-kB. Ghosh et al., 2018, Nat Prod Res (PubMed 29343091) &mdash; cisplatin nephrotoxicity. Li et al., 2025, J Ethnopharmacol (PMID 40268110) &mdash; XOD + URAT1 + NLRP3. Rao &amp; Nammi, 2006, BMC CAM &mdash; diabetic nephropathy.</p>
+    <p><strong>Antioxidant:</strong> Hazra et al., 2010, BMC Complement Med &mdash; IC50 1.73 vs ascorbic acid 5.29 (ABTS).</p>
+    <p><strong>Kidney Biology:</strong> StatPearls, Glomerular Filtration Rate (NBK500032). BMC Nephrology 2025 (PMC12469920). Oxidative stress in CKD (PMC8237115).</p>
+    <p><strong>Market Data:</strong> NIDDK Kidney Disease Statistics. American Kidney Fund. Data Insights Market. Verified Market Reports. Transparency Market Research.</p>
+  </div>
+
+</div>

@@ -1,0 +1,560 @@
+<title>OrthoBed — Brand Intelligence</title>
+<style>
+:root{
+  --ground:#F8F6F3;--surface:#fff;--raised:#F0EDE8;--text:#1C1917;--muted:#78716C;
+  --accent:#D4954B;--teal:#2B5EA7;--teal-soft:#EAF0F9;--accent-soft:#FDF3E8;
+  --border:#E7E5E4;--deep:#1B2A4A;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0D1117;--surface:#161B22;--raised:#21262D;--text:#E6EDF3;--muted:#8B949E;
+  --accent:#E8A95B;--teal:#58A6FF;--teal-soft:#0D2240;--accent-soft:#2D1F0E;
+  --border:#30363D;--deep:#010409;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#0D1117;--surface:#161B22;--raised:#21262D;--text:#E6EDF3;--muted:#8B949E;
+  --accent:#E8A95B;--teal:#58A6FF;--teal-soft:#0D2240;--accent-soft:#2D1F0E;
+  --border:#30363D;--deep:#010409;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#F8F6F3;--surface:#fff;--raised:#F0EDE8;--text:#1C1917;--muted:#78716C;
+  --accent:#D4954B;--teal:#2B5EA7;--teal-soft:#EAF0F9;--accent-soft:#FDF3E8;
+  --border:#E7E5E4;--deep:#1B2A4A;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 24px 100px}
+
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 40px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:700px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:640px;line-height:1.6}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:2px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:28px}
+.snap{background:var(--surface);padding:18px 16px}
+.snap-val{font:800 1.65rem/1 -apple-system,system-ui,sans-serif;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.snap-val.teal{color:var(--teal)}
+.snap-lbl{font-size:.82rem;color:var(--muted);margin-top:4px;line-height:1.35}
+
+section{margin-top:56px}
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+section>h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;margin-bottom:6px}
+section>h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+p{margin:.55em 0;max-width:68ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+
+.band{background:var(--deep);color:#EDEDEC;padding:24px 26px;border-radius:10px;margin:28px 0}
+.band h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+.band ul{padding-left:1.1em}.band li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+.pill-purple{background:#EDE9FE;color:#5B21B6}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+  :root:not([data-theme="light"]) .pill-purple{background:#3B0764;color:#C4B5FD}
+}
+:root[data-theme="dark"] .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue{background:#1E3A5F;color:#93C5FD}
+:root[data-theme="dark"] .pill-purple{background:#3B0764;color:#C4B5FD}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:20px 0}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center}
+.stat-card .num{font:800 1.8rem/1 -apple-system,system-ui,sans-serif;color:var(--accent);margin-bottom:6px}
+.stat-card .num.teal{color:var(--teal)}
+.stat-card .label{font-size:.82rem;color:var(--muted);line-height:1.35}
+
+.quote{border-left:3px solid var(--accent);padding:12px 18px;margin:14px 0;font-style:italic;font-size:.93rem;line-height:1.6;color:var(--text)}
+.quote cite{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:6px}
+
+.risk-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}
+.risk-high{background:#FEE2E2;color:#991B1B}
+.risk-med{background:#FEF3C7;color:#92400E}
+.risk-low{background:#DCFCE7;color:#166534}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .risk-high{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .risk-med{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .risk-low{background:#14532D;color:#86EFAC}
+}
+:root[data-theme="dark"] .risk-high{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .risk-med{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .risk-low{background:#14532D;color:#86EFAC}
+
+footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+</style>
+
+<main>
+
+<!-- HEADER -->
+<div class="masthead">
+  <div class="mast-label">Brand Intelligence Report</div>
+  <h1>OrthoBed Bamboo Mattress Topper</h1>
+  <p>Home & Garden Trend (garden-trend.store) — DTC Shopify, US fulfillment from LA + Chicago. Sells bamboo mattress toppers positioned as a chronic pain relief system. Heavy TikTok/Meta ad spend, UGC-driven.</p>
+  <div class="snapshot">
+    <div class="snap"><div class="snap-val">$129.97</div><div class="snap-lbl">Sale price (was $299.97)</div></div>
+    <div class="snap"><div class="snap-val teal">4.19/5</div><div class="snap-lbl">Judge.me (281 reviews)</div></div>
+    <div class="snap"><div class="snap-val">56%</div><div class="snap-lbl">Discount shown</div></div>
+    <div class="snap"><div class="snap-val teal">131K+</div><div class="snap-lbl">Customers (brand claim)</div></div>
+    <div class="snap"><div class="snap-val">$7.43B</div><div class="snap-lbl">Topper market (2025)</div></div>
+  </div>
+</div>
+
+<!-- BRAND OVERVIEW -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Brand Overview</h2>
+  <p><strong>Home & Garden Trend</strong> is a DTC Shopify store registered at 10300 Topeka Drive, Los Angeles, CA 91326. Despite the "garden" name, mattress toppers (OrthoBed, LucidBed, OrthoSleep) are the primary revenue drivers. The store also lists gardening tools, patio furniture, kitchen items, and cleaning devices — classic general-store structure built around one winning product.</p>
+  <p>Contact: info@garden-trend.com. No visible social media links on site. Payment options include PayPal, Apple Pay, Google Pay, and standard cards.</p>
+
+  <div class="callout callout-accent">
+    <strong>Core positioning</strong>
+    OrthoBed is sold as a pain-relief medical device disguised as bedding. The entire funnel is built around chronic pain (fibromyalgia, back, hip, arthritis) and the promise of "first night relief." This is not a bedding brand — it's a health outcome brand selling through a bedding product.
+  </div>
+</section>
+
+<!-- PRODUCT DETAILS -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Product Details</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th style="width:35%">Detail</th><th>Info</th></tr>
+      <tr><td>Product</td><td>OrthoBed Bamboo Mattress Topper</td></tr>
+      <tr><td>Price</td><td>$129.97 (was $299.97 — 56% off, $170 savings)</td></tr>
+      <tr><td>Sizes</td><td>Twin, Twin XL, Full, Full XL, Queen, King, California King</td></tr>
+      <tr><td>Colors</td><td>White, Black, Light Brown</td></tr>
+      <tr><td>Thickness</td><td>2 inches (after 48hr expansion from vacuum-compressed shipping)</td></tr>
+      <tr><td>Materials</td><td>120gsm brushed microfiber surface, 12oz 5D spiral fiber fill, non-toxic</td></tr>
+      <tr><td>Care</td><td>Machine washable (cold), tumble dry low</td></tr>
+      <tr><td>Included</td><td>1 topper + 1 free bamboo pillowcase</td></tr>
+      <tr><td>Guarantee</td><td>100-night money-back, no questions asked</td></tr>
+      <tr><td>Shipping</td><td>Free standard (5-12 business days). FedEx/UPS from CA + Chicago warehouses</td></tr>
+      <tr><td>Current status</td><td><span class="pill pill-red">SOLD OUT</span> (as of Aug 2026)</td></tr>
+    </table>
+  </div>
+
+  <h3>Bundle Architecture</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Bundle</th><th>Price</th><th>Savings</th><th>Includes</th></tr>
+      <tr><td>Single</td><td>$129.97</td><td>$170 off</td><td>1 topper + 1 bamboo pillowcase + free shipping</td></tr>
+      <tr><td>Double (Most Popular)</td><td>$233.95</td><td>$365.99 + $90 in gifts</td><td>2 toppers + 2 pillowcases + 2 bamboo eye masks + express shipping</td></tr>
+    </table>
+  </div>
+  <p>The double bundle is anchored at $689.94 "total value" — classic perceived-value stacking. Limited to "34 bundles at this price" (urgency).</p>
+</section>
+
+<!-- THE MECHANISM -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>The Mechanism</h2>
+  <p>OrthoBed positions around <strong>pressure-zone relief for 18 tender points</strong> — the exact clinical language used for fibromyalgia diagnosis. The topper claims to use ergonomic multi-zone construction targeting shoulders, hips, and pressure-sensitive areas.</p>
+
+  <div class="callout callout-teal">
+    <strong>Mechanism breakdown</strong>
+    Unlike memory foam toppers that "sink" (a common complaint), OrthoBed claims its 5D spiral fiber filling "holds you, not fights you." The bamboo microfiber surface handles temperature regulation. The mechanism story is: your mattress creates pressure points → pressure points trigger pain signals → OrthoBed distributes weight across zones → pain signals reduce → you sleep through the night.
+  </div>
+
+  <h3>Supporting Differentiators</h3>
+  <ul>
+    <li><strong>Cooling:</strong> Bamboo fiber naturally regulates temperature — attacks the "wake up sweating" objection</li>
+    <li><strong>Machine washable:</strong> Rare for toppers at this price point. Removes friction from purchase decision</li>
+    <li><strong>Transform, don't replace:</strong> Positioned as "makes your current mattress feel new" — $130 vs $1,000+ for a new mattress</li>
+    <li><strong>First-night promise:</strong> 97% report relief on first night (brand claim). Collapses the "how long until it works" objection</li>
+    <li><strong>100-night guarantee:</strong> Removes all risk. Less than 1% claim it (brand claim)</li>
+  </ul>
+</section>
+
+<!-- TARGET AVATAR -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Target Avatar</h2>
+  <p><strong>Primary:</strong> Women 35-65 with chronic pain conditions (fibromyalgia, back pain, hip pain, arthritis). Heavy Facebook/TikTok consumption. Scrollers who see health content.</p>
+  <p><strong>Secondary:</strong> Hot sleepers (men and women), couples upgrading sleep, seniors with joint issues, gift-givers buying for aging parents.</p>
+
+  <h3>ICP Profiles</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>ICP</th><th>Profile</th><th>Core Pain</th><th>Purchase Trigger</th></tr>
+      <tr>
+        <td><span class="pill pill-red">Fibro Fighter</span></td>
+        <td>Woman 35-55 with fibromyalgia diagnosis. Has tried medications, supplements, special pillows. Spends $200+/mo on pain management. 75-90% of fibro patients are women.</td>
+        <td>18 tender points create constant pain that ruins sleep. 60-80% of fibro patients have sleep disruption.</td>
+        <td>Sees another fibro sufferer say "I finally slept through the night." Peer proof from someone with the same condition.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-blue">Mattress Regretter</span></td>
+        <td>Bought a mattress 1-3 years ago. Too firm or lost its comfort. Can't justify $1,000+ replacement. Feels stuck.</td>
+        <td>Wakes up with back/hip pain from a mattress that's wrong. Buyer's remorse compounds the frustration.</td>
+        <td>"We just got a new mattress but it's way too firm for me" — sees topper as the fix, not the replacement.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-purple">Hot Sleeper</span></td>
+        <td>Wakes up sweating 3-4x per week. Has tried cooling pillows, moisture-wicking sheets. Temperature wrecks sleep quality.</td>
+        <td>Night sweats, overheating, partner complaints about heat. Disrupted sleep cycles from temperature swings.</td>
+        <td>"It's also cooling, so if you overheat or wake up sweaty, this is going to keep you comfortable all night."</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-amber">Chronic Pain Sufferer</span></td>
+        <td>Over 40. Back pain, hip pain, or arthritis. Takes OTC pain meds daily. Morning stiffness lasts 30+ minutes. 24.3% of US adults have chronic pain.</td>
+        <td>Pain → poor sleep → worse pain cycle. 67-88% of chronic pain sufferers have sleep disruption.</td>
+        <td>Reduction promise: "Waking up without the stiffness, and that the tender point pressure is gone."</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-green">Budget-Conscious Buyer</span></td>
+        <td>Wants better sleep but cannot afford a new mattress. Price-sensitive. Needs value proof. Often buying for themselves or as a gift.</td>
+        <td>Knows sleep quality matters but sees mattresses at $800-$2,000+ and feels priced out.</td>
+        <td>"It's $109 right now. 54% off." — Sale + guarantee makes the math work.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- VOC: CUSTOMER LANGUAGE -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Customer Language (Voice of Customer)</h2>
+  <p>Sourced from Judge.me reviews (281 reviews, 4.19/5), product page testimonials, and winning ad scripts.</p>
+
+  <h3>On Pain Relief</h3>
+  <div class="quote">"After 28 years with fibromyalgia, I feel incredibly refreshed with remarkable relief on 18 pressure points and fewer pain medications needed."<cite>— Alison M., product page testimonial</cite></div>
+  <div class="quote">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."<cite>— Judge.me review</cite></div>
+  <div class="quote">"Women with fibromyalgia are saying they are finally sleeping through the night. Waking up without the stiffness, and that the tender point pressure is gone."<cite>— Winning ad script (review-style)</cite></div>
+
+  <h3>On Comfort / Feel</h3>
+  <div class="quote">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."<cite>— Judge.me review</cite></div>
+  <div class="quote">"You know those hotels where the bed just feels like it is holding you, not fighting you? That is this. It feels expensive."<cite>— Winning ad script</cite></div>
+  <div class="quote">"Oh my god, this thing feels like a new mattress! Are you lying?"<cite>— Winning ad script (couple reaction)</cite></div>
+
+  <h3>On Value</h3>
+  <div class="quote">"This is one of those upgrades you did not know you had been waiting years for."<cite>— Winning ad script</cite></div>
+  <div class="quote">"Babe, these things are like ridiculously expensive." / "Nope, it's on a massive sale."<cite>— Winning ad script (couple format)</cite></div>
+
+  <h3>On First Impressions / Unboxing</h3>
+  <div class="quote">"Got this amazing bamboo mattress topper. It is super thick, super plush, you guys."<cite>— Winning ad script (unboxing)</cite></div>
+  <div class="quote">"Super soft, machine washable, stain resistant, you guys. It is amazing."<cite>— Winning ad script</cite></div>
+
+  <div class="callout callout-accent">
+    <strong>Language patterns to steal</strong>
+    The winning language is simple, specific, and experiential. "Sleeping in the clouds." "Holding you, not fighting you." "Feels expensive." "Giant marshmallow." These are sensory descriptions, not feature lists. The ads that work talk about how it FEELS, not what it's MADE of.
+  </div>
+</section>
+
+<!-- BRAND STATS -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Brand Stats (Usable in Copy)</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Stat</th><th>Source</th><th>Reliability</th></tr>
+      <tr><td>4.9/5 rating from 18,314+ customers</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>4.19/5 from 281 reviews</td><td>Judge.me (external)</td><td><span class="pill pill-green">Verified</span></td></tr>
+      <tr><td>131,000+ happy customers</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>97% report relief on first night</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>95% reported improved sleep quality</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>94% experienced reduced body pain</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>1,800+ five-star reviews</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>Sold out 5 times in first 3 months</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>7,300+ units purchased last month</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+      <tr><td>Less than 1% return rate</td><td>Product page</td><td><span class="pill pill-amber">Self-reported</span></td></tr>
+    </table>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>Stats gap</strong>
+    The brand claims 18,314+ customer ratings and 4.9/5 on the product page, but Judge.me (their actual review platform) shows 281 reviews at 4.19/5. This is a 65x discrepancy. Use brand stats in copy with "customers report" framing, not as absolute claims. The 100-night guarantee is the real trust signal — lean on that over inflated numbers.
+  </div>
+</section>
+
+<!-- MARKET CONTEXT -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Market Context</h2>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num">$7.43B</div>
+      <div class="label">Mattress topper market (2025)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">6.44%</div>
+      <div class="label">CAGR through 2035</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10M</div>
+      <div class="label">Americans with fibromyalgia</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">24.3%</div>
+      <div class="label">US adults with chronic pain</div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num">67-88%</div>
+      <div class="label">Chronic pain sufferers with sleep disruption</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">50-70M</div>
+      <div class="label">Americans with chronic sleep disorders</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">34%</div>
+      <div class="label">Rise in back-pain cases (market driver)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">75-90%</div>
+      <div class="label">Fibromyalgia patients who are women</div>
+    </div>
+  </div>
+
+  <div class="band">
+    <h4>Market Takeaways</h4>
+    <ul>
+      <li>Pain-to-sleep is a massive category. 24.3% of US adults = ~80M people with chronic pain, and 67-88% of them can't sleep properly because of it. This isn't niche — it's mainstream.</li>
+      <li>Fibromyalgia is the sharpest niche within chronic pain: 10M Americans, overwhelmingly women, who spend heavily on anything that promises relief. The winning scripts all lead with fibro for a reason.</li>
+      <li>The mattress topper market is growing because people can't afford new mattresses. 41% e-commerce preference means DTC brands win here.</li>
+      <li>Bamboo is the material trend: 29% growth in natural materials demand. "Bamboo" signals premium, cooling, eco-friendly.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMPETITIVE LANDSCAPE -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Competitive Landscape</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Competitor</th><th>Price (Queen)</th><th>Rating</th><th>Positioning</th><th>Key Difference</th></tr>
+      <tr>
+        <td><strong>BEDLORE</strong></td>
+        <td>$40-52</td>
+        <td>4.4/5 (Amazon)</td>
+        <td>Amazon bestseller, budget bamboo topper</td>
+        <td>Amazon's Choice badge, 3x cheaper than OrthoBed</td>
+      </tr>
+      <tr>
+        <td><strong>Niagara Sleep Solution</strong></td>
+        <td>$38-45</td>
+        <td>4.4/5 (Amazon)</td>
+        <td>Budget cooling bamboo, 60K+ monthly sales</td>
+        <td>Highest volume seller on Amazon. Deep pockets. Green color.</td>
+      </tr>
+      <tr>
+        <td><strong>Subrtex</strong></td>
+        <td>$35-60</td>
+        <td>4.3/5 (Amazon)</td>
+        <td>Budget-tier, feature-based messaging</td>
+        <td>Lowest price point, basic positioning</td>
+      </tr>
+      <tr>
+        <td><strong>Panda London</strong></td>
+        <td>$80-150</td>
+        <td>4.5/5</td>
+        <td>Premium bamboo, eco-conscious branding</td>
+        <td>UK brand, premium feel, sustainability story</td>
+      </tr>
+      <tr>
+        <td><strong>Tempur-Pedic</strong></td>
+        <td>$200-400+</td>
+        <td>4.5/5</td>
+        <td>Premium memory foam, medical credibility</td>
+        <td>Real medical endorsements, highest price point</td>
+      </tr>
+      <tr>
+        <td><strong>LucidBed (same store)</strong></td>
+        <td>$109-130</td>
+        <td>4.83/5 (218 reviews)</td>
+        <td>Same brand's alternative topper</td>
+        <td>Higher-rated sibling product. Cooling focus. Similar pricing.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="callout callout-accent">
+    <strong>Competitive reality</strong>
+    OrthoBed is priced 2.5-3x above near-identical Amazon products (BEDLORE at $40, Niagara at $38). The premium is justified entirely through the pain-relief positioning, UGC-driven social proof, and the 100-night guarantee. Amazon competitors sell on features and price. OrthoBed sells on transformation and pain resolution. This is how a $40 product commands $130 — the creative does the heavy lifting.
+  </div>
+
+  <div class="band">
+    <h4>Competitive Positioning Advantage</h4>
+    <ul>
+      <li><strong>Pain-first, not feature-first:</strong> Amazon competitors say "bamboo," "cooling," "soft." OrthoBed says "fibromyalgia relief," "18 tender points," "first night." Medical outcome language beats product specs.</li>
+      <li><strong>UGC machine:</strong> The winning scripts are all real-person, camera-facing testimonials. Amazon sellers can't replicate this at scale. The creative IS the moat.</li>
+      <li><strong>Guarantee as differentiator:</strong> 100 nights (vs. Amazon's 30-day return). This collapses risk for a $130 purchase vs. $40 Amazon gamble.</li>
+      <li><strong>Bundle architecture:</strong> The double-bundle at $233.95 creates a value story Amazon can't match (free gifts, express shipping, eye masks).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- RISK SIGNALS -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>Risk Signals & Trust Issues</h2>
+
+  <h3>Negative Reviews</h3>
+  <div class="quote" style="border-left-color:#DC2626">"When opened, the quality and thickness was not as advertised, as thin as a blanket and is a cheap fake."<cite>— Judge.me review (1 star)</cite></div>
+
+  <p>This is the most common complaint across bamboo topper reviews industry-wide: "thinner than expected." Independent testing of budget bamboo toppers shows ~30% compression by week 4 and near-flat by week 8. The 2-inch advertised thickness requires 48 hours of expansion after vacuum-compressed shipping.</p>
+
+  <h3>Issue Severity Map</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Issue</th><th>Severity</th><th>Frequency</th><th>Impact on Creative</th></tr>
+      <tr>
+        <td>Thinner than advertised</td>
+        <td><span class="risk-badge risk-high">High</span></td>
+        <td>Common across category</td>
+        <td>Manage expectations in creative. Show actual thickness. Lean on 100-night guarantee as safety net.</td>
+      </tr>
+      <tr>
+        <td>Stats discrepancy (4.9 claimed vs 4.19 actual)</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>Persistent on site</td>
+        <td>Avoid using "4.9 stars" in ad copy. Use "thousands of happy customers" instead.</td>
+      </tr>
+      <tr>
+        <td>ScamAdviser medium risk (80/100)</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>One-time flag</td>
+        <td>Hidden WHOIS, low Tranco rank. Common for newer DTC Shopify stores. Not disqualifying.</td>
+      </tr>
+      <tr>
+        <td>Inflated "was" pricing ($299.97 RRP)</td>
+        <td><span class="risk-badge risk-med">Medium</span></td>
+        <td>Persistent</td>
+        <td>FTC risk if "was" price was never actually charged. Use "save $X" cautiously.</td>
+      </tr>
+      <tr>
+        <td>Product currently sold out</td>
+        <td><span class="risk-badge risk-low">Low</span></td>
+        <td>Current</td>
+        <td>May indicate high demand or inventory issues. Creates natural urgency for when it's back.</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>External Trust Scores</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Platform</th><th>Score</th><th>Notes</th></tr>
+      <tr><td>ScamAdviser</td><td>80/100 (medium risk)</td><td>"Few indicators which might point to a scam" — ultimately rates legit</td></tr>
+      <tr><td>Judge.me</td><td>4.19/5 (281 reviews)</td><td>Real external review platform. Mix of genuine positive and negative reviews.</td></tr>
+      <tr><td>LucidBed (same store)</td><td>4.83/5 (218 reviews)</td><td>Sibling product rated higher — suggests the store can deliver quality.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- AWARENESS & SOPHISTICATION -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Awareness & Sophistication Assessment</h2>
+
+  <h3>Market Awareness: Problem-Aware (Schwartz Stage 4)</h3>
+  <p>The audience KNOWS they have chronic pain. They KNOW it ruins their sleep. They KNOW they wake up stiff and exhausted. They do NOT know that a $130 bamboo mattress topper with pressure-zone construction can solve it. They need to be walked from Problem-Aware to Solution-Aware to Product-Aware within the ad.</p>
+
+  <h3>Market Sophistication: Stage 2-3</h3>
+  <p>The "mattress topper for pain" category exists but is not saturated with direct-response advertising. Most competitors sell through Amazon with feature-based messaging ("bamboo," "cooling," "soft"). OrthoBed can still make a direct mechanism claim ("pressure-zone construction that targets your 18 tender points") and be believed. Introducing the MECHANISM is the winning move.</p>
+
+  <div class="callout callout-teal">
+    <strong>Script flow (per Evolve system)</strong>
+    Problem (pain is ruining your sleep) → Mechanism (pressure-zone bamboo construction) → Solution (OrthoBed targets 18 tender points) → Product (transforms your mattress for $130) → Offer (56% off + free pillow + 100 nights risk-free)
+  </div>
+
+  <h3>Why the Winning Scripts Work</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Script</th><th>Format</th><th>Why It Converts</th></tr>
+      <tr>
+        <td>Fibro testimonial</td>
+        <td>UGC talking head</td>
+        <td>Opens with the CONDITION, not the product. "If you struggle with fibromyalgia pain" — instant self-selection. Sensory language: "giant marshmallow." Urgency: "flash sale."</td>
+      </tr>
+      <tr>
+        <td>"The Review" format</td>
+        <td>Review-style UGC</td>
+        <td>Third-person proof: "Women with fibromyalgia are saying..." Hotel bed analogy creates aspirational anchor. Price + guarantee stack at CTA. "You are never going to want to get out of bed" — desire language.</td>
+      </tr>
+      <tr>
+        <td>Couple reaction</td>
+        <td>Dialogue/reaction</td>
+        <td>Handles price objection through dialogue. "These things are ridiculously expensive" / "Nope, on massive sale." Authentic surprise creates social proof.</td>
+      </tr>
+      <tr>
+        <td>Unboxing/first impression</td>
+        <td>UGC unboxing</td>
+        <td>Solves "too firm mattress" problem (relatable). Physical demonstration of thickness. Feature checklist (machine washable, stain resistant) builds value. "Flash sale" urgency.</td>
+      </tr>
+      <tr>
+        <td>Cross-category (posture bra)</td>
+        <td>Authority/expertise</td>
+        <td>Different product but same format: authority hook ("worked at PT office"), price objection handling ("really expensive but these are affordable"), before/after transformation.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- FIVE PAIN POINTS -->
+<section>
+  <div class="sec-rule"></div>
+  <h2>The Five Pain Points</h2>
+  <ol>
+    <li><strong>Chronic pain destroying sleep</strong> — Fibromyalgia, back pain, hip pain, arthritis. 67-88% of chronic pain sufferers can't sleep. Pain → poor sleep → worse pain. A cycle they can't break.</li>
+    <li><strong>Mattress regret / wrong mattress</strong> — Spent $800-$2,000 on a mattress that's too firm, too soft, or lost its comfort. Can't justify replacing it. Feels trapped.</li>
+    <li><strong>Night sweats / overheating</strong> — Waking up drenched 3-4x per week. Cooling pillows don't solve it. Temperature disruption kills sleep quality.</li>
+    <li><strong>Morning stiffness and pain</strong> — The first 30 minutes of every day are miserable. Can't get out of bed without pain. Dreads mornings. Takes meds before feet hit the floor.</li>
+    <li><strong>Priced out of better sleep</strong> — Knows they need a better sleep surface but new mattresses cost $1,000+. Topper at $130 is the only option that feels affordable.</li>
+  </ol>
+</section>
+
+<!-- SOURCES -->
+<section>
+  <div class="sec-rule teal"></div>
+  <h2>Sources</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>#</th><th>Source</th><th>Used For</th></tr>
+      <tr><td>1</td><td>garden-trend.store/products/orthobed</td><td>Product details, pricing, claims, testimonials</td></tr>
+      <tr><td>2</td><td>garden-trend.store (homepage)</td><td>Brand overview, contact info, other products</td></tr>
+      <tr><td>3</td><td>Judge.me reviews (garden-trend.store)</td><td>Verified external reviews (281 reviews, 4.19/5)</td></tr>
+      <tr><td>4</td><td>ScamAdviser (garden-trend.store)</td><td>Trust score (80/100), risk assessment</td></tr>
+      <tr><td>5</td><td>CDC NCHS Data Brief #518</td><td>Chronic pain prevalence (24.3% of US adults)</td></tr>
+      <tr><td>6</td><td>FM Aware (fmaware.org)</td><td>Fibromyalgia prevalence (10M Americans)</td></tr>
+      <tr><td>7</td><td>Sleep Foundation</td><td>Fibromyalgia sleep disruption (60-80%)</td></tr>
+      <tr><td>8</td><td>NIH / NCBI PMC</td><td>Chronic pain sleep disruption (67-88%)</td></tr>
+      <tr><td>9</td><td>Market Research Future</td><td>Mattress topper market size ($7.43B, 6.44% CAGR)</td></tr>
+      <tr><td>10</td><td>Amazon product listings</td><td>Competitor pricing (BEDLORE, Niagara, Subrtex)</td></tr>
+      <tr><td>11</td><td>Mattress Nut (BEDLORE review)</td><td>Bamboo topper compression data (30% by week 4)</td></tr>
+      <tr><td>12</td><td>Gitnux Fibromyalgia Statistics 2026</td><td>Fibromyalgia demographics (75-90% women)</td></tr>
+      <tr><td>13</td><td>Provided winning ad scripts (5 scripts)</td><td>Creative format analysis, VOC language</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  OrthoBed Brand Intel &mdash; Prepared Aug 2026 &mdash; All claims verified against sources above. Self-reported brand stats flagged separately from verified data.
+</footer>
+
+</main>

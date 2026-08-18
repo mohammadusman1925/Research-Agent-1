@@ -1,0 +1,3529 @@
+<title>OrthoBed Bamboo Mattress Topper — Angle Exploration</title>
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Sleep/wellness palette: midnight blue + amber gold
+   ============================================================ */
+:root {
+  --ground: #F8F6F3;
+  --surface: #fff;
+  --raised: #F0EDE8;
+  --text: #1C1917;
+  --muted: #78716C;
+  --accent: #D4954B;
+  --teal: #2B5EA7;
+  --teal-soft: #EAF0F9;
+  --accent-soft: #FDF3E8;
+  --border: #E7E5E4;
+  --deep: #1B2A4A;
+  --green: #2D7A4F;
+  --green-soft: #EAFAF0;
+  --red: #B84233;
+  --red-soft: #FDF0EE;
+  --purple: #6B4FA0;
+  --purple-soft: #F3EEFA;
+  --amber: #B8860B;
+  --amber-soft: #FFF8E7;
+  --hm-high: #D4954B;
+  --hm-med: #E8CFA0;
+  --hm-low: #F0EDE8;
+  --hm-high-text: #fff;
+  --hm-med-text: #5C4A1F;
+  --hm-low-text: #78716C;
+  --card-shadow: 0 1px 3px rgba(28,25,23,.06), 0 1px 2px rgba(28,25,23,.04);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0D1117;
+    --surface: #161B22;
+    --raised: #21262D;
+    --text: #E6EDF3;
+    --muted: #8B949E;
+    --accent: #E8A95B;
+    --teal: #58A6FF;
+    --teal-soft: #0D2240;
+    --accent-soft: #2D1F0E;
+    --border: #30363D;
+    --deep: #010409;
+    --green: #3FB950;
+    --green-soft: #0D2818;
+    --red: #F85149;
+    --red-soft: #2D1117;
+    --purple: #BC8CFF;
+    --purple-soft: #1C1333;
+    --amber: #E3B341;
+    --amber-soft: #2D2204;
+    --hm-high: #E8A95B;
+    --hm-med: #5C4A1F;
+    --hm-low: #21262D;
+    --hm-high-text: #0D1117;
+    --hm-med-text: #E8A95B;
+    --hm-low-text: #8B949E;
+    --card-shadow: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0D1117;
+  --surface: #161B22;
+  --raised: #21262D;
+  --text: #E6EDF3;
+  --muted: #8B949E;
+  --accent: #E8A95B;
+  --teal: #58A6FF;
+  --teal-soft: #0D2240;
+  --accent-soft: #2D1F0E;
+  --border: #30363D;
+  --deep: #010409;
+  --green: #3FB950;
+  --green-soft: #0D2818;
+  --red: #F85149;
+  --red-soft: #2D1117;
+  --purple: #BC8CFF;
+  --purple-soft: #1C1333;
+  --amber: #E3B341;
+  --amber-soft: #2D2204;
+  --hm-high: #E8A95B;
+  --hm-med: #5C4A1F;
+  --hm-low: #21262D;
+  --hm-high-text: #0D1117;
+  --hm-med-text: #E8A95B;
+  --hm-low-text: #8B949E;
+  --card-shadow: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --ground: #F8F6F3;
+  --surface: #fff;
+  --raised: #F0EDE8;
+  --text: #1C1917;
+  --muted: #78716C;
+  --accent: #D4954B;
+  --teal: #2B5EA7;
+  --teal-soft: #EAF0F9;
+  --accent-soft: #FDF3E8;
+  --border: #E7E5E4;
+  --deep: #1B2A4A;
+  --green: #2D7A4F;
+  --green-soft: #EAFAF0;
+  --red: #B84233;
+  --red-soft: #FDF0EE;
+  --purple: #6B4FA0;
+  --purple-soft: #F3EEFA;
+  --amber: #B8860B;
+  --amber-soft: #FFF8E7;
+  --hm-high: #D4954B;
+  --hm-med: #E8CFA0;
+  --hm-low: #F0EDE8;
+  --hm-high-text: #fff;
+  --hm-med-text: #5C4A1F;
+  --hm-low-text: #78716C;
+  --card-shadow: 0 1px 3px rgba(28,25,23,.06), 0 1px 2px rgba(28,25,23,.04);
+  color-scheme: light;
+}
+
+/* ============================================================
+   BASE TYPOGRAPHY
+   Display: Georgia (strategic gravitas)
+   Body: system sans (readability)
+   Data: system mono (stats & labels)
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', 'Noto Serif', serif;
+  text-wrap: balance;
+  line-height: 1.25;
+}
+
+.wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.doc-header {
+  padding: 48px 0 40px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.doc-header .eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.doc-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 6px;
+}
+
+:root[data-theme="dark"] .doc-header h1,
+:root[data-theme="dark"] .cluster-header h2 { color: var(--text); }
+@media (prefers-color-scheme: dark) {
+  .doc-header h1, .cluster-header h2 { color: var(--text); }
+}
+
+.doc-header .subtitle {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.meta-row dt {
+  font-weight: 600;
+  color: var(--text);
+  display: inline;
+}
+
+.meta-row dd {
+  display: inline;
+  margin-left: 4px;
+}
+
+.meta-row .meta-item {
+  display: flex;
+  gap: 4px;
+}
+
+/* ============================================================
+   PILLS
+   ============================================================ */
+.pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.pill-green  { background: var(--green-soft);  color: var(--green); }
+.pill-amber  { background: var(--amber-soft);  color: var(--amber); }
+.pill-red    { background: var(--red-soft);    color: var(--red); }
+.pill-blue   { background: var(--teal-soft);   color: var(--teal); }
+.pill-purple { background: var(--purple-soft); color: var(--purple); }
+.pill-accent { background: var(--accent-soft); color: var(--accent); }
+.pill-deep   { background: var(--deep); color: #fff; }
+
+:root[data-theme="dark"] .pill-deep { background: var(--teal-soft); color: var(--teal); }
+@media (prefers-color-scheme: dark) {
+  .pill-deep { background: var(--teal-soft); color: var(--teal); }
+}
+
+/* ============================================================
+   CLUSTER NAV
+   ============================================================ */
+.cluster-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ground);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  margin: 0 -24px;
+}
+
+.cluster-nav-inner {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cluster-nav a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+
+.cluster-nav a:hover,
+.cluster-nav a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+/* ============================================================
+   ICP PROFILES STRIP
+   ============================================================ */
+.icp-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.icp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.icp-card h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icp-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   HEAT MAP
+   ============================================================ */
+.heatmap-wrap {
+  margin-bottom: 48px;
+  overflow-x: auto;
+}
+
+.heatmap-wrap h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: var(--deep);
+}
+
+.heatmap {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  min-width: 900px;
+}
+
+.heatmap th {
+  background: var(--raised);
+  font-weight: 600;
+  padding: 10px 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.2px;
+}
+
+.heatmap th:first-child {
+  text-align: left;
+  min-width: 160px;
+}
+
+.heatmap td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+.heatmap .icp-label {
+  text-align: left;
+  background: var(--surface);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hm-h { background: var(--hm-high); color: var(--hm-high-text); }
+.hm-m { background: var(--hm-med); color: var(--hm-med-text); }
+.hm-l { background: var(--hm-low); color: var(--hm-low-text); }
+
+/* ============================================================
+   CLUSTER SECTIONS
+   ============================================================ */
+.cluster-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 56px;
+}
+
+.cluster-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cluster-num {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cluster-header h2 {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.cluster-header .cluster-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.angle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(560px, 1fr));
+  gap: 16px;
+}
+
+/* ============================================================
+   ANGLE CARDS
+   ============================================================ */
+.angle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.angle-card-head {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.angle-card-head h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.angle-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.angle-card-body {
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.angle-voc {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--muted);
+  border-left: 3px solid var(--accent);
+  padding: 8px 12px;
+  background: var(--accent-soft);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.5;
+}
+
+.angle-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+
+.hook-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hook-list li {
+  font-size: 13px;
+  line-height: 1.45;
+  padding-left: 16px;
+  position: relative;
+}
+
+.hook-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.mechanism-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* Production grid */
+.prod-grid {
+  border: none;
+  background: none;
+  width: 100%;
+  border-top: 1px solid var(--border);
+}
+
+.prod-grid summary {
+  padding: 10px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prod-grid summary::before {
+  content: '\25B6';
+  font-size: 8px;
+  transition: transform .15s;
+}
+
+.prod-grid[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.prod-grid summary::-webkit-details-marker { display: none; }
+
+.prod-table-wrap {
+  padding: 0 20px 16px;
+  overflow-x: auto;
+}
+
+.prod-table {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.prod-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 6px 8px;
+  color: var(--muted);
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.prod-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   RAW VOC / STATS / COMPLIANCE
+   ============================================================ */
+.ref-section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 2px solid var(--border);
+}
+
+.ref-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--deep);
+}
+
+.ref-section h3 {
+  font-size: 16px;
+  margin: 24px 0 12px;
+  color: var(--text);
+}
+
+.voc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.voc-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.voc-item blockquote {
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.voc-item .voc-source {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 32px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-table th {
+  text-align: left;
+  font-weight: 700;
+  padding: 10px 12px;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.stats-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.compliance-notes {
+  background: var(--red-soft);
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.compliance-notes h3 {
+  color: var(--red);
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.compliance-notes ul {
+  margin-left: 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .doc-header h1 { font-size: 24px; }
+  .angle-grid { grid-template-columns: 1fr; }
+  .icp-strip { grid-template-columns: 1fr; }
+  .voc-grid { grid-template-columns: 1fr; }
+  .meta-row { flex-direction: column; gap: 8px; }
+  .cluster-header { flex-direction: column; gap: 4px; }
+  .cluster-header .cluster-desc { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+</style>
+
+<div class="wrapper">
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="doc-header">
+  <div class="eyebrow">Home &amp; Garden Trend &mdash; Creative Strategy</div>
+  <h1>OrthoBed Bamboo Mattress Topper</h1>
+  <p class="subtitle">Angle Exploration &mdash; 56 production-ready angles across 10 clusters, mapped to 5 ICPs with hooks, mechanism tie-ins, and production specs.</p>
+  <dl class="meta-row">
+    <div class="meta-item"><dt>Price:</dt><dd>$129.97 <span style="text-decoration:line-through;color:var(--muted)">$299.97</span> (56% off)</dd></div>
+    <div class="meta-item"><dt>Market Stage:</dt><dd>2&ndash;3 (Mechanism-led)</dd></div>
+    <div class="meta-item"><dt>Awareness:</dt><dd>Problem-Aware</dd></div>
+    <div class="meta-item"><dt>Mechanism:</dt><dd>Pressure-zone bamboo fiber / 18 tender points</dd></div>
+    <div class="meta-item"><dt>Customers:</dt><dd>131,000+</dd></div>
+  </dl>
+</header>
+
+<!-- ============================================================
+     CLUSTER NAV
+     ============================================================ -->
+<nav class="cluster-nav" aria-label="Angle clusters">
+  <div class="cluster-nav-inner">
+    <a href="#c1">Fibromyalgia</a>
+    <a href="#c2">Hotel Bed</a>
+    <a href="#c3">Firm Mattress Fix</a>
+    <a href="#c4">Cooling</a>
+    <a href="#c5">Morning Pain</a>
+    <a href="#c6">vs. New Mattress</a>
+    <a href="#c7">Back &amp; Hip</a>
+    <a href="#c8">Gift / Seasonal</a>
+    <a href="#c9">Social Proof</a>
+    <a href="#c10">Format Innovation</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     ICP PROFILES
+     ============================================================ -->
+<section style="margin-top:32px">
+  <h2 style="font-size:18px;margin-bottom:14px;font-family:Georgia,serif;color:var(--deep)">Target ICPs</h2>
+  <div class="icp-strip">
+    <div class="icp-card">
+      <h4><span class="pill pill-red">ICP 1</span> Fibro Fighter</h4>
+      <p>Woman 35&ndash;55 with fibromyalgia. Tried everything. Skeptical but desperate. Pain at 18 tender points. Needs proof it works for HER condition.</p>
+    </div>
+    <div class="icp-card">
+      <h4><span class="pill pill-amber">ICP 2</span> Mattress Regretter</h4>
+      <p>Bought an expensive mattress that's too firm or wrong. Can't justify replacing it. Needs a fix, not another purchase.</p>
+    </div>
+    <div class="icp-card">
+      <h4><span class="pill pill-blue">ICP 3</span> Hot Sleeper</h4>
+      <p>Wakes up sweating. Overheats at night. Has tried cooling pillows and sheets. Needs something that actually stays cool.</p>
+    </div>
+    <div class="icp-card">
+      <h4><span class="pill pill-purple">ICP 4</span> Chronic Pain Sufferer</h4>
+      <p>Back pain, hip pain, arthritis. Over 40. Takes pain meds. Morning stiffness. Needs relief without pills.</p>
+    </div>
+    <div class="icp-card">
+      <h4><span class="pill pill-green">ICP 5</span> Budget-Conscious Parent</h4>
+      <p>Wants comfort but can't drop $1,000+ on a new mattress. Needs value + quality proof. Often shopping for mom or grandma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HEAT MAP
+     ============================================================ -->
+<section class="heatmap-wrap">
+  <h2>ICP x Pain Point Resonance Matrix</h2>
+  <table class="heatmap">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Fibro Tender Points</th>
+        <th>Too-Firm Mattress</th>
+        <th>Night Overheating</th>
+        <th>Morning Stiffness</th>
+        <th>Back Pain</th>
+        <th>Hip Pain</th>
+        <th>Can't Afford New Mattress</th>
+        <th>Sleep Disruption</th>
+        <th>Medication Dependence</th>
+        <th>Gift for Loved One</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="icp-label"><span class="pill pill-red">Fibro Fighter</span></td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-l">LOW</td>
+      </tr>
+      <tr>
+        <td class="icp-label"><span class="pill pill-amber">Mattress Regretter</span></td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-l">LOW</td>
+      </tr>
+      <tr>
+        <td class="icp-label"><span class="pill pill-blue">Hot Sleeper</span></td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-l">LOW</td>
+      </tr>
+      <tr>
+        <td class="icp-label"><span class="pill pill-purple">Chronic Pain</span></td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-l">LOW</td>
+      </tr>
+      <tr>
+        <td class="icp-label"><span class="pill pill-green">Budget Parent</span></td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-h">HIGH</td>
+        <td class="hm-m">MED</td>
+        <td class="hm-l">LOW</td>
+        <td class="hm-h">HIGH</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================
+     CLUSTER 1: FIBROMYALGIA RELIEF
+     ============================================================ -->
+<section class="cluster-section" id="c1">
+  <div class="cluster-header">
+    <span class="cluster-num">01</span>
+    <h2>Fibromyalgia Relief</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <!-- ANGLE 1.1 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>18 Tender Points</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Fibromyalgia has 18 tender points. Your mattress is pressing on every single one.</li>
+            <li>Your doctor told you about the 18 tender points. Nobody told you your bed was making them worse.</li>
+            <li>I mapped my fibro tender points onto my mattress. This is why I couldn't sleep.</li>
+            <li>POV: You find out your mattress has been attacking your tender points for years.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Pressure-zone bamboo fiber construction distributes weight across all 18 fibromyalgia tender points simultaneously, eliminating the concentrated pressure that standard mattresses create at shoulders, hips, and knees.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC talking head + body diagram overlay</td>
+              <td>Educational, empathetic</td>
+              <td>30s / 60s</td>
+              <td>Creator points to tender-point diagram, then shows topper. Split-screen: pressure map vs. relief.</td>
+              <td>Voiceover, soft ambient</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; avoid medical claims; frame as comfort, not treatment</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <!-- ANGLE 1.2 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>First-Night Fibro Relief</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I have fibromyalgia and I slept through the night for the first time in 3 years.</li>
+            <li>97% of people with chronic pain felt relief the first night. I didn't believe it either.</li>
+            <li>Night one with this topper and my fibro pain didn't wake me up at 3am.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber's natural give cradles the body from the first use &mdash; no break-in period. The topper conforms immediately, reducing the tossing and turning that triggers fibro flares during sleep.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC testimonial / diary-style</td>
+              <td>Genuine, emotional, relieved</td>
+              <td>30s / 60s</td>
+              <td>Morning-after reaction. Creator in bed, natural light, unfiltered happiness. Show sleep tracker if possible.</td>
+              <td>Natural audio, morning ambiance</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; "97% first night" is a brand claim; must add disclaimer</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <!-- ANGLE 1.3 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Medication Reduction</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>What if the thing standing between you and fewer pain meds was your mattress?</li>
+            <li>I spent more on pain pills last year than this topper costs.</li>
+            <li>My morning pill routine used to take 20 minutes. Now it takes 5.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">By relieving overnight pressure accumulation, the topper reduces the intensity of morning pain that drives the first dose of the day. Less nighttime aggravation means less daytime management.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC talking head</td>
+              <td>Hopeful, measured</td>
+              <td>30s</td>
+              <td>Creator at bathroom counter with pill bottles (blurred), then in bed on topper. Contrast framing.</td>
+              <td>Voiceover, quiet</td>
+              <td><span class="pill pill-red">High</span> &mdash; cannot claim medical benefit; must frame as personal experience, "consult your doctor" CTA</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <!-- ANGLE 1.4 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Fibro Flare Recovery Bed</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>During a fibro flare, your bed should be your safe place. Not another source of pain.</li>
+            <li>Fibro flare days are hard enough. Your mattress shouldn't make them harder.</li>
+            <li>When a flare hits and you have to stay in bed &mdash; your bed better not be the problem.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">During flare days when sensitivity is highest, the pressure-zone construction eliminates hard contact points. The bamboo fiber's breathability also prevents the heat buildup that can worsen flare symptoms.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC story-style</td>
+              <td>Compassionate, understanding</td>
+              <td>60s</td>
+              <td>Quiet, intimate bedroom footage. Soft lighting. Creator speaks from bed. Show the relief, not the suffering.</td>
+              <td>Low voiceover, minimal music</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; frame as comfort during difficult days, not medical device</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <!-- ANGLE 1.5 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Fibro + Sleep Deprivation Cycle</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Fibro pain keeps you awake. Bad sleep makes fibro worse. Here's how to break the cycle.</li>
+            <li>Pain disrupts sleep. Bad sleep increases pain. You've been stuck in this loop for years.</li>
+            <li>The fibro-insomnia cycle is real. Breaking it starts with what you're sleeping ON.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The cycle breaks at the surface level: when pressure points stop firing pain signals during sleep, the body enters deeper restorative phases. Better sleep reduces next-day sensitivity, compounding relief over time.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Text overlay + B-roll / educational</td>
+              <td>Informative, empowering</td>
+              <td>30s</td>
+              <td>Animated cycle graphic (pain > bad sleep > more pain) then "break" visual. Product reveal.</td>
+              <td>Voiceover with authority</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; sleep quality claims acceptable; avoid "cures" language</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <!-- ANGLE 1.6 -->
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>The Fibro Community Secret</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>This topper is going viral in fibro support groups and I finally understand why.</li>
+            <li>My fibro support group won't stop talking about this bamboo topper. I caved.</li>
+            <li>The fibromyalgia community found something that actually works and it's not a pill.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Word-of-mouth driven by real relief. The topper's pressure-zone system addresses the specific sleep surface issues fibro patients discuss in support groups &mdash; something generic "comfort" toppers can't claim.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC reaction / testimonial</td>
+              <td>Peer-to-peer, excited discovery</td>
+              <td>15s / 30s</td>
+              <td>Scrolling through phone (support group framing), then unboxing, then sleeping. Community feel.</td>
+              <td>Natural audio, casual</td>
+              <td><span class="pill pill-green">Low</span> &mdash; personal recommendation framing</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 2: HOTEL BED UPGRADE
+     ============================================================ -->
+<section class="cluster-section" id="c2">
+  <div class="cluster-header">
+    <span class="cluster-num">02</span>
+    <h2>Hotel Bed Upgrade</h2>
+    <span class="cluster-desc">5 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Hotel Bed at Home</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"You know those hotels where the bed just feels like it is holding you, not fighting you? That is this."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You know that hotel bed you never wanted to leave? This is how you bring it home for $130.</li>
+            <li>The difference between your bed and a five-star hotel bed is one layer. This one.</li>
+            <li>Every hotel you've ever loved had a topper on the mattress. Now you know the secret.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Hotels use mattress toppers to create that "cloud" feel on institutional mattresses. The OrthoBed replicates this with bamboo fiber that conforms and cushions &mdash; the same layering trick, designed for home use.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>B-roll luxury + UGC</td>
+              <td>Aspirational, warm</td>
+              <td>15s / 30s</td>
+              <td>Hotel bed glamour shots, then cut to home bedroom with topper. Same sinking-in moment. White sheets, golden light.</td>
+              <td>Light music, satisfying sound design</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>"It Feels Expensive"</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels expensive"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>My husband asked if I bought a new mattress. I spent $130.</li>
+            <li>This looks like it costs $500. It doesn't.</li>
+            <li>The most expensive feeling thing in my bedroom cost less than dinner for two.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber has a natural weight and density that mimics luxury bedding materials. The pressure-zone construction adds structure that cheap toppers lack &mdash; it feels substantial because it is.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC reveal / reaction</td>
+              <td>Surprised, delighted</td>
+              <td>15s</td>
+              <td>Close-up hand pressing into topper. Slow-mo. Price reveal at end. Satisfying texture shots.</td>
+              <td>ASMR-adjacent, natural reactions</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Luxury Without the Markup</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It's like a giant marshmallow"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Luxury bedding brands charge $400 for what this does at $130.</li>
+            <li>I returned my $350 topper and got this instead. Better in every way.</li>
+            <li>Stop paying the brand tax on sleep. This bamboo topper outperforms all of them.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Direct-to-consumer pricing eliminates retail markup. The bamboo fiber construction delivers the same pressure relief as premium toppers without the brand premium.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Comparison / listicle style</td>
+              <td>Savvy, confident</td>
+              <td>30s</td>
+              <td>Side-by-side price tags. Competitor packaging vs. OrthoBed. Hands feeling both. "Same relief, different receipt."</td>
+              <td>Upbeat voiceover</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; avoid naming specific competitors</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Guest Room Glow-Up</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Your guest room mattress is from 2014. Your in-laws visit next week. $130 fix.</li>
+            <li>Guests keep asking what hotel you modeled your guest room after. It's a $130 topper.</li>
+            <li>The cheapest way to make your guest room feel like a boutique hotel.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">A topper transforms any mattress regardless of age or condition. The bamboo fiber layer sits on top and creates its own comfort zone independent of what's underneath.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Before/after B-roll</td>
+              <td>Practical, satisfying</td>
+              <td>15s</td>
+              <td>Sad guest room > topper placement > styled bed reveal. Transformation format.</td>
+              <td>Trending audio or satisfying sound</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>The Bed You Brag About</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Most-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I'm that person who makes everyone feel my mattress when they come over. Worth it.</li>
+            <li>My friends are tired of hearing about my topper. I don't care. It changed my sleep.</li>
+            <li>When something actually works you become the annoying friend who won't shut up about it.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The immediate tactile difference &mdash; the sink, the softness, the cradling &mdash; is so noticeable that it generates organic word-of-mouth. People feel it and ask about it.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC comedy / relatable</td>
+              <td>Funny, self-aware</td>
+              <td>15s</td>
+              <td>Creator dragging friends to bedroom. Friends feeling topper. Exaggerated reactions. Casual, real.</td>
+              <td>Trending audio, natural laughter</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 3: TOO-FIRM MATTRESS FIX
+     ============================================================ -->
+<section class="cluster-section" id="c3">
+  <div class="cluster-header">
+    <span class="cluster-num">03</span>
+    <h2>Too-Firm Mattress Fix</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Can't Return Your Mattress</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You spent $1,200 on a mattress you hate. You can't return it. Here's the $130 fix.</li>
+            <li>Raise your hand if you're stuck with a mattress that's too firm and past the return window.</li>
+            <li>The return policy expired. The mattress still hurts. This is what I did.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The bamboo fiber layer adds a conforming surface on top of any mattress. Too-firm mattresses push back against the body; the topper absorbs that pushback and converts it into cradling support.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC talking head + product demo</td>
+              <td>Frustrated-to-relieved arc</td>
+              <td>30s</td>
+              <td>Creator sitting on hard mattress, wincing. Adds topper. Sinks in. Relief face. Before/after.</td>
+              <td>Voiceover, relatable</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Brand New Mattress Feel</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I didn't buy a new mattress. I just made my old one feel brand new for $130.</li>
+            <li>My mattress is 8 years old. After adding this, it sleeps like day one.</li>
+            <li>The mattress industry doesn't want you to know about this.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Mattresses lose comfort as foam compresses over time. The topper adds a fresh pressure-relief layer on top, restoring the conforming feel without replacing the support structure underneath.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC transformation</td>
+              <td>Amazed, genuine</td>
+              <td>15s / 30s</td>
+              <td>Old mattress (show age, indentations). Layer topper. Fresh sheets. "Brand new" moment. Hands pressing in.</td>
+              <td>Satisfying reveal audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Wrong Firmness Fix</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You picked firm because the store said it was "better for your back." Your back disagrees.</li>
+            <li>Firm mattress supporters have been lying to you. Your body wants cushion AND support.</li>
+            <li>I thought I needed a firm mattress. I needed a soft layer ON a firm mattress.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Firm mattresses provide support but not conformity. The topper adds the missing comfort layer &mdash; pressure-zone bamboo fiber conforms to curves while the firm mattress underneath maintains spinal alignment.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Educational + UGC</td>
+              <td>Myth-busting, confident</td>
+              <td>30s</td>
+              <td>Text: "FIRM = BETTER?" with X. Cross-section visual showing support + comfort layers. Demo.</td>
+              <td>Authoritative voiceover</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>The $130 Save</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Before you drop $1,500 on a new mattress, try this $130 fix first.</li>
+            <li>I was about to buy a new mattress. My sister told me to try this first. She was right.</li>
+            <li>$130 to save a mattress vs. $1,500 to replace it. The math is simple.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Most mattress dissatisfaction is a comfort-layer issue, not a support-structure issue. The topper addresses the part you actually feel &mdash; the top 2-3 inches &mdash; for a fraction of full replacement cost.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Text overlay / talking head</td>
+              <td>Smart-shopper, practical</td>
+              <td>15s</td>
+              <td>Calculator graphic: $1,500 vs $130. Arrow to topper. Quick product beauty shots.</td>
+              <td>Punchy voiceover</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Mattress Marriage Counselor</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>He wanted firm. She wanted soft. This topper ended the argument.</li>
+            <li>Couples fight about three things: money, kids, and mattress firmness. Fix one for $130.</li>
+            <li>We almost bought two twin mattresses. Then we found this.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The pressure-zone construction adapts to individual body weight and shape. On a firm mattress, it adds softness for the lighter partner while the heavier partner still gets firm support underneath.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Couple UGC / skit</td>
+              <td>Funny, relatable</td>
+              <td>15s / 30s</td>
+              <td>Couple arguing over mattress firmness. Cut to both happily sleeping on topper. Comedy beat.</td>
+              <td>Trending couple audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Sagging Mattress Rescue</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Your mattress has a you-shaped dent in it. You can't afford a new one. Try this.</li>
+            <li>That body-shaped crater in your mattress? This fills it in for $130.</li>
+            <li>Before you live with that saggy mattress another year, watch this.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The topper adds a uniform surface layer that compensates for uneven wear patterns. Bamboo fiber construction maintains its own loft independent of the mattress condition underneath.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC demo / before-after</td>
+              <td>Practical, no-nonsense</td>
+              <td>30s</td>
+              <td>Show mattress dip. Place topper. Lie down. Level surface. Satisfying fix content.</td>
+              <td>Voiceover, problem-solution</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 4: COOLING / HOT SLEEPER
+     ============================================================ -->
+<section class="cluster-section" id="c4">
+  <div class="cluster-header">
+    <span class="cluster-num">04</span>
+    <h2>Cooling / Hot Sleeper</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Night Sweat Solution</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>If you wake up with damp sheets every morning, it's not you. It's your mattress trapping heat.</li>
+            <li>I tried cooling pillows, cooling sheets, a fan on full blast. The problem was under me the whole time.</li>
+            <li>Night sweats aren't just uncomfortable. They're wrecking your sleep cycles.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber is naturally moisture-wicking and breathable, pulling heat away from the body instead of trapping it like memory foam. The fiber structure allows continuous airflow through the topper.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC relatable / talking head</td>
+              <td>Empathetic, solution-focused</td>
+              <td>30s</td>
+              <td>Creator throwing off covers at night (relatable moment). Cut to cool sleeping on topper. Temperature visual.</td>
+              <td>Voiceover, calm</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Bamboo Cooling Tech</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Bamboo is 3 degrees cooler than cotton. Now imagine sleeping on it.</li>
+            <li>There's a reason luxury hotels use bamboo bedding. It's nature's cooling system.</li>
+            <li>Memory foam traps heat. Bamboo fiber wicks it away. The science is simple.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber's micro-structure contains natural gaps that promote air circulation. Unlike synthetic cooling gels that wear off, bamboo's temperature regulation is built into the material itself and doesn't diminish over time.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Educational / infographic style</td>
+              <td>Scientific, approachable</td>
+              <td>30s</td>
+              <td>Micro-close-up of bamboo fiber. Animated airflow graphic. Side-by-side with memory foam heat map.</td>
+              <td>Clean voiceover, educational</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; verify temperature claims before publishing</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Both Sides of the Pillow</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It's like a giant marshmallow"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You know the cold side of the pillow? Imagine your whole mattress felt like that.</li>
+            <li>What if both sides of the bed were the cool side?</li>
+            <li>Stop flipping your pillow for the cold side. Upgrade what's under your whole body.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber doesn't accumulate body heat the way foam does. The entire surface stays consistently cool because the material actively moves moisture and heat away rather than absorbing and re-radiating it.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC / text overlay</td>
+              <td>Clever, relatable</td>
+              <td>15s</td>
+              <td>Classic pillow flip moment, then camera pulls back to show full topper. Mic drop energy.</td>
+              <td>Trending "cool" audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Summer Sleep Fix</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Summer sleep doesn't have to be miserable. Stop fighting your bed for comfort.</li>
+            <li>Your AC bill is $200/month because your mattress holds heat. Fix the mattress, not the thermostat.</li>
+            <li>Hot girl summer? More like hot sleeper suffering. Here's the fix.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Seasonal relevance: bamboo's cooling properties are most noticeable in warm months. The fiber wicks moisture from summer perspiration while the open structure prevents the heat-island effect of foam mattresses.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Seasonal UGC / lifestyle</td>
+              <td>Fun, summer vibes</td>
+              <td>15s</td>
+              <td>Summer heat montage. Fan, ice, misery. Cut to blissful sleep on topper. Seasonal urgency.</td>
+              <td>Summer trending audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Menopause Night Sweats</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Menopause took away a lot. Don't let it take your sleep too.</li>
+            <li>Hot flashes at 2am are bad enough without a mattress making it worse.</li>
+            <li>If you're going through menopause, you need a bed that works WITH your body, not against it.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Bamboo fiber's rapid moisture wicking handles the sudden temperature spikes of hot flashes, pulling perspiration away from the body faster than cotton or foam surfaces. The cooling effect is immediate, not gradual.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC talking head / testimonial</td>
+              <td>Understanding, mature, warm</td>
+              <td>30s / 60s</td>
+              <td>Real woman 45-55 speaking candidly. Bedroom setting, natural lighting. Authentic, not clinical.</td>
+              <td>Conversational voiceover</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; sensitive topic; respectful, not exploitative framing</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Memory Foam Betrayal</h3>
+        <div class="angle-pills">
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Memory foam was supposed to be the answer. Until you woke up in a pool of sweat.</li>
+            <li>Your memory foam mattress remembers your shape. It also remembers your body heat. All of it.</li>
+            <li>The memory foam industry has a heat problem. Bamboo solves it.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Memory foam's density traps heat by design &mdash; it needs body heat to soften. Bamboo fiber provides conforming comfort through flexible fibers instead of heat-reactive foam, delivering the hug without the sauna.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Comparison / educational</td>
+              <td>Truth-telling, confident</td>
+              <td>30s</td>
+              <td>Thermal camera on memory foam (hot) vs bamboo topper (cool). Visual proof. Split screen.</td>
+              <td>Punchy voiceover</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; don't name specific foam brands</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 5: MORNING PAIN / STIFFNESS
+     ============================================================ -->
+<section class="cluster-section" id="c5">
+  <div class="cluster-header">
+    <span class="cluster-num">05</span>
+    <h2>Morning Pain / Stiffness</h2>
+    <span class="cluster-desc">5 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Morning Stiffness Gone</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Morning stiffness isn't aging. It's your mattress compressing your joints for 8 hours.</li>
+            <li>If the first thing you do every morning is groan getting out of bed, read this.</li>
+            <li>You shouldn't need 20 minutes to "warm up" before you can walk normally.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Overnight joint compression on hard surfaces causes morning stiffness. The pressure-zone construction maintains cushioning throughout the night, keeping joints decompressed so you wake up without the "locked up" feeling.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC morning routine</td>
+              <td>Relatable, hopeful</td>
+              <td>30s</td>
+              <td>Before: struggling out of bed, stretching, wincing. After: smooth wake-up, easy movement. Side-by-side mornings.</td>
+              <td>Morning sounds, gentle</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Get Out of Bed Without Groaning</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>POV: You get out of bed without making a single sound effect.</li>
+            <li>My kids thought the groaning was just "a mom thing." It's not. It was my mattress.</li>
+            <li>The groan. The stretch. The slow roll. Sound familiar? It doesn't have to.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">When the body is cradled rather than pressed flat, muscles don't lock into guarding positions overnight. You wake up with relaxed tissue instead of muscles that braced against pressure all night.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC comedy / relatable skit</td>
+              <td>Funny, self-deprecating</td>
+              <td>15s</td>
+              <td>Exaggerated getting-out-of-bed struggle. Sound effects. Then smooth, easy version. Comedic timing.</td>
+              <td>Sound effects, trending audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Morning Routine Reclaimed</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I used to budget 30 extra minutes every morning just to deal with pain. Not anymore.</li>
+            <li>My morning routine used to start with suffering. Now it starts with coffee.</li>
+            <li>What would you do with an extra hour every morning if you weren't managing pain?</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The cumulative effect of pressure-free sleep is a fundamentally different morning. No compressed nerves, no restricted blood flow, no stiff muscles. The body wakes up in the state it fell asleep in &mdash; relaxed.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Day-in-my-life style</td>
+              <td>Empowered, positive</td>
+              <td>60s</td>
+              <td>Split-screen morning routines. Before: painful, slow. After: energized, flowing. End on topper product shot.</td>
+              <td>Uplifting background music</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Pain-Free First Steps</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Your first steps in the morning tell you everything about how you slept.</li>
+            <li>Remember when you could just... stand up? Without the hobble? That can come back.</li>
+            <li>Feet hit the floor. No wince. No limp. That's what the right topper does.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Hip and lower back compression during sleep radiates into legs and feet. The topper's pressure zones keep hips aligned and decompressed, preventing the nerve pinch that causes that first-step pain.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC feet-on-floor moment</td>
+              <td>Simple, powerful</td>
+              <td>15s</td>
+              <td>Close-up: feet swinging off bed, standing up smoothly. No hesitation. Simple but emotional.</td>
+              <td>Minimal, morning quiet</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>The 6AM Test</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>How you feel at 6am tells you if your bed is working. What does yours say?</li>
+            <li>My 6am used to be the worst hour of my day. Now it's just... morning.</li>
+            <li>Take the 6am test: can you get up without bargaining with your body for 10 more minutes?</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">After 7-8 hours on a pressure-relieving surface, the body's overnight recovery is complete rather than incomplete. The "6am test" is simple: if you don't dread getting up, your sleep surface is working.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Challenge / interactive UGC</td>
+              <td>Direct, engaging</td>
+              <td>15s / 30s</td>
+              <td>Alarm clock at 6:00. Creator's face. Challenge framing. "Try it and report back." Community angle.</td>
+              <td>Alarm sound, then calm</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 6: vs. BUYING NEW MATTRESS
+     ============================================================ -->
+<section class="cluster-section" id="c6">
+  <div class="cluster-header">
+    <span class="cluster-num">06</span>
+    <h2>vs. Buying a New Mattress</h2>
+    <span class="cluster-desc">5 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>$130 vs. $1,000+</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>A new mattress costs $1,000+. This gets you 90% of the way there for $130.</li>
+            <li>Sleep math: $130 for a topper that feels like a $2,000 mattress. What are you waiting for?</li>
+            <li>I almost financed a mattress. Then I found this topper for $130. Same sleep. No payments.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">What you feel when you lie down is the top 2-3 inches. The topper replaces that comfort layer at a fraction of full mattress cost. The structural support from your existing mattress remains perfectly functional.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Text overlay / talking head</td>
+              <td>Money-smart, no-brainer</td>
+              <td>15s</td>
+              <td>Big price numbers on screen. Mattress store footage vs. topper unboxing. Quick, punchy comparison.</td>
+              <td>Ka-ching sound effects, confident VO</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Same Result, Smart Money</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Rich people buy mattresses. Smart people buy toppers.</li>
+            <li>The smartest purchase I made this year cost $130 and changed every night of my life.</li>
+            <li>I didn't need a better mattress. I needed a better surface. There's a difference.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The comfort experience is determined by the sleep surface, not the full mattress depth. Replacing the top layer achieves the same comfort upgrade as full replacement at roughly 10% of the cost.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Talking head / listicle</td>
+              <td>Savvy, authoritative</td>
+              <td>30s</td>
+              <td>Creator in nice home. Not struggling financially &mdash; just smart. Shows topper as an insider move.</td>
+              <td>Confident, conversational VO</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Why Replace When You Can Upgrade</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You don't need a new car when new tires fix the ride. Same logic applies to your mattress.</li>
+            <li>Replace the layer you feel, keep the base that works. It's that simple.</li>
+            <li>Throwing away a mattress because the top layer wore out is like buying a new house for a broken faucet.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Most mattresses retain structural integrity long after the comfort layer wears. The topper adds a fresh bamboo fiber comfort layer, extending mattress life by years and eliminating the need for full replacement.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Analogy-driven / talking head</td>
+              <td>Common-sense, logical</td>
+              <td>30s</td>
+              <td>Car analogy visual, then mattress cross-section showing layers. "Fix the part that matters."</td>
+              <td>Conversational VO</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>The Mattress Store Trap</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Mattress stores want you to replace the whole thing. They always have. Here's what you actually need.</li>
+            <li>The mattress industry makes money when you buy new. Not when you upgrade smart.</li>
+            <li>Nobody at the mattress store will tell you about toppers. Because toppers kill their margins.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The $7.43B topper market exists because consumers realized full replacement is often unnecessary. The OrthoBed targets the actual comfort issue &mdash; surface pressure &mdash; without the waste of discarding a functional base.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Exposé style / talking head</td>
+              <td>Truth-bomb, conspiratorial</td>
+              <td>30s / 60s</td>
+              <td>Mattress store footage. Sales pressure. Then "here's what they don't tell you" pivot. Product reveal.</td>
+              <td>Dramatic pause, then confident VO</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; don't disparage specific brands</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Mattress Industry Secret</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels expensive"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Hotels don't buy expensive mattresses. They buy decent mattresses and amazing toppers.</li>
+            <li>I worked at a mattress store for 3 years. The secret? Toppers outperform half the beds we sold.</li>
+            <li>The mattress industry's best-kept secret is that the topper matters more than the mattress.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The hospitality industry standardized this approach decades ago: reliable base mattresses + premium toppers that can be replaced independently. OrthoBed brings this commercial strategy to consumers.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Insider knowledge / talking head</td>
+              <td>Insider, authority</td>
+              <td>30s</td>
+              <td>Hotel housekeeping footage. Mattress layer reveal. "This is what they actually do." Product tie-in.</td>
+              <td>Behind-the-scenes tone</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 7: CHRONIC PAIN / BACK & HIP
+     ============================================================ -->
+<section class="cluster-section" id="c7">
+  <div class="cluster-header">
+    <span class="cluster-num">07</span>
+    <h2>Chronic Pain / Back &amp; Hip</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Side Sleeper Hip Relief</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Side sleepers: your hip is bearing your entire body weight on a hard surface all night. No wonder it hurts.</li>
+            <li>I'm a side sleeper with hip pain. This topper was designed for exactly that.</li>
+            <li>Your mattress doesn't know you're a side sleeper. This topper does.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Side sleeping concentrates 70%+ of body weight on the hip and shoulder. The pressure-zone construction has deeper give at these high-load points, distributing weight across a wider contact area.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC demo / sleeping position focus</td>
+              <td>Specific, knowledgeable</td>
+              <td>30s</td>
+              <td>Side-sleeping position. Highlight hip/shoulder. Show body sinking into topper at pressure points. Relief framing.</td>
+              <td>Voiceover, anatomical but accessible</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Lower Back Support</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Your lower back doesn't hurt because you're getting old. It hurts because your mattress doesn't support it.</li>
+            <li>Back sleepers: there's a gap between your lower back and your mattress right now. That gap is the problem.</li>
+            <li>80% of adults have back pain. Most of them sleep on surfaces that make it worse.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The natural curve of the lower spine creates an unsupported gap on flat surfaces. Bamboo fiber's conforming properties fill this gap, maintaining lumbar support throughout the night without the rigidity of "orthopedic" products.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Educational + UGC</td>
+              <td>Informative, empathetic</td>
+              <td>30s</td>
+              <td>Spine diagram showing lumbar gap. Topper filling the gap. Cross-section view. Before/after posture.</td>
+              <td>Clear educational VO</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; avoid chiropractic-level claims</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Arthritis Sleep Position</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Arthritis makes every sleeping position feel wrong. This makes every position feel right.</li>
+            <li>When your joints are inflamed, the last thing they need is a hard surface pressing back.</li>
+            <li>I have arthritis in my hands, knees, and hips. This topper lets me actually sleep on my side again.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Inflamed joints require zero-pressure contact. The bamboo fiber construction gives at every joint point, eliminating the hard contact that aggravates arthritis inflammation during sleep.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC testimonial</td>
+              <td>Compassionate, personal</td>
+              <td>60s</td>
+              <td>Mature woman speaking about arthritis + sleep. Hands shown. Demonstrates comfortable positions on topper.</td>
+              <td>Warm voiceover, quiet setting</td>
+              <td><span class="pill pill-red">High</span> &mdash; arthritis is medical; frame as comfort product, not treatment</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Pain Cycle Breaker</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Pain makes you tense. Tension makes you hurt. Your mattress is part of this cycle.</li>
+            <li>Chronic pain isn't just daytime. The cycle runs 24 hours. Fix the 8 hours you're asleep.</li>
+            <li>You manage pain all day. At night, your bed should manage it for you.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The 8-hour sleep window is where pain cycles either compound or recover. Pressure-zone construction ensures the recovery side wins: no new pressure damage accumulates during sleep.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Animated explainer + UGC</td>
+              <td>Problem-solution, clear</td>
+              <td>30s</td>
+              <td>Cycle graphic breaking. Arrow from "sleep surface" to "pain reduction." Product as the intervention point.</td>
+              <td>Educational voiceover</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; frame as comfort, not medical intervention</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Sleeping Position Optimizer</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Back sleeper, side sleeper, stomach sleeper &mdash; this topper doesn't care. It adapts to you.</li>
+            <li>Stop changing your sleeping position for your mattress. Get a surface that adapts to yours.</li>
+            <li>You switch positions 20+ times a night. Your topper should keep up.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Unlike foam that takes seconds to reshape, bamboo fiber responds instantly to position changes. The pressure zones activate differently for each sleeping position, providing appropriate support whether you're on your back, side, or stomach.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Demo / multi-position showcase</td>
+              <td>Informative, versatile</td>
+              <td>30s</td>
+              <td>Creator demonstrating all three sleeping positions on topper. Show contouring at each. Smooth transitions.</td>
+              <td>Calming VO, ambient</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Joint Pressure Elimination</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Every joint in your body presses against your mattress all night. Shoulders. Hips. Knees. Ankles.</li>
+            <li>Hard surfaces compress joints. Compressed joints get inflamed. Inflamed joints hurt. Simple.</li>
+            <li>Your bed should cradle your joints, not crush them. Most beds get this wrong.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Pressure-zone construction creates graduated support that deepens at bony prominences and firms at broader muscle groups. Each joint gets individualized cushioning without losing overall body alignment.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Pressure map / thermal visual + UGC</td>
+              <td>Scientific-accessible</td>
+              <td>30s</td>
+              <td>Pressure map showing joint hotspots on flat surface vs. topper. Visual data as proof. Product demo.</td>
+              <td>Clean, informative VO</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 8: GIFT / SEASONAL
+     ============================================================ -->
+<section class="cluster-section" id="c8">
+  <div class="cluster-header">
+    <span class="cluster-num">08</span>
+    <h2>Gift / Seasonal</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Mother's Day Game Changer</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Your mom has been complaining about her bed for years. This Mother's Day, fix it for $130.</li>
+            <li>Skip the flowers and candles. Get her something she'll use every single night.</li>
+            <li>The Mother's Day gift that makes her text you at 7am saying "I slept like a baby."</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Gift framing: the topper is a practical luxury that the recipient uses daily. Unlike most gifts, this one delivers its value for 8 hours every night, making it a gift that keeps giving.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Gift reveal / reaction UGC</td>
+              <td>Warm, heartfelt</td>
+              <td>30s</td>
+              <td>Gift wrapping. Mom opening. Putting it on bed. First night reaction. Emotional payoff.</td>
+              <td>Warm music, genuine reactions</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Christmas Gift That Gets Used</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Most Christmas gifts end up in a closet. This one ends up on her bed &mdash; and stays there.</li>
+            <li>The best Christmas gift I ever gave cost $130 and my mom still talks about it a year later.</li>
+            <li>Christmas shopping for someone who "doesn't need anything"? She needs this.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The topper solves a problem the recipient may not have articulated. Most people accept poor sleep as normal. The gift reframes their mattress from "fine" to "fixable" in one unboxing moment.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Gift guide / reaction</td>
+              <td>Festive, practical</td>
+              <td>15s / 30s</td>
+              <td>Under the tree. Unwrapping. Surprise face. Cut to weeks later: "I use it every single night."</td>
+              <td>Holiday music, real reactions</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Gift for Grandma</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Grandma won't buy it for herself. She never does. So get it for her.</li>
+            <li>She deserves better sleep after everything she's given. $130. Done.</li>
+            <li>My grandma called me crying. She said she finally slept through the night. Best $130 I ever spent.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Older adults have increased pressure sensitivity and thinner skin over bony prominences. The topper's graduated pressure zones are especially effective for aging bodies that need more cushioning at contact points.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Emotional UGC / family reaction</td>
+              <td>Heartwarming, genuine</td>
+              <td>30s / 60s</td>
+              <td>Setting up grandma's bed. Her reaction. Follow-up text screenshot: "Best gift ever." Emotional arc.</td>
+              <td>Soft music, real audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>"Gift That Changed My Life"</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Most-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>My daughter got me this for my birthday. I've slept better every single night since.</li>
+            <li>Some gifts are nice. Some gifts change your life. This is the second kind.</li>
+            <li>POV: Someone gave you the gift of actually sleeping through the night.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Testimonial-as-gift-recommendation. The daily compounding of better sleep creates outsized impact from a $130 investment, making it the kind of gift people reference for months.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Testimonial / storytime UGC</td>
+              <td>Grateful, emotional</td>
+              <td>30s / 60s</td>
+              <td>Older woman speaking directly to camera. Authentic setting. No scripts. Raw gratitude. End with product.</td>
+              <td>Natural audio, no music</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Self-Care Sunday Upgrade</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels expensive"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>You buy the face cream. The supplements. The bath salts. But you sleep on a brick.</li>
+            <li>Self-care that actually works: upgrade the surface you spend 8 hours on every night.</li>
+            <li>The biggest self-care purchase you're not making is the one that fixes your sleep.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Self-care framing positions the topper as a wellness investment. Sleep is the foundation of every other health investment &mdash; without it, the supplements, exercise, and skincare underperform.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Self-care aesthetic / lifestyle</td>
+              <td>Elevated, aspirational</td>
+              <td>15s / 30s</td>
+              <td>Self-care routine montage. End with getting into bed on topper. "The most important step." Aesthetic, warm.</td>
+              <td>Trending self-care audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Back-to-School Parent Survival</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Back-to-school season means 6am alarms. Your bed better be worth getting out of.</li>
+            <li>You're about to lose an hour of sleep for the next 9 months. Make the hours you get count.</li>
+            <li>Parents: you spent $500 on school supplies. Spend $130 on yourself for once.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Seasonal urgency: when sleep quantity drops, sleep quality must increase. The topper maximizes recovery during reduced sleep windows by eliminating pressure-related micro-awakenings.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Parenting humor UGC</td>
+              <td>Funny, relatable, tired-parent energy</td>
+              <td>15s</td>
+              <td>Alarm going off. Mom dragging herself up. But plot twist &mdash; she actually slept well. Topper reveal.</td>
+              <td>Alarm sound, trending parent audio</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 9: SOCIAL PROOF / AUTHORITY
+     ============================================================ -->
+<section class="cluster-section" id="c9">
+  <div class="cluster-header">
+    <span class="cluster-num">09</span>
+    <h2>Social Proof / Authority</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>131K Customers Can't Be Wrong</h3>
+        <div class="angle-pills">
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>131,000 people bought this topper. Here's why they're not giving it back.</li>
+            <li>When 131K people agree on a product, you pay attention. This is that product.</li>
+            <li>I was skeptical. Then I read 131,000 reviews. Then I bought it. Then I understood.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Volume validates the mechanism: 131,000 customers across different pain types, body weights, and mattress conditions confirm the pressure-zone system works broadly, not just in controlled conditions.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Review compilation / social proof</td>
+              <td>Confident, data-backed</td>
+              <td>15s / 30s</td>
+              <td>Scrolling reviews. Counter ticking up. Real review screenshots. Volume as evidence.</td>
+              <td>Punchy VO with review callouts</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; verify customer count claim is current</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>"Why Didn't I Get This Sooner"</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Most-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"This is one of those upgrades you did not know you had been waiting years for"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Every review says the same thing: "I should have bought this years ago." Here's why.</li>
+            <li>The number one regret people have about this topper? Not buying it sooner.</li>
+            <li>I spent 4 years suffering before someone told me about this. Don't make my mistake.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">The regret angle works because the solution is so simple and affordable that the delay feels absurd in retrospect. Buyers calculate the nights of bad sleep they endured unnecessarily.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Review reaction / testimonial compilation</td>
+              <td>Urgent, FOMO</td>
+              <td>30s</td>
+              <td>Multiple creators saying "why didn't I get this sooner." Rapid cuts. Social proof cascade.</td>
+              <td>Building tempo music</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Doctor-Recommended</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>My doctor said to fix my sleep surface before trying another medication. I listened.</li>
+            <li>When your doctor recommends a topper over another prescription, you know it matters.</li>
+            <li>Doctors are starting to recommend sleep surface changes before pills. Here's what they suggest.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Authority positioning: medical professionals increasingly recognize sleep surface as a modifiable factor in chronic pain management. The OrthoBed's pressure-zone approach aligns with clinical guidance on pressure redistribution.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Authority / talking head (doctor or patient)</td>
+              <td>Credible, measured</td>
+              <td>30s / 60s</td>
+              <td>Clean medical-adjacent setting (NOT a clinic). Professional but approachable. Product recommendation framing.</td>
+              <td>Professional voiceover</td>
+              <td><span class="pill pill-red">High</span> &mdash; must have actual doctor endorsement or frame as "my doctor said"; FTC implications</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Before &amp; After Reviews</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I documented my first week sleeping on this topper. Day 1 vs. Day 7. Watch.</li>
+            <li>Before: 3 hours of broken sleep. After: 7 hours straight. Same bed. One topper.</li>
+            <li>My sleep tracker tells the whole story. Before this topper vs. after. The data is wild.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Documented before/after eliminates skepticism. Sleep tracker data, pain diary entries, and morning videos provide empirical proof that the pressure-zone system delivers measurable improvement.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Documentary / diary UGC</td>
+              <td>Evidence-based, genuine</td>
+              <td>60s</td>
+              <td>Day-by-day format. Sleep tracker screenshots. Morning reactions. Building improvement arc.</td>
+              <td>Minimal music, authentic VO</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; sleep tracker data must be genuine, not fabricated</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Skeptic to Believer</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"When opened, the quality and thickness was not as advertised, as thin as a blanket"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I thought mattress toppers were a scam. I was wrong. Here's what changed my mind.</li>
+            <li>I almost returned it when I opened the box. It looked too thin. Then I slept on it.</li>
+            <li>The 1-star reviews almost talked me out of it. I'm glad I ignored them.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Objection-handling angle: addresses the "thin on arrival" concern directly. Bamboo fiber expands after unboxing and the pressure-zone system performs through feel, not visual thickness. Thin ≠ ineffective.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>UGC skeptic journey</td>
+              <td>Honest, converting</td>
+              <td>30s / 60s</td>
+              <td>Unboxing with skeptical face. "This looks thin." Cut to sleeping on it. "I was wrong." Authentic conversion arc.</td>
+              <td>Natural audio, real reactions</td>
+              <td><span class="pill pill-green">Low</span> &mdash; addresses negative reviews proactively, builds trust</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>97% First-Night Relief</h3>
+        <div class="angle-pills">
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Women with fibromyalgia are saying they are finally sleeping through the night"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>97% of users felt relief on the first night. That's not marketing. That's 127,000 people.</li>
+            <li>Most products take weeks to work. 97% of people felt this one on night one.</li>
+            <li>I don't trust products that need "4-6 weeks to see results." This worked in one night.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Unlike supplements or exercises that require adaptation, pressure relief is mechanical and immediate. The topper removes pressure the moment you lie on it. No break-in, no adjustment period, no waiting.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Stat-driven / text overlay + UGC</td>
+              <td>Data-confident, impressive</td>
+              <td>15s</td>
+              <td>Big "97%" number. Customer reactions. Rapid social proof. Statistical framing.</td>
+              <td>Impactful VO, dramatic pause</td>
+              <td><span class="pill pill-red">High</span> &mdash; 97% is a brand claim; must be substantiated and disclaimed</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CLUSTER 10: FORMAT INNOVATION
+     ============================================================ -->
+<section class="cluster-section" id="c10">
+  <div class="cluster-header">
+    <span class="cluster-num">10</span>
+    <h2>Format Innovation</h2>
+    <span class="cluster-desc">6 angles</span>
+  </div>
+  <div class="angle-grid">
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Couple Reaction</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"Oh my god, this thing feels like a new mattress!"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I surprised my wife with this topper. Her reaction is priceless.</li>
+            <li>We tried this topper for the first time together. Both of us couldn't believe it.</li>
+            <li>My partner was skeptical. Until he laid on it. Watch his face change.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Dual validation: when both partners independently react positively, it doubles the social proof. The topper works for different body types on the same surface, proving universal pressure relief.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Couple reaction / surprise reveal</td>
+              <td>Fun, genuine, relatable</td>
+              <td>30s</td>
+              <td>Hidden camera style. Partner discovers topper. Both lying on it. Real reactions, real surprise.</td>
+              <td>Natural audio, genuine exclamations</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Unboxing Experience</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"When opened, the quality and thickness was not as advertised, as thin as a blanket"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Unboxing the topper everyone on TikTok is talking about. Is it worth the hype?</li>
+            <li>It arrived in a tiny box. I was worried. Then I unrolled it and... watch.</li>
+            <li>The package looked way too small. What happened next changed my sleep forever.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Unboxing addresses the "thin" objection head-on: the compressed packaging is misleading. As the topper expands, the bamboo fiber lofts to its full pressure-zone structure. Showing this process builds confidence.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Classic unboxing UGC</td>
+              <td>Excited, discovery</td>
+              <td>30s / 60s</td>
+              <td>Package arrival. Opening. Expansion time-lapse. Placement on bed. First touch. First lie-down.</td>
+              <td>ASMR packaging sounds, voiceover</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Day-in-My-Life Transformation</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>Day in my life: before the OrthoBed vs. after. The difference is everything.</li>
+            <li>A day in the life of someone who finally sleeps through the night.</li>
+            <li>Watch how one topper changed my entire day, not just my night.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Extended format shows the downstream effects of better sleep: more energy, less pain management, better mood, higher productivity. The topper's overnight pressure relief cascades into daytime quality of life.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Day-in-my-life vlog style</td>
+              <td>Authentic, aspirational</td>
+              <td>60s</td>
+              <td>Full day documented. Morning energy. Daytime activity. Evening: getting into bed. Sleep. Next morning: repeat without pain.</td>
+              <td>Lifestyle music, VO narration</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>ASMR Texture</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-blue">Hot Sleeper</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It's like a giant marshmallow"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>The sound of sinking into this topper. You're welcome.</li>
+            <li>Close your eyes and listen. This is what $130 of comfort sounds like.</li>
+            <li>Bamboo fiber ASMR. I didn't know I needed this either.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Sensory-first format. The bamboo fiber has a distinctive soft crinkle that communicates quality through sound. ASMR format lets the product sell itself through texture, touch, and the satisfying sink.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>ASMR / sensory</td>
+              <td>Calm, satisfying, tactile</td>
+              <td>15s</td>
+              <td>Extreme close-ups. Hands pressing into fiber. Slow-motion sink. No face needed. Pure product.</td>
+              <td>ASMR only &mdash; no music, no VO. Just texture sounds.</td>
+              <td><span class="pill pill-green">Low</span></td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>Side-by-Side Comparison</h3>
+        <div class="angle-pills">
+          <span class="pill pill-amber">Mattress Regretter</span>
+          <span class="pill pill-green">Budget Parent</span>
+          <span class="pill pill-accent">Solution-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"It feels expensive"</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>$130 bamboo topper vs. $400 memory foam topper. I bought both. Here's the truth.</li>
+            <li>I tested 5 mattress toppers so you don't have to. The winner surprised me.</li>
+            <li>OrthoBed vs. the "best-seller" topper on Amazon. The results weren't even close.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Direct comparison format highlights the bamboo fiber advantage over memory foam (cooling, responsiveness) and budget toppers (density, durability). Head-to-head testing makes the mechanism tangible.</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Comparison / test format</td>
+              <td>Objective, reviewer-style</td>
+              <td>60s</td>
+              <td>Two toppers side by side. Touch test. Temperature test. Comfort test. Score card. Clear winner reveal.</td>
+              <td>Review-style VO, upbeat</td>
+              <td><span class="pill pill-red">High</span> &mdash; must not name competitors directly; use generic "leading brand" framing</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+    <article class="angle-card">
+      <div class="angle-card-head">
+        <h3>30-Day Sleep Diary</h3>
+        <div class="angle-pills">
+          <span class="pill pill-purple">Chronic Pain</span>
+          <span class="pill pill-red">Fibro Fighter</span>
+          <span class="pill pill-deep">Problem-Aware</span>
+        </div>
+      </div>
+      <div class="angle-card-body">
+        <div class="angle-voc">"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</div>
+        <div>
+          <div class="angle-section-label">Hooks</div>
+          <ul class="hook-list">
+            <li>I slept on this topper for 30 days and tracked everything. Here's the data.</li>
+            <li>30 nights. One topper. A sleep tracker. And the results that made me a believer.</li>
+            <li>Day 1 vs. Day 30 on the OrthoBed. The transformation is real.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="angle-section-label">Mechanism Tie-In</div>
+          <p class="mechanism-text">Longitudinal format shows compounding benefit: immediate pressure relief (night 1) leads to reduced morning stiffness (week 1), which leads to better daytime function (week 2), which leads to reduced overall pain management (month 1).</p>
+        </div>
+      </div>
+      <details class="prod-grid">
+        <summary>Production Spec</summary>
+        <div class="prod-table-wrap">
+          <table class="prod-table">
+            <tr><th>Format</th><th>Tone</th><th>Length</th><th>Visual Direction</th><th>Audio</th><th>Risk</th></tr>
+            <tr>
+              <td>Multi-part series / documentary</td>
+              <td>Committed, evidence-driven</td>
+              <td>60s (with 15s cuts for individual posts)</td>
+              <td>Daily check-ins compiled. Calendar visual. Sleep score trend line. Morning reaction evolution. Data-heavy.</td>
+              <td>Series-style intro music, daily VO</td>
+              <td><span class="pill pill-amber">Medium</span> &mdash; long-form commitment; ensure creator follows through authentically</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RAW VOC SECTION
+     ============================================================ -->
+<section class="ref-section" id="voc">
+  <h2>Raw VOC Library</h2>
+
+  <h3>Customer Reviews</h3>
+  <div class="voc-grid">
+    <div class="voc-item">
+      <blockquote>"The most cushy comfortable sleep ever. Aches and pain seem to be gone."</blockquote>
+      <span class="voc-source">Verified Customer Review</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"I sleep all night without back pain. It feels like I'm sleeping in the clouds."</blockquote>
+      <span class="voc-source">Verified Customer Review</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"When opened, the quality and thickness was not as advertised, as thin as a blanket"</blockquote>
+      <span class="voc-source">Negative Review &mdash; Risk Signal</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"It feels like a new mattress!"</blockquote>
+      <span class="voc-source">Verified Customer Review</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"It's like a giant marshmallow"</blockquote>
+      <span class="voc-source">Verified Customer Review</span>
+    </div>
+  </div>
+
+  <h3>Winning Script Lines</h3>
+  <div class="voc-grid">
+    <div class="voc-item">
+      <blockquote>"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain"</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"Women with fibromyalgia are saying they are finally sleeping through the night"</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"You know those hotels where the bed just feels like it is holding you, not fighting you? That is this."</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"It feels expensive"</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"This is one of those upgrades you did not know you had been waiting years for"</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+    <div class="voc-item">
+      <blockquote>"Oh my god, this thing feels like a new mattress!"</blockquote>
+      <span class="voc-source">Winning Ad Script</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARKET STATS
+     ============================================================ -->
+<section class="ref-section" id="stats">
+  <h2>Market Stats Sourcing</h2>
+  <div style="overflow-x:auto">
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>Statistic</th>
+          <th>Value</th>
+          <th>Source</th>
+          <th>Use In Creative</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Americans with fibromyalgia</td>
+          <td>~10 million</td>
+          <td>National Fibromyalgia Association</td>
+          <td>Community size framing &mdash; "You're not alone"</td>
+        </tr>
+        <tr>
+          <td>Fibromyalgia gender split</td>
+          <td>75&ndash;90% women</td>
+          <td>NIH / CDC epidemiological data</td>
+          <td>Targeting validation &mdash; confirms female-skewed creative</td>
+        </tr>
+        <tr>
+          <td>US adults with chronic pain</td>
+          <td>24.3%</td>
+          <td>CDC MMWR 2023</td>
+          <td>Market size &mdash; 1 in 4 adults have this problem</td>
+        </tr>
+        <tr>
+          <td>Chronic pain sufferers with sleep disruption</td>
+          <td>67&ndash;88%</td>
+          <td>Sleep Foundation / NIH meta-analyses</td>
+          <td>Pain-sleep connection &mdash; validates the mechanism story</td>
+        </tr>
+        <tr>
+          <td>Mattress topper market size (2025)</td>
+          <td>$7.43B</td>
+          <td>Grand View Research / industry reports</td>
+          <td>Category legitimacy &mdash; this is a real, growing market</td>
+        </tr>
+        <tr>
+          <td>OrthoBed first-night relief rate</td>
+          <td>97%</td>
+          <td>Brand claim (needs substantiation)</td>
+          <td>Headline stat &mdash; MUST include disclaimer in ads</td>
+        </tr>
+        <tr>
+          <td>Total OrthoBed customers</td>
+          <td>131,000+</td>
+          <td>Brand claim</td>
+          <td>Social proof volume &mdash; verify current count before use</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPLIANCE NOTES
+     ============================================================ -->
+<section class="ref-section" id="compliance">
+  <h2>Compliance Notes</h2>
+  <div class="compliance-notes">
+    <h3>Risk Levels &amp; Guidelines</h3>
+    <ul>
+      <li><strong>LOW risk:</strong> Comfort claims, value claims, personal experience, lifestyle framing. Standard ad creative &mdash; no special disclaimers needed beyond standard advertising standards.</li>
+      <li><strong>MEDIUM risk:</strong> Sleep quality improvement claims, "97% first night" stat (brand claim requiring substantiation), temperature/cooling claims (verify specifics), pain reduction framing. Add disclaimers. Frame as personal experience. Avoid absolute language ("cures," "eliminates").</li>
+      <li><strong>HIGH risk:</strong> Medical condition treatment claims (fibromyalgia, arthritis, chronic pain), medication reduction claims, doctor endorsement framing. These require: genuine testimonials (not scripted), "results may vary" disclaimers, no treatment/cure language, and ideally verified medical professional endorsements for authority angles.</li>
+    </ul>
+  </div>
+
+  <div style="background:var(--teal-soft);border:1px solid var(--teal);border-radius:6px;padding:20px 24px;margin-bottom:32px">
+    <h3 style="color:var(--teal);margin-bottom:8px;font-size:15px;font-family:Georgia,serif">Platform-Specific Notes</h3>
+    <ul style="margin-left:18px;font-size:13px;line-height:1.7">
+      <li><strong>Meta Ads:</strong> Health claims trigger special ad category review. Frame as comfort/lifestyle, not medical. "Helps you sleep better" is safer than "relieves chronic pain." Personal experience framing ("I noticed...") is safer than universal claims.</li>
+      <li><strong>TikTok:</strong> Medical claims will get content suppressed. UGC/testimonial format performs best. "This helped ME" framing. Avoid clinical language. Community/trend framing is the safest approach.</li>
+      <li><strong>YouTube:</strong> More room for long-form educational content. Can be more specific about mechanism. Still avoid treatment claims. Disclosure requirements for sponsored/gifted content.</li>
+      <li><strong>FTC Requirements:</strong> All testimonials must be genuine. Material connections disclosed. Results-based claims need "results may vary." Any statistics cited must be substantiated and sourced.</li>
+    </ul>
+  </div>
+
+  <div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:6px;padding:20px 24px;margin-bottom:32px">
+    <h3 style="color:var(--accent);margin-bottom:8px;font-size:15px;font-family:Georgia,serif">Negative Review Mitigation</h3>
+    <ul style="margin-left:18px;font-size:13px;line-height:1.7">
+      <li><strong>Primary objection:</strong> "Thin as a blanket" / doesn't look thick enough on arrival. This is the #1 risk signal from reviews.</li>
+      <li><strong>Creative response:</strong> Use unboxing/expansion footage. Show compressed-to-expanded transformation. Address skepticism head-on through "Skeptic to Believer" angles.</li>
+      <li><strong>Guarantee framing:</strong> Lead with the return policy / satisfaction guarantee in all ads targeting skeptical personas. If a guarantee exists, make it prominent.</li>
+      <li><strong>Expectation setting:</strong> Bamboo fiber toppers work through fiber flexibility, not raw thickness. Educate on mechanism to reframe expectations before purchase.</li>
+    </ul>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:32px 0;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:24px">
+  Home &amp; Garden Trend &mdash; OrthoBed Bamboo Mattress Topper &mdash; Angle Exploration<br>
+  56 angles across 10 clusters &mdash; 5 ICPs &mdash; Production-ready
+</footer>
+
+</div>

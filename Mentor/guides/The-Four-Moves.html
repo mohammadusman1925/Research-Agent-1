@@ -1,0 +1,510 @@
+<title>The Four Moves</title>
+<style>
+  :root {
+    --paper:      #f4f5f6;
+    --surface:    #ffffff;
+    --ink:        #15191d;
+    --ink-soft:   #5f6a74;
+    --rule:       #dce0e4;
+    --rule-soft:  #e9ecee;
+    --change:     #b8331c;
+    --change-bg:  #fbeeeb;
+    --keep:       #4a6b5c;
+    --shadow:     0 1px 2px rgba(21,25,29,.05), 0 8px 24px -12px rgba(21,25,29,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #101315;
+      --surface:    #181c1f;
+      --ink:        #e6e9eb;
+      --ink-soft:   #929da6;
+      --rule:       #2b3237;
+      --rule-soft:  #22282c;
+      --change:     #ff7a5e;
+      --change-bg:  #2a1a16;
+      --keep:       #85ab99;
+      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #101315;
+    --surface:    #181c1f;
+    --ink:        #e6e9eb;
+    --ink-soft:   #929da6;
+    --rule:       #2b3237;
+    --rule-soft:  #22282c;
+    --change:     #ff7a5e;
+    --change-bg:  #2a1a16;
+    --keep:       #85ab99;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    padding: clamp(24px, 5vw, 64px) clamp(16px, 4vw, 48px) 96px;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(17px, 2.4vw, 21px);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+  .meta b { color: var(--ink); font-weight: 600; }
+
+  section { display: flex; flex-direction: column; gap: 12px; }
+
+  h2 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .count {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .scroller {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 720px;
+    font-size: 13.5px;
+  }
+
+  thead th {
+    text-align: left;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  td.layer, td.beat {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td.beat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  td.mark { width: 1%; white-space: nowrap; }
+
+  .tag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .tag.change {
+    color: var(--change);
+    background: var(--change-bg);
+    border-color: var(--change);
+    font-weight: 700;
+  }
+  .tag.keep {
+    color: var(--keep);
+    border-color: var(--rule);
+  }
+
+  tr.is-change td:first-child { box-shadow: inset 3px 0 0 var(--change); }
+  tr.is-change td.layer, tr.is-change td.beat { color: var(--change); }
+
+  .why { color: var(--ink-soft); }
+  .sample { font-style: italic; }
+  .verbatim { color: var(--ink-soft); font-style: normal; }
+
+  .note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    max-width: 78ch;
+    margin: 0;
+  }
+  .note b { color: var(--ink); }
+
+  ol.kta {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: k;
+    display: grid;
+    gap: 10px;
+  }
+  ol.kta li {
+    counter-increment: k;
+    position: relative;
+    padding-left: 42px;
+    max-width: 92ch;
+  }
+  ol.kta li::before {
+    content: counter(k, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: .06em;
+  }
+
+  .summary {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--change);
+    border-radius: 3px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .summary p:first-child {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(19px, 3vw, 25px);
+    margin: 0;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .summary p:last-child { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .swaps { display: grid; gap: 18px; }
+
+  .swap {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .swap > .beatline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .swap > .pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+  @media (max-width: 760px) {
+    .swap > .pair { grid-template-columns: minmax(0, 1fr); }
+  }
+  .swap .side { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .swap .side + .side { border-left: 1px solid var(--rule-soft); }
+  @media (max-width: 760px) {
+    .swap .side + .side { border-left: 0; border-top: 1px solid var(--rule-soft); }
+  }
+  .swap .side.old { color: var(--ink-soft); }
+  .swap .side.new { background: var(--change-bg); }
+  .swap .side h4 {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .swap .side.new h4 { color: var(--change); }
+  .swap p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+  .swap .side.new p { color: var(--ink); }
+
+  .script {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: clamp(16px, 3vw, 28px);
+    display: grid;
+    gap: 26px;
+  }
+  .scripthead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .scripthead span { padding: 0 18px; }
+  .scripthead span:last-child { color: var(--change); }
+  .script .block { display: grid; gap: 7px; }
+  .script .block .tagline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .script .block.moved .tagline { color: var(--change); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .cols .col { padding: 14px 18px; }
+  .cols .col + .col { border-left: 1px solid var(--rule-soft); }
+  .cols .col.a { color: var(--ink-soft); }
+  .block.moved .cols { border-color: var(--change); }
+  .block.moved .col.b { background: var(--change-bg); }
+  @media (max-width: 900px) {
+    .scripthead { display: none; }
+    .cols { grid-template-columns: 1fr; }
+    .cols .col + .col { border-left: 0; border-top: 1px solid var(--rule-soft); }
+    .cols .col::before {
+      content: attr(data-label);
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+  }
+  .hl { border-bottom: 2px solid var(--change); }
+  .col.b .hl { color: var(--change); font-weight: 600; }
+  .col.a .hl { text-decoration: line-through; text-decoration-color: var(--change); text-decoration-thickness: 1px; }
+
+  .script p {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-soft); align-items: center; }
+  .legend .dot { display: inline-block; width: 10px; height: 2px; background: var(--change); margin-right: 6px; vertical-align: middle; }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 0; }
+    .scroller { box-shadow: none; border-color: #bbb; }
+    section { break-inside: avoid; }
+    tr { break-inside: avoid; }
+  }
+</style>
+<main>
+  <header>
+    <div class="eyebrow">Master Concept &middot; the index</div>
+    <h1>The Four Moves</h1>
+    <p class="standfirst">Three ways to change an ad, and one way to stack them.</p>
+    <div class="meta">
+      <span><b>Built on</b> The Maggie hip belt script</span>
+      <span><b>Rule</b> One variable at a time</span>
+    </div>
+  </header>
+  <section>
+    <h2>The three moves</h2>
+    <div class="scroller"><table>
+      <thead><tr><th></th><th>Iteration</th><th>Use case swap</th><th>Angle swap</th></tr></thead><tbody>
+        <tr><td class="layer">The rule</td><td>Same ad, new front door</td><td>Keep the reason. Change the moment</td><td>Keep the moment. Change the reason</td></tr>
+        <tr><td class="layer">What stays</td><td>Everything</td><td>The reason it works</td><td>The scene</td></tr>
+        <tr><td class="layer">What changes</td><td>The way in</td><td>Her situation</td><td>Why she was never fixed</td></tr>
+        <tr><td class="layer">Layers that move</td><td>0</td><td>2</td><td>2</td></tr>
+        <tr><td class="layer">Beats that move</td><td>1</td><td>5 to 6</td><td>8</td></tr>
+        <tr><td class="layer">New words to write</td><td>about 40</td><td>about 200</td><td>about 400</td></tr>
+        <tr><td class="layer">Named</td><td>ITE</td><td>NN</td><td>NN</td></tr>
+        <tr><td class="layer">Use it when</td><td>You have a winner and want more of it</td><td>You want a bigger audience for the same argument</td><td>The argument itself is tired</td></tr>
+        <tr><td class="layer">The result tells you</td><td>Which door they walk through</td><td>Which moment they live in</td><td>Whether they believe a different reason</td></tr>
+      </tbody></table></div>
+    <p class="note"><b>Scaling is not a fourth move.</b> It is the use case swap run three to five times with the angle locked. Same mechanics, done repeatedly, which is where volume comes from.</p>
+  </section>
+  <section>
+    <h2>Which beats move <span class="count">17 beats, 3 moves</span></h2>
+    <div class="scroller"><table>
+      <thead><tr><th>Beat</th><th>Iteration</th><th>Use case swap</th><th>Angle swap</th></tr></thead><tbody>
+        <tr><td class="beat">1 Hook</td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">2 Credential</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">3 Personal Crisis</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">4 Pattern</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">6 Failed Attempts</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">6 The 2am search</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">7 Low Point, at home</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">7 Low Point, the situation</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">8 Bridge</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr class="is-change"><td class="beat">10 Mechanism</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">12 Differentiation</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">13 Product</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">18 Guarantee</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">14 Results</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">14 Resolution</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="beat">17 CTA</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="beat">19 Echo Close</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+      </tbody></table></div>
+  </section>
+  <section>
+    <h2>The four phases <span class="count">19 beats</span></h2>
+    <p class="note">Long form runs in four phases. Every beat belongs to one of them, and the phase tells you what that stretch of the ad is for.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>Phase</th><th>Beats</th><th>Its job</th></tr></thead><tbody>
+        <tr><td class="layer">Phase 1</td><td class="mark">Beats 1 to 4</td><td>Stop her and make her recognise herself</td></tr>
+        <tr><td class="layer">Phase 2</td><td class="mark">Beats 5 to 9</td><td>Break the old explanation</td></tr>
+        <tr><td class="layer">Phase 3</td><td class="mark">Beats 10 to 13</td><td>Give her the new one, then the product</td></tr>
+        <tr><td class="layer">Phase 4</td><td class="mark">Beats 14 to 19</td><td>Prove it and close</td></tr>
+      </tbody></table></div>
+  </section>
+  <section>
+    <h2>All 19 beats, in order <span class="count">14 present &middot; 5 absent</span></h2>
+    <p class="note">Your script runs 14 of the 19. Nothing is being skipped by accident. Five beats were never written, and two of those are the account structural gaps.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>Phase</th><th>#</th><th>Beat</th><th>In your script</th><th>What it is</th><th>ITE</th><th>Use case</th><th>Angle</th></tr></thead><tbody>
+        <tr><td class="why">Phase 1</td><td class="beat">1</td><td class="layer">Hook</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">The opening line</td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="why"></td><td class="beat">2</td><td class="layer">Credential</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">My name is Maggie. I'm 64</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="why"></td><td class="beat">3</td><td class="layer">Personal Crisis</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">The kerb. Her hip gave out</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="why"></td><td class="beat">4</td><td class="layer">Pattern</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Car, chair, socks, the nights</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr class="is-change"><td class="why">Phase 2</td><td class="beat">5</td><td class="layer">Lies / Myths</td><td class="mark"><span class="tag change">ABSENT</span></td><td class="why">Never used here. It is a sometimes beat</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td></tr>
+        <tr><td class="why"></td><td class="beat">6</td><td class="layer">Failed Attempts</td><td class="mark"><span class="tag keep">yes x2</span></td><td class="why">The verdict, then the 2am searches</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="why"></td><td class="beat">7</td><td class="layer">Emotional Low Point</td><td class="mark"><span class="tag keep">yes x2</span></td><td class="why">John and the groceries, then the driveway</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="why"></td><td class="beat">8</td><td class="layer">Bridge / Discovery</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Denise arrives</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr class="is-change"><td class="why"></td><td class="beat">9</td><td class="layer">External Proof</td><td class="mark"><span class="tag change">ABSENT</span></td><td class="why">No third party result. A real gap</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td></tr>
+        <tr><td class="why">Phase 3</td><td class="beat">10</td><td class="layer">Mechanism</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Tendons, blood supply, stuck loop</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr class="is-change"><td class="why"></td><td class="beat">11</td><td class="layer">Cheap Version Fails</td><td class="mark"><span class="tag change">ABSENT</span></td><td class="why">Never answers &ldquo;I can get that anywhere&rdquo;</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td></tr>
+        <tr><td class="why"></td><td class="beat">12</td><td class="layer">Differentiation</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Not numbing, not masking, not loading</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="why"></td><td class="beat">13</td><td class="layer">Product Introduction</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">The belt, four things at once</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="why">Phase 4</td><td class="beat">14</td><td class="layer">Personal Results</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Twenty minutes, four hours, the socks</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr class="is-change"><td class="why"></td><td class="beat">15</td><td class="layer">Expert Validation</td><td class="mark"><span class="tag change">ABSENT</span></td><td class="why">Structural gap 2. No expert reacts to the result</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td></tr>
+        <tr class="is-change"><td class="why"></td><td class="beat">16</td><td class="layer">Proof, Others</td><td class="mark"><span class="tag change">ABSENT</span></td><td class="why">Structural gap 1. 289 reviews, none used</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td><td class="mark verbatim">-</td></tr>
+        <tr><td class="why"></td><td class="beat">17</td><td class="layer">CTA</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">Try it yourself</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+        <tr><td class="why"></td><td class="beat">18</td><td class="layer">Guarantee</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">The 30 day promise. <b>Placed early, before beat 14</b></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag keep">keep</span></td></tr>
+        <tr><td class="why"></td><td class="beat">19</td><td class="layer">Echo Close</td><td class="mark"><span class="tag keep">yes</span></td><td class="why">I wish someone had told me</td><td class="mark"><span class="tag keep">keep</span></td><td class="mark"><span class="tag change">CHANGE</span></td><td class="mark"><span class="tag change">CHANGE</span></td></tr>
+      </tbody></table></div>
+    <p class="note"><b>Why the tables in the other guides look out of order.</b> They follow the order the beats appear in your script, not the numbers. Your script delivers the guarantee at beat 18 <i>before</i> the results at beat 14, because she says it as part of the story: &ldquo;I only bought it because of the 30 day money back promise.&rdquo; That is deliberate and it is one of the reasons the ad works, so the number order and the reading order are not the same thing.</p>
+  </section>
+  <section>
+    <h2>Which beats each move touches <span class="count">by number</span></h2>
+    <div class="scroller"><table>
+      <thead><tr><th>Move</th><th>Beats it changes</th><th>Count</th></tr></thead><tbody>
+        <tr><td class="layer">Iteration</td><td class="beat">1</td><td class="mark">1</td></tr>
+        <tr class="is-change"><td class="layer">Use case swap</td><td class="beat">1, 4, 6, 7, 14, 17, 19</td><td class="mark">7</td></tr>
+        <tr class="is-change"><td class="layer">Angle swap</td><td class="beat">1, 6, 8, 10, 12, 17, 19</td><td class="mark">7</td></tr>
+      </tbody></table></div>
+    <p class="note">Same count, completely different beats. <b>Only two overlap: 1 and 19</b>, the hook and the close, because those always follow whatever changed. Everything else is separate, which is what makes the two tests independent.</p>
+  </section>
+  <section>
+    <h2>How to read it</h2>
+    <ol class="kta">
+      <li><b>Beat 10 is the tell.</b> It is the only row where the three moves genuinely separate. If the mechanism moved, you changed the angle. If it did not, you did not, whatever you called it.</li>
+      <li><b>Beat 1 always moves.</b> In all three. The hook is built out of whatever changed, so it can never stay still.</li>
+      <li><b>Beats 2, 3, 13, 18 and 14 never move.</b> The narrator, how it started, the product, the guarantee and the results. That is the spine.</li>
+      <li><b>Count the changes to name the test.</b> One beat is an iteration. Six is a new scene. Eight is a new argument. If you set out to change the angle and three beats moved, the angle did not really change.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>The order you run them</h2>
+    <ol class="kta">
+      <li>Prove something with an <b>iteration</b>. Cheapest test you will ever run.</li>
+      <li>Widen it with <b>use case swaps</b>. This is where volume comes from.</li>
+      <li>Keep going until three to five scenes work. That is <b>scaling</b>. Build the dedicated landing page, then raise budget.</li>
+      <li>Run the winners in another <b>bucket</b>. UGC, then VSL. Exhaustion is per bucket, not per angle.</li>
+      <li>Only then reach for an <b>angle swap</b>, when the argument itself stops producing.</li>
+    </ol>
+    <p class="note">You are between 2 and 3. One angle, five scenes mapped, two of them live.</p>
+  </section>
+  <section>
+    <h2>The guides</h2>
+    <div class="scroller"><table>
+      <thead><tr><th>Guide</th><th>Size</th><th>What it shows</th><th>Link</th></tr></thead><tbody>
+        <tr><td class="layer">Hook Iteration</td><td class="mark">0 layers, 1 beat</td><td class="why">Three doors into the same room</td><td><a href="https://claude.ai/code/artifact/b34c9452-b0aa-43b9-a336-4c1c6c7a04f8" style="color:var(--change)">open</a></td></tr>
+        <tr><td class="layer">Use Case Swap</td><td class="mark">2 layers, 6 beats</td><td class="why">The surgery countdown becomes the cortisone ladder</td><td><a href="https://claude.ai/code/artifact/82bbe3d2-2152-4fa8-af8d-44406e05548a" style="color:var(--change)">open</a></td></tr>
+        <tr><td class="layer">Angle Swap</td><td class="mark">2 layers, 8 beats</td><td class="why">Wrong depth becomes the question nobody asked</td><td><a href="https://claude.ai/code/artifact/bb37c9c3-ac5f-4e5e-8b5e-38d098988ea8" style="color:var(--change)">open</a></td></tr>
+        <tr><td class="layer">Five Doors, One Angle</td><td class="mark">the same swap, five times</td><td class="why">Scaling. The five scenes already in your script</td><td><a href="https://claude.ai/code/artifact/8c5efd3b-2f29-40fc-abfb-2dff29bfe494" style="color:var(--change)">open</a></td></tr>
+        <tr><td class="layer">Ad 03, The Sleep Ad</td><td class="mark">5 beats</td><td class="why">One of the five, written out in full</td><td><a href="https://claude.ai/code/artifact/6ac86c03-bedd-49a1-9ca0-4c701568a165" style="color:var(--change)">open</a></td></tr>
+      </tbody></table></div>
+  </section>
+  <section><div class="summary">
+    <p>One variable at a time, and count the beats to prove it.</p>
+    <p>The beat count is not a detail. It is the only honest way to know which test you actually ran.</p>
+  </div></section>
+</main>

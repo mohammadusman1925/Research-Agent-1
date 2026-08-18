@@ -1,0 +1,1302 @@
+<title>OrthoBed — DRIVE Creative Strategy</title>
+<style>
+:root{
+  --ground:#F8F6F3;--surface:#fff;--raised:#F0EDE8;--text:#1C1917;--muted:#78716C;
+  --accent:#D4954B;--teal:#2B5EA7;--teal-soft:#EAF0F9;--accent-soft:#FDF3E8;
+  --border:#E7E5E4;--deep:#1B2A4A;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0D1117;--surface:#161B22;--raised:#21262D;--text:#E6EDF3;--muted:#8B949E;
+  --accent:#E8A95B;--teal:#58A6FF;--teal-soft:#0D2240;--accent-soft:#2D1F0E;
+  --border:#30363D;--deep:#010409;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#0D1117;--surface:#161B22;--raised:#21262D;--text:#E6EDF3;--muted:#8B949E;
+  --accent:#E8A95B;--teal:#58A6FF;--teal-soft:#0D2240;--accent-soft:#2D1F0E;
+  --border:#30363D;--deep:#010409;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#F8F6F3;--surface:#fff;--raised:#F0EDE8;--text:#1C1917;--muted:#78716C;
+  --accent:#D4954B;--teal:#2B5EA7;--teal-soft:#EAF0F9;--accent-soft:#FDF3E8;
+  --border:#E7E5E4;--deep:#1B2A4A;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 24px 100px}
+
+.masthead{background:var(--deep);color:#EDEDEC;padding:52px 24px 44px;margin:0 -24px 40px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--accent)}
+.mast-label{font:600 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.masthead h1{font:800 clamp(1.9rem,5vw,3.2rem)/1.08 -apple-system,system-ui,sans-serif;letter-spacing:-.03em;color:#fff;max-width:700px}
+.masthead p{font-size:1.05rem;color:#A8A8A6;margin-top:14px;max-width:640px;line-height:1.6}
+
+nav.sticky-nav{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);margin:0 -24px;padding:12px 24px;display:flex;gap:6px;flex-wrap:wrap;backdrop-filter:blur(8px)}
+nav.sticky-nav a{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:6px;font:600 .78rem/1 -apple-system,system-ui,sans-serif;text-decoration:none;color:var(--muted);background:var(--raised);letter-spacing:.02em;transition:all .15s}
+nav.sticky-nav a:hover{color:var(--text);background:var(--border)}
+nav.sticky-nav a .badge{display:inline-block;width:20px;height:20px;border-radius:4px;text-align:center;line-height:20px;font-weight:800;font-size:.72rem;color:#fff}
+.badge-d{background:#D4954B}.badge-r{background:#2B5EA7}.badge-i{background:#7C3AED}.badge-v{background:#059669}.badge-e{background:#DC2626}
+
+section{margin-top:56px}
+.phase-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.phase-badge{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font:800 1.1rem/1 -apple-system,system-ui,sans-serif;color:#fff;flex-shrink:0}
+.phase-badge-d{background:#D4954B}.phase-badge-r{background:#2B5EA7}.phase-badge-i{background:#7C3AED}.phase-badge-v{background:#059669}.phase-badge-e{background:#DC2626}
+.phase-header h2{font:700 1.55rem/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.02em}
+.phase-sub{font-size:.88rem;color:var(--muted)}
+
+.sec-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px}
+.sec-rule.teal{background:var(--teal)}
+h3{font:600 1.12rem/1.2 -apple-system,system-ui,sans-serif;margin-top:28px;margin-bottom:8px}
+h4{font:600 .95rem/1.2 -apple-system,system-ui,sans-serif;margin-top:20px;margin-bottom:6px}
+p{margin:.55em 0;max-width:68ch}
+ul,ol{padding-left:1.3em;margin:.5em 0}li{margin:.3em 0}
+
+.callout{padding:18px 20px;border-radius:8px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.callout-teal{background:var(--teal-soft);border-left:3px solid var(--teal)}
+.callout-accent{background:var(--accent-soft);border-left:3px solid var(--accent)}
+.callout-purple{background:#EDE9FE;border-left:3px solid #7C3AED}
+.callout-green{background:#DCFCE7;border-left:3px solid #059669}
+.callout-red{background:#FEE2E2;border-left:3px solid #DC2626}
+.callout strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .callout-purple{background:#3B0764;border-left-color:#A78BFA}
+  :root:not([data-theme="light"]) .callout-green{background:#14532D;border-left-color:#34D399}
+  :root:not([data-theme="light"]) .callout-red{background:#7F1D1D;border-left-color:#F87171}
+}
+:root[data-theme="dark"] .callout-purple{background:#3B0764;border-left-color:#A78BFA}
+:root[data-theme="dark"] .callout-green{background:#14532D;border-left-color:#34D399}
+:root[data-theme="dark"] .callout-red{background:#7F1D1D;border-left-color:#F87171}
+
+.lockbox{background:var(--deep);color:#EDEDEC;padding:22px 24px;border-radius:10px;margin:20px 0;font-size:.92rem;line-height:1.6}
+.lockbox h4{color:var(--accent);font:700 .82rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}
+.lockbox ul{padding-left:1.1em}.lockbox li{margin:.45em 0;font-size:.91rem;line-height:1.55}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.7rem;font-weight:600;letter-spacing:.03em}
+.pill-green{background:#DCFCE7;color:#166534}.pill-amber{background:#FEF3C7;color:#92400E}
+.pill-red{background:#FEE2E2;color:#991B1B}.pill-blue{background:#DBEAFE;color:#1E40AF}
+.pill-purple{background:#EDE9FE;color:#5B21B6}.pill-gray{background:var(--raised);color:var(--muted)}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pill-green{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .pill-amber{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .pill-red{background:#7F1D1D;color:#FCA5A5}
+  :root:not([data-theme="light"]) .pill-blue{background:#1E3A5F;color:#93C5FD}
+  :root:not([data-theme="light"]) .pill-purple{background:#3B0764;color:#C4B5FD}
+}
+:root[data-theme="dark"] .pill-green{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .pill-amber{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .pill-red{background:#7F1D1D;color:#FCA5A5}
+:root[data-theme="dark"] .pill-blue{background:#1E3A5F;color:#93C5FD}
+:root[data-theme="dark"] .pill-purple{background:#3B0764;color:#C4B5FD}
+
+.icp-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:22px 24px;margin:18px 0}
+.icp-card.fibro{border-left:4px solid #DC2626}
+.icp-card.regretter{border-left:4px solid #2563EB}
+.icp-card.hot{border-left:4px solid #7C3AED}
+.icp-card.chronic{border-left:4px solid #D97706}
+.icp-card.budget{border-left:4px solid #059669}
+.icp-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.icp-name{font:700 1.05rem/1.2 -apple-system,system-ui,sans-serif}
+.icp-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+
+.reframe-card{background:var(--raised);border-radius:10px;padding:20px 22px;margin:16px 0;border-left:4px solid var(--teal)}
+.reframe-card h4{font:700 .95rem/1.2 -apple-system,system-ui,sans-serif;margin-bottom:12px;color:var(--teal)}
+.reframe-step{display:flex;align-items:flex-start;gap:10px;margin:10px 0;font-size:.9rem;line-height:1.55}
+.reframe-label{font:700 .72rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);flex-shrink:0;min-width:60px;padding-top:2px}
+
+.chain{background:var(--raised);border-radius:10px;padding:20px 22px;margin:18px 0}
+.chain h4{font:700 .95rem/1.2 -apple-system,system-ui,sans-serif;margin-bottom:10px}
+.chain-step{display:flex;align-items:flex-start;gap:10px;margin:8px 0;font-size:.9rem;line-height:1.5}
+.chain-arrow{color:var(--accent);font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px}
+
+.score-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:22px 24px;margin:18px 0}
+.score-card h4{font:700 1rem/1.2 -apple-system,system-ui,sans-serif;margin-bottom:12px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.score-row:last-child{border-bottom:none}
+.score-val{font:800 1rem/1 -apple-system,system-ui,sans-serif;color:var(--accent)}
+.score-total{display:flex;justify-content:space-between;align-items:center;padding:10px 0;margin-top:8px;border-top:2px solid var(--accent);font:700 1.05rem/1 -apple-system,system-ui,sans-serif}
+.score-total .score-val{font-size:1.3rem}
+.score-verdict{display:inline-block;padding:4px 12px;border-radius:6px;font:700 .78rem/1 -apple-system,system-ui,sans-serif;margin-top:8px}
+.verdict-scale{background:#DCFCE7;color:#166534}
+.verdict-test{background:#FEF3C7;color:#92400E}
+.verdict-rework{background:#FEE2E2;color:#991B1B}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .verdict-scale{background:#14532D;color:#86EFAC}
+  :root:not([data-theme="light"]) .verdict-test{background:#78350F;color:#FCD34D}
+  :root:not([data-theme="light"]) .verdict-rework{background:#7F1D1D;color:#FCA5A5}
+}
+:root[data-theme="dark"] .verdict-scale{background:#14532D;color:#86EFAC}
+:root[data-theme="dark"] .verdict-test{background:#78350F;color:#FCD34D}
+:root[data-theme="dark"] .verdict-rework{background:#7F1D1D;color:#FCA5A5}
+
+.hook-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:14px 0}
+.hook-card h4{font:700 .9rem/1.2 -apple-system,system-ui,sans-serif;margin-bottom:8px;color:var(--accent)}
+.hook-card p{font-size:.88rem;margin:.4em 0}
+
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin:16px 0}
+.grid-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.grid-card h4{font:700 .88rem/1 -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:10px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:20px 0}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.stat-card .num{font:800 1.6rem/1 -apple-system,system-ui,sans-serif;color:var(--accent);margin-bottom:6px}
+.stat-card .num.teal{color:var(--teal)}
+.stat-card .label{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.quote{border-left:3px solid var(--accent);padding:12px 18px;margin:14px 0;font-style:italic;font-size:.93rem;line-height:1.6;color:var(--text)}
+.quote cite{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:6px}
+
+details{margin:8px 0}
+details summary{cursor:pointer;font:600 .92rem/1.4 -apple-system,system-ui,sans-serif;padding:10px 14px;background:var(--raised);border-radius:8px;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::before{content:">";font:800 .8rem/1 monospace;color:var(--accent);transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+details .detail-body{padding:12px 14px;font-size:.88rem;line-height:1.6}
+details .detail-body p{margin:.4em 0}
+
+.gradient-divider{height:3px;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:2px;margin:48px 0}
+
+footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+</style>
+
+<main>
+
+<!-- HEADER -->
+<div class="masthead">
+  <div class="mast-label">DRIVE Creative Strategy</div>
+  <h1>OrthoBed Bamboo Mattress Topper</h1>
+  <p>Discover. Reframe. Ignite. Variate. Evolve. Full creative strategy built from sourced research, VOC, winning script analysis, and core copywriting frameworks.</p>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="nav">
+  <a href="#discover"><span class="badge badge-d">D</span> Discover</a>
+  <a href="#reframe"><span class="badge badge-r">R</span> Reframe</a>
+  <a href="#ignite"><span class="badge badge-i">I</span> Ignite</a>
+  <a href="#variate"><span class="badge badge-v">V</span> Variate</a>
+  <a href="#evolve"><span class="badge badge-e">E</span> Evolve</a>
+  <a href="#bigideas">Big Ideas</a>
+  <a href="#headlines">Headlines</a>
+  <a href="#compliance">Compliance</a>
+  <a href="#metrics">Metrics</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PHASE 1: D — DISCOVER                              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="discover">
+  <div class="phase-header">
+    <div class="phase-badge phase-badge-d">D</div>
+    <div>
+      <h2>Discover</h2>
+      <div class="phase-sub">Mass desire, awareness mapping, biological triggers, target ICPs</div>
+    </div>
+  </div>
+
+  <!-- 1.1 Mass Desire Analysis -->
+  <h3>1.1 Mass Desire Analysis</h3>
+  <div class="quote">"Copy cannot create desire for a product. It can only take the hopes, dreams, fears and desires that already exist in the hearts of millions of people, and focus those already-existing desires onto a particular product."<cite>-- Eugene Schwartz, Breakthrough Advertising</cite></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Product</th><th>Surface Want</th><th>Mass Desire (The Real Purchase)</th></tr>
+      <tr><td>OrthoBed Bamboo Mattress Topper</td><td>"I want a softer mattress"</td><td><strong>"I want to lie down at night and not dread the morning."</strong> The real purchase is the end of a cycle: pain ruins sleep, bad sleep worsens pain, worse pain ruins tomorrow. They are buying the belief that tomorrow morning can feel different.</td></tr>
+    </table>
+  </div>
+
+  <div class="lockbox">
+    <h4>Mass Desire Channeling</h4>
+    <p>This market sits at the intersection of three forces:</p>
+    <ul>
+      <li><strong>Chronic pain epidemic:</strong> 24.3% of US adults (80M+) live with chronic pain. 34% rise in back-pain cases. Growing, not shrinking.</li>
+      <li><strong>Sleep desperation:</strong> 67-88% of chronic pain sufferers can't sleep properly. Poor sleep amplifies pain. Pain disrupts sleep. An inescapable cycle.</li>
+      <li><strong>Economic pressure:</strong> New mattresses cost $800-$2,000+. Most people can't afford to replace. A $130 fix is the only accessible option.</li>
+    </ul>
+    <p>The mass desire is never "I want a mattress topper." It is: "I want to stop hurting. I want to sleep. I want to feel like myself again." Channel this desire. Don't create it.</p>
+  </div>
+
+  <!-- 1.2 Schwartz Sophistication Map -->
+  <h3>1.2 Schwartz Sophistication Map</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Stage</th><th>Definition</th><th>Where OrthoBed Stands</th></tr>
+      <tr><td>1</td><td>Be first. Make the direct claim.</td><td>Past this. Mattress toppers exist.</td></tr>
+      <tr><td>2</td><td>Enlarge the claim. Bigger, bolder, more specific.</td><td>Competitors are here. "Soft bamboo topper." "Cooling pad."</td></tr>
+      <tr><td><strong>3</strong></td><td><strong>Introduce a MECHANISM. Shift from WHAT to HOW.</strong></td><td><strong>OrthoBed sits here. "Pressure-zone bamboo fiber targets 18 tender points" is a mechanism claim. Competitors say "soft." OrthoBed says "pain-relief system."</strong> <span class="pill pill-amber">Current Position</span></td></tr>
+      <tr><td>4</td><td>Elaborate on the mechanism. Stack proof. Authority.</td><td>Approaching. As more DTC toppers adopt pain language, proof stacking wins.</td></tr>
+      <tr><td>5</td><td>Market exhausted. Identify with the prospect.</td><td>Not here yet. Room to run with mechanism.</td></tr>
+    </table>
+  </div>
+
+  <div class="callout callout-accent">
+    <strong>Creative Implication</strong>
+    At Stage 3, the mechanism IS the ad. Every hook, every script, every image must communicate HOW OrthoBed works differently, not just WHAT it does. "Bamboo mattress topper" is Stage 1. "Pressure-zone construction that targets 18 fibromyalgia tender points" is Stage 3. Feature the mechanism in the headline, then restate the full claim beneath it. When competitors start copying the language, escalate to Stage 4: stack proof, add authority, introduce specificity that can't be replicated.
+  </div>
+
+  <!-- 1.3 Purchase Trigger Map (LF8) -->
+  <h3>1.3 Purchase Trigger Map (Life Force 8)</h3>
+  <p>The 8 hardwired biological drives mapped to OrthoBed. Every human has them. They power all purchasing.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>#</th><th>LF8 Drive</th><th>OrthoBed Application</th><th>Priority</th></tr>
+      <tr>
+        <td>1</td><td>Survival / life extension / enjoyment of life</td>
+        <td>Sleep is survival. Chronic pain shortens lifespan. "Finally enjoying mornings again" is life enjoyment.</td>
+        <td><span class="pill pill-red">Primary</span></td>
+      </tr>
+      <tr>
+        <td>2</td><td>Enjoyment of food and beverages</td>
+        <td>Not directly applicable.</td>
+        <td><span class="pill pill-gray">N/A</span></td>
+      </tr>
+      <tr>
+        <td>3</td><td>Freedom from fear, pain, and danger</td>
+        <td>The dominant trigger. Freedom from chronic pain, fibromyalgia, morning stiffness, the fear of another sleepless night. This drives 70%+ of purchases.</td>
+        <td><span class="pill pill-red">Primary</span></td>
+      </tr>
+      <tr>
+        <td>4</td><td>Sexual companionship</td>
+        <td>Secondary. Better sleep = better energy = better intimacy. Partner comfort. "My husband runs hot, I'm always cold."</td>
+        <td><span class="pill pill-amber">Secondary</span></td>
+      </tr>
+      <tr>
+        <td>5</td><td>Comfortable living conditions</td>
+        <td>Core trigger. "Hotel bed feeling." "Sleeping in the clouds." "Giant marshmallow." Comfort is the sensory hook.</td>
+        <td><span class="pill pill-red">Primary</span></td>
+      </tr>
+      <tr>
+        <td>6</td><td>To be superior / winning / keeping up</td>
+        <td>Secondary. "Smart enough to fix my mattress for $130 instead of replacing it for $1,000." Value intelligence.</td>
+        <td><span class="pill pill-amber">Secondary</span></td>
+      </tr>
+      <tr>
+        <td>7</td><td>Care and protection of loved ones</td>
+        <td>Gift angle. "The gift that changes how your mom starts every morning." Buying for aging parents, spouse with pain.</td>
+        <td><span class="pill pill-amber">Secondary</span></td>
+      </tr>
+      <tr>
+        <td>8</td><td>Social approval</td>
+        <td>Light touch. "131,000 customers." "Sold out 5 times." Being part of a community that found the answer.</td>
+        <td><span class="pill pill-amber">Secondary</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="lockbox">
+    <h4>Dominant Triggers</h4>
+    <p><strong>LF3 (Freedom from pain) + LF5 (Comfortable living) + LF1 (Enjoyment of life)</strong> form the primary triad. Every ad must activate at least two of these. The strongest combination is LF3 + LF7 (freedom from pain + care of loved ones) for the gift angle. For self-purchase, LF3 + LF5 (pain relief + comfort) is the killer pair. The winning scripts all activate LF3 first (pain acknowledgment), then layer LF5 (sensory comfort description), then close with LF6 (smart purchase / value).</p>
+  </div>
+
+  <!-- 1.4 ICP Profiles -->
+  <h3>1.4 ICP Profiles</h3>
+
+  <!-- ICP 1: Fibro Fighter -->
+  <div class="icp-card fibro">
+    <div class="icp-header">
+      <span class="icp-name">The Fibro Fighter -- "Alison"</span>
+    </div>
+    <div class="icp-tags">
+      <span class="pill pill-red">Problem-Aware (Stage 4)</span>
+      <span class="pill pill-amber">Sophistication: Stage 3</span>
+      <span class="pill pill-purple">LF3: Freedom from pain</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><td style="width:30%;font-weight:600">Trigger event</td><td>Another night of 3-4 wake-ups from tender point pressure. Morning stiffness lasting 2+ hours. Doctor suggests "try a better sleep surface." She Googles it at 2am.</td></tr>
+        <tr><td style="font-weight:600">Mental state</td><td>Exhausted. Hopeless but still searching. Has tried medications, supplements, special pillows. Spends $200+/mo on pain management. 28 years of fibromyalgia means she's skeptical of everything but desperate enough to try one more thing.</td></tr>
+        <tr><td style="font-weight:600">Belief blocking sale</td><td>"Nothing really works for fibromyalgia. A mattress topper is just extra padding, not a medical solution. This is probably another product that overpromises."</td></tr>
+        <tr><td style="font-weight:600">Emotional doorway</td><td>Hope ignited by a PEER who shares her condition. "After 28 years with fibromyalgia, I feel incredibly refreshed." Someone who sounds like her, looks like her, has the same condition -- saying it actually worked.</td></tr>
+        <tr><td style="font-weight:600">Hook direction</td><td>"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain -- you need to hear what women with fibro are saying about this."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 2: Mattress Regretter -->
+  <div class="icp-card regretter">
+    <div class="icp-header">
+      <span class="icp-name">The Mattress Regretter -- "Sarah"</span>
+    </div>
+    <div class="icp-tags">
+      <span class="pill pill-blue">Solution-Aware (Stage 3)</span>
+      <span class="pill pill-amber">Sophistication: Stage 2</span>
+      <span class="pill pill-purple">LF5: Comfortable living</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><td style="width:30%;font-weight:600">Trigger event</td><td>Bought a mattress 6-18 months ago for $800-$1,500. It's too firm or lost its comfort. Return window closed. Can't justify another $1,000+ replacement. Feels stuck and frustrated.</td></tr>
+        <tr><td style="font-weight:600">Mental state</td><td>Buyer's remorse compounded by ongoing discomfort. Angry at the wasted money. Wakes up with back/hip pain and blames the mattress purchase. Searching for a fix that doesn't cost another fortune.</td></tr>
+        <tr><td style="font-weight:600">Belief blocking sale</td><td>"A topper on top of a bad mattress won't make it good. I need to replace the whole thing, which I can't afford. Adding more layers just makes the bed hot."</td></tr>
+        <tr><td style="font-weight:600">Emotional doorway</td><td>Relief that there's a cheap fix. The $130 vs $1,000 comparison collapses her guilt. "Don't replace your mattress. Transform it." gives her permission to solve the problem without admitting defeat.</td></tr>
+        <tr><td style="font-weight:600">Hook direction</td><td>"We just got a new mattress but it's way too firm for me. Before you return yours, try this first."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 3: Hot Sleeper -->
+  <div class="icp-card hot">
+    <div class="icp-header">
+      <span class="icp-name">The Hot Sleeper -- "Mike"</span>
+    </div>
+    <div class="icp-tags">
+      <span class="pill pill-blue">Solution-Aware (Stage 3)</span>
+      <span class="pill pill-amber">Sophistication: Stage 2</span>
+      <span class="pill pill-purple">LF5: Comfortable living</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><td style="width:30%;font-weight:600">Trigger event</td><td>Wakes up sweating 3-4x per week. Has tried cooling pillows, moisture-wicking sheets, even a fan pointed at the bed. Nothing stops the night sweats. Partner complains about the heat.</td></tr>
+        <tr><td style="font-weight:600">Mental state</td><td>Annoyed and sleep-anxious. Dreads going to bed because he knows he'll wake up drenched. This isn't pain -- it's disruption. The sleep quality tanks because his body can't regulate temperature.</td></tr>
+        <tr><td style="font-weight:600">Belief blocking sale</td><td>"Mattress toppers trap heat. Memory foam is the worst for hot sleepers. Adding another layer will just make me hotter. Bamboo sounds nice but it's just marketing."</td></tr>
+        <tr><td style="font-weight:600">Emotional doorway</td><td>The bamboo = cooling equation. He already associates bamboo with breathability (sheets, pillowcases). "Bamboo stays cool when memory foam traps heat" gives him a mechanism he believes.</td></tr>
+        <tr><td style="font-weight:600">Hook direction</td><td>"If you overheat at night or wake up sweating, this bamboo topper stays cool while memory foam traps heat. There's a reason."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 4: Chronic Pain Sufferer -->
+  <div class="icp-card chronic">
+    <div class="icp-header">
+      <span class="icp-name">The Morning Dread Sufferer -- "Linda"</span>
+    </div>
+    <div class="icp-tags">
+      <span class="pill pill-red">Problem-Aware (Stage 4)</span>
+      <span class="pill pill-amber">Sophistication: Stage 2-3</span>
+      <span class="pill pill-purple">LF3: Freedom from pain</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><td style="width:30%;font-weight:600">Trigger event</td><td>Morning routine starts with pain: ibuprofen before feet hit the floor. 30+ minutes of stiffness before she can move normally. Over 45, back pain / hip pain / arthritis. Has accepted this as "just how mornings are."</td></tr>
+        <tr><td style="font-weight:600">Mental state</td><td>Resigned exhaustion. She doesn't believe mornings can be different. Takes OTC pain meds daily. Stomach issues from NSAIDs. Wants off the pill cycle but doesn't know what else to try. The pain-sleep loop is her normal.</td></tr>
+        <tr><td style="font-weight:600">Belief blocking sale</td><td>"This is just aging. No product is going to fix my back. I've tried everything. A mattress topper is for comfort, not for pain -- that's a medical problem."</td></tr>
+        <tr><td style="font-weight:600">Emotional doorway</td><td>The "what if" moment. "What if your mattress was doing what your painkillers can't?" reframes the topper as a treatment, not a luxury. The 100-night guarantee makes the "what if" risk-free.</td></tr>
+        <tr><td style="font-weight:600">Hook direction</td><td>"The first 30 minutes of my morning used to be the worst part of my day. Then I changed one thing about my bed."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ICP 5: Budget-Conscious Buyer -->
+  <div class="icp-card budget">
+    <div class="icp-header">
+      <span class="icp-name">The Smart Shopper -- "Dana"</span>
+    </div>
+    <div class="icp-tags">
+      <span class="pill pill-blue">Solution-Aware (Stage 3)</span>
+      <span class="pill pill-amber">Sophistication: Stage 2</span>
+      <span class="pill pill-purple">LF6: Superiority / winning</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><td style="width:30%;font-weight:600">Trigger event</td><td>Sees mattress prices ($800-$2,000+) and feels priced out. Knows sleep quality matters but can't justify the spend. Browsing for alternatives. A $130 fix is the only thing in budget.</td></tr>
+        <tr><td style="font-weight:600">Mental state</td><td>Financial anxiety meets "I deserve better." She wants to upgrade her sleep but the math doesn't work for a new mattress. Feels guilty spending on herself but knows the current situation isn't sustainable.</td></tr>
+        <tr><td style="font-weight:600">Belief blocking sale</td><td>"You get what you pay for. A $130 topper can't possibly be as good as a real mattress upgrade. This is probably cheap Chinese junk that'll flatten in two weeks."</td></tr>
+        <tr><td style="font-weight:600">Emotional doorway</td><td>The value math + risk reversal. "$130 vs $1,000 for the same result" + "100 nights to test it, full refund" makes it feel like the smartest purchase she's ever made. She gets to feel clever, not cheap.</td></tr>
+        <tr><td style="font-weight:600">Hook direction</td><td>"I almost spent $1,500 on a new mattress. Spent $130 instead. Same result. 100 nights to prove me wrong."</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PHASE 2: R — REFRAME                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="reframe">
+  <div class="phase-header">
+    <div class="phase-badge phase-badge-r">R</div>
+    <div>
+      <h2>Reframe</h2>
+      <div class="phase-sub">Problem mechanism, category gap, solution layers, belief-shifting chains</div>
+    </div>
+  </div>
+
+  <!-- 2.1 Problem Mechanism -->
+  <h3>2.1 Problem Mechanism</h3>
+  <div class="lockbox">
+    <h4>The Reframe</h4>
+    <p><strong>The problem isn't your mattress. The problem is your sleep surface creating pressure peaks at the 18 points where your body is most sensitive.</strong></p>
+    <p>Standard mattresses concentrate weight at the body's heaviest contact points: shoulders, hips, lower back. For fibromyalgia sufferers, these pressure peaks hit 18 clinically recognized tender points, triggering pain signals that fragment sleep cycles. The body never reaches deep restorative sleep. So it never recovers. So the pain gets worse. So the sleep gets worse. A new mattress doesn't fix this -- it just moves the pressure peaks. The fix is a surface that distributes pressure across zones, not one that creates new contact points.</p>
+  </div>
+
+  <!-- 2.2 Why Other Approaches Fail -->
+  <h3>2.2 Why Other Approaches Fail</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Approach</th><th>What They Claim</th><th>Why It Fails</th><th>OrthoBed Advantage</th></tr>
+      <tr>
+        <td>New mattress ($800-2,000+)</td>
+        <td>"Better support, better sleep"</td>
+        <td>Too expensive. Often wrong firmness again. Can't trial for 100 nights in most stores. Doesn't address pressure zones specifically.</td>
+        <td>$130 transforms existing mattress. 100-night trial. Pressure-zone construction specifically targets pain points.</td>
+      </tr>
+      <tr>
+        <td>Memory foam topper ($60-200)</td>
+        <td>"Contours to your body"</td>
+        <td>Sinks and traps heat. Chemical smell. Flattens in weeks. "Sinky" feel makes it harder to move at night, worsening pain for side sleepers.</td>
+        <td>5D spiral fiber holds without sinking. Bamboo stays cool. Machine washable (memory foam can't be washed).</td>
+      </tr>
+      <tr>
+        <td>Pain medication (OTC/Rx)</td>
+        <td>"Reduces pain signals"</td>
+        <td>Masks symptoms. Stomach issues from daily NSAIDs. Dependency risk. Doesn't address the sleep surface creating the pain.</td>
+        <td>Removes the cause (pressure peaks) instead of masking the symptom. "What if your bed did what your painkillers can't?"</td>
+      </tr>
+      <tr>
+        <td>Cheap Amazon topper ($30-50)</td>
+        <td>"Bamboo," "cooling," "soft"</td>
+        <td>30% compression by week 4. Near-flat by week 8. No guarantee beyond 30 days. Feature-based messaging with no mechanism story.</td>
+        <td>100-night guarantee. Pressure-zone construction (not just "soft"). Backed by 131K customers. UGC proof of durability.</td>
+      </tr>
+      <tr>
+        <td>Special pillows / sleep accessories</td>
+        <td>"Align your spine"</td>
+        <td>Addresses one contact point (head/neck) while ignoring shoulders, hips, back. Partial fix for a full-body problem.</td>
+        <td>Full-body pressure zone distribution. Targets all 18 tender points, not just the neck.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 2.3 Category Gap Analysis -->
+  <h3>2.3 Category Gap Analysis</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Category Norm</th><th>The Gap</th><th>How OrthoBed Fills It</th></tr>
+      <tr>
+        <td>Toppers sell on comfort features (soft, cooling, thick)</td>
+        <td>Nobody sells on pain outcomes or medical-adjacent language</td>
+        <td>Sells on transformation: "pain-relief system that happens to go on your bed." Outcome-first, not feature-first.</td>
+      </tr>
+      <tr>
+        <td>30-day returns are standard</td>
+        <td>30 days isn't enough to trust a $100+ sleep purchase</td>
+        <td>100-night guarantee collapses all risk. Less than 1% return rate proves it works.</td>
+      </tr>
+      <tr>
+        <td>Product pages list specs (GSM, fiber type, dimensions)</td>
+        <td>No one explains the mechanism of WHY it relieves pain</td>
+        <td>Pressure-zone narrative: "targets 18 tender points." Gives the prospect a mechanism to believe in.</td>
+      </tr>
+      <tr>
+        <td>Amazon competitors use product photography</td>
+        <td>No emotional UGC showing real pain sufferers finding relief</td>
+        <td>UGC machine: real women with fibromyalgia, real couples, real unboxing reactions. The creative IS the moat.</td>
+      </tr>
+      <tr>
+        <td>Toppers are positioned as bedding accessories</td>
+        <td>Nobody positions a topper as a mattress replacement</td>
+        <td>"Don't replace your mattress. Transform it." Reframes the $130 spend as saving $1,000+.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 2.4 Solution Mechanism (3-Layer) -->
+  <h3>2.4 Solution Mechanism (3-Layer)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Layer</th><th>What It Is</th><th>How to Communicate</th></tr>
+      <tr>
+        <td><strong>Layer 1: Surface mechanism</strong><br>(What the product does)</td>
+        <td>5D spiral fiber filling distributes weight across pressure zones. 120gsm bamboo microfiber regulates temperature. Multi-zone construction targets shoulders + hips.</td>
+        <td>"Pressure zones built for the 18 points that fibromyalgia attacks." Feature the mechanism in hooks. Show it in B-roll: hands pressing into the topper, weight distribution, thickness. Simple language: "holds you, doesn't sink you."</td>
+      </tr>
+      <tr>
+        <td><strong>Layer 2: Unique mechanism</strong><br>(Why this product does it differently)</td>
+        <td>Bamboo fiber stays cool while memory foam traps heat. Machine washable (rare at this price). First-night relief promise. 100-night guarantee eliminates risk.</td>
+        <td>"Hotel bed feeling." "Giant marshmallow." "Sleeping in the clouds." Use sensory language, not spec sheets. The EXPERIENCE mechanism: people buy the feeling, not the fiber count. Show the reaction, not the product.</td>
+      </tr>
+      <tr>
+        <td><strong>Layer 3: Hidden mechanism</strong><br>(Identity / behavioral layer)</td>
+        <td>"I'm someone who finally did something about my pain." "I'm smart enough to fix my mattress for $130." "I deserve to wake up without pain."</td>
+        <td>Never state the identity directly. Let the viewer arrive at it through the story. When Alison says "after 28 years" -- the viewer thinks "that could be me." When the couple says "$130 instead of $1,500" -- the viewer thinks "that's smart, like me."</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 2.5 Four-Line Reframe Chains -->
+  <h3>2.5 Four-Line Reframe Chains</h3>
+
+  <div class="reframe-card">
+    <h4>Reframe 1: Mattress Fix, Not Mattress Replacement</h4>
+    <div class="reframe-step"><span class="reframe-label">Validate</span><span>"You think you need a new mattress. You've been looking at prices and it's $800 minimum for anything decent."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Crack</span><span>"But a new mattress just moves the pressure points. 60% of people who buy a new mattress report the same pain within 6 months."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Reframe</span><span>"The problem isn't your mattress. It's your sleep surface. You need pressure-zone relief, not more coils."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Bridge</span><span>"OrthoBed sits on top and distributes weight across the zones where your pain is worst. $130. 100 nights to test it."</span></div>
+  </div>
+
+  <div class="reframe-card">
+    <h4>Reframe 2: Treatment, Not Product</h4>
+    <div class="reframe-step"><span class="reframe-label">Validate</span><span>"Mattress toppers are just extra padding. You've seen them at Walmart for $30. They flatten in two weeks."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Crack</span><span>"Those toppers have no pressure-zone construction. They add softness without targeting anything. That's why they don't work."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Reframe</span><span>"OrthoBed isn't padding. It has zones built for the 18 tender points that fibromyalgia attacks. It's a targeted pain-relief system."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Bridge</span><span>"Women with fibro are saying they're finally sleeping through the night. 97% report relief on the first night."</span></div>
+  </div>
+
+  <div class="reframe-card">
+    <h4>Reframe 3: The Smart Money Move</h4>
+    <div class="reframe-step"><span class="reframe-label">Validate</span><span>"Good sleep costs thousands. You've priced out mattresses, adjustable bases, sleep systems. The math doesn't work."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Crack</span><span>"131,000 people already upgraded their sleep for $130. Not $1,000. Not $2,000. One hundred and thirty dollars."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Reframe</span><span>"This isn't about spending more money on sleep. It's about spending smart money. The topper transforms any mattress."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Bridge</span><span>"56% off right now. 100 nights to test it. Full refund if it doesn't change your sleep. The only risk is not trying it."</span></div>
+  </div>
+
+  <div class="reframe-card">
+    <h4>Reframe 4: Pain Management, Not Pain Masking</h4>
+    <div class="reframe-step"><span class="reframe-label">Validate</span><span>"You take ibuprofen before your feet hit the floor. Your stomach hurts from the pills. But what else are you supposed to do?"</span></div>
+    <div class="reframe-step"><span class="reframe-label">Crack</span><span>"Pain medication masks the signal. Your sleep surface is still creating the pressure peaks that trigger it. The pills don't fix the cause."</span></div>
+    <div class="reframe-step"><span class="reframe-label">Reframe</span><span>"What if your bed did what your painkillers can't? What if it actually removed the pressure instead of numbing the response?"</span></div>
+    <div class="reframe-step"><span class="reframe-label">Bridge</span><span>"OrthoBed's pressure zones distribute weight so the pain signals never fire. Not masking. Managing. 100 nights risk-free."</span></div>
+  </div>
+
+  <!-- 2.6 Skepticism Pre-emption -->
+  <h3>2.6 Skepticism Pre-emption</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Objection</th><th>Pre-emption Strategy</th></tr>
+      <tr>
+        <td>"It'll flatten in two weeks like every other topper"</td>
+        <td>100-night guarantee handles this directly. "If it flattens, you're covered. But less than 1% of customers return it." The guarantee IS the proof of durability.</td>
+      </tr>
+      <tr>
+        <td>"$130 for a topper? Amazon has them for $40"</td>
+        <td>Value reframe: "$130 vs $1,000 for a new mattress." Comparison: "Those $40 toppers compress 30% by week 4. This has 5D spiral fiber." The couple reaction script handles this organically in dialogue.</td>
+      </tr>
+      <tr>
+        <td>"A topper can't fix fibromyalgia/chronic pain"</td>
+        <td>Peer proof: "Women with fibromyalgia are saying they're finally sleeping through the night." Never claim medical cure. Position as "relief" and "comfort," not treatment. Let the testimonials do the medical adjacent work.</td>
+      </tr>
+      <tr>
+        <td>"The reviews seem fake / inflated numbers"</td>
+        <td>Use "customers report" framing, not absolute claims. Lead with UGC (real faces, real stories) over statistics. The 100-night guarantee is more trustworthy than any star rating.</td>
+      </tr>
+      <tr>
+        <td>"Adding a layer will make me hotter"</td>
+        <td>Bamboo mechanism: "Bamboo stays cool when memory foam traps heat. There's a reason." The material itself IS the cooling proof. "Machine washable" adds a hygiene/freshness angle competitors can't match.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PHASE 3: I — IGNITE                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="ignite">
+  <div class="phase-header">
+    <div class="phase-badge phase-badge-i">I</div>
+    <div>
+      <h2>Ignite</h2>
+      <div class="phase-sub">Emotional drivers, proof architecture, conversion amplifiers</div>
+    </div>
+  </div>
+
+  <!-- 3.1 Emotional Driver Matrix -->
+  <h3>3.1 Emotional Driver Matrix</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>ICP</th><th>Primary Emotion</th><th>Secondary Emotion</th><th>Emotional Peak Moment</th><th>Creative Format That Ignites It</th></tr>
+      <tr>
+        <td><span class="pill pill-red">Fibro Fighter</span></td>
+        <td>Desperation + hope fatigue</td>
+        <td>Guilt (can't be present for family)</td>
+        <td>"After 28 years, I finally found something that works." The moment she realizes this might actually be different.</td>
+        <td>UGC testimonial: real woman, same condition, direct-to-camera. Vulnerability = trust. No scripts, conversational delivery.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-blue">Mattress Regretter</span></td>
+        <td>Frustration + buyer's remorse</td>
+        <td>Anger (wasted money)</td>
+        <td>"Oh my god, this thing feels like a new mattress!" The moment the regret dissolves into surprise.</td>
+        <td>Couple reaction / unboxing. Two voices: one skeptic, one convert. The dialogue IS the objection handling.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-purple">Hot Sleeper</span></td>
+        <td>Annoyance + sleep anxiety</td>
+        <td>Shame (partner complaints)</td>
+        <td>"I woke up and I wasn't sweating for the first time in months." The absence of the problem, noticed.</td>
+        <td>Before/after routine. Show the drenched sheets, then the dry morning. Bamboo = cooling is the mechanism hook.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-amber">Morning Dread</span></td>
+        <td>Exhaustion + resignation</td>
+        <td>Fear (this is my life now)</td>
+        <td>"I didn't reach for the ibuprofen this morning." The moment the routine breaks.</td>
+        <td>Story lead: walk through the morning routine. Before: pills, stiffness, pain. After: feet on floor, stretch, move. The contrast is the ad.</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-green">Smart Shopper</span></td>
+        <td>Financial anxiety + "deserve better"</td>
+        <td>Pride (smart purchase)</td>
+        <td>"$130 instead of $1,500. Same result." The moment she feels clever, not cheap.</td>
+        <td>Side-by-side comparison. Mattress prices vs topper price. Calculator energy. "The math just works."</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 3.2 Proof Architecture -->
+  <h3>3.2 Proof Architecture</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Level</th><th>Proof Type</th><th>Specific Asset</th><th>Trust Weight</th></tr>
+      <tr><td>1</td><td>Peer testimonial (same condition)</td><td>"After 28 years with fibromyalgia, I feel incredibly refreshed." -- Alison M. (Judge.me). Real person, real condition, specific relief described.</td><td><span class="pill pill-green">Highest</span></td></tr>
+      <tr><td>2</td><td>Volume social proof</td><td>"131,000+ customers." "Sold out 5 times in first 3 months." "7,300+ purchased last month." Mass adoption signals safety.</td><td><span class="pill pill-green">High</span></td></tr>
+      <tr><td>3</td><td>Sensory demonstration (UGC)</td><td>Hands pressing into the topper. Thickness reveal. "Oh my god" reactions. "Giant marshmallow" language. Physical proof on camera.</td><td><span class="pill pill-amber">Medium-High</span></td></tr>
+      <tr><td>4</td><td>Risk reversal</td><td>100-night guarantee. Full refund. No questions asked. "Less than 1% of customers return it." The guarantee proves confidence.</td><td><span class="pill pill-amber">Medium</span></td></tr>
+      <tr><td>5</td><td>Third-party validation</td><td>Judge.me 4.19/5 (281 reviews). External, not self-reported. Mix of genuine positive + negative builds credibility.</td><td><span class="pill pill-amber">Medium</span></td></tr>
+      <tr><td>6</td><td>Authority claims</td><td>"Doctor-recommended" (unverified). "Targets 18 tender points" (uses clinical fibromyalgia language). Use carefully -- not independently verified.</td><td><span class="pill pill-red">Low (use with disclaimer)</span></td></tr>
+      <tr><td>7</td><td>Brand statistics</td><td>"97% report relief on first night." "4.9/5 rating." Self-reported, discrepancy with Judge.me (4.19). Frame as "customers report," not absolutes.</td><td><span class="pill pill-red">Low (self-reported)</span></td></tr>
+    </table>
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>Proof Strategy</strong>
+    The strongest proof for this product is PEER TESTIMONY from someone with the same condition. "A woman with fibromyalgia who looks like me says she finally sleeps through the night" is 10x more persuasive than "4.9 stars" or "doctor recommended." Every ad should lead with or heavily feature a real person telling their pain-to-relief story. Stack proof in this order: peer testimony first, then volume social proof, then sensory demo, then risk reversal. Statistics last -- they support, they don't lead.
+  </div>
+
+  <!-- 3.3 Conversion Amplifiers -->
+  <h3>3.3 Conversion Amplifiers</h3>
+
+  <h4>Urgency Frames</h4>
+  <div class="grid-2">
+    <div class="grid-card">
+      <h4>Price Urgency</h4>
+      <ul>
+        <li>"56% off -- flash sale"</li>
+        <li>"$129.97 today. Was $299.97."</li>
+        <li>"Only 34 bundles left at this price"</li>
+        <li>"Save $170 right now"</li>
+      </ul>
+    </div>
+    <div class="grid-card">
+      <h4>Stock Urgency</h4>
+      <ul>
+        <li>"Sold out 5 times in 3 months"</li>
+        <li>"7,300+ bought last month"</li>
+        <li>Currently sold out (real urgency)</li>
+        <li>"Back in stock -- won't last"</li>
+      </ul>
+    </div>
+    <div class="grid-card">
+      <h4>Pain Urgency (LF3)</h4>
+      <ul>
+        <li>"Every night without it is another night in pain"</li>
+        <li>"How many more mornings of stiffness?"</li>
+        <li>"Your body is telling you something"</li>
+        <li>"Tonight could be different"</li>
+      </ul>
+    </div>
+    <div class="grid-card">
+      <h4>Risk Reversal</h4>
+      <ul>
+        <li>"100 nights. If it doesn't work, full refund."</li>
+        <li>"Less than 1% of customers return it"</li>
+        <li>"The only risk is not trying it"</li>
+        <li>"Try it on us. 100 nights."</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>CTA Stack (The Complete Argument in Order)</h4>
+  <div class="lockbox">
+    <h4>The Perfect CTA Close</h4>
+    <ul>
+      <li><strong>1. Price:</strong> "$129.97 today -- 56% off"</li>
+      <li><strong>2. Bonus:</strong> "Free bamboo pillowcase included"</li>
+      <li><strong>3. Guarantee:</strong> "100 nights to test it. Full refund, no questions."</li>
+      <li><strong>4. Social proof:</strong> "131,000+ happy customers. Sold out 5 times."</li>
+      <li><strong>5. Urgency:</strong> "Flash sale. Won't last at this price."</li>
+      <li><strong>6. Action:</strong> "Link's in the orange cart / right there / down below"</li>
+    </ul>
+    <p>Stack all six in the CTA. Every element collapses one purchase barrier: price collapses "too expensive," bonus collapses "not enough value," guarantee collapses "too risky," social proof collapses "is this real," urgency collapses "I'll buy later," action tells them exactly what to do.</p>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PHASE 4: V — VARIATE                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="variate">
+  <div class="phase-header">
+    <div class="phase-badge phase-badge-v">V</div>
+    <div>
+      <h2>Variate</h2>
+      <div class="phase-sub">Hook variations, format matrix, testing hierarchy, content calendar</div>
+    </div>
+  </div>
+
+  <!-- 4.1 Hook Variations by Angle -->
+  <h3>4.1 Hook Variations by Angle</h3>
+
+  <div class="hook-card">
+    <h4>Fibromyalgia Direct</h4>
+    <p>"If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain, anything like that, definitely give this mattress topper a try." <span class="pill pill-green">Proven</span></p>
+    <p>"After 28 years with fibromyalgia, I finally found something that works."</p>
+    <p>"Women with fibromyalgia are saying they're finally sleeping through the night." <span class="pill pill-green">Proven</span></p>
+    <p>"18 tender points. That's what fibromyalgia attacks. This topper was built for all 18."</p>
+    <p>"My doctor told me to fix my sleep surface. I didn't expect it to cost $130."</p>
+    <p>"If you've tried everything for fibro pain and nothing works -- you haven't tried this."</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Hotel Bed Upgrade</h4>
+    <p>"You know those hotels where the bed just feels like it's holding you, not fighting you? That is this." <span class="pill pill-green">Proven</span></p>
+    <p>"I turned my bed into a hotel bed for $130."</p>
+    <p>"The reason hotel beds feel so good? It's not the mattress. It's what's ON the mattress."</p>
+    <p>"You know that feeling when you get into a hotel bed and think 'why can't my bed feel like this'?"</p>
+    <p>"Hotel-quality sleep. Your own bed. $130. That's it."</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Too-Firm Mattress Fix</h4>
+    <p>"We just got a new mattress but it's way too firm for me and I just cannot do it." <span class="pill pill-green">Proven</span></p>
+    <p>"$1,200 mattress. Wrong firmness. Can't return it. Here's what I did."</p>
+    <p>"If your mattress is too firm, don't replace it. Fix it."</p>
+    <p>"I was about to return my mattress. Then I found this."</p>
+    <p>"New mattress, same back pain. Sound familiar?"</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Cooling / Night Sweats</h4>
+    <p>"If you overheat or wake up sweaty, this is going to keep you comfortable all night." <span class="pill pill-green">Proven</span></p>
+    <p>"I wake up drenched 4 nights a week. Until I got this."</p>
+    <p>"Bamboo stays cool when memory foam traps heat. There's a reason."</p>
+    <p>"My husband runs hot. I'm always cold. This somehow works for both of us."</p>
+    <p>"Stop sleeping on a hot pad. Bamboo breathes. Memory foam doesn't."</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Morning Pain / Stiffness</h4>
+    <p>"Waking up without the stiffness, and that the tender point pressure is gone." <span class="pill pill-green">Proven</span></p>
+    <p>"The first 30 minutes of my morning used to be the worst part of my day."</p>
+    <p>"I used to take Advil before my feet hit the floor. Not anymore."</p>
+    <p>"If getting out of bed is the hardest thing you do every day, keep reading."</p>
+    <p>"Morning stiffness isn't aging. It's your mattress. Here's the proof."</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Price / Value</h4>
+    <p>"No it's not a mattress, it's a mattress topper." / "Oh my god, is this one of those bamboo cooling ones?" <span class="pill pill-green">Proven</span></p>
+    <p>"$130 to make your bed feel like a $2,000 mattress. I'll take that trade."</p>
+    <p>"The upgrade you didn't know you'd been waiting years for."</p>
+    <p>"I almost spent $1,500 on a new mattress. Spent $130 instead. Same result."</p>
+    <p>"56% off and a 100-night guarantee. The math does itself."</p>
+  </div>
+
+  <!-- 4.2 Format Variations -->
+  <h3>4.2 Format Variations</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Format</th><th>Best For</th><th>Length</th><th>Key Element</th></tr>
+      <tr><td>UGC Testimonial (talking head)</td><td>Fibro, chronic pain, morning stiffness</td><td>30-60s</td><td>Real person, same condition, specific relief story. Vulnerability = trust.</td></tr>
+      <tr><td>"The Review" (third-person)</td><td>Social proof, authority positioning</td><td>45-60s</td><td>Opens with "Women with X are saying..." Third-person is more credible for skeptics.</td></tr>
+      <tr><td>Couple Reaction / Dialogue</td><td>Unboxing, price objection, fun energy</td><td>30-45s</td><td>Two voices. One skeptic, one convert. Price handled in dialogue naturally.</td></tr>
+      <tr><td>Unboxing / First Impression</td><td>Product quality, thickness, feel</td><td>30-45s</td><td>Physical demonstration. Show the product. Touch it. React. Solve a specific problem.</td></tr>
+      <tr><td>Before/After Daily Routine</td><td>Morning pain, sleep quality</td><td>45-60s</td><td>Split screen or sequence: morning WITH pain vs morning WITHOUT. The contrast is the ad.</td></tr>
+      <tr><td>Doctor/PT Authority</td><td>Medical credibility, fibromyalgia</td><td>30-45s</td><td>Authority figure explaining WHY pressure zones matter. "A little trick I learned..."</td></tr>
+      <tr><td>Comparison / Side-by-Side</td><td>vs new mattress, vs memory foam, vs Amazon</td><td>30-45s</td><td>Physical comparison: feel, temperature, thickness, price. Visual proof.</td></tr>
+      <tr><td>ASMR / Sensory</td><td>Texture, unboxing, comfort</td><td>15-30s</td><td>Close-up sound + touch. Hands pressing topper. Whisper voiceover. Scroll-stopping visuals.</td></tr>
+    </table>
+  </div>
+
+  <!-- 4.3 Testing Hierarchy -->
+  <h3>4.3 Testing Hierarchy</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Priority</th><th>Test</th><th>Variable</th><th>Hypothesis</th></tr>
+      <tr><td>1</td><td>Hook test</td><td>Condition-specific vs generic pain</td><td>"Fibromyalgia" hook outperforms "back pain" because specificity = self-selection = higher intent click</td></tr>
+      <tr><td>2</td><td>Format test</td><td>UGC testimonial vs "The Review"</td><td>First-person outperforms third-person for pain categories (vulnerability = trust). Test 1P vs 3P at same hook.</td></tr>
+      <tr><td>3</td><td>CTA test</td><td>Price-led vs guarantee-led</td><td>"100 nights risk-free" beats "56% off" for high-skepticism audience (fibro/chronic pain). Guarantee collapses more objections.</td></tr>
+      <tr><td>4</td><td>Length test</td><td>30s vs 60s</td><td>60s wins for fibro/pain (needs story arc) but 30s wins for unboxing/reaction (instant gratification)</td></tr>
+      <tr><td>5</td><td>Angle test</td><td>Pain relief vs hotel upgrade</td><td>Pain relief wins for cold traffic (emotional intensity). Hotel upgrade wins for warm/retargeting (aspiration).</td></tr>
+      <tr><td>6</td><td>Actor test</td><td>Age/gender/ethnicity variation</td><td>Women 40-55 as primary actor outperform younger actors for fibro angle (relatability). Test male actors for hot sleeper angle.</td></tr>
+      <tr><td>7</td><td>Visual test</td><td>Product-on-bed vs hands-on-product</td><td>Physical interaction (pressing, feeling) outperforms static product shots. "Show the reaction, not the product."</td></tr>
+    </table>
+  </div>
+
+  <!-- 4.4 Content Calendar -->
+  <h3>4.4 Content Calendar (12-Week Sprint)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Week</th><th>Deliverable</th><th>Angle</th><th>Format</th></tr>
+      <tr><td>1</td><td>2 UGC scripts + 1 "Review" script</td><td>Fibromyalgia relief</td><td>Talking head + review-style</td></tr>
+      <tr><td>2</td><td>3 hook variations for top Week 1 script</td><td>Fibro (A/B/C hooks)</td><td>Same body, different opens</td></tr>
+      <tr><td>3</td><td>2 UGC scripts + 1 couple reaction</td><td>Hotel bed + too-firm mattress</td><td>Unboxing + couple dialogue</td></tr>
+      <tr><td>4</td><td>1 comparison script + 2 static image ads</td><td>vs New Mattress (price/value)</td><td>Side-by-side + photo ads</td></tr>
+      <tr><td>5</td><td>2 UGC scripts</td><td>Morning pain / stiffness</td><td>Before/after daily routine + testimonial</td></tr>
+      <tr><td>6</td><td>3 hook variations for top Week 1-5 performer</td><td>Winner refresh</td><td>Same format, new hooks</td></tr>
+      <tr><td>7</td><td>2 UGC scripts + 1 ASMR</td><td>Cooling / night sweats</td><td>Testimonial + sensory ASMR</td></tr>
+      <tr><td>8</td><td>1 authority script + 1 comparison</td><td>PT/doctor credibility</td><td>Authority UGC + side-by-side</td></tr>
+      <tr><td>9</td><td>Winner iterations (actor/environment swaps)</td><td>Top 2 angles refresh</td><td>Same scripts, new actors/settings</td></tr>
+      <tr><td>10</td><td>2 retargeting scripts (longer form)</td><td>Deep testimonial + FAQ handling</td><td>60-90s long-form UGC</td></tr>
+      <tr><td>11</td><td>Gift angle scripts (seasonal)</td><td>Gift for mom/partner</td><td>Unboxing + reaction</td></tr>
+      <tr><td>12</td><td>Full creative audit + next sprint plan</td><td>Performance review</td><td>Data analysis, kill/scale/iterate</td></tr>
+    </table>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PHASE 5: E — EVOLVE                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="evolve">
+  <div class="phase-header">
+    <div class="phase-badge phase-badge-e">E</div>
+    <div>
+      <h2>Evolve</h2>
+      <div class="phase-sub">Fatigue signals, scale triggers, sophistication escalation path</div>
+    </div>
+  </div>
+
+  <!-- 5.1 Fatigue Signals -->
+  <h3>5.1 Fatigue Signals</h3>
+  <div class="grid-card" style="margin:16px 0">
+    <h4>When Creative Is Dying</h4>
+    <ul>
+      <li>CTR drops below 1.5% after 7+ days of stable spend</li>
+      <li>CPM rises 20%+ with flat spend (audience saturation)</li>
+      <li>Frequency exceeds 2.5 on core audience (same people seeing it repeatedly)</li>
+      <li>Comment sentiment shifts to "I keep seeing this" or "another one of these ads"</li>
+      <li>Thumb-stop ratio drops below 25% (hook is no longer stopping scrollers)</li>
+      <li>CPA increases 30%+ over 5 days with no external factor (competition, seasonality)</li>
+      <li>Save/share ratio drops below 0.5% (people aren't finding it worth saving)</li>
+    </ul>
+  </div>
+
+  <!-- 5.2 Scale Triggers -->
+  <h3>5.2 Scale Triggers</h3>
+  <div class="grid-card" style="margin:16px 0">
+    <h4>When to Increase Spend</h4>
+    <ul>
+      <li>ROAS above 2.5x for 5+ consecutive days</li>
+      <li>CTR above 2.5% sustained over 7 days</li>
+      <li>Comment section generating organic testimonials (free social proof)</li>
+      <li>Shares exceeding 2% of reach (viral coefficient)</li>
+      <li>Landing page CVR above 3.5% (traffic is converting)</li>
+      <li>CPA stable or decreasing as spend increases (room to run)</li>
+      <li>Ad appears in competitors' creative libraries (they're noticing)</li>
+    </ul>
+    <p style="margin-top:12px;font-size:.88rem;color:var(--muted)">Scale protocol: increase budget 20-30% every 3 days. Never pause old winners while ramping new ones. Use Post ID to preserve social proof when moving ads between campaigns.</p>
+  </div>
+
+  <!-- 5.3 Sophistication Escalation Path -->
+  <h3>5.3 Sophistication Escalation Path</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Stage</th><th>When</th><th>Creative Shift</th></tr>
+      <tr>
+        <td><strong>Stage 2-3 (Now)</strong></td>
+        <td>Initial launch through first 60-90 days</td>
+        <td>Lead with mechanism: "Pressure zones for 18 tender points." Direct claim. Simple proof. The mechanism IS the hook. Feature it in headlines. UGC testimonials that reference the mechanism naturally.</td>
+      </tr>
+      <tr>
+        <td><strong>Stage 3-4</strong></td>
+        <td>After 60-90 days or when competitors copy the mechanism language</td>
+        <td>Enlarge and specify: "The only topper with 5D spiral fiber pressure-zone mapping." Stack comparative proof: "vs memory foam, vs spring, vs latex." Add authority: "Recommended by [specific PT name]." The mechanism needs its own credibility now.</td>
+      </tr>
+      <tr>
+        <td><strong>Stage 4</strong></td>
+        <td>When mechanism becomes commonplace in competitor ads</td>
+        <td>Proof-heavy: "131,000 customers. 97% first-night relief. Featured in [publication]. Recommended by Dr. [Name]." Lead with volume, authority, and specificity that can't be faked. Before/after case studies.</td>
+      </tr>
+      <tr>
+        <td><strong>Stage 5</strong></td>
+        <td>Market saturation (12-18 months out)</td>
+        <td>Identity-led: "You've tried everything. You deserve to finally wake up without pain." "For people who refuse to accept pain as normal." The ad stops selling the product and starts selling who the buyer IS. Community, identity, belonging.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- BIG IDEA FORMULATION & SCORING                     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="bigideas">
+  <h3 style="margin-top:0">Big Idea Formulation & Scoring</h3>
+  <p>Each Big Idea scored on 5 criteria, each /5, total /25. Above 18: test. Above 21: scale. Below 15: rework.</p>
+
+  <!-- Big Idea 1 -->
+  <div class="score-card">
+    <h4>Big Idea 1: "Your mattress is attacking your 18 tender points every night."</h4>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Reframes the mattress from a passive surface into an active pain-generator. The 18 tender points is clinical fibromyalgia language that creates instant credibility and self-selection. OrthoBed becomes the defense against the attack.</p>
+    <div class="score-row"><span>Specificity -- Can only this brand make this claim?</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Emotional charge -- Does it stop the scroll?</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Proof-ability -- Can it be demonstrated visually?</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Scalability -- How many variations can it generate?</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Reframe power -- Does it change what the prospect thinks the problem is?</span><span class="score-val">5</span></div>
+    <div class="score-total"><span>Total</span><span class="score-val">23/25</span></div>
+    <span class="score-verdict verdict-scale">SCALE</span>
+  </div>
+
+  <!-- Big Idea 2 -->
+  <div class="score-card">
+    <h4>Big Idea 2: "The $130 hotel bed."</h4>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Bridges aspiration (hotel luxury) with accessibility ($130). Creates a new category: "hotel-quality sleep at home for a fraction of the price." The price IS the hook. Every viewer has experienced a hotel bed and wished their bed felt like that.</p>
+    <div class="score-row"><span>Specificity</span><span class="score-val">3</span></div>
+    <div class="score-row"><span>Emotional charge</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Proof-ability</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Scalability</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Reframe power</span><span class="score-val">3</span></div>
+    <div class="score-total"><span>Total</span><span class="score-val">20/25</span></div>
+    <span class="score-verdict verdict-test">TEST</span>
+  </div>
+
+  <!-- Big Idea 3 -->
+  <div class="score-card">
+    <h4>Big Idea 3: "What if your bed did what your painkillers can't?"</h4>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Positions the topper as a treatment alternative. The "what if" creates a curiosity loop. Attacks the medication dependency cycle that the audience is already frustrated with. The bed becomes the solution their doctor hasn't suggested.</p>
+    <div class="score-row"><span>Specificity</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Emotional charge</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Proof-ability</span><span class="score-val">3</span></div>
+    <div class="score-row"><span>Scalability</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Reframe power</span><span class="score-val">5</span></div>
+    <div class="score-total"><span>Total</span><span class="score-val">21/25</span></div>
+    <span class="score-verdict verdict-scale">SCALE</span>
+  </div>
+
+  <!-- Big Idea 4 -->
+  <div class="score-card">
+    <h4>Big Idea 4: "Don't replace your mattress. Transform it."</h4>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Reframes the entire purchase category. The prospect came looking to buy a mattress. Now they're buying a mattress fix. The economics shift: $130 vs $1,000+. Gives permission to solve the problem without the guilt of another big spend.</p>
+    <div class="score-row"><span>Specificity</span><span class="score-val">3</span></div>
+    <div class="score-row"><span>Emotional charge</span><span class="score-val">3</span></div>
+    <div class="score-row"><span>Proof-ability</span><span class="score-val">4</span></div>
+    <div class="score-row"><span>Scalability</span><span class="score-val">5</span></div>
+    <div class="score-row"><span>Reframe power</span><span class="score-val">4</span></div>
+    <div class="score-total"><span>Total</span><span class="score-val">19/25</span></div>
+    <span class="score-verdict verdict-test">TEST</span>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- APPENDIX A: HEADLINE LIBRARY (70+)                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="headlines">
+  <h3 style="margin-top:0">Appendix A: Headline Library (78 Headlines)</h3>
+  <p>Production-ready. Usable as Meta ad primary text, video hooks, or email subject lines.</p>
+
+  <details>
+    <summary>Fibromyalgia / Tender Points (12 headlines)</summary>
+    <div class="detail-body">
+      <p>1. If you struggle with fibromyalgia pain, you need to hear what women with fibro are saying about this.</p>
+      <p>2. 18 tender points. That's what fibromyalgia attacks every night. This topper was built for all 18.</p>
+      <p>3. After 28 years with fibromyalgia, she finally found something that works.</p>
+      <p>4. Women with fibromyalgia are finally sleeping through the night. Here's what changed.</p>
+      <p>5. Your mattress is hitting your 18 tender points every single night. Here's why.</p>
+      <p>6. Fibromyalgia took my sleep. A bamboo mattress topper gave it back.</p>
+      <p>7. If fibro keeps you up at night, this is the one thing worth trying.</p>
+      <p>8. 10 million Americans have fibromyalgia. 131,000 of them found this.</p>
+      <p>9. "I wake up without the stiffness. The tender point pressure is gone."</p>
+      <p>10. My doctor told me to fix my sleep surface. I didn't expect it to cost $130.</p>
+      <p>11. The pressure-zone topper that fibromyalgia sufferers are calling a game-changer.</p>
+      <p>12. If you've tried everything for fibro pain and nothing works, you haven't tried this.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Hotel Bed / Luxury Feel (10 headlines)</summary>
+    <div class="detail-body">
+      <p>1. You know those hotels where the bed just feels like it's holding you? That's this. For $130.</p>
+      <p>2. I turned my bed into a hotel bed for $130.</p>
+      <p>3. The reason hotel beds feel so good? It's not the mattress. It's what's ON the mattress.</p>
+      <p>4. You know that feeling when you check into a hotel and the bed is perfect? Now imagine that every night.</p>
+      <p>5. Hotel-quality sleep. Your own bed. $130. That's the whole pitch.</p>
+      <p>6. "It feels expensive." It's $130.</p>
+      <p>7. The $130 hotel bed upgrade that 131,000 people already made.</p>
+      <p>8. Your bed can feel like a five-star hotel. Not for thousands. For $130.</p>
+      <p>9. "Sleeping in the clouds." That's what they keep saying about this $130 topper.</p>
+      <p>10. Everyone deserves to sleep in a hotel bed. Now everyone can afford to.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Too-Firm Mattress / Mattress Regret (8 headlines)</summary>
+    <div class="detail-body">
+      <p>1. We just got a new mattress but it's way too firm. Before you return yours, try this.</p>
+      <p>2. $1,200 mattress. Wrong firmness. Can't return it. Here's the $130 fix.</p>
+      <p>3. If your mattress is too firm, don't replace it. Fix it.</p>
+      <p>4. I was about to return my mattress. Then I found this.</p>
+      <p>5. New mattress, same back pain. Sound familiar? Here's what actually fixed it.</p>
+      <p>6. Your mattress isn't bad. Your sleep surface is. There's a difference.</p>
+      <p>7. Don't replace your mattress. Transform it. $130.</p>
+      <p>8. The one thing that makes a too-firm mattress feel perfect.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Cooling / Night Sweats (8 headlines)</summary>
+    <div class="detail-body">
+      <p>1. If you overheat at night or wake up sweaty, bamboo stays cool when memory foam traps heat.</p>
+      <p>2. I wake up drenched 4 nights a week. Until I got this.</p>
+      <p>3. Bamboo breathes. Memory foam doesn't. That's why you're hot.</p>
+      <p>4. My husband runs hot. I'm always cold. This somehow works for both of us.</p>
+      <p>5. Stop sleeping on a hot pad. Switch to bamboo.</p>
+      <p>6. The cooling topper that doesn't cost $400. It's $130.</p>
+      <p>7. Night sweats ruined my sleep for years. One bamboo topper fixed it.</p>
+      <p>8. If your topper traps heat, it's not bamboo. This is.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Morning Pain / Stiffness (10 headlines)</summary>
+    <div class="detail-body">
+      <p>1. The first 30 minutes of my morning used to be the worst part of my day.</p>
+      <p>2. I used to take Advil before my feet hit the floor. Not anymore.</p>
+      <p>3. If getting out of bed is the hardest thing you do every day, keep reading.</p>
+      <p>4. Morning stiffness isn't aging. It's your mattress. Here's the proof.</p>
+      <p>5. What if you woke up tomorrow without reaching for the ibuprofen?</p>
+      <p>6. Every morning used to start with pain. Now it starts with a stretch and a smile.</p>
+      <p>7. Your morning pain has a cause. And it's not your age.</p>
+      <p>8. She went from 2 hours of morning stiffness to waking up and walking straight to coffee.</p>
+      <p>9. The thing nobody tells you about chronic pain: your mattress is making it worse every night.</p>
+      <p>10. "I dreaded mornings for 15 years. Then I changed one thing about my bed."</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Price / Value / vs New Mattress (10 headlines)</summary>
+    <div class="detail-body">
+      <p>1. $130 to make your bed feel like a $2,000 mattress. I'll take that trade.</p>
+      <p>2. I almost spent $1,500 on a new mattress. Spent $130 instead. Same result.</p>
+      <p>3. The upgrade you didn't know you'd been waiting years for.</p>
+      <p>4. 56% off and a 100-night guarantee. The math does itself.</p>
+      <p>5. This is one of those purchases where you wonder why you waited so long.</p>
+      <p>6. "Babe, these things are like ridiculously expensive." "Nope. It's on a massive sale."</p>
+      <p>7. A new mattress costs $1,000. This costs $130. It does the same thing.</p>
+      <p>8. 131,000 people already upgraded their sleep for $130. You're next.</p>
+      <p>9. If you can't afford a new mattress, you can afford this. And it might be better.</p>
+      <p>10. The $130 sleep upgrade that's replacing $1,000 mattresses.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Social Proof / Trust (10 headlines)</summary>
+    <div class="detail-body">
+      <p>1. 131,000+ customers. Sold out 5 times. Back in stock -- won't last.</p>
+      <p>2. Less than 1% of customers return it. 100 nights to test it.</p>
+      <p>3. 7,300 people bought this last month. Here's why.</p>
+      <p>4. "The most cushy comfortable sleep ever. Aches and pain seem to be gone."</p>
+      <p>5. Women with chronic pain are calling this a game-changer. Here's the review.</p>
+      <p>6. 97% report relief on the first night. 100 nights to prove them right.</p>
+      <p>7. This mattress topper has been sold out 5 times. It's back. Probably not for long.</p>
+      <p>8. Read what 131,000 customers said. Then try it for 100 nights risk-free.</p>
+      <p>9. "I sleep all night without back pain. It feels like sleeping in the clouds."</p>
+      <p>10. The only risk is not trying it. 100 nights. Full refund. No questions.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Gift / Seasonal / Care of Loved Ones (10 headlines)</summary>
+    <div class="detail-body">
+      <p>1. The gift that changes how your mom starts every morning.</p>
+      <p>2. If your mom has back pain, this is the gift that actually helps.</p>
+      <p>3. My daughter got me this. I haven't taken morning ibuprofen since.</p>
+      <p>4. The best gift I ever gave my parents cost $130.</p>
+      <p>5. She's been dealing with pain for years. Give her the gift of a painless morning.</p>
+      <p>6. You can't fix her fibromyalgia. But you can fix how she sleeps.</p>
+      <p>7. The gift she'll use every single night for years. Not another candle.</p>
+      <p>8. If someone you love wakes up in pain every day, send them this.</p>
+      <p>9. Mother's Day is one morning. This gift makes every morning better.</p>
+      <p>10. The $130 gift that 131,000 people wish they'd gotten sooner.</p>
+    </div>
+  </details>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- APPENDIX B: COMPLIANCE NOTES                       -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="compliance">
+  <h3 style="margin-top:0">Appendix B: Compliance Notes</h3>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Risk Area</th><th>Specific Risk</th><th>Mitigation</th></tr>
+      <tr>
+        <td><strong>Health claims (FDA/FTC)</strong></td>
+        <td>OrthoBed implies medical outcomes: "pain relief," "targets 18 tender points," "what your painkillers can't." FTC requires substantiation for health claims. FDA may classify as medical device if claims are too specific.</td>
+        <td>Use "customers report" and "may help" language. Never claim cure, treatment, or diagnosis. "Women with fibromyalgia are saying..." (anecdotal) is safer than "relieves fibromyalgia" (clinical claim). Keep mechanism language descriptive, not prescriptive.</td>
+      </tr>
+      <tr>
+        <td><strong>Meta Ad Policy</strong></td>
+        <td>Meta restricts ads that reference personal health conditions directly. "Do you have fibromyalgia?" can trigger rejection. Before/after imagery has restrictions.</td>
+        <td>Third-person framing: "Women with fibromyalgia are saying..." not "If you have fibromyalgia." Avoid before/after split screens with explicit health conditions. Use "The Review" format (editorial framing) to stay content-native.</td>
+      </tr>
+      <tr>
+        <td><strong>Testimonial rules (FTC)</strong></td>
+        <td>Testimonials must reflect typical results. "97% report first-night relief" is a strong claim. Endorsement guides require disclosure of material connections.</td>
+        <td>Add "results may vary" to ad copy or landing page. If using paid UGC, disclose: #ad or "paid partnership." Use verifiable stats (Judge.me 4.19/5) over self-reported (4.9/5, 18,314 reviews).</td>
+      </tr>
+      <tr>
+        <td><strong>Pricing claims</strong></td>
+        <td>"Was $299.97" pricing may be inflated (FTC requires the "was" price to have been genuinely charged). "56% off" relies on this anchor.</td>
+        <td>Use "Save $170" framing instead of "was $299.97" if the original price was never charged at volume. "$130 vs $1,000 for a new mattress" is a legitimate comparison, not a discounted-from claim.</td>
+      </tr>
+      <tr>
+        <td><strong>TikTok ad policy</strong></td>
+        <td>Similar health claim restrictions to Meta. TikTok also restricts "before/after" weight/body transformation content and exaggerated claims.</td>
+        <td>Same third-person framing. Focus on comfort and sleep quality over medical pain relief. "Better sleep" is safer than "pain cure." Unboxing and sensory content performs well without triggering policy.</td>
+      </tr>
+      <tr>
+        <td><strong>Google Shopping</strong></td>
+        <td>Google requires accurate pricing and product availability. Currently sold out product can trigger policy violations.</td>
+        <td>Only run Google Shopping when product is in stock. Ensure price matches landing page exactly. Don't advertise sale pricing that differs from checkout price.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Compliance Bottom Line</strong>
+    The biggest risk is health claim specificity. "Targets 18 tender points" is descriptive (OK). "Cures fibromyalgia pain" is a medical claim (not OK). Stay in the "customers report" and "may help" zone. Let UGC testimonials do the heavy lifting -- anecdotal proof from real people is more persuasive AND more compliant than brand-level medical claims.
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- APPENDIX C: METRICS FRAMEWORK                      -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section id="metrics">
+  <h3 style="margin-top:0">Appendix C: Metrics Framework</h3>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num">25%+</div>
+      <div class="label">Hook Rate (thumb-stop)<br>Target benchmark</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">2.0%+</div>
+      <div class="label">CTR (all)<br>Target benchmark</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">2.5x+</div>
+      <div class="label">ROAS<br>Scale threshold</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">3.5%+</div>
+      <div class="label">Landing Page CVR<br>Target benchmark</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Metric</th><th>What It Measures</th><th>Benchmark</th><th>Creative Action If Below</th></tr>
+      <tr>
+        <td><strong>Hook rate</strong></td>
+        <td>% who watch past 3 seconds (thumb-stop power)</td>
+        <td>25%+</td>
+        <td>Hook is weak. Test new opening lines. Try different first-frame visuals. Add text overlay. Try a question hook vs statement hook.</td>
+      </tr>
+      <tr>
+        <td><strong>Hold rate</strong></td>
+        <td>% who watch 50%+ of the video</td>
+        <td>15%+</td>
+        <td>Body copy is losing them. Cut the fat. Add more visual changes (every 3 seconds). Introduce a new benefit or proof element earlier. Test shorter cut.</td>
+      </tr>
+      <tr>
+        <td><strong>CTR (all)</strong></td>
+        <td>Clicks per impression (all clicks including profile, comments)</td>
+        <td>2.0%+</td>
+        <td>Interest without action. CTA is weak or unclear. Test benefit-led CTA vs urgency-led. Add stronger risk reversal. Test "link in bio" vs "link below."</td>
+      </tr>
+      <tr>
+        <td><strong>CTR (link)</strong></td>
+        <td>Clicks to landing page per impression</td>
+        <td>1.0%+</td>
+        <td>Curiosity without intent. Primary text isn't closing. Add price + guarantee to primary text. Test offer-forward vs story-forward copy.</td>
+      </tr>
+      <tr>
+        <td><strong>CPA</strong></td>
+        <td>Cost per acquisition (purchase)</td>
+        <td>< $35</td>
+        <td>Traffic quality or landing page issue. If hook rate + CTR are good, the problem is post-click. Check landing page load speed, above-fold content, checkout friction.</td>
+      </tr>
+      <tr>
+        <td><strong>ROAS</strong></td>
+        <td>Revenue per ad dollar</td>
+        <td>2.5x+</td>
+        <td>Below 2.5x for 5+ days: cut spend. Check if creative fatigue or audience saturation. Test new audience segments or lookalikes before killing the ad.</td>
+      </tr>
+      <tr>
+        <td><strong>Frequency</strong></td>
+        <td>Average times each person sees the ad</td>
+        <td>< 2.5</td>
+        <td>Above 2.5: creative fatigue. Rotate in new hooks on same body. Swap actors/environments. Expand audience to dilute frequency.</td>
+      </tr>
+      <tr>
+        <td><strong>Creative win rate</strong></td>
+        <td>% of new creatives that beat the control</td>
+        <td>20%+</td>
+        <td>Below 20%: research gap. Go back to VOC. Mine new reviews. Find new angles. The problem is upstream (insight), not downstream (execution).</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- WINNING SCRIPT DISSECTION -->
+<div class="gradient-divider"></div>
+<section>
+  <h3 style="margin-top:0">Winning Script Dissection</h3>
+  <p>Five winning scripts analyzed. Here's what makes each one work and the replicable pattern.</p>
+
+  <div class="hook-card">
+    <h4>Script 1: Fibro UGC Testimonial</h4>
+    <p><strong>Format:</strong> Talking head, direct-to-camera</p>
+    <p><strong>Hook:</strong> "If you struggle with fibromyalgia pain like constant soreness, pressure point pain, back pain, hip pain, anything like that, definitely give this mattress topper a try."</p>
+    <p><strong>Why it works:</strong> Opens with CONDITION, not product. Lists specific symptoms (pattern interrupt). "Definitely give this a try" is peer recommendation, not sales pitch. Body uses sensory language ("giant marshmallow"). CTA: urgency ("flash sale") + social ("you're welcome").</p>
+    <p><strong>Pattern:</strong> [Condition + symptoms] > [sensory experience] > [bonus benefit] > [urgency + casual CTA]</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Script 2: "The Review" Format</h4>
+    <p><strong>Format:</strong> Review-style voiceover, third-person</p>
+    <p><strong>Hook:</strong> "The review. Women with fibromyalgia are saying they are finally sleeping through the night."</p>
+    <p><strong>Why it works:</strong> "The review" = content-native framing. Third-person is more credible for skeptics. Hotel bed analogy creates aspiration without medical claims. CTA stacks: price + discount + gift + guarantee + urgency.</p>
+    <p><strong>Pattern:</strong> ["The review"] > [third-person social proof] > [aspirational analogy] > [mechanism] > [stacked CTA]</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Script 3: Couple Reaction / Dialogue</h4>
+    <p><strong>Format:</strong> Two-person dialogue, unboxing</p>
+    <p><strong>Hook:</strong> "No, it's not a mattress, it's a mattress topper."</p>
+    <p><strong>Why it works:</strong> Corrective opening creates curiosity. Price objection handled IN dialogue ("ridiculously expensive" > "massive sale"). Fun energy. No medical claims. Sells on experience and value only.</p>
+    <p><strong>Pattern:</strong> [Correction hook] > [authentic surprise] > [price objection in dialogue] > [sale reveal] > [reward CTA]</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Script 4: Unboxing / First Impression</h4>
+    <p><strong>Format:</strong> POV unboxing, direct-to-camera</p>
+    <p><strong>Hook:</strong> "Got this amazing bamboo mattress topper. It is super thick, super plush, you guys."</p>
+    <p><strong>Why it works:</strong> Solves SPECIFIC problem ("new mattress too firm"). Physical demonstration of thickness. Feature stack delivered conversationally. Soft CTA ("link it for you down below").</p>
+    <p><strong>Pattern:</strong> [Product excitement] > [specific problem it solves] > [physical demo] > [conversational features] > [soft CTA]</p>
+  </div>
+
+  <div class="hook-card">
+    <h4>Script 5: Authority / Cross-Category</h4>
+    <p><strong>Format:</strong> Authority-led UGC (posture bra -- transferable format)</p>
+    <p><strong>Hook:</strong> "A little trick I learned when I used to work at the front desk of a physical therapy office..."</p>
+    <p><strong>Why it works:</strong> Accessible authority (not a doctor, but credible). Price pre-handled. Before/after transformation. Vulnerability builds trust.</p>
+    <p><strong>Pattern for OrthoBed:</strong> "A little trick I learned at [sleep clinic / chiropractor]..." > [problem reveal] > [affordable solution] > [personal testimony] > [soft CTA]</p>
+  </div>
+</section>
+
+<footer>
+  OrthoBed DRIVE Strategy &mdash; Prepared Aug 2026 &mdash; Built from sourced research, 5 winning script dissections, VOC analysis, and core copywriting frameworks (Schwartz, LF8, Cialdini, Sugarman). All claims traced to Brand Intel sources.
+</footer>
+
+</main>
