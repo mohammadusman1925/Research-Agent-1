@@ -207,6 +207,50 @@
     th{width:42%;white-space:normal}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ---- call cards ---- */
+  .calls{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+  .callcard{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:7px}
+  .callcard .rank{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+  .callcard .who{font-family:Spectral,Georgia,serif;font-size:1.08rem;font-weight:600;line-height:1.3}
+  .callcard a.tel{
+    font-family:"IBM Plex Mono",monospace;font-size:17px;font-variant-numeric:tabular-nums;
+    font-weight:500;text-decoration:none;letter-spacing:.01em;
+  }
+  .callcard a.tel:hover{text-decoration:underline}
+  .callcard small{color:var(--muted);font-size:13.5px;line-height:1.55}
+  .callcard .alt{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
+
+  /* ---- spoken lines ---- */
+  .say{
+    background:var(--surface);border:1px solid var(--rule);
+    border-left:3px solid var(--accent);border-radius:3px;
+    padding:16px 18px;display:flex;flex-direction:column;gap:8px;
+  }
+  .say .cue{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .say p{font-family:Spectral,Georgia,serif;font-size:16.5px;line-height:1.62;font-style:italic}
+
+  /* ---- press points ---- */
+  ol.press{list-style:none;counter-reset:pp;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+  ol.press li{counter-increment:pp;display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start}
+  ol.press li::before{
+    content:counter(pp);
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    color:var(--paper);background:var(--accent);
+    width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  ol.press li > div{display:flex;flex-direction:column;gap:6px;min-width:0}
+  ol.press b{font-weight:600;font-size:15px}
+  ol.press q{
+    font-family:Spectral,Georgia,serif;font-size:16px;line-height:1.58;
+    font-style:italic;color:var(--muted);quotes:"\201D" "\201D";
+  }
+
+  /* ---- objections ---- */
+  table.obj th{width:44%;font-weight:400;color:var(--ink);white-space:normal;font-style:italic;font-family:Spectral,Georgia,serif;font-size:15px}
+  table.obj td{font-size:14.5px;line-height:1.55}
+  table.obj tr{border-bottom:1px solid var(--rule-soft)}
 </style>
 
 <div class="wrap">
@@ -392,6 +436,125 @@
     begär makulering som handläggningsfel, eftersom tillståndet är utfärdat av dem. Bifoga bilderna.</small></div></li>
   </ol>
   <p>Skicka hellre till två kanaler än en, och spara skickat-bekräftelsen.</p>
+</section>
+
+
+<section>
+  <h2>Ringlistan</h2>
+  <p>Ring i den här ordningen. Nummer två ger dig beviset som gör nummer ett enkelt, och nummer tre
+  är den som faktiskt kan sätta stopp på hela saken.</p>
+
+  <div class="calls">
+    <div class="callcard">
+      <div class="rank">Ring först — här kan avgiften makuleras</div>
+      <div class="who">HOJAB Parkeringsservice</div>
+      <a class="tel" href="tel:+4687352999">08-735 29 99</a>
+      <small>Vardagar 08.00–17.00. Det är hit APCOA hänvisar alla frågor om kontrollavgifter från
+      Europark. Handläggaren du får här är den som kan lägga in makuleringen.</small>
+    </div>
+    <div class="callcard">
+      <div class="rank">Ring sedan — hämta beviset</div>
+      <div class="who">APCOA kundtjänst</div>
+      <a class="tel" href="tel:+46855630670">08-556 306 70</a>
+      <small>Vardagar 08.00–17.00, lunchstängt 12.00–13.00, fredagar till 16.00. De utfärdade ditt
+      tillstånd. Be dem slå upp <b>901272</b> och bekräfta att det är giltigt — helst skriftligt.
+      Den bekräftelsen avgör ärendet.</small>
+    </div>
+    <div class="callcard">
+      <div class="rank">Den tyngsta hävstången</div>
+      <div class="who">Din hyresvärd på Slakteriet</div>
+      <a class="tel" href="tel:+4621803523">021-80 35 23</a>
+      <small>Markägaren är parkeringsbolagets uppdragsgivare — säger de åt APCOA att makulera, så
+      makuleras det. Slakteriet ägs av NP3 Fastigheter; numret ovan är deras affärschef i Västerås,
+      växeln är <span class="alt">060-777 03 00</span>. Du vet själv vem du betalar hyra till —
+      använd den kontakten om den är en annan.</small>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Manus</h2>
+  <p>Öppna med allt på en gång. Ärendenummer och regnr först gör att handläggaren hinner slå upp
+  ärendet medan du pratar, och du slipper börja om.</p>
+
+  <div class="say">
+    <div class="cue">De första 30 sekunderna</div>
+    <p>”Hej, jag heter [ditt namn] och ringer om en kontrollavgift. Ärendenummer 20701200275344,
+    registreringsnummer CFD29W. Utfärdad den 24 augusti kvart i elva på Slakterigatan 10 i Västerås.
+    Orsaken som står är ’parkeringsavgift ej erlagd’. Den är felaktig — bilen stod med ett giltigt
+    parkeringstillstånd som ni själva har utfärdat, nummer 901272, område Slakteriet, personal,
+    giltigt till 31 januari 2028. Det satt synligt i vindrutan och jag har foto på det. Jag vill att
+    avgiften makuleras.”</p>
+  </div>
+
+  <p>Sedan tystnad. Låt dem svara. Den som fyller pausen börjar förhandla med sig själv.</p>
+</section>
+
+<section>
+  <h2>Tre saker du pressar på — och bara dessa tre</h2>
+  <p>Byt inte argument och lägg inte till nya. Trycket ligger i att samma tre punkter kommer
+  tillbaka oförändrade varje gång de invänder.</p>
+  <ol class="press">
+    <li><div><b>Tillståndet är deras eget</b>
+      <q>Slå upp 901272 i ert register. Det är utfärdat av APCOA. Ni ser själva att det är giltigt.</q>
+    </div></li>
+    <li><div><b>Bevisbördan ligger på dem</b>
+      <q>Ni ska visa att jag parkerade i strid med villkoren. Jag har foto som visar motsatsen —
+      ert tillstånd och er lapp i samma bild, samma dag.</q>
+    </div></li>
+    <li><div><b>Du betalar inte</b>
+      <q>Kravet är bestritt. Vill ni ha betalt får ni pröva det i tingsrätten.</q>
+    </div></li>
+  </ol>
+  <p>Den tredje säger du lugnt, som en upplysning om nästa steg — inte som ett hot. Det är också
+  precis så det fungerar: betalar du inte måste de stämma dig, och bevisbördan är deras.</p>
+</section>
+
+<section>
+  <h2>Om de säger…</h2>
+  <div class="tablewrap">
+    <table class="obj">
+      <tr><th>”Du måste bestrida skriftligt.”</th>
+          <td>”Det gör jag idag också. Men jag vill ha samtalet noterat i ärendet nu. Vilken
+          e-postadress tar ni emot bestridanden på?”</td></tr>
+      <tr><th>”Vi kan inte makulera över telefon.”</th>
+          <td>”Vem kan? Koppla mig dit, eller ge mig namn och mejl till den som fattar beslutet.”</td></tr>
+      <tr><th>”P-vakten såg inget tillstånd.”</th>
+          <td>”Jag har foto taget på plats där tillståndet och er lapp syns i samma bild. Vill ni
+          att jag skickar det nu medan vi pratar?”</td></tr>
+      <tr><th>”Det är Europark, inte oss.”</th>
+          <td>”Europark Svenska är ett företagsnamn tillhörande APCOA Sverige AB. Tillståndet är
+          utfärdat av APCOA. Det här är internt hos er.”</td></tr>
+      <tr><th>”Vänd dig till markägaren.”</th>
+          <td>”Ni är ombud för markägaren. Jag pratar med dem också — men jag noterar att ni
+          hänvisar bort er. Vad heter du i efternamn?”</td></tr>
+      <tr><th>”Betala så slipper du inkasso.”</th>
+          <td>”Nej. Kravet är bestritt och kommer inte att betalas. Går det till inkasso bestrider
+          jag det där också.”</td></tr>
+      <tr><th>”Vi återkommer inom några veckor.”</th>
+          <td>”Bra. Jag vill ha det skriftligt, med ärendenummer och ditt namn. Vilken adress
+          kommer det från?”</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Innan du lägger på</h2>
+  <p>Fyra saker. Utan dem har samtalet inte hänt, juridiskt sett.</p>
+  <ul class="fill">
+    <li><b>Handläggarens namn</b> — ”vad heter du i efternamn?” ändrar tonen i ett samtal direkt.</li>
+    <li><b>Att kravet är noterat som bestritt</b> i deras system, med dagens datum.</li>
+    <li><b>En e-postadress</b> att skicka bestridandet och bilderna till.</li>
+    <li><b>En tidsram</b> för skriftligt svar — och skriv upp den.</li>
+  </ul>
+  <p>Anteckna datum, klockslag och namn direkt efter samtalet. Blir det tvist är den anteckningen
+  bevisning.</p>
+
+  <h3>Ton</h3>
+  <p>Lugn och kort vinner det här. Handläggaren har ingen egen del i felet och gör mindre för någon
+  som skriker — men mer för någon det är obekvämt att säga nej till: exakta uppgifter, samma tre
+  argument varje gång, namn noterat. Säg aldrig ”jag glömde” eller ”jag stod bara en kort stund”.
+  Du har inte gjort något fel. Och erbjud aldrig att betala bara för att få det ur världen.</p>
 </section>
 
 <footer>

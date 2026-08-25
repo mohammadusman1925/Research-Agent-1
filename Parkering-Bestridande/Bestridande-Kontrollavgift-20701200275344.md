@@ -159,3 +159,70 @@ Så här kommer du vidare snabbast:
    begär makulering som handläggningsfel, eftersom tillståndet är utfärdat av dem. Bifoga bilderna.
 
 Skicka hellre till två kanaler än en, och spara skickat-bekräftelsen.
+
+---
+
+# Ringlistan och samtalsmanus
+
+## Ringordning
+
+**1. HOJAB Parkeringsservice — 08-735 29 99** (vardagar 08.00–17.00)
+Hit hänvisar APCOA alla frågor om kontrollavgifter från Europark. Det är här makuleringen faktiskt
+kan läggas in. Börja här.
+
+**2. APCOA kundtjänst — 08-556 306 70** (vardagar 08.00–17.00, lunchstängt 12.00–13.00, fre till 16.00)
+De utfärdade ditt tillstånd. Be dem slå upp **901272** och bekräfta att det är giltigt, helst
+skriftligt. Den bekräftelsen avgör ärendet.
+
+**3. Din hyresvärd på Slakteriet — 021-80 35 23** (NP3 Fastigheter, Västerås; växel 060-777 03 00)
+Markägaren är parkeringsbolagets uppdragsgivare. Säger de åt APCOA att makulera, så makuleras det.
+Du vet själv vem du betalar hyra till — använd den kontakten om den är en annan.
+
+## Manus — de första 30 sekunderna
+
+> "Hej, jag heter [ditt namn] och ringer om en kontrollavgift. Ärendenummer 20701200275344,
+> registreringsnummer CFD29W. Utfärdad den 24 augusti kvart i elva på Slakterigatan 10 i Västerås.
+> Orsaken som står är 'parkeringsavgift ej erlagd'. Den är felaktig — bilen stod med ett giltigt
+> parkeringstillstånd som ni själva har utfärdat, nummer 901272, område Slakteriet, personal,
+> giltigt till 31 januari 2028. Det satt synligt i vindrutan och jag har foto på det. Jag vill att
+> avgiften makuleras."
+
+Sedan tystnad. Låt dem svara.
+
+## Tre saker du pressar på — och bara dessa tre
+
+1. **Tillståndet är deras eget.** "Slå upp 901272 i ert register. Det är utfärdat av APCOA. Ni ser
+   själva att det är giltigt."
+2. **Bevisbördan ligger på dem.** "Ni ska visa att jag parkerade i strid med villkoren. Jag har foto
+   som visar motsatsen — ert tillstånd och er lapp i samma bild, samma dag."
+3. **Du betalar inte.** "Kravet är bestritt. Vill ni ha betalt får ni pröva det i tingsrätten."
+
+Byt inte argument. Repetitionen är trycket.
+
+## Om de säger…
+
+| De säger | Du svarar |
+|---|---|
+| "Du måste bestrida skriftligt." | "Det gör jag idag också. Men jag vill ha samtalet noterat i ärendet nu. Vilken e-postadress tar ni emot bestridanden på?" |
+| "Vi kan inte makulera över telefon." | "Vem kan? Koppla mig dit, eller ge mig namn och mejl till den som fattar beslutet." |
+| "P-vakten såg inget tillstånd." | "Jag har foto taget på plats där tillståndet och er lapp syns i samma bild. Vill ni att jag skickar det nu medan vi pratar?" |
+| "Det är Europark, inte oss." | "Europark Svenska är ett företagsnamn tillhörande APCOA Sverige AB. Tillståndet är utfärdat av APCOA. Det här är internt hos er." |
+| "Vänd dig till markägaren." | "Ni är ombud för markägaren. Jag pratar med dem också — men jag noterar att ni hänvisar bort er. Vad heter du i efternamn?" |
+| "Betala så slipper du inkasso." | "Nej. Kravet är bestritt och kommer inte att betalas. Går det till inkasso bestrider jag det där också." |
+| "Vi återkommer inom några veckor." | "Bra. Jag vill ha det skriftligt, med ärendenummer och ditt namn. Vilken adress kommer det från?" |
+
+## Innan du lägger på — säkra fyra saker
+
+1. **Handläggarens namn.**
+2. **Att kravet är noterat som bestritt** i deras system, med dagens datum.
+3. **En e-postadress** att skicka bestridandet och bilderna till.
+4. **En tidsram** för skriftligt svar.
+
+Anteckna datum, klockslag och namn direkt efter samtalet. Blir det tvist är anteckningen bevisning.
+
+## Ton
+
+Lugn och kort vinner. Handläggaren har ingen egen del i felet och gör mindre för någon som skriker,
+men mer för någon det är obekvämt att säga nej till: exakta uppgifter, samma tre argument varje
+gång, namn noterat. Säg aldrig "jag glömde" eller "jag stod bara en kort stund" — du har inte gjort
+något fel. Erbjud aldrig att betala bara för att få det ur världen.
